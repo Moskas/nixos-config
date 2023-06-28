@@ -19,6 +19,11 @@
     discord
   ];
 
+  programs.emacs = {
+  enable = true;
+  package = pkgs.emacs29;
+  };
+
   programs.zathura = {
     enable = true;
     options = {
