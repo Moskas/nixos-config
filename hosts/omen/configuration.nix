@@ -167,6 +167,7 @@
     shell = pkgs.zsh;
     packages = with pkgs; [ discord-canary vintagestory ];
   };
+  programs.zsh.enable = true;
   environment.variables = {
     EDITOR = "emacs";
     DEFAULT_BROWSER = "${pkgs.qutebrowser}/bin/qutebrowser";
