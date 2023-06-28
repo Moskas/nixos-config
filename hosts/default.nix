@@ -13,7 +13,7 @@ in {
     specialArgs = { inherit inputs username; };
     modules = [
       ./virtual
-      ./configuration.nix
+      ./virtual/configuration.nix
       home-manager.nixosModules.home-manager
       {
         home-manager.useGlobalPkgs = true;
