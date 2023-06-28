@@ -9,6 +9,7 @@
   home.packages = with pkgs; [
     onefetch
     neofetch
+    helix
     btop
     exa
     clojure
