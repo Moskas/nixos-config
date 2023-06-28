@@ -1,47 +1,25 @@
 { config, pkgs, lib, ... }:
 
-let pkgsUnstable = import <unstable> { };
-in {
-  # Home Manager needs a bit of information about you and the
-  # paths it should manage.
-  home.username = "moskas";
-  home.homeDirectory = "/home/moskas";
-
-  # This value determines the Home Manager release that your
-  # configuration is compatible with. This helps avoid breakage
-  # when a new Home Manager release introduces backwards
-  # incompatible changes.
-  #
-  # You can update Home Manager without changing this value. See
-  # the Home Manager release notes for a list of state version
-  # changes in each release.
+{
   home.stateVersion = "22.11";
-
-  # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
   home.packages = with pkgs; [
     lazygit
     jq
-    trackma
     manga-cli
     ani-cli
-    python310Packages.aria2p # aria2c
     ranger
     ffmpeg
     duf
     du-dust
     neofetch
     onefetch
-    tickrs
     mpc-cli
-    cava
     rnix-lsp
     nixfmt
     exa
     zip
     unzip
-    html-tidy
-    nodePackages_latest.prettier
   ];
 
   programs.git = {
@@ -84,10 +62,11 @@ in {
     plugins = [ ];
     initExtra = "\n    export PATH=~/.config/emacs/bin:$PATH\n    ";
   };
+
   programs.starship = {
     enable = true;
     enableZshIntegration = true;
-    package = pkgsUnstable.starship;
+    package = pkgs.starship;
     settings = {
       add_newline = false;
       palette = "solarized";
@@ -97,7 +76,7 @@ in {
       scan_timeout = 10;
       character = {
         success_symbol = "[]( blue)";
-        error_symbol = "[➜]( red)";
+        error_symbol = "[]( red)";
       };
       fill = { symbol = " "; };
       time = {
@@ -179,29 +158,47 @@ in {
         brwhite = "#fdf6e3"; # "white" according to wikipedia lol
         white = "#eee8d5";
       };
+      palettes.gruvbox = {
+        fg = "#ebdbb2";
+        bg = "#1d2021";
+        yellow = "#fabd2f";
+        dark-yellow = "#d79921";
+        green = "#b8bb26";
+        dark-green = "#98971a";
+        red = "#fb4932";
+        dark-red = "#cc241d";
+        magenta = "#d3869b";
+        dark-magenta = "#b16286";
+        blue = "#83a598";
+        dark-blue = "#458588";
+        cyan = "#8ec07c";
+        dark-cyan = "#689d6a";
+        gray = "#666666";
+        dark-gray = "#3d3d3d";
+      };
     };
   };
 
-  services.mpd = {
-    enable = true;
-    musicDirectory = "/home/moskas/Music";
-    network = {
-      listenAddress = "any";
-      port = 6600;
-    };
-    extraConfig = ''
-      audio_output {
-      type  "pipewire"
-      name  "pipewire"
-      }
-      audio_output {
-      type    "fifo"
-      name    "my_fifo"
-      path    "/tmp/mpd.fifo"
-      format  "44100:16:2"
-      }
-    '';
-  };
+  #services.mpd = {
+  #  enable = true;
+  #  musicDirectory = "/home/moskas/Music";
+  #  network = {
+  #    listenAddress = "any";
+  #    port = 6600;
+  #  };
+  #  extraConfig = ''
+  #    audio_output {
+  #    type  "pipewire"
+  #    name  "pipewire"
+  #    }
+  #    audio_output {
+  #    type    "fifo"
+  #    name    "my_fifo"
+  #    path    "/tmp/mpd.fifo"
+  #    format  "44100:16:2"
+  #    }
+  #  '';
+  #};
 
   programs.ncmpcpp = {
     enable = true;

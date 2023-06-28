@@ -20,8 +20,25 @@
   ];
 
   programs.emacs = {
-  enable = true;
-  package = pkgs.emacs29;
+    enable = true;
+    package = pkgs.emacs29;
+  };
+
+  programs.git = {
+    enable = true;
+    userName = "Moskas";
+    userEmail = "minemoskas@gmail.com";
+    extraConfig = { init.defaultBranch = "master"; };
+    aliases = {
+      c = "clone";
+      ci = "commit";
+      co = "checkout";
+      s = "status";
+      a = "add";
+      d = "diff";
+      p = "push";
+      pu = "pull";
+    };
   };
 
   programs.zathura = {
@@ -138,6 +155,14 @@
           Linux = "[  ](fg:fg $style)";
         };
       };
+      nix_shell = {
+        symbol = " ";
+        format = "[$symbol](bold blue)";
+      };
+      cmd_duration = {
+        min_time = 500;
+        format = "[ took $duration ](bold fg:bg bg:yellow)";
+      };
       git_branch = {
         format = "[ $symbol$branch(:$remote_branch) ](bg:purple fg:bg )";
         symbol = " ";
@@ -222,6 +247,8 @@
       cursor           #fabc2e
 
       confirm_os_window_close 0
+      window_margin_width 5
+      placement_strategy top-left
 
       # Tabs
       tab_bar_align left
