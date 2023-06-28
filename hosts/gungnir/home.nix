@@ -1,17 +1,16 @@
 { config, pkgs, lib, ... }:
 
-{
-  #  nixpkgs.config = {
-  #    allowUnfree = true;
-  #    allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [ "osu-lazer" ];
-  #    packageOverrides = pkgs: {
-  #      nur = import (builtins.fetchTarball
-  #        "https://github.com/nix-community/NUR/archive/master.tar.gz") {
-  #          inherit pkgs;
-  #        };
-  #    };
-  #  };
-
+let pkgsUnstable = import <unstable> { };
+in {
+  nixpkgs.config = {
+    allowUnfree = true;
+    packageOverrides = pkgs: {
+      nur = import (builtins.fetchTarball
+        "https://github.com/nix-community/NUR/archive/master.tar.gz") {
+          inherit pkgs;
+        };
+    };
+  };
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
   home.username = "moskas";
@@ -36,7 +35,6 @@
     manga-cli
     ani-cli
     python310Packages.aria2p # aria2c
-    python310Packages.mpd2
     ranger
     ffmpeg
     duf
@@ -49,6 +47,7 @@
     cava
     rnix-lsp
     nixfmt
+    ispell
     betterdiscordctl
     steam
     protonup-ng
@@ -77,8 +76,6 @@
     html-tidy
     nodePackages_latest.prettier
     pkg-config
-    osu-lazer
-    epr
   ];
 
   xresources = {
@@ -113,21 +110,16 @@
         "general.useragent.locale" = "pl-PL";
         "browser.bookmarks.showMobileBookmarks" = true;
       };
-      #extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-      #  darkreader
-      #  stylus
-      #  vimium
-      #  bitwarden
-      #  betterttv
-      #  sponsorblock
-      #  return-youtube-dislikes
-      #];
     };
-
+    extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+      darkreader
+      vimium
+      bitwarden
+      betterttv
+      sponsorblock
+      return-youtube-dislikes
+    ];
   };
-
-  programs.pandoc = { enable = true; };
-
   programs.brave = {
     enable = true;
     extensions = [
@@ -225,7 +217,7 @@
   programs.starship = {
     enable = true;
     enableZshIntegration = true;
-    package = pkgs.starship;
+    package = pkgsUnstable.starship;
     settings = {
       add_newline = false;
       palette = "solarized";
@@ -289,14 +281,6 @@
           Macos = "[  ](fg:red $style)";
           Linux = "[  ](fg:fg $style)";
         };
-      };
-      nix_shell = {
-        symbol = " ";
-        format = "[$symbol](bold blue)";
-      };
-      cmd_duration = {
-        min_time = 500;
-        format = "[ took $duration ](bold fg:bg bg:yellow)";
       };
       git_branch = {
         format = "[ $symbol$branch(:$remote_branch) ](bg:purple fg:bg )";
@@ -501,13 +485,13 @@
     opacityRules = [
       "80:class_g = 'kitty' && !focused"
       "90:class_g = 'kitty' && focused"
-      "95:class_g = 'Emacs' && !focused"
-      "98:class_g = 'Emacs' && focused"
-      "95:class_g = 'Zathura' && !focused"
-      "98:class_g = 'Zathura' && focused"
-      "95:class_g = 'discord' && !focused"
-      "98:class_g = 'discord' && focused"
-      "95:class_g = 'qutebrowser' && !focused"
+      "90:class_g = 'Emacs' && !focused"
+      "95:class_g = 'Emacs' && focused"
+      "90:class_g = 'Zathura' && !focused"
+      "95:class_g = 'Zathura' && focused"
+      "90:class_g = 'discord' && !focused"
+      "95:class_g = 'discord' && focused"
+      "90:class_g = 'qutebrowser' && !focused"
     ];
     settings = { blur = { method = "dual_kawase"; }; };
   };
@@ -522,7 +506,6 @@
 
   programs.emacs = {
     enable = true;
-    package = pkgs.emacs29;
     extraPackages = epkgs:
       with epkgs; [
         vterm-toggle # Added as doom-emacs vterm won't compile due to read only directory
@@ -698,11 +681,6 @@
         tags = [ "media" ];
         url =
           "https://pipedapi.kavin.rocks/feed/rss?authToken=5f754893-4492-46a1-8d5a-bfbeb8def939";
-      }
-      {
-        tags = [ "Youtube" ];
-        url =
-          "https://www.youtube.com/feeds/videos.xml?channel_id=UC5UAwBUum7CPN5buc-_N1Fw";
       }
     ];
     extraConfig = ''
