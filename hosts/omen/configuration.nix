@@ -20,7 +20,6 @@
       automatic = true;
       dates = [ "weekly" ];
     };
-    settings.experimental-features = [ "nix-command" "flakes" ];
   };
 
   # Bootloader.
@@ -103,7 +102,7 @@
   };
   # Graphical environment
   services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  services.xserver.desktopManager.gnome.enable = false;
   environment.gnome.excludePackages = (with pkgs; [ gnome-photos gnome-tour ])
     ++ (with pkgs.gnome; [
       cheese # webcam tool
@@ -121,7 +120,7 @@
       atomix # puzzle game
     ]);
   services.xserver.windowManager.qtile.enable = true;
-  services.xserver.windowManager.awesome.enable = true;
+  services.xserver.windowManager.awesome.enable = false;
   services.xserver.desktopManager.plasma5.enable = false;
   #programs.ssh.askPassword = pkgs.lib.mkForce "${pkgs.ksshaskpass.out}/bin/ksshaskpass"; # For plasma desktop
   # Configure keymap in X11
@@ -165,9 +164,8 @@
     description = "Moskas";
     extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
     shell = pkgs.zsh;
-    packages = with pkgs; [ discord-canary vintagestory ];
+    packages = with pkgs; [ firefox discord-canary vintagestory stdenv ];
   };
-  programs.zsh.enable = true;
   environment.variables = {
     EDITOR = "emacs";
     DEFAULT_BROWSER = "${pkgs.qutebrowser}/bin/qutebrowser";
@@ -181,45 +179,48 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    home-manager
     neovim
+    neofetch
     wget
     git
     ripgrep
     coreutils
     fd
     clang
+    home-manager
     cmake
     gnumake
     openssl
-    #ninja
+    ninja
     gpp
     gcc
     iniparser
-    rustup
+    cargo
+    rustc
     rust-analyzer
+    python310
     rustpython
-    python310Full
-    python310Packages.mpd2 # for qtile mpd widget
+    python310Packages.mpd2
+    zathura
+    kitty
     libtool
     xorg.xbacklight
     virt-manager
-    #alsaLib
-    #pkgconfig
-    #udev
-    #vulkan-loader
-    #xorg.libX11
-    #xlibsWrapper
-    #xorg.libXrandr
-    #xorg.libXcursor
-    #xorg.libXi
+    alsaLib
+    pkgconfig
+    udev
+    vulkan-loader
+    xorg.libX11
+    xorg.libXrandr
+    xorg.libXcursor
+    xorg.libXi
   ];
 
   #home-manager.users.moskas = with pkgs; {
   #  home.packages = [
   #      neofetch
   #  ];
-  #  programs.zsh.enable = true;
+  programs.zsh.enable = true;
   #};
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -227,6 +228,10 @@
   programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;
+  };
+  programs.hyprland = {
+    enable = false;
+    nvidiaPatches = true;
   };
   programs.dconf.enable = true;
   fonts.enableDefaultFonts = false;
@@ -240,7 +245,7 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+  services.openssh.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
