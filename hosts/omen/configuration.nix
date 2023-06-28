@@ -198,8 +198,8 @@
     iniparser
     rustup
     rust-analyzer
-    python
     rustpython
+    python310Full
     python310Packages.mpd2 # for qtile mpd widget
     libtool
     xorg.xbacklight
