@@ -17,11 +17,20 @@
         virtual = nixpkgs.lib.nixosSystem {
           modules = [ ./hosts/virtual/configuration.nix ];
         };
+        omen = nixpkgs.lib.nixosSystem {
+          modules = [ ./hosts/omen/configuration.nix ];
+        };
         homeConfigurations = {
           moskas = home-manager.lib.homeManagerConfiguration {
             inherit pkgs;
             modules = [ ./hosts/virtual/home.nix ];
           };
+        };
+      };
+      homeConfigurations = {
+        moskas = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          modules = [ ./hosts/virtual/home.nix ];
         };
       };
     };
