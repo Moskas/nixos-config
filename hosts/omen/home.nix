@@ -1,16 +1,7 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, nur, lib, ... }:
 
-let pkgsUnstable = import <unstable> { };
-in {
-  nixpkgs.config = {
-    allowUnfree = true;
-    packageOverrides = pkgs: {
-      nur = import (builtins.fetchTarball
-        "https://github.com/nix-community/NUR/archive/master.tar.gz") {
-          inherit pkgs;
-        };
-    };
-  };
+{
+
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
   home.username = "moskas";
@@ -110,14 +101,14 @@ in {
         "general.useragent.locale" = "pl-PL";
         "browser.bookmarks.showMobileBookmarks" = true;
       };
-    extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-      darkreader
-      vimium
-      bitwarden
-      betterttv
-      sponsorblock
-      return-youtube-dislikes
-    ];
+      #extensions = with nur;[
+      #  darkreader
+      #  vimium
+      #  bitwarden
+      #  betterttv
+      #  sponsorblock
+      #  return-youtube-dislikes
+      #];
     };
   };
   programs.brave = {
@@ -217,7 +208,7 @@ in {
   programs.starship = {
     enable = true;
     enableZshIntegration = true;
-    package = pkgsUnstable.starship;
+    package = pkgs.starship;
     settings = {
       add_newline = false;
       palette = "solarized";
