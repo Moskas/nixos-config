@@ -26,7 +26,7 @@
         #        };
         (import ./hosts {
           inherit (nixpkgs) lib;
-          inherit inputs nixpkgs home-manager;
+          inherit inputs nixpkgs home-manager username;
         });
       #homeConfigurations = {
       #  moskas = home-manager.lib.homeManagerConfiguration {
