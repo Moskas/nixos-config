@@ -110,7 +110,6 @@ in {
         "general.useragent.locale" = "pl-PL";
         "browser.bookmarks.showMobileBookmarks" = true;
       };
-    };
     extensions = with pkgs.nur.repos.rycee.firefox-addons; [
       darkreader
       vimium
@@ -119,6 +118,7 @@ in {
       sponsorblock
       return-youtube-dislikes
     ];
+    };
   };
   programs.brave = {
     enable = true;

@@ -7,13 +7,17 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nur = {
+      url = "github.com:nix-community/NUR";
+    };
   };
-  outputs = inputs@{ self, nixpkgs, home-manager, ... }:
+  outputs = inputs@{ self, nixpkgs, home-manager, nur, ... }:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
       username = "moskas";
-    in {
+    in
+    {
       nixosConfigurations =
         #        virtual = nixpkgs.lib.nixosSystem {
         #          modules = [ ./hosts/virtual/configuration.nix ];
