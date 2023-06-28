@@ -16,6 +16,7 @@
     clojure-lsp
     leiningen
     babashka
+    discord
   ];
 
   programs.zsh = {
