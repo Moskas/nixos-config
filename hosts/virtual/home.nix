@@ -19,48 +19,49 @@
     discord
   ];
 
-  programs.zsh = {
+  programs.zathura = {
     enable = true;
-    shellAliases = {
-      ls = "exa --grid --color always --icons --sort=type";
-      ll = "exa --long --color always --icons --sort=type";
-      la = "exa --grid --all --color always --icons --sort=type";
-      lla = "exa --long --all --color always --icons --sort=type";
-    };
-    history = {
-      size = 10000;
-      path = "${config.xdg.dataHome}/zsh/history";
-    };
-    enableAutosuggestions = true;
-    enableSyntaxHighlighting = true;
-  };
+    options = {
+      notification-error-bg = "#32302f"; # bg
+      notification-error-fg = "#fb4934"; # bright:red
+      notification-warning-bg = "#32302f"; # bg
+      notification-warning-fg = "#fabd2f"; # bright:yellow
+      notification-bg = "#32302f"; # bg
+      notification-fg = "#b8bb26"; # bright:green
 
-  programs.zoxide = {
-    enable = true;
-    enableBashIntegration = true;
-    enableZshIntegration = true;
-  };
+      completion-bg = "#504945"; # bg2
+      completion-fg = "#ebdbb2"; # fg
+      completion-group-bg = "#3c3836"; # bg1
+      completion-group-fg = "#928374"; # gray
+      completion-highlight-bg = "#83a598"; # bright:blue
+      completion-highlight-fg = "#504945"; # bg2
 
-  programs.emacs = {
-    enable = true;
-    package = pkgs.emacs29;
-    extraPackages = epkgs: with epkgs; [ vterm cider olivetti blamer ];
-  };
+      # Define the color in index mode
+      index-bg = "#504945"; # bg2
+      index-fg = "#ebdbb2"; # fg
+      index-active-bg = "#83a598"; # bright:blue
+      index-active-fg = "#504945"; # bg2
 
-  programs.git = {
-    enable = true;
-    userName = "Moskas";
-    userEmail = "minemoskas@gmail.com";
-    extraConfig = { init.defaultBranch = "master"; };
-    aliases = {
-      c = "clone";
-      ci = "commit";
-      co = "checkout";
-      s = "status";
-      a = "add";
-      d = "diff";
-      p = "push";
-      pu = "pull";
+      inputbar-bg = "#32302f"; # bg
+      inputbar-fg = "#ebdbb2"; # fg
+
+      statusbar-bg = "#504945"; # bg2
+      statusbar-fg = "#ebdbb2"; # fg
+
+      highlight-color = "#fabd2f"; # bright:yellow
+      highlight-active-color = "#fe8019"; # bright:orange
+
+      default-bg = "#32302f"; # bg
+      default-fg = "#ebdbb2"; # fg
+      render-loading = true;
+      render-loading-bg = "#32302f"; # bg
+      render-loading-fg = "#ebdbb2"; # fg
+
+      # Recolor book content's color
+      recolor-lightcolor = "#32302f"; # bg
+      recolor-darkcolor = "#ebdbb2"; # fg
+      recolor = true;
+      # recolor-keephue             true      # keep original color
     };
   };
 
@@ -70,25 +71,25 @@
     package = pkgs.starship;
     settings = {
       add_newline = false;
-      palette = "solarized";
+      palette = "gruvbox";
       format = lib.concatStrings [
-        "$os$username$hostname$rust$python$node$lua$git_branch$git_status$git_state$cmd_duration$fill$time$line_break$nix_shell$directory$sudo$character "
+        "$os$username$hostname$rust$python$node$lua$git_branch$git_status$git_state$cmd_duration$fill$time$line_break$directory$sudo$character "
       ];
       scan_timeout = 10;
       character = {
-        success_symbol = "[]( fg:blue bold)";
-        error_symbol = "[➜]( fg:red bold)";
+        success_symbol = "[]( blue)";
+        error_symbol = "[➜]( red)";
       };
       fill = { symbol = " "; };
       time = {
         disabled = false;
         format = "[ $time ]($style)";
         time_format = "%T";
-        style = "fg:bg  bg:yellow bold";
+        style = "fg:bg  bg:yellow";
       };
       username = {
         disabled = false;
-        style_user = "fg:bg bg:blue bold";
+        style_user = "fg:bg bg:blue ";
         style_root = "fg:red bg:blue  italic";
         format = "[ $user ]($style)";
         show_always = true;
@@ -96,7 +97,7 @@
       hostname = {
         ssh_only = false;
         format = "[ $hostname ]($style)";
-        style = " fg:bg bg:red bold";
+        style = " fg:bg bg:red";
         disabled = false;
       };
       memory_usage = {
@@ -104,9 +105,8 @@
         threshold = -1;
         symbol = "  ";
         format = "[$symbol]($style)[$ram( | $swap) ]($style)";
-        style = " fg:bg bg:green bold";
+        style = " fg:bg bg:green";
       };
-      cmd_duration = { format = "[ $duration ](fg:bg bg:yellow bold)"; };
       directory = {
         read_only = " ";
         home_symbol = " ~";
@@ -116,7 +116,7 @@
       };
       rust = {
         symbol = "🦀";
-        format = "[ $symbol $version ](bg:yellow fg:bg bold )";
+        format = "[ $symbol $version ](bg:yellow fg:bg )";
       };
       python = { format = "[ $symbol $version ](bg:yellow fg:bg )"; };
       c = {
@@ -134,18 +134,14 @@
         };
       };
       git_branch = {
-        format = "[ $symbol$branch(:$remote_branch) ](bg:purple fg:bg bold)";
+        format = "[ $symbol$branch(:$remote_branch) ](bg:purple fg:bg )";
         symbol = " ";
       };
       git_status = {
-        format = "([$all_status ](bg:purple fg:bg bold))";
+        format = "([$all_status](bg:purple fg:bg ))";
         stashed = "📦";
         modified = "📝";
         staged = "+($count)";
-      };
-      nix_shell = {
-        format = "[ $symbol$state ](bg:blue fg:bg) ";
-        symbol = "";
       };
       palettes.solarized = {
         fg = "#93a1a1";
@@ -164,94 +160,116 @@
         brwhite = "#fdf6e3"; # "white" according to wikipedia lol
         white = "#eee8d5";
       };
+      palettes.gruvbox = {
+        fg = "#ebdbb2";
+        bg = "#1d2021";
+        yellow = "#fabd2f";
+        dark-yellow = "#d79921";
+        green = "#b8bb26";
+        dark-green = "#98971a";
+        red = "#fb4932";
+        dark-red = "#cc241d";
+        magenta = "#d3869b";
+        dark-magenta = "#b16286";
+        blue = "#83a598";
+        dark-blue = "#458588";
+        cyan = "#8ec07c";
+        dark-cyan = "#689d6a";
+        gray = "#666666";
+        dark-gray = "#3d3d3d";
+      };
     };
   };
+
+  programs.zsh = {
+    enable = true;
+    shellAliases = {
+      ls = "exa --grid --color always --icons --sort=type";
+      ll = "exa --long --color always --icons --sort=type";
+      la = "exa --grid --all --color auto --icons --sort=type";
+      lla = "exa --long --all --color auto --icons --sort=type";
+      e = "$EDITOR";
+      en = "sudoedit /etc/nixos/configuration.nix";
+      ehn = "$EDITOR ~/.config/nixpkgs/home.nix";
+      update = "sudo nixos-rebuild switch";
+    };
+    history = {
+      size = 10000;
+      path = "${config.xdg.dataHome}/zsh/history";
+    };
+    enableAutosuggestions = true;
+    enableSyntaxHighlighting = true;
+    autocd = false;
+    defaultKeymap = "emacs";
+    plugins = [ ];
+    initExtra = "\n    export PATH=~/.config/emacs/bin:$PATH\n    ";
+  };
+
   programs.kitty = {
     enable = true;
     extraConfig = ''
-      window_padding_width 4
-      font_family FiraCode Nerd Font
-      bold_font auto
-      italic_font auto
-      bold_italic_font  auto
-      font_size 12
+      font_family      FiraCode Nerd Font
+      bold_font        auto
+      italic_font      auto
+      bold_italic_font auto
+      font_size        12.0
       disable_ligatures never
+      cursor           #fabc2e
 
-      tab_bar_edge bottom
+      confirm_os_window_close 0
+
+      # Tabs
+      tab_bar_align left
       tab_bar_style powerline
       tab_powerline_style slanted
-      active_tab_foreground   #e9e2cb
-      active_tab_background   #002731
+      tab_fade 0.25 0.5 0.75 1
+      active_tab_foreground   #ebdbb2
+      active_tab_background   #655b53
       active_tab_font_style   bold-italic
-      inactive_tab_foreground #708183
-      inactive_tab_background #001e26
+      inactive_tab_foreground #928373
+      inactive_tab_background #272727
       inactive_tab_font_style normal
-      cursor  #2075c7
-      confirm_os_window_close 0
-      background #001e26
-      foreground #708183
-      cursor #708183
-      selection_background #002731
-      color0 #002731
-      color1 #d01b24
-      color2 #728905
-      color3 #a57705
-      color4 #2075c7
-      color5 #c61b6e
-      color6 #259185
-      color7 #e9e2cb
-      color8 #001e26
-      color9 #bd3612
-      color10 #465a61
-      color11 #52676f
-      color12 #708183
-      color13 #5856b9
-      color14 #81908f
-      color15 #fcf4dc
-      selection_foreground #001e26
+
+
+      foreground            #ebdbb2
+      background            #1d2021
+      # #272727
+      selection_foreground  #655b53
+      selection_background  #ebdbb2
+      url_color             #d65c0d
+
+      # black
+      color0   #272727
+      color8   #928373
+
+      # red
+      color1   #cc231c
+      color9   #fb4833
+
+      # green
+      color2   #989719
+      color10  #b8ba25
+
+      # yellow
+      color3   #d79920
+      color11  #fabc2e
+
+      # blue
+      color4  #448488
+      color12 #83a597
+
+      # magenta
+      color5   #b16185
+      color13  #d3859a
+
+      # cyan
+      color6   #689d69
+      color14  #8ec07b
+
+      # white
+      color7   #a89983
+      color15  #ebdbb2
     '';
-  };
-
-  programs.zathura = {
-    enable = true;
-    options = {
-      notification-error-bg = "#586e75"; # base01
-      notification-error-fg = "#dc322f"; # red
-      notification-warning-bg = "#586e75"; # base01
-      notification-warning-fg = "#dc322f"; # red
-      notification-bg = "#586e75"; # base01
-      notification-fg = "#b58900"; # yellow
-      completion-group-bg = "#002b36"; # base03
-      completion-group-fg = "#839496"; # base0
-      completion-bg = "#073642"; # base02
-      completion-fg = "#93a1a1"; # base1
-      completion-highlight-bg = "#586e75"; # base01
-      completion-highlight-fg = "#eee8d5"; # base2
-      index-bg = "#073642"; # base02
-      index-fg = "#93a1a1"; # base1
-      index-active-bg = "#586e75"; # base01
-      index-active-fg = "#eee8d5"; # base2
-      inputbar-bg = "#586e75"; # base01
-      inputbar-fg = "#eee8d5"; # base2
-      statusbar-bg = "#073642"; # base02
-      statusbar-fg = "#93a1a1"; # base1
-      highlight-color = "#657b83"; # base00
-      highlight-active-color = "#268bd2"; # blue
-      default-bg = "#073642"; # base02
-      default-fg = "#93a1a1"; # base1
-      recolor = true;
-      recolor-lightcolor = "#073642"; # base02
-      recolor-darkcolor = "#93a1a1"; # base1
-    };
-  };
-
-  programs.bat = {
-    enable = true;
-    config = {
-      theme = "Solarized (dark)";
-      color = "always";
-      pager = "less -FR";
-    };
   };
 
   # This value determines the Home Manager release that your
