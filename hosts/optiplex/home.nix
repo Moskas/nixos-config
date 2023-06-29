@@ -212,13 +212,12 @@
     coc = { enable = true; };
     vimAlias = true;
     plugins = with pkgs.vimPlugins; [
-      NeoSolarized
+      gruvbox
       vim-nix
       vim-airline
       vim-airline-themes
     ];
     extraConfig = ''
-      colorscheme NeoSolarized
       nnoremap <esc> :noh<return><esc>
     '';
   };
