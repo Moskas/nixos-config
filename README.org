@@ -1,0 +1,9 @@
+#+title: My NixOS configs
+
+* Devices
+- Virtual - virtual machine for testing
+- Omen - my (gaming) laptop
+- Gungnir - not yet added
+- Pixel - not yet fully added
+- Boox - not yet added
+- Optiplex - not yet added
