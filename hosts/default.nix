@@ -39,6 +39,14 @@ in {
       }
     ];
   };
+  optiplex = lib.nixosSystem {
+    inherit system;
+    specialArgs = { inherit inputs username; };
+    modules = [
+      ./optiplex
+      ./optiplex/configuration.nix
+    ];
+  };
   pixel = lib.nixosSystem {
     inherit system;
     specialArgs = { inherit inputs username; };
