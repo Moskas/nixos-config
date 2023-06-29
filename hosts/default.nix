@@ -45,7 +45,16 @@ in {
     modules = [
       ./optiplex
       ./optiplex/configuration.nix
+      home-manager.nixosModules.home-manager
+      {
+        home-manager.useGlobalPkgs = true;
+        home-manager.useUserPackages = true;
+        home-manager.extraSpecialArgs = { inherit username; };
+        home-manager.users.${username}.imports =
+          [ (import ./optiplex/home.nix) ];
+      }
     ];
+
   };
   pixel = lib.nixosSystem {
     inherit system;
