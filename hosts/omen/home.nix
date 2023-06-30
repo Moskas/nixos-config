@@ -234,8 +234,8 @@
       ];
       scan_timeout = 10;
       character = {
-        success_symbol = "[]( blue)";
-        error_symbol = "[➜]( red)";
+        success_symbol = "[ ]( blue)";
+        error_symbol = "[ ]( red)";
       };
       fill = { symbol = " "; };
       time = {
@@ -296,14 +296,14 @@
       };
       cmd_duration = {
         min_time = 500;
-        format = "[ took $duration ](bold fg:bg bg:yellow)";
+        format = "[ took $duration ](fg:bg bg:yellow)";
       };
       git_branch = {
         format = "[ $symbol$branch(:$remote_branch) ](bg:purple fg:bg )";
         symbol = " ";
       };
       git_status = {
-        format = "([$all_status](bg:purple fg:bg ))";
+        format = "([ $all_status ](bg:purple fg:bg ))";
         stashed = "📦";
         modified = "📝";
         staged = "+($count)";
