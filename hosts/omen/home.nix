@@ -1,16 +1,9 @@
 { config, pkgs, lib, ... }:
 
 {
-  #  nixpkgs.config = {
-  #    allowUnfree = true;
-  #    allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [ "osu-lazer" ];
-  #    packageOverrides = pkgs: {
-  #      nur = import (builtins.fetchTarball
-  #        "https://github.com/nix-community/NUR/archive/master.tar.gz") {
-  #          inherit pkgs;
-  #        };
-  #    };
-  #  };
+  imports = [
+    ./wallpapers.nix
+  ];
 
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
