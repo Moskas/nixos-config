@@ -1,9 +1,7 @@
 { config, pkgs, lib, ... }:
 
 {
-  imports = [
-    ./wallpapers.nix
-  ];
+  imports = [ ./wallpapers.nix ];
 
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
@@ -89,11 +87,22 @@
         )'';
   };
 
+  home.file = {
+    ".config/qtile".source = pkgs.fetchFromGitea {
+      domain = "codeberg.org";
+      owner = "Moskas";
+      repo = "qtile-org";
+      rev = "d293ab37d6";
+      sha256 = "sha256-9wEoLw3/ma1mvt2Jj2xPc6LejP2HIpBzqxQ+h7E50t8=";
+    };
+  };
+
   home.pointerCursor = {
     size = 64;
     package = pkgs.phinger-cursors;
     name = "phinger-cursors-light";
   };
+
   programs.firefox = {
     enable = true;
     profiles.moskas = {
@@ -199,19 +208,10 @@
       size = 10000;
       path = "${config.xdg.dataHome}/zsh/history";
     };
-    oh-my-zsh = {
-      enable = true;
-      plugins = [ "git" ];
-    };
     enableAutosuggestions = true;
-    enableSyntaxHighlighting = true;
+    syntaxHighlighting.enable = true;
     autocd = false;
     defaultKeymap = "emacs";
-    #dirHashes = {
-    #  docs  = "$HOME/Documents";
-    #  pic  = "$HOME/Pictures";
-    #  dl    = "$HOME/Downloads";
-    #};
     plugins = [ ];
     initExtra = "\n    export PATH=~/.config/emacs/bin:$PATH\n    ";
   };
