@@ -10,19 +10,6 @@
     ./hardware-configuration.nix
   ];
 
-  nix = {
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 7d";
-    };
-    optimise = {
-      automatic = true;
-      dates = [ "weekly" ];
-    };
-    settings.experimental-features = [ "nix-command" "flakes" ];
-  };
-
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;

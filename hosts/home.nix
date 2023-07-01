@@ -1,26 +1,11 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, username, ... }:
 
 {
-  home.stateVersion = "22.11";
+  home.username = "${username}";
+  home.homeDirectoru = "/home/${username}";
+
   programs.home-manager.enable = true;
-  home.packages = with pkgs; [
-    lazygit
-    jq
-    manga-cli
-    ani-cli
-    ranger
-    ffmpeg
-    duf
-    du-dust
-    neofetch
-    onefetch
-    mpc-cli
-    rnix-lsp
-    nixfmt
-    exa
-    zip
-    unzip
-  ];
+  home.packages = with pkgs; [ lazygit ranger zip unzip rnix-lsp ];
 
   programs.git = {
     enable = true;
@@ -37,6 +22,28 @@
       p = "push";
       pu = "pull";
     };
+  };
+
+  programs.gh = {
+    enable = true;
+    enableGitCredentialHelper = true;
+    settings = {
+      git_protocol = "ssh";
+
+      prompt = "enabled";
+
+      aliases = {
+        co = "pr checkout";
+        pv = "pr view";
+      };
+    };
+  };
+  programs.gpg = { enable = true; };
+
+  services.gpg-agent = {
+    enable = true;
+    enableZshIntegration = true;
+    pinentryFlavor = "tty";
   };
 
   programs.zsh = {
@@ -56,11 +63,18 @@
       path = "${config.xdg.dataHome}/zsh/history";
     };
     enableAutosuggestions = true;
-    enableSyntaxHighlighting = true;
+    syntaxHighlighting.enable = true;
     autocd = false;
     defaultKeymap = "emacs";
     plugins = [ ];
     initExtra = "\n    export PATH=~/.config/emacs/bin:$PATH\n    ";
+  };
+
+  programs.exa = {
+    enable = true;
+    enableAliases = true;
+    git = true;
+    icons = true;
   };
 
   programs.starship = {
@@ -71,7 +85,7 @@
       add_newline = false;
       palette = "solarized";
       format = lib.concatStrings [
-        "$os$username$hostname$rust$python$node$lua$git_branch$git_status$git_state$cmd_duration$fill$time$line_break$directory$sudo$character"
+        "$os$username$hostname$rust$python$node$lua$git_branch$git_status$git_state$cmd_duration$fill$time$line_break$directory$sudo$character "
       ];
       scan_timeout = 10;
       character = {
@@ -101,12 +115,12 @@
       memory_usage = {
         disabled = false;
         threshold = -1;
-        symbol = "  ";
+        symbol = " 󰍛 ";
         format = "[$symbol]($style)[$ram( | $swap) ]($style)";
         style = " fg:bg bg:green";
       };
       directory = {
-        read_only = " ";
+        read_only = " ";
         home_symbol = " ~";
         truncation_length = 4;
         truncation_symbol = "…/";
@@ -131,12 +145,20 @@
           Linux = "[  ](fg:fg $style)";
         };
       };
+      nix_shell = {
+        symbol = " ";
+        format = "[$symbol](bold blue)";
+      };
+      cmd_duration = {
+        min_time = 500;
+        format = "[ took $duration ](fg:bg bg:yellow)";
+      };
       git_branch = {
         format = "[ $symbol$branch(:$remote_branch) ](bg:purple fg:bg )";
         symbol = " ";
       };
       git_status = {
-        format = "([$all_status](bg:purple fg:bg ))";
+        format = "([ $all_status ](bg:purple fg:bg ))";
         stashed = "📦";
         modified = "📝";
         staged = "+($count)";
@@ -155,50 +177,32 @@
         yellow = "#b58900";
         purple = "#6c71c4";
         magenta = "#d33682";
-        brwhite = "#fdf6e3"; # "white" according to wikipedia lol
+        brwhite = "#fdf6e3";
         white = "#eee8d5";
-      };
-      palettes.gruvbox = {
-        fg = "#ebdbb2";
-        bg = "#1d2021";
-        yellow = "#fabd2f";
-        dark-yellow = "#d79921";
-        green = "#b8bb26";
-        dark-green = "#98971a";
-        red = "#fb4932";
-        dark-red = "#cc241d";
-        magenta = "#d3869b";
-        dark-magenta = "#b16286";
-        blue = "#83a598";
-        dark-blue = "#458588";
-        cyan = "#8ec07c";
-        dark-cyan = "#689d6a";
-        gray = "#666666";
-        dark-gray = "#3d3d3d";
       };
     };
   };
 
-  #services.mpd = {
-  #  enable = true;
-  #  musicDirectory = "/home/moskas/Music";
-  #  network = {
-  #    listenAddress = "any";
-  #    port = 6600;
-  #  };
-  #  extraConfig = ''
-  #    audio_output {
-  #    type  "pipewire"
-  #    name  "pipewire"
-  #    }
-  #    audio_output {
-  #    type    "fifo"
-  #    name    "my_fifo"
-  #    path    "/tmp/mpd.fifo"
-  #    format  "44100:16:2"
-  #    }
-  #  '';
-  #};
+  services.mpd = {
+    enable = true;
+    musicDirectory = "/home/${username}/Music";
+    network = {
+      listenAddress = "any";
+      port = 6600;
+    };
+    extraConfig = ''
+      audio_output {
+      type  "pipewire"
+      name  "My Pipewire"
+      }
+      audio_output {
+      type    "fifo"
+      name    "my_fifo"
+      path    "/tmp/mpd.fifo"
+      format  "44100:16:2"
+      }
+    '';
+  };
 
   programs.ncmpcpp = {
     enable = true;
@@ -221,6 +225,7 @@
 
   programs.emacs = {
     enable = true;
+    package = pkgs.emacs29;
     extraPackages = epkgs:
       with epkgs; [
         vterm-toggle # Added as doom-emacs vterm won't compile due to read only directory
@@ -246,39 +251,6 @@
     '';
   };
 
-  programs.newsboat = {
-    enable = true;
-    browser = "qutebrowser";
-    autoReload = true;
-    urls = [
-      {
-        tags = [ "linux" ];
-        url = "https://www.phoronix.com/rss.php";
-      }
-      {
-        tags = [ "games" ];
-        url = "https://terrysfreegameoftheweek.com/feed/";
-      }
-      {
-        tags = [ "linux" "tech" ];
-        url = "https://myme.no/feed.xml";
-      }
-      {
-        tags = [ "media" ];
-        url =
-          "https://pipedapi.kavin.rocks/feed/rss?authToken=5f754893-4492-46a1-8d5a-bfbeb8def939";
-      }
-    ];
-    extraConfig = ''
-      color background color0 color0
-      macro v set browser "setsid -f mpv --really-quiet --no-terminal" ; open-in-browser ; set browser brave'';
-  };
-
-  programs.btop = {
-    enable = true;
-    settings = { theme_background = false; };
-  };
-
   programs.zoxide = {
     enable = true;
     enableZshIntegration = true;
@@ -298,6 +270,7 @@
   programs.bat = {
     enable = true;
     config = {
+      theme = "Solarized (dark)";
       color = "always";
       pager = "less -FR";
     };

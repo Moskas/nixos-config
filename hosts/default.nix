@@ -28,6 +28,8 @@ in {
     inherit system;
     specialArgs = { inherit inputs username; };
     modules = [
+      ./common-configuration.nix
+      ./common-home.nix
       ./omen
       ./omen/configuration.nix
       home-manager.nixosModules.home-manager

@@ -189,7 +189,7 @@
   services.gpg-agent = {
     enable = true;
     enableZshIntegration = true;
-    pinentryFlavor = "gtk2";
+    pinentryFlavor = "tty";
   };
 
   programs.zsh = {
@@ -253,12 +253,12 @@
       memory_usage = {
         disabled = false;
         threshold = -1;
-        symbol = "  ";
+        symbol = " 󰍛 ";
         format = "[$symbol]($style)[$ram( | $swap) ]($style)";
         style = " fg:bg bg:green";
       };
       directory = {
-        read_only = " ";
+        read_only = " ";
         home_symbol = " ~";
         truncation_length = 4;
         truncation_symbol = "…/";
@@ -320,6 +320,7 @@
       };
     };
   };
+
   programs.kitty = {
     enable = true;
     extraConfig = ''
