@@ -71,12 +71,12 @@
       add_newline = false;
       palette = "solarized";
       format = lib.concatStrings [
-        "$os$username$hostname$rust$python$node$lua$git_branch$git_status$git_state$cmd_duration$fill$time$line_break$directory$sudo$character "
+        "$os$username$hostname$rust$python$node$lua$git_branch$git_status$git_state$cmd_duration$fill$time$line_break$directory$sudo$character"
       ];
       scan_timeout = 10;
       character = {
-        success_symbol = "[]( blue)";
-        error_symbol = "[]( red)";
+        success_symbol = "[ ]( blue)";
+        error_symbol = "[ ]( red)";
       };
       fill = { symbol = " "; };
       time = {

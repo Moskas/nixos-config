@@ -8,9 +8,8 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-  home.packages = with pkgs; [
-  ];
- 
+  home.packages = with pkgs; [ ];
+
   programs.git = {
     enable = true;
     userName = "Moskas";
@@ -60,7 +59,7 @@
       path = "${config.xdg.dataHome}/zsh/history";
     };
     enableAutosuggestions = true;
-    enableSyntaxHighlighting = true;
+    syntaxHighlighting.enable = true;
     autocd = false;
     defaultKeymap = "emacs";
     #dirHashes = {
@@ -221,7 +220,7 @@
       nnoremap <esc> :noh<return><esc>
     '';
   };
-  
+
   programs.zoxide = {
     enable = true;
     enableZshIntegration = true;
