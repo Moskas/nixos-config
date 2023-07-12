@@ -92,7 +92,7 @@
       domain = "codeberg.org";
       owner = "Moskas";
       repo = "qtile-org";
-      rev = "d643434dd9";
+      rev = "d293ab37d6";
       sha256 = "sha256-9wEoLw3/ma1mvt2Jj2xPc6LejP2HIpBzqxQ+h7E50t8=";
     };
   };
@@ -223,12 +223,12 @@
       add_newline = false;
       palette = "solarized";
       format = lib.concatStrings [
-        "$os$username$hostname$rust$python$node$lua$git_branch$git_status$git_state$cmd_duration$fill$time$line_break$directory$sudo$character "
+        "$os$username$hostname$rust$python$node$lua$git_branch$git_status$git_state$cmd_duration$fill$time$line_break$directory$sudo$character"
       ];
       scan_timeout = 10;
       character = {
-        success_symbol = "[ ]( blue)";
-        error_symbol = "[ ]( red)";
+        success_symbol = "[ ](blue)";
+        error_symbol = "[ ](red)";
       };
       fill = { symbol = " "; };
       time = {
