@@ -34,8 +34,6 @@
     du-dust
     neofetch
     onefetch
-    tickrs
-    spotify
     mpc-cli
     cava
     rnix-lsp
@@ -52,7 +50,6 @@
     ferium
     feh
     sxiv
-    openrgb
     i2c-tools
     betterlockscreen
     libnotify
@@ -73,7 +70,7 @@
   ];
 
   xresources = {
-    path = "/home/moskas/.Xresources";
+    path = "$HOME/.Xresources";
     extraConfig = ''
       builtins.readFile
         (
@@ -87,15 +84,14 @@
         )'';
   };
 
-  home.file = {
-    ".config/qtile".source = pkgs.fetchFromGitea {
-      domain = "codeberg.org";
-      owner = "Moskas";
-      repo = "qtile-org";
-      rev = "d293ab37d6";
-      sha256 = "sha256-9wEoLw3/ma1mvt2Jj2xPc6LejP2HIpBzqxQ+h7E50t8=";
-    };
-  };
+  #home.file = {
+  #  ".config/qtile".source = pkgs.fetchFromGitHub {
+  #    owner = "Moskas";
+  #    repo = "qtile-config";
+  #    rev = "3e5fa15950985fdb508fe2056f498c83927dc7dc";
+  #    sha256 = "sha256-9wEoLw3/ma1mvt2Jj2xPc6LejP2HIpBzqxQ+h7E50t8=";
+  #  };
+  #};
 
   home.pointerCursor = {
     size = 64;
@@ -221,7 +217,7 @@
     package = pkgs.starship;
     settings = {
       add_newline = false;
-      palette = "solarized";
+      palette = "gruvbox";
       format = lib.concatStrings [
         "$os$username$hostname$rust$python$node$lua$git_branch$git_status$git_state$cmd_duration$fill$time$line_break$directory$sudo$character"
       ];
@@ -315,8 +311,26 @@
         yellow = "#b58900";
         purple = "#6c71c4";
         magenta = "#d33682";
-        brwhite = "#fdf6e3"; # "white" according to wikipedia lol
+        brwhite = "#fdf6e3";
         white = "#eee8d5";
+      };
+      palettes.gruvbox = {
+        fg = "#ebdbb2";
+        bg = "#1d2021";
+        yellow = "#fabd2f";
+        dark-yellow = "#d79921";
+        green = "#b8bb26";
+        dark-green = "#98971a";
+        red = "#fb4932";
+        dark-red = "#cc241d";
+        magenta = "#d3869b";
+        dark-magenta = "#b16286";
+        blue = "#83a598";
+        dark-blue = "#458588";
+        cyan = "#8ec07c";
+        dark-cyan = "#689d6a";
+        gray = "#666666";
+        dark-gray = "#3d3d3d";
       };
     };
   };
@@ -405,7 +419,7 @@
         transparency = 10;
         max_icon_size = 64;
         min_icon_size = 32;
-        frame_color = "#458588";
+        frame_color = "#3c3836";
         font = "JetBrainsMono Nerd Font 9";
         format = ''
           <b>%s</b>
@@ -414,20 +428,20 @@
       };
 
       urgency_normal = {
-        background = "#002b36";
-        foreground = "#839496";
+        background = "#282828";
+        foreground = "#fbf1c7";
         timeout = 10;
       };
 
       discord = {
         appname = "discord";
-        frame_color = "#5856b9";
+        frame_color = "#d3869b";
       };
 
       spotify = {
         appname = ".spotify";
         urgency = "Normal";
-        frame_color = "#5856b9";
+        frame_color = "#d3869b";
       };
     };
   };
@@ -577,13 +591,11 @@
     coc = { enable = true; };
     vimAlias = true;
     plugins = with pkgs.vimPlugins; [
-      NeoSolarized
       vim-nix
       vim-airline
       vim-airline-themes
     ];
     extraConfig = ''
-      colorscheme NeoSolarized
       nnoremap <esc> :noh<return><esc>
     '';
   };
@@ -752,15 +764,15 @@
 
   programs.rofi = {
     enable = true;
-    font = "FiraCode Nerd Font 12";
+    font = "JetBrainsMono Nerd Font 12";
     extraConfig = {
       modi = "drun";
       kb-primary-paste = "Control+V,Shift+Insert";
       kb-secondary-paste = "Control+v,Insert";
     };
-    location = "top-left";
+    location = "center";
     plugins = with pkgs; [ rofimoji rofi-power-menu rofi-bluetooth ];
-    theme = "${pkgs.rofi}/share/rofi/themes/solarized_alternate.rasi";
+    theme = "${pkgs.rofi}/share/rofi/themes/gruvbox-dark-hard.rasi";
     terminal = "${pkgs.kitty}/bin/kitty";
   };
 

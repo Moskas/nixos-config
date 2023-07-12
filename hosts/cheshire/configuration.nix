@@ -12,8 +12,8 @@
     ];
 
   services.udev = {
-	enable = true;
-  	packages = [ "/home/moskas/.config/60-openrgb.rules" ];
+    enable = true;
+    packages = [ "/home/moskas/.config/60-openrgb.rules" ];
   };
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -32,6 +32,10 @@
   services.xserver = {
     videoDrivers = [ "nvidia" ];
     dpi = 100; # for my 15" laptop
+    resolutions = [{
+      x = 1920;
+      y = 1080;
+    }];
     libinput = {
       enable = true;
       mouse = { accelProfile = "flat"; };
@@ -75,9 +79,8 @@
   services.xserver.enable = true;
 
 
-  # Enable the Plasma 5 Desktop Environment.
-  services.xserver.displayManager.sddm.enable = true;
-  services.xserver.desktopManager.plasma5.enable = true;
+  services.xserver.displayManager.gdm.enable = true;
+  services.xserver.desktopManager.gnome.enable = true;
   services.xserver.windowManager.qtile.enable = true;
 
 
@@ -90,7 +93,7 @@
 
   # Enable sound.
   sound.enable = true;
-  # hardware.pulseaudio.enable = true;
+  hardware.pulseaudio.enable = false;
   services.pipewire = {
     enable = true;
     alsa.enable = true;
