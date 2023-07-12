@@ -23,6 +23,9 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  boot.supportedFilesystems = [ "ntfs" ];
+
+
   # Enabling latest linux kernel
   boot.kernelPackages = pkgs.linuxPackages_zen;
   # Enable nvidia driver
@@ -45,6 +48,8 @@
   hardware.opengl = {
     enable = true;
     driSupport32Bit = true;
+    extraPackages = with pkgs; [mangohud];
+    extraPackages32 = with pkgs; [mangohud];
   };
   # For steam streaming
   hardware.steam-hardware.enable = true;
@@ -115,7 +120,7 @@
   users.users.moskas = {
     isNormalUser = true;
     shell = pkgs.zsh;
-    extraGroups = [ "wheel" "networkmanager" "libvirtd" "i2c" ];
+    extraGroups = [ "wheel" "storage" "networkmanager" "libvirtd" "i2c" ];
     packages = with pkgs; [
       firefox
       neovim
@@ -138,6 +143,9 @@
     neofetch
     i2c-tools
     openrgb-with-all-plugins
+    mpd
+    mpdas
+    dbus
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -167,6 +175,19 @@
   networking.firewall.allowedUDPPorts = [ ];
   # Or disable the firewall altogether.
   networking.firewall.enable = true;
+
+  systemd.user.services.mpdas = {
+    #Unit = {
+    description = "Audioscrobbler client for MPD";
+    wantedBy = [ "multi-user.target" ];
+    after = [ "default.target" ];
+    #};
+    serviceConfig = {
+      ExecStart = "${pkgs.mpdas}/bin/mpdas";
+      Restart = "on-failure";
+      RestartSec = 5;
+    };
+  };
 
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you

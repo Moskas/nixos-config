@@ -209,7 +209,7 @@
     autocd = false;
     defaultKeymap = "emacs";
     plugins = [ ];
-    initExtra = "\n    export PATH=~/.config/emacs/bin:$PATH\n    ";
+    initExtra = "\n    export PATH=~/.config/emacs/bin:$PATH\n export PATH=~/.local/share/applications/:$PATH\n    ";
   };
   programs.starship = {
     enable = true;
@@ -235,7 +235,7 @@
       };
       username = {
         disabled = false;
-        style_user = "fg:bg bg:blue ";
+        style_user = "fg:bg bg:blue bold";
         style_root = "fg:red bg:blue  italic";
         format = "[ $user ]($style)";
         show_always = true;
@@ -243,7 +243,7 @@
       hostname = {
         ssh_only = false;
         format = "[ $hostname ]($style)";
-        style = " fg:bg bg:red";
+        style = " fg:bg bg:red bold";
         disabled = false;
       };
       memory_usage = {
@@ -292,7 +292,7 @@
         symbol = " ";
       };
       git_status = {
-        format = "([ $all_status ](bg:purple fg:bg ))";
+        format = "([$all_status ](bg:purple fg:bg ))";
         stashed = "📦";
         modified = "📝";
         staged = "+($count)";
@@ -416,11 +416,14 @@
         height = 300;
         offset = "30x50";
         origin = "top-right";
+        padding = 8;
+        gap_size = 5;
+        gaps = true;
         transparency = 10;
         max_icon_size = 64;
         min_icon_size = 32;
         frame_color = "#3c3836";
-        font = "JetBrainsMono Nerd Font 9";
+        font = "JetBrainsMono Nerd Font 11";
         format = ''
           <b>%s</b>
           %b'';
@@ -475,6 +478,14 @@
       }
     '';
   };
+
+
+
+  #services.mpdscribble = {
+  #  enable = true;
+  #  port = 6600;
+  #
+  #};
 
   programs.ncmpcpp = {
     enable = true;
@@ -797,33 +808,46 @@
   programs.zathura = {
     enable = true;
     options = {
-      notification-error-bg = "#586e75"; # base01
-      notification-error-fg = "#dc322f"; # red
-      notification-warning-bg = "#586e75"; # base01
-      notification-warning-fg = "#dc322f"; # red
-      notification-bg = "#586e75"; # base01
-      notification-fg = "#b58900"; # yellow
-      completion-group-bg = "#002b36"; # base03
-      completion-group-fg = "#839496"; # base0
-      completion-bg = "#073642"; # base02
-      completion-fg = "#93a1a1"; # base1
-      completion-highlight-bg = "#586e75"; # base01
-      completion-highlight-fg = "#eee8d5"; # base2
-      index-bg = "#073642"; # base02
-      index-fg = "#93a1a1"; # base1
-      index-active-bg = "#586e75"; # base01
-      index-active-fg = "#eee8d5"; # base2
-      inputbar-bg = "#586e75"; # base01
-      inputbar-fg = "#eee8d5"; # base2
-      statusbar-bg = "#073642"; # base02
-      statusbar-fg = "#93a1a1"; # base1
-      highlight-color = "#657b83"; # base00
-      highlight-active-color = "#268bd2"; # blue
-      default-bg = "#073642"; # base02
-      default-fg = "#93a1a1"; # base1
+      notification-error-bg = "#32302f"; # bg
+      notification-error-fg = "#fb4934"; # bright:red
+      notification-warning-bg = "#32302f"; # bg
+      notification-warning-fg = "#fabd2f"; # bright:yellow
+      notification-bg = "#32302f"; # bg
+      notification-fg = "#b8bb26"; # bright:green
+
+      completion-bg = "#504945"; # bg2
+      completion-fg = "#ebdbb2"; # fg
+      completion-group-bg = "#3c3836"; # bg1
+      completion-group-fg = "#928374"; # gray
+      completion-highlight-bg = "#83a598"; # bright:blue
+      completion-highlight-fg = "#504945"; # bg2
+
+      # Define the color in index mode
+      index-bg = "#504945"; # bg2
+      index-fg = "#ebdbb2"; # fg
+      index-active-bg = "#83a598"; # bright:blue
+      index-active-fg = "#504945"; # bg2
+
+      inputbar-bg = "#32302f"; # bg
+      inputbar-fg = "#ebdbb2"; # fg
+
+      statusbar-bg = "#504945"; # bg2
+      statusbar-fg = "#ebdbb2"; # fg
+
+      highlight-color = "#fabd2f"; # bright:yellow
+      highlight-active-color = "#fe8019"; # bright:orange
+
+      default-bg = "#32302f"; # bg
+      default-fg = "#ebdbb2"; # fg
+      render-loading = true;
+      render-loading-bg = "#32302f"; # bg
+      render-loading-fg = "#ebdbb2"; # fg
+
+      # Recolor book content's color
+      recolor-lightcolor = "#32302f"; # bg
+      recolor-darkcolor = "#ebdbb2"; # fg
       recolor = true;
-      recolor-lightcolor = "#073642"; # base02
-      recolor-darkcolor = "#93a1a1"; # base1
+      recolor-keephue = true; # keep original color
     };
   };
   programs.yt-dlp = {
@@ -840,7 +864,7 @@
   programs.bat = {
     enable = true;
     config = {
-      theme = "Solarized (dark)";
+      theme = "gruvbox-dark";
       color = "always";
       pager = "less -FR";
     };
