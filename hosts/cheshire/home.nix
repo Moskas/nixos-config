@@ -1,16 +1,8 @@
 { config, pkgs, lib, ... }:
 
-let pkgsUnstable = import <unstable> { };
-in {
-  nixpkgs.config = {
-    allowUnfree = true;
-    packageOverrides = pkgs: {
-      nur = import (builtins.fetchTarball
-        "https://github.com/nix-community/NUR/archive/master.tar.gz") {
-          inherit pkgs;
-        };
-    };
-  };
+{
+  imports = [ ./wallpapers.nix ];
+
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
   home.username = "moskas";
@@ -35,6 +27,7 @@ in {
     manga-cli
     ani-cli
     python310Packages.aria2p # aria2c
+    python310Packages.mpd2
     ranger
     ffmpeg
     duf
@@ -47,7 +40,6 @@ in {
     cava
     rnix-lsp
     nixfmt
-    ispell
     betterdiscordctl
     steam
     protonup-ng
@@ -63,7 +55,6 @@ in {
     openrgb
     i2c-tools
     betterlockscreen
-    dunst
     libnotify
     pulsemixer
     bitwarden
@@ -76,10 +67,13 @@ in {
     html-tidy
     nodePackages_latest.prettier
     pkg-config
+    osu-lazer
+    epr
+    openrgb-with-all-plugins
   ];
 
   xresources = {
-    path = "$HOME/.Xresources";
+    path = "/home/moskas/.Xresources";
     extraConfig = ''
       builtins.readFile
         (
@@ -93,11 +87,22 @@ in {
         )'';
   };
 
+  home.file = {
+    ".config/qtile".source = pkgs.fetchFromGitea {
+      domain = "codeberg.org";
+      owner = "Moskas";
+      repo = "qtile-org";
+      rev = "d643434dd9";
+      sha256 = "sha256-9wEoLw3/ma1mvt2Jj2xPc6LejP2HIpBzqxQ+h7E50t8=";
+    };
+  };
+
   home.pointerCursor = {
     size = 64;
     package = pkgs.phinger-cursors;
     name = "phinger-cursors-light";
   };
+
   programs.firefox = {
     enable = true;
     profiles.moskas = {
@@ -110,16 +115,21 @@ in {
         "general.useragent.locale" = "pl-PL";
         "browser.bookmarks.showMobileBookmarks" = true;
       };
+      #extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+      #  darkreader
+      #  stylus
+      #  vimium
+      #  bitwarden
+      #  betterttv
+      #  sponsorblock
+      #  return-youtube-dislikes
+      #];
     };
-    extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-      darkreader
-      vimium
-      bitwarden
-      betterttv
-      sponsorblock
-      return-youtube-dislikes
-    ];
+
   };
+
+  programs.pandoc = { enable = true; };
+
   programs.brave = {
     enable = true;
     extensions = [
@@ -179,7 +189,7 @@ in {
   services.gpg-agent = {
     enable = true;
     enableZshIntegration = true;
-    pinentryFlavor = "gtk2";
+    pinentryFlavor = "tty";
   };
 
   programs.zsh = {
@@ -202,18 +212,13 @@ in {
     syntaxHighlighting.enable = true;
     autocd = false;
     defaultKeymap = "emacs";
-    #dirHashes = {
-    #  docs  = "$HOME/Documents";
-    #  pic  = "$HOME/Pictures";
-    #  dl    = "$HOME/Downloads";
-    #};
     plugins = [ ];
     initExtra = "\n    export PATH=~/.config/emacs/bin:$PATH\n    ";
   };
   programs.starship = {
     enable = true;
     enableZshIntegration = true;
-    package = pkgsUnstable.starship;
+    package = pkgs.starship;
     settings = {
       add_newline = false;
       palette = "solarized";
@@ -222,8 +227,8 @@ in {
       ];
       scan_timeout = 10;
       character = {
-        success_symbol = "[]( blue)";
-        error_symbol = "[➜]( red)";
+        success_symbol = "[ ]( blue)";
+        error_symbol = "[ ]( red)";
       };
       fill = { symbol = " "; };
       time = {
@@ -248,12 +253,12 @@ in {
       memory_usage = {
         disabled = false;
         threshold = -1;
-        symbol = "  ";
+        symbol = " 󰍛 ";
         format = "[$symbol]($style)[$ram( | $swap) ]($style)";
         style = " fg:bg bg:green";
       };
       directory = {
-        read_only = " ";
+        read_only = " ";
         home_symbol = " ~";
         truncation_length = 4;
         truncation_symbol = "…/";
@@ -278,12 +283,20 @@ in {
           Linux = "[  ](fg:fg $style)";
         };
       };
+      nix_shell = {
+        symbol = " ";
+        format = "[$symbol](bold blue)";
+      };
+      cmd_duration = {
+        min_time = 500;
+        format = "[ took $duration ](fg:bg bg:yellow)";
+      };
       git_branch = {
         format = "[ $symbol$branch(:$remote_branch) ](bg:purple fg:bg )";
         symbol = " ";
       };
       git_status = {
-        format = "([$all_status](bg:purple fg:bg ))";
+        format = "([ $all_status ](bg:purple fg:bg ))";
         stashed = "📦";
         modified = "📝";
         staged = "+($count)";
@@ -307,49 +320,77 @@ in {
       };
     };
   };
+
   programs.kitty = {
     enable = true;
     extraConfig = ''
       window_padding_width 4
-      font_family FiraCode Nerd Font
+      font_family JetBrainsMono Nerd Font
       bold_font auto
       italic_font auto
       bold_italic_font  auto
-      font_size 14
+      font_size 12
       disable_ligatures never
 
       tab_bar_edge bottom
       tab_bar_style powerline
       tab_powerline_style slanted
-      active_tab_foreground   #e9e2cb
-      active_tab_background   #002731
       active_tab_font_style   bold-italic
-      inactive_tab_foreground #708183
-      inactive_tab_background #001e26
       inactive_tab_font_style normal
-      cursor  #2075c7
       confirm_os_window_close 0
-      background #001e26
-      foreground #708183
-      cursor #708183
-      selection_background #002731
-      color0 #002731
-      color1 #d01b24
-      color2 #728905
-      color3 #a57705
-      color4 #2075c7
-      color5 #c61b6e
-      color6 #259185
-      color7 #e9e2cb
-      color8 #001e26
-      color9 #bd3612
-      color10 #465a61
-      color11 #52676f
-      color12 #708183
-      color13 #5856b9
-      color14 #81908f
-      color15 #fcf4dc
-      selection_foreground #001e26
+      cursor                  #928374
+      cursor_text_color       background
+
+      url_color               #83a598
+
+      visual_bell_color       #8ec07c
+      bell_border_color       #8ec07c
+
+      active_border_color     #d3869b
+      inactive_border_color   #665c54
+
+      foreground              #ebdbb2
+      background              #282828
+      selection_foreground    #928374
+      selection_background    #ebdbb2
+
+      active_tab_foreground   #fbf1c7
+      active_tab_background   #665c54
+      inactive_tab_foreground #a89984
+      inactive_tab_background #3c3836
+
+      # black  (bg3/bg4)
+      color0                  #665c54
+      color8                  #7c6f64
+
+      # red
+      color1                  #cc241d
+      color9                  #fb4934
+
+      #: green
+      color2                  #98971a
+      color10                 #b8bb26
+
+      # yellow
+      color3                  #d79921
+      color11                 #fabd2f
+
+      # blue
+      color4                  #458588
+      color12                 #83a598
+
+      # purple
+      color5                  #b16286
+      color13                 #d3869b
+
+      # aqua
+      color6                  #689d6a
+      color14                 #8ec07c
+
+      # white (fg4/fg3)
+      color7                  #a89984
+      color15                 #bdae93
+      selection_foreground    #fbf1c7
     '';
   };
 
@@ -451,10 +492,29 @@ in {
   gtk = {
     enable = true;
     theme = {
-      name = "Numix";
-      package = pkgs.numix-solarized-gtk-theme;
+      name = "gruvbox-dark";
+      package = pkgs.gruvbox-gtk-theme;
+    };
+
+    iconTheme = {
+      name = "gruvbox-dark";
+      package = pkgs.gruvbox-dark-icons-gtk;
+    };
+
+    gtk3.extraConfig = {
+      Settings = ''
+        gtk-application-prefer-dark-theme=1
+      '';
+    };
+
+    gtk4.extraConfig = {
+      Settings = ''
+        gtk-application-prefer-dark-theme=1
+      '';
     };
   };
+
+  home.sessionVariables.GTK_THEME = "gruvbox-dark";
 
   services.flameshot = {
     enable = true;
@@ -481,13 +541,13 @@ in {
     opacityRules = [
       "80:class_g = 'kitty' && !focused"
       "90:class_g = 'kitty' && focused"
-      "90:class_g = 'Emacs' && !focused"
-      "95:class_g = 'Emacs' && focused"
-      "90:class_g = 'Zathura' && !focused"
-      "95:class_g = 'Zathura' && focused"
-      "90:class_g = 'discord' && !focused"
-      "95:class_g = 'discord' && focused"
-      "90:class_g = 'qutebrowser' && !focused"
+      "95:class_g = 'Emacs' && !focused"
+      "98:class_g = 'Emacs' && focused"
+      "95:class_g = 'Zathura' && !focused"
+      "98:class_g = 'Zathura' && focused"
+      "95:class_g = 'discord' && !focused"
+      "98:class_g = 'discord' && focused"
+      "95:class_g = 'qutebrowser' && !focused"
     ];
     settings = { blur = { method = "dual_kawase"; }; };
   };
@@ -502,6 +562,7 @@ in {
 
   programs.emacs = {
     enable = true;
+    package = pkgs.emacs29;
     extraPackages = epkgs:
       with epkgs; [
         vterm-toggle # Added as doom-emacs vterm won't compile due to read only directory
@@ -677,6 +738,11 @@ in {
         tags = [ "media" ];
         url =
           "https://pipedapi.kavin.rocks/feed/rss?authToken=5f754893-4492-46a1-8d5a-bfbeb8def939";
+      }
+      {
+        tags = [ "Youtube" ];
+        url =
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UC5UAwBUum7CPN5buc-_N1Fw";
       }
     ];
     extraConfig = ''

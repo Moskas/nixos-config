@@ -29,9 +29,24 @@ in {
     specialArgs = { inherit inputs username; };
     modules = [
       ./common-configuration.nix
-      ./common-home.nix
       ./omen
       ./omen/configuration.nix
+      home-manager.nixosModules.home-manager
+      {
+        home-manager.useGlobalPkgs = true;
+        home-manager.useUserPackages = true;
+        home-manager.extraSpecialArgs = { inherit username; };
+        home-manager.users.${username}.imports = [ (import ./omen/home.nix) ];
+      }
+    ];
+  };
+  cheshire = lib.nixosSystem {
+    inherit system;
+    specialArgs = { inherit inputs username; };
+    modules = [
+      ./common-configuration.nix
+      ./cheshire
+      ./cheshire/configuration.nix
       home-manager.nixosModules.home-manager
       {
         home-manager.useGlobalPkgs = true;
@@ -56,7 +71,6 @@ in {
           [ (import ./optiplex/home.nix) ];
       }
     ];
-
   };
   pixel = lib.nixosSystem {
     inherit system;
