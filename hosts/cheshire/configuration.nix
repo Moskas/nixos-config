@@ -32,8 +32,7 @@
   # Power management
   powerManagement = {
     enable = true;
-    powertop.enable = true;
-    #cpufreq.max = 2400000;
+    powertop.enable = false;
     cpuFreqGovernor = "ondemand";
   };
   #services.undervolt = {
