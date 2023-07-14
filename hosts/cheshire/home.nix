@@ -1,12 +1,12 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, username, ... }:
 
 {
-  imports = [ ./wallpapers.nix ];
+  imports = [ ./wallpapers.nix ../../modules/newsboat.nix ];
 
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
-  home.username = "moskas";
-  home.homeDirectory = "/home/moskas";
+  home.username = "${username}";
+  home.homeDirectory = "/home/${username}";
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
@@ -970,39 +970,6 @@
       prompt = { "<Ctrl-y>" = "prompt-yes"; };
     };
     extraConfig = "config.unbind('d')";
-  };
-
-  programs.newsboat = {
-    enable = true;
-    browser = "qutebrowser";
-    autoReload = true;
-    urls = [
-      {
-        tags = [ "linux" ];
-        url = "https://www.phoronix.com/rss.php";
-      }
-      {
-        tags = [ "games" ];
-        url = "https://terrysfreegameoftheweek.com/feed/";
-      }
-      {
-        tags = [ "linux" "tech" ];
-        url = "https://myme.no/feed.xml";
-      }
-      {
-        tags = [ "media" ];
-        url =
-          "https://pipedapi.kavin.rocks/feed/rss?authToken=5f754893-4492-46a1-8d5a-bfbeb8def939";
-      }
-      {
-        tags = [ "Youtube" ];
-        url =
-          "https://www.youtube.com/feeds/videos.xml?channel_id=UC5UAwBUum7CPN5buc-_N1Fw";
-      }
-    ];
-    extraConfig = ''
-      color background color0 color0
-      macro v set browser "setsid -f mpv --really-quiet --no-terminal" ; open-in-browser ; set browser brave'';
   };
 
   programs.rofi = {
