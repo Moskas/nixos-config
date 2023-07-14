@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }:
 
 {
-  imports = [ ./wallpapers.nix ];
+  imports = [ ./wallpapers.nix  ../../modules/newsboat.nix ../../modules/firefox.nix];
 
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
@@ -101,31 +101,6 @@
     size = 64;
     package = pkgs.phinger-cursors;
     name = "phinger-cursors-light";
-  };
-
-  programs.firefox = {
-    enable = true;
-    profiles.moskas = {
-      name = "Moskas";
-      settings = {
-        "browser.startup.homepage" = "https://nixos.org";
-        "browser.search.region" = "PL";
-        "browser.search.isUS" = false;
-        "distribution.searchplugins.defaultLocale" = "pl-PL";
-        "general.useragent.locale" = "pl-PL";
-        "browser.bookmarks.showMobileBookmarks" = true;
-      };
-      #extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-      #  darkreader
-      #  stylus
-      #  vimium
-      #  bitwarden
-      #  betterttv
-      #  sponsorblock
-      #  return-youtube-dislikes
-      #];
-    };
-
   };
 
   programs.pandoc = { enable = true; };
@@ -669,39 +644,6 @@
       prompt = { "<Ctrl-y>" = "prompt-yes"; };
     };
     extraConfig = "config.unbind('d')";
-  };
-
-  programs.newsboat = {
-    enable = true;
-    browser = "qutebrowser";
-    autoReload = true;
-    urls = [
-      {
-        tags = [ "linux" ];
-        url = "https://www.phoronix.com/rss.php";
-      }
-      {
-        tags = [ "games" ];
-        url = "https://terrysfreegameoftheweek.com/feed/";
-      }
-      {
-        tags = [ "linux" "tech" ];
-        url = "https://myme.no/feed.xml";
-      }
-      {
-        tags = [ "media" ];
-        url =
-          "https://pipedapi.kavin.rocks/feed/rss?authToken=5f754893-4492-46a1-8d5a-bfbeb8def939";
-      }
-      {
-        tags = [ "Youtube" ];
-        url =
-          "https://www.youtube.com/feeds/videos.xml?channel_id=UC5UAwBUum7CPN5buc-_N1Fw";
-      }
-    ];
-    extraConfig = ''
-      color background color0 color0
-      macro v set browser "setsid -f mpv --really-quiet --no-terminal" ; open-in-browser ; set browser brave'';
   };
 
   programs.rofi = {
