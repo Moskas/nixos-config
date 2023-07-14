@@ -69,6 +69,14 @@
     distrobox
     xfce.thunar
     nicotine-plus
+    (makeDesktopItem {
+      name = "brave-private";
+      desktopName = "Brave Web Browser";
+      genericName = "Open a private Brave window";
+      icon = "brave";
+      exec = "${brave}/bin/brave --incognito";
+      categories = [ "Network" ];
+    })
   ];
 
   #nixpkgs.overlays = [
@@ -542,6 +550,13 @@
         disabledTrayIcon = true;
         showStartupLaunchMessage = false;
       };
+    };
+  };
+
+  programs.thunderbird = {
+    enable = true;
+    profiles.${username} = {
+      isDefault = true;
     };
   };
 
