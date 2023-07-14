@@ -39,7 +39,7 @@
   # For steam streaming
   hardware.steam-hardware.enable = true;
 
-  # Cpu managment
+  # Cpu management
   powerManagement = {
     enable = true;
     powertop.enable = true;
@@ -93,20 +93,20 @@
   services.xserver.desktopManager.gnome.enable = false;
   environment.gnome.excludePackages = (with pkgs; [ gnome-photos gnome-tour ])
     ++ (with pkgs.gnome; [
-      cheese # webcam tool
-      gnome-music
-      gnome-terminal
-      gedit # text editor
-      epiphany # web browser
-      geary # email reader
-      evince # document viewer
-      gnome-characters
-      totem # video player
-      tali # poker game
-      iagno # go game
-      hitori # sudoku game
-      atomix # puzzle game
-    ]);
+    cheese # webcam tool
+    gnome-music
+    gnome-terminal
+    gedit # text editor
+    epiphany # web browser
+    geary # email reader
+    evince # document viewer
+    gnome-characters
+    totem # video player
+    tali # poker game
+    iagno # go game
+    hitori # sudoku game
+    atomix # puzzle game
+  ]);
   services.xserver.windowManager.qtile.enable = true;
   services.xserver.windowManager.awesome.enable = false;
   services.xserver.desktopManager.plasma5.enable = false;

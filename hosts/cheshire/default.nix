@@ -1,6 +1,6 @@
 { lib, pkgs, username, ... }:
 
 {
-  imports = [ ./hardware-configuration.nix ];
+  imports = [ ./hardware-configuration.nix ./diff.nix ];
 
 }

@@ -7,7 +7,7 @@
       owner = "Moskas";
       repo = "wallpapers";
       rev = "6d33ce9";
-      sha256 = "sha256-EUQRHr7iWsNpucIyctTU/acEux1r2gZww1qAch+4igo=";
+      sha256 = "sha256-clp3yvP09bDPsMTxsSAZfehYHy889l5JtpMYaQ+NON8=";
     };
   };
 

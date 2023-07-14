@@ -22,19 +22,33 @@
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-
+  # Add support for Windows partitions
   boot.supportedFilesystems = [ "ntfs" ];
 
 
   # Enabling latest linux kernel
-  boot.kernelPackages = pkgs.linuxPackages_zen;
+  boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
+
+  # Power management
+  powerManagement = {
+    enable = true;
+    powertop.enable = true;
+    #cpufreq.max = 2400000;
+    cpuFreqGovernor = "ondemand";
+  };
+  #services.undervolt = {
+  #  enable = true;
+  #  coreOffset = -50;
+  #};
+
+
   # Enable nvidia driver
   hardware.nvidia.modesetting.enable = true;
   hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.beta;
 
   services.xserver = {
     videoDrivers = [ "nvidia" ];
-    dpi = 100; # for my 15" laptop
+    dpi = 100;
     resolutions = [{
       x = 1920;
       y = 1080;
@@ -44,12 +58,20 @@
       mouse = { accelProfile = "flat"; };
       touchpad = { };
     };
+    xautolock = {
+      enable = true;
+      locker = "${pkgs.betterlockscreen}/bin/betterlockscreen -l";
+      time = 15;
+      enableNotifier = true;
+      notifier = "${pkgs.libnotify}/bin/notify-send 'Locking in 10 seconds'";
+    };
   };
+
   hardware.opengl = {
     enable = true;
     driSupport32Bit = true;
-    extraPackages = with pkgs; [mangohud];
-    extraPackages32 = with pkgs; [mangohud];
+    extraPackages = with pkgs; [ mangohud ];
+    extraPackages32 = with pkgs; [ mangohud ];
   };
   # For steam streaming
   hardware.steam-hardware.enable = true;

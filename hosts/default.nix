@@ -1,4 +1,4 @@
-{ lib, inputs, nixpkgs, home-manager, username, ... }:
+{ lib, inputs, nixpkgs, home-manager, username, nur, ... }:
 
 let
   system = "x86_64-linux";
@@ -7,7 +7,11 @@ let
     config.allowUnfree = true;
   };
   lib = nixpkgs.lib;
-in {
+  #nur-modules = import nur {
+  #  nurpgks = pkgs.legacyPackages.x86_64-linux;
+  #};
+in
+{
   virtual = lib.nixosSystem {
     inherit system;
     specialArgs = { inherit inputs username; };
