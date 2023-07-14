@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running `nixos-help`).
 
-{ config, pkgs, ... }:
+{ config, pkgs, username, ... }:
 
 {
   imports =
@@ -16,14 +16,29 @@
     packages = [ "/home/moskas/.config/60-openrgb.rules" ];
   };
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix = {
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 7d";
+    };
+    settings = {
+      experimental-features = [ "nix-command" "flakes" ];
+      auto-optimise-store = true;
+      builders-use-substitutes = true;
+    };
+  };
 
   nixpkgs.config.allowUnfree = true;
   # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  # Add support for Windows partitions
-  boot.supportedFilesystems = [ "ntfs" ];
+  boot = {
+    loader = {
+      systemd-boot.enable = true;
+      efi.canTouchEfiVariables = true;
+    };
+    # Add support for Windows partitions
+    supportedFilesystems = [ "ntfs" ];
+  };
 
 
   # Enabling latest linux kernel
@@ -42,8 +57,24 @@
 
 
   # Enable nvidia driver
-  hardware.nvidia.modesetting.enable = true;
-  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.beta;
+  hardware = {
+    nvidia = {
+      powerManagement.enable = true;
+      modesetting.enable = true;
+      package = config.boot.kernelPackages.nvidiaPackages.beta;
+    };
+    opengl = {
+      enable = true;
+      driSupport32Bit = true;
+      extraPackages = with pkgs; [ mangohud nvidia-vaapi-driver ];
+      extraPackages32 = with pkgs; [ mangohud ];
+    };
+    bluetooth = {
+      enable = true;
+      package = pkgs.bluezFull;
+    };
+    steam-hardware.enable = true;
+  };
 
   services.xserver = {
     videoDrivers = [ "nvidia" ];
@@ -66,65 +97,46 @@
     };
   };
 
-  hardware.opengl = {
-    enable = true;
-    driSupport32Bit = true;
-    extraPackages = with pkgs; [ mangohud ];
-    extraPackages32 = with pkgs; [ mangohud ];
+  networking = {
+    hostName = "cheshire"; # Define your hostname.
+    networkmanager = {
+      enable = true;
+      wifi.macAddress = "random";
+    };
+    firewall = {
+      allowedTCPPorts = [ 22 6600 ];
+      allowedUDPPorts = [ ];
+      enable = true;
+    };
   };
-  # For steam streaming
-  hardware.steam-hardware.enable = true;
-
-  hardware.bluetooth = {
-    enable = true;
-    package = pkgs.bluezFull;
-  };
-
-
-  networking.hostName = "cheshire"; # Define your hostname.
-  # Pick only one of the below networking options.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
 
   # Set your time zone.
   time.timeZone = "Europe/Warsaw";
 
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Select internationalisation properties.
-  # i18n.defaultLocale = "en_US.UTF-8";
-  console = {
-    #   font = "Lat2-Terminus16";
-    keyMap = "pl2";
-    #   useXkbConfig = true; # use xkbOptions in tty.
+  services.xserver = {
+    enable = true;
+    layout = "pl";
+    displayManager.gdm.enable = true;
+    desktopManager.gnome.enable = false;
+    windowManager.qtile.enable = true;
   };
-
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
-
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-  services.xserver.windowManager.qtile.enable = true;
-
-
-  # Configure keymap in X11
-  services.xserver.layout = "pl";
-  # services.xserver.xkbOptions = "eurosign:e,caps:escape";
-
-  # Enable CUPS to print documents.
-  # services.printing.enable = true;
-
   # Enable sound.
-  sound.enable = true;
+  sound = {
+    enable = true;
+    mediaKeys = {
+      enable = true;
+      volumeStep = "5%";
+    };
+  };
   hardware.pulseaudio.enable = false;
   services.pipewire = {
     enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
+    alsa = {
+      enable = true;
+      support32Bit = true;
+    };
     pulse.enable = true;
+    wireplumber.enable = true;
     # If you want to use JACK applications, uncomment this
     #jack.enable = true;
 
@@ -138,7 +150,8 @@
 
   programs.zsh.enable = true;
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.moskas = {
+  users.users.${username} = {
+    createHome = true;
     isNormalUser = true;
     shell = pkgs.zsh;
     extraGroups = [ "wheel" "storage" "networkmanager" "libvirtd" "i2c" ];
@@ -190,12 +203,6 @@
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 22 6600 ];
-  networking.firewall.allowedUDPPorts = [ ];
-  # Or disable the firewall altogether.
-  networking.firewall.enable = true;
 
   systemd.user.services.mpdas = {
     #Unit = {
