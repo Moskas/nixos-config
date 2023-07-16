@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }:
 
 {
-  imports = [ ./wallpapers.nix  ../../modules/newsboat.nix ../../modules/firefox.nix];
+  imports = [ ./wallpapers.nix ../../modules/newsboat.nix ../../modules/firefox.nix ];
 
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
@@ -525,23 +525,41 @@
       nw = "https://nixos.wiki/index.php?search={}";
       g = "https://www.google.com/search?hl=en&q={}";
       b = "https://www.search.brave.com/search?q={}";
-      #s = "https://startpage.com/search"; # check API?
+      s = "https://startpage.com/search?q={}";
     };
     settings = {
       statusbar.show = "in-mode";
+      content.user_styles = "solarized.css";
       downloads.position = "bottom";
-      content.user_stylesheets = "solarized.css";
       tabs = {
-        show = "switching";
+        show = "multiple";
         show_switching_delay = 1500;
         background = true;
         title.format = "{audio}{current_title}";
       };
       fonts = {
-        prompts = "12pt FiraCode Nerd Font";
-        statusbar = "12pt FiraCode Nerd Font";
-        completion.entry = "12pt FiraCode Nerd Font";
+        prompts = "12pt JetBrainsMono Nerd Font";
+        hints = "12pt JetBrainsMono Nerd Font";
+        statusbar = "12pt JetBrainsMono Nerd Font";
+        contextmenu = "10pt JetBrainsMono Nerd Font";
+        completion = {
+          entry = "12pt JetBrainsMono Nerd Font";
+          category = "12pt JetBrainsMono Nerd Font";
+        };
+        web = {
+          size.default = 16;
+          family = {
+            sans_serif = "JetBrainsMono Nerd Font";
+            standard = "JetBrainsMono Nerd Font";
+            fixed = "JetBrainsMono Nerd Font";
+          };
+        };
+        tabs = {
+          selected = "10pt JetBrainsMono Nerd Font";
+          unselected = "10pt JetBrainsMono Nerd Font";
+        };
       };
+
       url = {
         start_pages = "https://www.google.com";
         #searchengines = "https://google.com/search?hl=en&q={}";
