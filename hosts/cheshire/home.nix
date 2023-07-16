@@ -1,5 +1,17 @@
 { config, pkgs, lib, username, ... }:
-
+# Errors on restoring
+#let
+#  osu-lazer = pkgs.osu-lazer.overrideAttrs (oldAttrs: rec {
+#    #inherit (oldAttrs) pname;
+#    version = "2023.716.0";
+#    src = pkgs.fetchFromGitHub {
+#      owner = "ppy";
+#      repo = "osu";
+#      rev = version;
+#      sha256 = "sha256-YrjvwMqmErJWoVCKjTibCEGG2VBy8NlvNMqKV7r53I4=";
+#    };
+#  });
+#in
 {
   imports = [ ./wallpapers.nix ../../modules/newsboat.nix ../../modules/firefox.nix ];
 
@@ -67,7 +79,6 @@
     epr
     openrgb-with-all-plugins
     distrobox
-    xfce.thunar
     nicotine-plus
     (makeDesktopItem {
       name = "brave-private";
@@ -78,15 +89,6 @@
       categories = [ "Network" ];
     })
   ];
-
-  #nixpkgs.overlays = [
-  #  (final: prev: {
-  #    osu-lazer = prev.osu-lazer.override {
-  #      version = "2023.621.0";
-  #      sha256 = "";
-  #    };
-  #  })
-  #];
 
   #xresources = {
   #  path = "$HOME/.Xresources";
@@ -116,6 +118,8 @@
     size = 64;
     package = pkgs.phinger-cursors;
     name = "phinger-cursors-light";
+    #package = pkgs.capitaine-cursors-themed;
+    #name = "Capitaine Cursors (Gruvbox) - White";
   };
 
   programs.pandoc = { enable = true; };
@@ -289,16 +293,16 @@
         fg2 = "#839496";
         fg3 = "#657b83";
         fg4 = "#586e75";
-        bg = "#002b36";
+        bg = "#282828";
         bg2 = "#073642";
         red = "#dc322f";
-        green = "#859900";
+        green = "#b8bb26";
         blue = "#268bd2";
         cyan = "#2aa198";
         yellow = "#b58900";
         purple = "#6c71c4";
         magenta = "#d33682";
-        brwhite = "#fdf6e3";
+        brwhite = "#fbf1c7";
         white = "#eee8d5";
       };
       palettes.gruvbox = {
@@ -448,6 +452,8 @@
       force-window = true;
       #ytdl-format = "bestvideo+bestaudio";
       keepaspect = true;
+      no-keepaspect-window = false;
+      osc = false;
     };
     scripts = with pkgs.mpvScripts; [ sponsorblock youtube-quality mpris thumbnail ];
   };
@@ -508,15 +514,16 @@
     latitude = 52.2297;
     longitude = 21.0122;
   };
+
   gtk = {
     enable = true;
     theme = {
-      name = "gruvbox-gtk-theme";
+      name = "Gruvbox-Dark-BL";
       package = pkgs.gruvbox-gtk-theme;
     };
 
     iconTheme = {
-      name = "gruvbox-dark-icons-gtk";
+      name = "oomox-gruvbox-dark";
       package = pkgs.gruvbox-dark-icons-gtk;
     };
 
@@ -533,7 +540,7 @@
     };
   };
 
-  home.sessionVariables.GTK_THEME = "gruvbox-dark";
+  home.sessionVariables.GTK_THEME = "Gruvbox-Dark-BL";
 
   services.flameshot = {
     enable = true;
@@ -545,7 +552,7 @@
         saveAfterCopy = true;
         savePath = "/home/${username}/Pictures/Screenshots";
         savePathFixed = true;
-        uiColor = "#2075c7";
+        uiColor = "#282828";
         useJpgForClipboard = false;
         disabledTrayIcon = true;
         showStartupLaunchMessage = false;
@@ -620,22 +627,38 @@
       nw = "https://nixos.wiki/index.php?search={}";
       g = "https://www.google.com/search?hl=en&q={}";
       b = "https://www.search.brave.com/search?q={}";
-      s = "https://startpage.com/search?q={}"; # check API?
+      s = "https://startpage.com/search?q={}";
     };
     settings = {
       statusbar.show = "in-mode";
       downloads.position = "bottom";
-      #content.user_stylesheets = "solarized.css";
       tabs = {
-        show = "switching";
+        show = "multiple";
         show_switching_delay = 1500;
         background = true;
         title.format = "{audio}{current_title}";
       };
       fonts = {
         prompts = "12pt JetBrainsMono Nerd Font";
+        hints = "12pt JetBrainsMono Nerd Font";
         statusbar = "12pt JetBrainsMono Nerd Font";
-        completion.entry = "12pt JetBrainsMono Nerd Font";
+        contextmenu = "10pt JetBrainsMono Nerd Font";
+        completion = {
+          entry = "12pt JetBrainsMono Nerd Font";
+          category = "12pt JetBrainsMono Nerd Font";
+        };
+        web = {
+          size.default = 14;
+          family = {
+            sans_serif = "JetBrainsMono Nerd Font";
+            standard = "JetBrainsMono Nerd Font";
+            fixed = "JetBrainsMono Nerd Font";
+          };
+        };
+        tabs = {
+          selected = "10pt JetBrainsMono Nerd Font";
+          unselected = "10pt JetBrainsMono Nerd Font";
+        };
       };
       url = {
         start_pages = "https://www.google.com";
@@ -644,83 +667,111 @@
       colors = {
         statusbar = {
           normal = {
-            bg = "#002b36";
-            fg = "#fdf6e3";
+            bg = "#282828";
+            fg = "#fbf1c7";
           };
           command = {
-            bg = "#002b36";
-            fg = "#fdf6e3";
+            bg = "#282828";
+            fg = "#fbf1c7";
           };
           insert = {
-            bg = "#002b36";
-            fg = "#859900";
+            bg = "#282828";
+            fg = "#b8bb26";
           };
           url = {
-            success.http.fg = "#859900";
-            success.https.fg = "#859900";
+            success.http.fg = "#b8bb26";
+            success.https.fg = "#b8bb26";
+          };
+        };
+        messages = {
+          error = {
+            bg = "#cc241d";
+            fg = "#fbf1c7";
+            border = "#fbf1c7";
+          };
+          warning = {
+            bg = "#cc241d";
+            fg = "#fbf1c7";
+            border = "#fbf1c7";
+          };
+          info = {
+            fg = "#fbf1c7";
+            bg = "#83a598";
           };
         };
         tabs = {
-          indicator.stop = "#93a1a1";
-          odd.bg = "#002b36";
-          even.bg = "#073642";
+          indicator.stop = "#83a598";
+          odd = {
+            fg = "#fbf1c7";
+            bg = "#282828";
+          };
+          even = {
+            fg = "#fbf1c7";
+            bg = "#3c3836";
+          };
           selected = {
-            odd.bg = "#002b36";
-            even.bg = "#073642";
+            odd = {
+              fg = "#282828";
+              bg = "#458588";
+            };
+            even = {
+              fg = "#282828";
+              bg = "#458588";
+            };
           };
         };
         hints = {
-          bg = "#002b36";
-          fg = "#fdf6e3";
-          match.fg = "#859900";
+          bg = "#282828";
+          fg = "#fbf1c7";
+          match.fg = "#b8bb26";
         };
         completion = {
-          fg = "#fdf6e3";
-          odd.bg = "#002b36";
-          even.bg = "#073642";
+          fg = "#fbf1c7";
+          odd.bg = "#282828";
+          even.bg = "#3c3836";
           category = {
-            bg = "#002b36";
-            fg = "#fdf6e3";
+            bg = "#282828";
+            fg = "#fbf1c7";
           };
           item.selected = {
-            bg = "#002b36";
-            fg = "#fdf6e3";
-            match.fg = "#859900";
+            bg = "#282828";
+            fg = "#fbf1c7";
+            match.fg = "#b8bb26";
           };
-          match = { fg = "#fdf6e3"; };
+          match = { fg = "#fbf1c7"; };
           scrollbar = {
-            fg = "#073642";
-            bg = "#002b36";
+            fg = "#3c3836";
+            bg = "#282828";
           };
         };
         webpage = {
-          bg = "#002b36";
+          bg = "#282828";
           darkmode.enabled = true;
           darkmode.policy.images = "never";
         };
         downloads = {
-          bar.bg = "#002b36";
+          bar.bg = "#282828";
           error = {
-            fg = "#fdf6e3";
+            fg = "#fbf1c7";
             bg = "#cc241d";
           };
           start = {
-            fg = "#fdf6e3";
+            fg = "#fbf1c7";
             bg = "#d79921";
           };
           stop = {
-            fg = "#fdf6e3";
-            bg = "#859900";
+            fg = "#fbf1c7";
+            bg = "#b8bb26";
           };
         };
         prompts = {
-          fg = "#fdf6e3";
-          bg = "#002b36";
+          fg = "#fbf1c7";
+          bg = "#282828";
         };
         keyhint = {
-          fg = "#fdf6e3";
-          bg = "#002b36";
-          suffix.fg = "#859900";
+          fg = "#fbf1c7";
+          bg = "#282828";
+          suffix.fg = "#b8bb26";
         };
       };
     };

@@ -149,12 +149,22 @@
   # services.xserver.libinput.enable = true;
 
   programs.zsh.enable = true;
+
+  programs.thunar = {
+    enable = true;
+    plugins = with pkgs.xfce; [
+      thunar-archive-plugin
+      thunar-volman
+      thunar-media-tags-plugin
+    ];
+  };
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.${username} = {
     createHome = true;
     isNormalUser = true;
     shell = pkgs.zsh;
-    extraGroups = [ "wheel" "storage" "networkmanager" "libvirtd" "i2c" ];
+    extraGroups = [ "wheel" "storage" "networkmanager" "libvirtd" "i2c" "docker" ];
     packages = with pkgs; [
       firefox
       neovim
@@ -215,6 +225,11 @@
       Restart = "on-failure";
       RestartSec = 5;
     };
+  };
+
+  virtualisation.docker = {
+    enable = true;
+    storageDriver = "btrfs";
   };
 
   # Copy the NixOS configuration file and link it from the resulting system
