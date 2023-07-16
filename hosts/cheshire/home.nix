@@ -13,7 +13,15 @@
 #  });
 #in
 {
-  imports = [ ./wallpapers.nix ../../modules/newsboat.nix ../../modules/firefox.nix ];
+  imports = [
+    ./wallpapers.nix
+    ../../modules/newsboat.nix
+    ../../modules/firefox.nix
+    ../../modules/brave/brave.nix
+    ../../modules/git/git.nix
+    ../../modules/mpv/mpv.nix
+    ../../modules/mpd/mpd.nix
+  ];
 
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
@@ -123,56 +131,6 @@
   };
 
   programs.pandoc = { enable = true; };
-
-  programs.brave = {
-    enable = true;
-    extensions = [
-      {
-        id = "dcpihecpambacapedldabdbpakmachpb";
-        updateUrl =
-          "https://raw.githubusercontent.com/iamadamdev/bypass-paywalls-chrome/master/updates.xml";
-      }
-      {
-        id = "nngceckbapebfimnlniiiahkandclblb"; # bitwarden
-      }
-      {
-        id = "ajopnjidmegmdimjlfnijceegpefgped"; # BTTV
-      }
-      {
-        id = "fadndhdgpmmaapbmfcknlfgcflmmmieb"; # FFZ
-      }
-    ];
-  };
-
-  programs.git = {
-    enable = true;
-    userName = "Moskas";
-    userEmail = "minemoskas@gmail.com";
-    extraConfig = { init.defaultBranch = "master"; };
-    aliases = {
-      c = "clone";
-      ci = "commit";
-      co = "checkout";
-      s = "status";
-      a = "add";
-      d = "diff";
-      p = "push";
-      pu = "pull";
-    };
-  };
-
-  programs.gh = {
-    enable = true;
-    enableGitCredentialHelper = true;
-    settings = {
-      git_protocol = "ssh";
-      prompt = "enabled";
-      aliases = {
-        co = "pr checkout";
-        pv = "pr view";
-      };
-    };
-  };
 
   programs.gpg = { enable = true; };
 
@@ -445,69 +403,6 @@
     };
   };
 
-  programs.mpv = {
-    enable = true;
-    config = {
-      profile = "gpu-hq";
-      force-window = true;
-      #ytdl-format = "bestvideo+bestaudio";
-      keepaspect = true;
-      no-keepaspect-window = false;
-      osc = false;
-    };
-    scripts = with pkgs.mpvScripts; [ sponsorblock youtube-quality mpris thumbnail ];
-  };
-
-  services.mpd = {
-    enable = true;
-    musicDirectory = "/home/${username}/Music";
-    network = {
-      listenAddress = "any";
-      port = 6600;
-    };
-    extraConfig = ''
-      audio_output {
-      type  "pipewire"
-      name  "My Pipewire"
-      }
-      audio_output {
-      type    "fifo"
-      name    "my_fifo"
-      path    "/tmp/mpd.fifo"
-      format  "44100:16:2"
-      }
-    '';
-  };
-
-
-
-  #services.mpdscribble = {
-  #  enable = true;
-  #  port = 6600;
-  #
-  #};
-
-  programs.ncmpcpp = {
-    enable = true;
-    settings = {
-      visualizer_data_source = "/tmp/mpd.fifo";
-      visualizer_output_name = "my_fifo";
-      visualizer_in_stereo = "yes";
-      #visualizer_type = "spectrum";
-      visualizer_look = "+";
-    };
-  };
-
-  services.mpd-discord-rpc = {
-    enable = true;
-    settings = {
-      hosts = [ "localhost:6600" ];
-      format = {
-        details = "$title";
-        state = "On $album by $artist";
-      };
-    };
-  };
   services.redshift = {
     enable = true;
     provider = "manual";

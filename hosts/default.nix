@@ -1,4 +1,4 @@
-{ lib, inputs, nixpkgs, home-manager, username, nur, ... }:
+{ lib, inputs, nixpkgs, home-manager, username, e-mail, nur, ... }:
 
 let
   system = "x86_64-linux";
@@ -46,7 +46,7 @@ in
   };
   cheshire = lib.nixosSystem {
     inherit system;
-    specialArgs = { inherit inputs username; };
+    specialArgs = { inherit inputs username e-mail; };
     modules = [
       ./common-configuration.nix
       ./cheshire
@@ -55,7 +55,7 @@ in
       {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
-        home-manager.extraSpecialArgs = { inherit username; };
+        home-manager.extraSpecialArgs = { inherit username e-mail; };
         home-manager.users.${username}.imports = [ (import ./cheshire/home.nix) ];
       }
     ];

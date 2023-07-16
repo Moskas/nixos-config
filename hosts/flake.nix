@@ -16,12 +16,13 @@
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
       username = "moskas";
+      e-mail = "minemoskas@gmail.com";
     in
     {
       nixosConfigurations =
         (import ./hosts {
           inherit (nixpkgs) lib;
-          inherit inputs nixpkgs home-manager username nur;
+          inherit inputs nixpkgs home-manager username e-mail nur;
         });
     };
 }
