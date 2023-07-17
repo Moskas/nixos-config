@@ -18,13 +18,21 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  outputs = inputs@{ self, nixpkgs, home-manager, nur, NixOS-WSL, ... }:
+  outputs = inputs@{ self, nixpkgs, home-manager, nur, NixOS-WSL, nix-on-droid, ... }:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
       username = "moskas";
       e-mail = "minemoskas@gmail.com";
-    in {
+    in
+    {
+      nixOnDroidConfigurations.z23 = nix-on-droid.lib.nixOnDroidConfiguration
+        {
+          modules = [
+            ./hosts/pixel/configuration.nix
+          ];
+        };
+
       nixosConfigurations = (import ./hosts {
         inherit (nixpkgs) lib;
         inherit inputs nixpkgs home-manager username e-mail nur NixOS-WSL;

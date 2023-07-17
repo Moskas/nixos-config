@@ -1,9 +1,9 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, nix-on-droid, ... }:
 
 {
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  #nix.settings.experimental-features = [ "nix-command" "flakes" ];
   programs.zsh.enable = true;
-  users.defaultUserShell = pkgs.zsh;
+  #users.defaultUserShell = pkgs.zsh;
 
   environment.systemPackages = with pkgs; [
     neovim
@@ -12,7 +12,6 @@
     curl
     git
     ripgrep
-    home-manager
     nixfmt
   ];
 
