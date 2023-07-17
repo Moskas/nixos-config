@@ -14,7 +14,7 @@
   ];
 
   programs.emacs = {
-    enable = true;
+    enable = false; # fails to build on my wsl machine
     package = pkgs.emacs29;
   };
 

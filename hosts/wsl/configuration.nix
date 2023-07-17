@@ -15,7 +15,7 @@
 
     # Enable integration with Docker Desktop (needs to be installed)
     # docker-desktop.enable = true;
-
+    wslConf.network.generateResolvConf = false;
   };
 
   nix = {
@@ -36,7 +36,10 @@
     shell = pkgs.zsh;
   };
 
-  networking.hostName = "L-41-06815";
+  networking = {
+    hostName = "L-41-06815";
+    nameservers = [ "1.1.1.1" ];
+  };
 
   # Enable nix flakes
   nix.package = pkgs.nixFlakes;
