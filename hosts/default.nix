@@ -34,7 +34,7 @@ in
   };
   wsl = lib.nixosSystem {
 	inherit system;
-	specialArgs = { inherit inputs username; };
+	specialArgs = { inherit inputs username nixpkgs-stable; };
 	modules = [
 	./wsl/configuration.nix
 	NixOS-WSL.nixosModules.wsl

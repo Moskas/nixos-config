@@ -176,8 +176,8 @@
       path = "${config.xdg.dataHome}/zsh/history";
     };
     enableAutosuggestions = true;
-    #syntaxHighlighting.enable = true;
-    enableSyntaxHighlighting = true;
+    syntaxHighlighting.enable = true;
+    #enableSyntaxHighlighting = true;
     autocd = false;
     defaultKeymap = "emacs";
     plugins = [ ];

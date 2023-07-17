@@ -1,6 +1,4 @@
-{ lib, pkgs-stable, config, modulesPath, ... }:
-
-pkgs = pkgs-stable;
+{ lib, pkgs, config, modulesPath, ... }:
 
 {
   imports = [ "${modulesPath}/profiles/minimal.nix" ];
