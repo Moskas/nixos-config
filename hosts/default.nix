@@ -1,4 +1,4 @@
-{ lib, inputs, nixpkgs, home-manager, username, e-mail, nur, ... }:
+{ lib, inputs, nixpkgs, home-manager, username, e-mail, nur, NixOS-WSL, ... }:
 
 let
   system = "x86_64-linux";
@@ -10,8 +10,7 @@ let
   #nur-modules = import nur {
   #  nurpgks = pkgs.legacyPackages.x86_64-linux;
   #};
-in
-{
+in {
   virtual = lib.nixosSystem {
     inherit system;
     specialArgs = { inherit inputs username; };
@@ -25,6 +24,22 @@ in
         home-manager.extraSpecialArgs = { inherit username; };
         home-manager.users.${username}.imports =
           [ (import ./virtual/home.nix) ];
+      }
+    ];
+  };
+  shimakaze = lib.nixosSystem {
+    inherit system;
+    specialArgs = { inherit inputs username; };
+    modules = [
+      ./shimakaze/configuration.nix
+      NixOS-WSL.nixosModules.wsl
+      home-manager.nixosModules.home-manager
+      {
+        home-manager.useGlobalPkgs = true;
+        home-manager.useUserPackages = true;
+        home-manager.extraSpecialArgs = { inherit username e-mail; };
+        home-manager.users.${username}.imports =
+          [ (import ./shimakaze/home.nix) ];
       }
     ];
   };
@@ -56,7 +71,8 @@ in
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
         home-manager.extraSpecialArgs = { inherit username e-mail; };
-        home-manager.users.${username}.imports = [ (import ./cheshire/home.nix) ];
+        home-manager.users.${username}.imports =
+          [ (import ./cheshire/home.nix) ];
       }
     ];
   };
