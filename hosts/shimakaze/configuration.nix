@@ -37,7 +37,7 @@
   };
 
   networking = {
-    hostName = "L-41-06815";
+    hostName = "shimakaze";
     nameservers = [ "1.1.1.1" ];
   };
 

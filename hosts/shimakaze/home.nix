@@ -1,38 +1,17 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, username, e-mail, ... }:
 
 {
+  imports = [ ../../modules/git/git.nix ];
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
-  home.username = "moskas";
-  home.homeDirectory = "/home/moskas";
+  home.username = "${username}";
+  home.homeDirectory = "/home/${username}";
 
-  home.packages = with pkgs; [
-    onefetch
-    neofetch
-    btop
-    exa
-  ];
+  home.packages = with pkgs; [ onefetch neofetch btop exa lazygit ];
 
   programs.emacs = {
     enable = false; # fails to build on my wsl machine
     package = pkgs.emacs29;
-  };
-
-  programs.git = {
-    enable = true;
-    userName = "Moskas";
-    userEmail = "minemoskas@gmail.com";
-    extraConfig = { init.defaultBranch = "master"; };
-    aliases = {
-      c = "clone";
-      ci = "commit";
-      co = "checkout";
-      s = "status";
-      a = "add";
-      d = "diff";
-      p = "push";
-      pu = "pull";
-    };
   };
 
   programs.starship = {
@@ -43,12 +22,12 @@
       add_newline = false;
       palette = "gruvbox";
       format = lib.concatStrings [
-        "$os$username$hostname$rust$python$node$lua$git_branch$git_status$git_state$cmd_duration$fill$time$line_break$directory$sudo$character "
+        "$os$username$hostname$rust$python$node$lua$git_branch$git_status$git_state$cmd_duration$fill$time$line_break$directory$sudo$character"
       ];
       scan_timeout = 10;
       character = {
-        success_symbol = "[]( blue)";
-        error_symbol = "[➜]( red)";
+        success_symbol = "[ ](blue)";
+        error_symbol = "[ ](red)";
       };
       fill = { symbol = " "; };
       time = {
@@ -59,7 +38,7 @@
       };
       username = {
         disabled = false;
-        style_user = "fg:bg bg:blue ";
+        style_user = "fg:bg bg:blue bold";
         style_root = "fg:red bg:blue  italic";
         format = "[ $user ]($style)";
         show_always = true;
@@ -67,13 +46,13 @@
       hostname = {
         ssh_only = false;
         format = "[ $hostname ]($style)";
-        style = " fg:bg bg:red";
+        style = " fg:bg bg:red bold";
         disabled = false;
       };
       memory_usage = {
         disabled = false;
         threshold = -1;
-        symbol = "  ";
+        symbol = " 󰍛 ";
         format = "[$symbol]($style)[$ram( | $swap) ]($style)";
         style = " fg:bg bg:green";
       };
@@ -109,14 +88,14 @@
       };
       cmd_duration = {
         min_time = 500;
-        format = "[ took $duration ](bold fg:bg bg:yellow)";
+        format = "[ took $duration ](fg:bg bg:yellow)";
       };
       git_branch = {
         format = "[ $symbol$branch(:$remote_branch) ](bg:purple fg:bg )";
         symbol = " ";
       };
       git_status = {
-        format = "([$all_status](bg:purple fg:bg ))";
+        format = "([$all_status ](bg:purple fg:bg ))";
         stashed = "📦";
         modified = "📝";
         staged = "+($count)";
@@ -126,16 +105,16 @@
         fg2 = "#839496";
         fg3 = "#657b83";
         fg4 = "#586e75";
-        bg = "#002b36";
+        bg = "#282828";
         bg2 = "#073642";
         red = "#dc322f";
-        green = "#859900";
+        green = "#b8bb26";
         blue = "#268bd2";
         cyan = "#2aa198";
         yellow = "#b58900";
         purple = "#6c71c4";
         magenta = "#d33682";
-        brwhite = "#fdf6e3"; # "white" according to wikipedia lol
+        brwhite = "#fbf1c7";
         white = "#eee8d5";
       };
       palettes.gruvbox = {
@@ -182,6 +161,12 @@
     defaultKeymap = "emacs";
     plugins = [ ];
     initExtra = "\n    export PATH=~/.config/emacs/bin:$PATH\n    ";
+  };
+
+  programs.zoxide = {
+    enable = true;
+    enableZshIntegration = true;
+    enableBashIntegration = true;
   };
 
   # This value determines the Home Manager release that your

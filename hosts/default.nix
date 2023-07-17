@@ -1,4 +1,4 @@
-{ lib, inputs, nixpkgs, home-manager, username, e-mail, nur, nixpkgs-stable, home-manager-stable, NixOS-WSL, ... }:
+{ lib, inputs, nixpkgs, home-manager, username, e-mail, nur, NixOS-WSL, ... }:
 
 let
   system = "x86_64-linux";
@@ -6,16 +6,11 @@ let
     inherit system;
     config.allowUnfree = true;
   };
-  pkgs-stable = import nixpkgs-stable {
-  inherit system;
-  config.allowUnfree = true;
-  };
   lib = nixpkgs.lib;
   #nur-modules = import nur {
   #  nurpgks = pkgs.legacyPackages.x86_64-linux;
   #};
-in
-{
+in {
   virtual = lib.nixosSystem {
     inherit system;
     specialArgs = { inherit inputs username; };
@@ -32,20 +27,22 @@ in
       }
     ];
   };
-  wsl = lib.nixosSystem {
-	inherit system;
-	specialArgs = { inherit inputs username nixpkgs-stable; };
-	modules = [
-	./wsl/configuration.nix
-	NixOS-WSL.nixosModules.wsl
-	        home-manager.nixosModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.moskas.imports = [ (import ./wsl/home.nix) ];
-        }
-	];
-	};
+  shimakaze = lib.nixosSystem {
+    inherit system;
+    specialArgs = { inherit inputs username; };
+    modules = [
+      ./shimakaze/configuration.nix
+      NixOS-WSL.nixosModules.wsl
+      home-manager.nixosModules.home-manager
+      {
+        home-manager.useGlobalPkgs = true;
+        home-manager.useUserPackages = true;
+        home-manager.extraSpecialArgs = { inherit username e-mail; };
+        home-manager.users.${username}.imports =
+          [ (import ./shimakaze/home.nix) ];
+      }
+    ];
+  };
   omen = lib.nixosSystem {
     inherit system;
     specialArgs = { inherit inputs username; };
@@ -74,7 +71,8 @@ in
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
         home-manager.extraSpecialArgs = { inherit username e-mail; };
-        home-manager.users.${username}.imports = [ (import ./cheshire/home.nix) ];
+        home-manager.users.${username}.imports =
+          [ (import ./cheshire/home.nix) ];
       }
     ];
   };
