@@ -2,7 +2,6 @@
 
 {
   #nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  programs.zsh.enable = true;
   #users.defaultUserShell = pkgs.zsh;
 
   environment.packages = with pkgs; [
@@ -13,8 +12,10 @@
     git
     ripgrep
     nixfmt
+    neofetch
+    onefetch
   ];
 
-  home-manager.config = ./home.nix;
+  #home-manager.config = ./home.nix;
   system.stateVersion = "23.05";
 }
