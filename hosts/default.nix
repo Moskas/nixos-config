@@ -1,10 +1,14 @@
-{ lib, inputs, nixpkgs, home-manager, username, e-mail, nur, ... }:
+{ lib, inputs, nixpkgs, home-manager, username, e-mail, nur, nixpkgs-stable, home-manager-stable, NixOS-WSL, ... }:
 
 let
   system = "x86_64-linux";
   pkgs = import nixpkgs {
     inherit system;
     config.allowUnfree = true;
+  };
+  pkgs-stable = import nixpkgs-stable {
+  inherit system;
+  config.allowUnfree = true;
   };
   lib = nixpkgs.lib;
   #nur-modules = import nur {
@@ -28,6 +32,20 @@ in
       }
     ];
   };
+  wsl = lib.nixosSystem {
+	inherit system;
+	specialArgs = { inherit inputs username; };
+	modules = [
+	./wsl/configuration.nix
+	NixOS-WSL.nixosModules.wsl
+	        home-manager.nixosModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users.moskas.imports = [ (import ./wsl/home.nix) ];
+        }
+	];
+	};
   omen = lib.nixosSystem {
     inherit system;
     specialArgs = { inherit inputs username; };
