@@ -29,7 +29,7 @@
       nixOnDroidConfigurations.z23 = nix-on-droid.lib.nixOnDroidConfiguration
         {
           modules = [
-            ./hosts/pixel/configuration.nix
+            ./hosts/z23/configuration.nix
           ];
         };
 
