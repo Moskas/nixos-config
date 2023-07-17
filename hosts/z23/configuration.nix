@@ -5,7 +5,7 @@
   programs.zsh.enable = true;
   #users.defaultUserShell = pkgs.zsh;
 
-  environment.systemPackages = with pkgs; [
+  environment.packages = with pkgs; [
     neovim
     ranger
     wget
@@ -15,5 +15,6 @@
     nixfmt
   ];
 
+  home-manager.config = ./home.nix;
   system.stateVersion = "23.05";
 }

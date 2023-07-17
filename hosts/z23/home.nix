@@ -1,34 +1,17 @@
 { config, pkgs, lib, ... }:
 
 {
-  # Home Manager needs a bit of information about you and the
-  # paths it should manage.
-  home.username = "moskas";
-  home.homeDirectory = "/home/moskas";
+  home.stateVersion = "23.11";
 
-  # This value determines the Home Manager release that your
-  # configuration is compatible with. This helps avoid breakage
-  # when a new Home Manager release introduces backwards
-  # incompatible changes.
-  #
-  # You can update Home Manager without changing this value. See
-  # the Home Manager release notes for a list of state version
-  # changes in each release.
-  home.stateVersion = "22.11";
+  imports = [
+    ../../modules/newsboat.nix
+  ];
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
   home.packages = with pkgs; [
     lazygit
     jq
-    trackma
-    manga-cli
-    ani-cli
-    python310Packages.aria2p # aria2c
-    ranger
-    ffmpeg
-    duf
-    du-dust
     neofetch
     onefetch
     tickrs
@@ -39,8 +22,6 @@
     exa
     zip
     unzip
-    html-tidy
-    nodePackages_latest.prettier
   ];
 
   programs.git = {
@@ -83,6 +64,7 @@
     plugins = [ ];
     initExtra = "\n    export PATH=~/.config/emacs/bin:$PATH\n    ";
   };
+
   programs.starship = {
     enable = true;
     enableZshIntegration = true;
@@ -246,34 +228,6 @@
       colorscheme NeoSolarized
       nnoremap <esc> :noh<return><esc>
     '';
-  };
-
-  programs.newsboat = {
-    enable = true;
-    browser = "qutebrowser";
-    autoReload = true;
-    urls = [
-      {
-        tags = [ "linux" ];
-        url = "https://www.phoronix.com/rss.php";
-      }
-      {
-        tags = [ "games" ];
-        url = "https://terrysfreegameoftheweek.com/feed/";
-      }
-      {
-        tags = [ "linux" "tech" ];
-        url = "https://myme.no/feed.xml";
-      }
-      {
-        tags = [ "media" ];
-        url =
-          "https://pipedapi.kavin.rocks/feed/rss?authToken=5f754893-4492-46a1-8d5a-bfbeb8def939";
-      }
-    ];
-    extraConfig = ''
-      color background color0 color0
-      macro v set browser "setsid -f mpv --really-quiet --no-terminal" ; open-in-browser ; set browser brave'';
   };
 
   programs.btop = {
