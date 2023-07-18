@@ -1,7 +1,7 @@
 { lib, pkgs, config, modulesPath, ... }:
 
 {
-  imports = [ "${modulesPath}/profiles/minimal.nix" ];
+  imports = [ "${modulesPath}/profiles/minimal.nix" ../../modules/diff.nix ];
 
   wsl = {
     enable = true;
@@ -61,6 +61,7 @@
     nixfmt
     exa
     zoxide
+    direnv
   ];
 
   system.stateVersion = "22.05";

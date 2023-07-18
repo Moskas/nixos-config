@@ -11,7 +11,7 @@
 
   programs.emacs = {
     enable = false; # fails to build on my wsl machine
-    package = pkgs.emacs29;
+    package = pkgs.emacs;
   };
 
   programs.starship = {
@@ -160,7 +160,7 @@
     autocd = false;
     defaultKeymap = "emacs";
     plugins = [ ];
-    initExtra = "\n    export PATH=~/.config/emacs/bin:$PATH\n    ";
+    initExtra = "\n    export PATH=~/.config/emacs/bin:$PATH\n eval \"$(direnv hook zsh)\"   ";
   };
 
   programs.zoxide = {
