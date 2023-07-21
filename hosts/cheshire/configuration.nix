@@ -190,6 +190,7 @@
     mpd
     mpdas
     dbus
+    direnv
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

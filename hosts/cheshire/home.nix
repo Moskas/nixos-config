@@ -1,5 +1,4 @@
 { config, pkgs, lib, username, ... }:
-# Errors on restoring
 #let
 #  osu-lazer = pkgs.osu-lazer.overrideAttrs (oldAttrs: rec {
 #    #inherit (oldAttrs) pname;
@@ -83,7 +82,7 @@
     html-tidy
     nodePackages_latest.prettier
     pkg-config
-    osu-lazer
+    osu-lazer-bin
     epr
     openrgb-with-all-plugins
     distrobox
@@ -158,7 +157,7 @@
     autocd = false;
     defaultKeymap = "emacs";
     plugins = [ ];
-    initExtra = "\n    export PATH=~/.config/emacs/bin:$PATH\n export PATH=~/.local/share/applications/:$PATH\n    ";
+    initExtra = "\n    export PATH=~/.config/emacs/bin:$PATH\n export PATH=~/.local/share/applications/:$PATH\n eval \"$(direnv hook zsh)\"   ";
   };
   programs.starship = {
     enable = true;
@@ -533,9 +532,10 @@
         background = true;
         title.format = "{audio}{current_title}";
       };
+      scrolling.smooth = true;
       fonts = {
         prompts = "12pt JetBrainsMono Nerd Font";
-        hints = "12pt JetBrainsMono Nerd Font";
+        hints = "10pt JetBrainsMono Nerd Font";
         statusbar = "12pt JetBrainsMono Nerd Font";
         contextmenu = "10pt JetBrainsMono Nerd Font";
         completion = {
@@ -545,9 +545,11 @@
         web = {
           size.default = 14;
           family = {
-            sans_serif = "JetBrainsMono Nerd Font";
             standard = "JetBrainsMono Nerd Font";
+            sans_serif = "JetBrainsMono Nerd Font";
             fixed = "JetBrainsMono Nerd Font";
+            cursive = "JetBrainsMono Nerd Font";
+            fantasy = "JetBrainsMono Nerd Font";
           };
         };
         tabs = {
@@ -557,8 +559,8 @@
       };
       url = {
         start_pages = "https://www.google.com";
-        #searchengines = "https://google.com/search?hl=en&q={}";
       };
+      content.blocking.whitelist = [ "*://xeiaso.net/*" "*://ethicalads.io/*" "*://*.ethicalads.io/*" ];
       colors = {
         statusbar = {
           normal = {
@@ -641,7 +643,8 @@
         };
         webpage = {
           bg = "#282828";
-          darkmode.enabled = true;
+          preferred_color_scheme = "dark";
+          darkmode.enabled = false;
           darkmode.policy.images = "never";
         };
         downloads = {
