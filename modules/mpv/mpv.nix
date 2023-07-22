@@ -7,10 +7,9 @@
       profile = "gpu-hq";
       force-window = true;
       #ytdl-format = "bestvideo+bestaudio";
-      keepaspect = true;
-      no-keepaspect-window = false;
+      keepaspect = false;
       osc = false;
     };
-    scripts = with pkgs.mpvScripts; [ sponsorblock youtube-quality mpris thumbnail ];
+    scripts = with pkgs.mpvScripts; [ sponsorblock quality-menu mpris thumbnail ];
   };
 }

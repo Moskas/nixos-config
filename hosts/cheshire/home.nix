@@ -1,13 +1,13 @@
 { config, pkgs, lib, username, ... }:
 #let
-#  osu-lazer = pkgs.osu-lazer.overrideAttrs (oldAttrs: rec {
+#  osu-lazer-bin = pkgs.osu-lazer-bin.overrideAttrs (oldAttrs: rec {
 #    #inherit (oldAttrs) pname;
-#    version = "2023.716.0";
-#    src = pkgs.fetchFromGitHub {
-#      owner = "ppy";
-#      repo = "osu";
-#      rev = version;
-#      sha256 = "sha256-YrjvwMqmErJWoVCKjTibCEGG2VBy8NlvNMqKV7r53I4=";
+#    version = "2023.720.0";
+#    osu-lazer-bin-src = {
+#      x86_64-linux = {
+#        url = "https://github.com/ppy/osu/releases/download/${version}/osu.AppImage";
+#        sha256 = "";
+#      };
 #    };
 #  });
 #in
@@ -370,7 +370,7 @@
         transparency = 10;
         max_icon_size = 64;
         min_icon_size = 32;
-        frame_color = "#bdae93";
+        frame_color = "#458588";
         font = "JetBrainsMono Nerd Font 11";
         format = ''
           <b>%s</b>
@@ -390,15 +390,10 @@
       };
 
       flameshot = {
-        appname = "flameshot";
+        appname = ".flameshot-wrapped";
         frame_color = "#cc241d";
       };
 
-      spotify = {
-        appname = ".spotify";
-        urgency = "Normal";
-        frame_color = "#d3869b";
-      };
     };
   };
 
@@ -515,13 +510,16 @@
 
   programs.qutebrowser = {
     enable = true;
+    package = pkgs.qutebrowser-qt6;
     searchEngines = {
       w = "https://en.wikipedia.org/wiki/Special:Search?search={}&go=Go&ns0=1";
       aw = "https://wiki.archlinux.org/?search={}";
+      np = "https://search.nixos.org/packages?&query={}";
       nw = "https://nixos.wiki/index.php?search={}";
       g = "https://www.google.com/search?hl=en&q={}";
       b = "https://www.search.brave.com/search?q={}";
       s = "https://startpage.com/search?q={}";
+      e = "https://ecosia.org/search?&q={}";
     };
     settings = {
       statusbar.show = "in-mode";
@@ -687,7 +685,12 @@
       };
       prompt = { "<Ctrl-y>" = "prompt-yes"; };
     };
-    extraConfig = "config.unbind('d')";
+    extraConfig = ''
+      config.unbind('d')
+      c.fileselect.handler = "external"
+      c.fileselect.single_file.command = ['kitty', '--class', 'ranger,ranger', '-e', 'ranger', '--choosefile', '{}']
+      c.fileselect.multiple_files.command = ['kitty', '--class', 'ranger,ranger', '-e', 'ranger', '--choosefile', '{}']
+    '';
   };
 
   programs.rofi = {
