@@ -1,16 +1,18 @@
 { config, pkgs, lib, username, ... }:
-#let
-#  osu-lazer-bin = pkgs.osu-lazer-bin.overrideAttrs (oldAttrs: rec {
-#    #inherit (oldAttrs) pname;
-#    version = "2023.720.0";
-#    osu-lazer-bin-src = {
-#      x86_64-linux = {
-#        url = "https://github.com/ppy/osu/releases/download/${version}/osu.AppImage";
-#        sha256 = "";
-#      };
-#    };
-#  });
-#in
+let
+  #  osu-lazer-bin = pkgs.osu-lazer-bin.overrideAttrs (oldAttrs: rec {
+  #    #inherit (oldAttrs) pname;
+  #    version = "2023.720.0";
+  #    osu-lazer-bin-src = {
+  #      x86_64-linux = {
+  #        url = "https://github.com/ppy/osu/releases/download/${version}/osu.AppImage";
+  #        sha256 = "";
+  #      };
+  #    };
+  #  });
+  random-character = import ../../modules/scripts/random-character.nix { inherit pkgs; };
+  random-wallpaper = import ../../modules/scripts/random-wallpaper.nix { inherit pkgs; };
+in
 {
   imports = [
     ./wallpapers.nix
@@ -66,7 +68,6 @@
     prismlauncher
     jre8
     ferium
-    feh
     sxiv
     i2c-tools
     betterlockscreen
@@ -95,6 +96,13 @@
       exec = "${brave}/bin/brave --incognito";
       categories = [ "Network" ];
     })
+    random-wallpaper
+    random-character
+    obs-studio
+    discord
+    wineWowPackages.stable
+    winetricks
+    feh
   ];
 
   #xresources = {
@@ -429,6 +437,15 @@
     };
   };
 
+  qt = {
+    enable = true;
+    platformTheme = "gtk";
+    style = {
+      name = "adwaita-dark";
+      package = pkgs.adwaita-qt;
+    };
+  };
+
   home.sessionVariables.GTK_THEME = "Gruvbox-Dark-BL";
 
   services.flameshot = {
@@ -576,6 +593,10 @@
           url = {
             success.http.fg = "#b8bb26";
             success.https.fg = "#b8bb26";
+            fg = "#fbf1c7";
+            error.fg = "#cc241d";
+            warn.fg = "#cc241d";
+            hover.fg = "#83a598";
           };
         };
         messages = {
