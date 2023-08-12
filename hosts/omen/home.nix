@@ -1,7 +1,12 @@
 { config, pkgs, lib, ... }:
 
 {
-  imports = [ ./wallpapers.nix ../../modules/newsboat.nix ../../modules/firefox.nix ];
+  imports = [
+    ./wallpapers.nix
+    ../../modules/newsboat.nix
+    ../../modules/firefox.nix
+    ../../modules/mpv/mpv.nix
+  ];
 
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
@@ -70,6 +75,7 @@
     pkg-config
     osu-lazer
     epr
+    direnv
   ];
 
   xresources = {
@@ -188,7 +194,8 @@
     autocd = false;
     defaultKeymap = "emacs";
     plugins = [ ];
-    initExtra = "\n    export PATH=~/.config/emacs/bin:$PATH\n    ";
+    initExtra =
+      "\n    export PATH=~/.config/emacs/bin:$PATH\n export PATH=~/.local/share/applications/:$PATH\n eval \"$(direnv hook zsh)\"   ";
   };
   programs.starship = {
     enable = true;
@@ -380,15 +387,6 @@
     };
   };
 
-  programs.mpv = {
-    enable = true;
-    config = {
-      #ytdl-format = "bestvideo+bestaudio";
-      keepaspect = false;
-    };
-    scripts = with pkgs; [ mpvScripts.sponsorblock mpvScripts.youtube-quality ];
-  };
-
   services.mpd = {
     enable = true;
     musicDirectory = "/home/moskas/Music";
@@ -529,7 +527,7 @@
     };
     settings = {
       statusbar.show = "in-mode";
-      content.user_styles = "solarized.css";
+      #content.user_styles = "solarized.css";
       downloads.position = "bottom";
       tabs = {
         show = "multiple";
@@ -537,9 +535,10 @@
         background = true;
         title.format = "{audio}{current_title}";
       };
+      scrolling.smooth = true;
       fonts = {
         prompts = "12pt JetBrainsMono Nerd Font";
-        hints = "12pt JetBrainsMono Nerd Font";
+        hints = "10pt JetBrainsMono Nerd Font";
         statusbar = "12pt JetBrainsMono Nerd Font";
         contextmenu = "10pt JetBrainsMono Nerd Font";
         completion = {
@@ -549,9 +548,11 @@
         web = {
           size.default = 16;
           family = {
-            sans_serif = "JetBrainsMono Nerd Font";
             standard = "JetBrainsMono Nerd Font";
+            sans_serif = "JetBrainsMono Nerd Font";
             fixed = "JetBrainsMono Nerd Font";
+            cursive = "JetBrainsMono Nerd Font";
+            fantasy = "JetBrainsMono Nerd Font";
           };
         };
         tabs = {
@@ -559,11 +560,9 @@
           unselected = "10pt JetBrainsMono Nerd Font";
         };
       };
-
-      url = {
-        start_pages = "https://www.google.com";
-        #searchengines = "https://google.com/search?hl=en&q={}";
-      };
+      url = { start_pages = "https://www.google.com"; };
+      content.blocking.whitelist =
+        [ "*://xeiaso.net/*" "*://ethicalads.io/*" "*://*.ethicalads.io/*" ];
       colors = {
         statusbar = {
           normal = {
@@ -617,8 +616,9 @@
           };
         };
         webpage = {
-          bg = "#002b36";
-          darkmode.enabled = true;
+          bg = "#fdf6e3";
+          preferred_color_scheme = "dark";
+          darkmode.enabled = false;
           darkmode.policy.images = "never";
         };
         downloads = {

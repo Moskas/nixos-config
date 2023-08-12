@@ -16,25 +16,38 @@
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
   # Enabling latest linux kernel
   boot.kernelPackages = pkgs.linuxPackages_zen;
-  # Enable nvidia driver
-  hardware.nvidia.modesetting.enable = true;
-  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.beta;
 
   # Virtualisation and virt-manager
   virtualisation.libvirtd.enable = true;
 
   services.xserver = {
     videoDrivers = [ "nvidia" ];
-    dpi = 110; # for my 15" laptop
+    dpi = 100;
     libinput = {
       enable = true;
       mouse = { accelProfile = "flat"; };
       touchpad = { };
     };
   };
-  hardware.opengl = {
-    enable = true;
-    driSupport32Bit = true;
+  hardware = {
+    cpu.intel.updateMicrocode = true;
+    opengl = {
+      enable = true;
+      driSupport32Bit = true;
+    };
+    #fancontrol = { enable = true; };
+    # For accessing the rgb
+    i2c.enable = true;
+    # Enable nvidia driver
+    nvidia = {
+      powerManagement.enable = true;
+      modesetting.enable = true;
+      package = config.boot.kernelPackages.nvidiaPackages.beta;
+    };
+    bluetooth = {
+      enable = true;
+      package = pkgs.bluezFull;
+    };
   };
   # For steam streaming
   hardware.steam-hardware.enable = true;
@@ -84,29 +97,26 @@
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-  hardware.bluetooth = {
-    enable = true;
-    package = pkgs.bluezFull;
-  };
+
   # Graphical environment
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = false;
   environment.gnome.excludePackages = (with pkgs; [ gnome-photos gnome-tour ])
     ++ (with pkgs.gnome; [
-    cheese # webcam tool
-    gnome-music
-    gnome-terminal
-    gedit # text editor
-    epiphany # web browser
-    geary # email reader
-    evince # document viewer
-    gnome-characters
-    totem # video player
-    tali # poker game
-    iagno # go game
-    hitori # sudoku game
-    atomix # puzzle game
-  ]);
+      cheese # webcam tool
+      gnome-music
+      gnome-terminal
+      gedit # text editor
+      epiphany # web browser
+      geary # email reader
+      evince # document viewer
+      gnome-characters
+      totem # video player
+      tali # poker game
+      iagno # go game
+      hitori # sudoku game
+      atomix # puzzle game
+    ]);
   services.xserver.windowManager.qtile.enable = true;
   services.xserver.windowManager.awesome.enable = false;
   services.xserver.desktopManager.plasma5.enable = false;
@@ -150,7 +160,7 @@
   users.users.moskas = {
     isNormalUser = true;
     description = "Moskas";
-    extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
+    extraGroups = [ "networkmanager" "wheel" "libvirtd" "i2c" ];
     shell = pkgs.zsh;
     packages = with pkgs; [ firefox discord-canary vintagestory stdenv ];
   };
