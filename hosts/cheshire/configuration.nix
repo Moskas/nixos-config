@@ -240,7 +240,9 @@
     enableSSHSupport = true;
   };
 
-  programs.dconf.enable = true;
+  programs.dconf = {
+    enable = true;
+  };
   fonts = {
     fontDir.enable = true;
     enableDefaultPackages = true;
@@ -270,9 +272,14 @@
     };
   };
 
-  virtualisation.docker = {
-    enable = true;
-    storageDriver = "btrfs";
+  virtualisation = {
+    libvirtd = {
+      enable = true;
+    };
+    docker = {
+      enable = true;
+      storageDriver = "btrfs";
+    };
   };
 
   # Copy the NixOS configuration file and link it from the resulting system

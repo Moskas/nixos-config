@@ -103,7 +103,15 @@ in
     wineWowPackages.stable
     winetricks
     feh
+    virt-manager
   ];
+
+  dconf.settings = {
+    "org/virt-manager/virt-manager/connections" = {
+      autoconnect = [ "qemu:///system" ];
+      uris = [ "qemu:///system" ];
+    };
+  };
 
   #xresources = {
   #  path = "$HOME/.Xresources";
@@ -133,8 +141,6 @@ in
     size = 64;
     package = pkgs.phinger-cursors;
     name = "phinger-cursors-light";
-    #package = pkgs.capitaine-cursors-themed;
-    #name = "Capitaine Cursors (Gruvbox) - White";
   };
 
   programs.pandoc = { enable = true; };
@@ -376,10 +382,10 @@ in
         gap_size = 5;
         gaps = true;
         transparency = 10;
-        max_icon_size = 64;
+        max_icon_size = 90;
         min_icon_size = 32;
         frame_color = "#458588";
-        font = "JetBrainsMono Nerd Font 11";
+        font = "JetBrainsMono Nerd Font 10";
         format = ''
           <b>%s</b>
           %b'';
