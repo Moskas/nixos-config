@@ -2,8 +2,20 @@
 
 * Devices
 - Virtual - virtual machine for testing
+- Shimakaze - NixOS WSL config
 - Omen - my (gaming) laptop
-- Gungnir - not yet added
+- Cheshire - my main PC
 - Pixel - not yet fully added
-- Boox - not yet added
-- Optiplex - not yet added
+- Laffey - not yet added
+
+* Modules
+** Browsers
+- Brave
+- Firefox
+** mpv
+** mpd
+** git
+- git
+- github cli
+** diff
+Small script to show differences between newly generated nixos generation.
