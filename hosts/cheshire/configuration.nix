@@ -52,7 +52,6 @@
     supportedFilesystems = [ "ntfs" ];
   };
 
-
   # Enabling latest linux kernel
   boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
 

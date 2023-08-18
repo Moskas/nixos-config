@@ -13,7 +13,6 @@
     #nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-23.05";
     NixOS-WSL = {
       url = "github:nix-community/NixOS-WSL";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
   outputs = inputs@{ self, nixpkgs, home-manager, nur, NixOS-WSL, ... }:
