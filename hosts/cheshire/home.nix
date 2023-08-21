@@ -9,20 +9,20 @@ let
   #        sha256 = "";
   #      };
   #    };
-  #  });
-  random-character = import ../../modules/scripts/random-character.nix { inherit pkgs; };
+  #  }); Keeping that as a note to self if I ever need to override some package
+  #random-character = import ../../modules/scripts/random-character.nix { inherit pkgs; };
   random-wallpaper = import ../../modules/scripts/random-wallpaper.nix { inherit pkgs; };
 in
 {
   imports = [
     ./wallpapers.nix
-    ../../modules/newsboat.nix
-    ../../modules/browsers/firefox.nix
-    ../../modules/browsers/brave.nix
-    ../../modules/browsers/qutebrowser.nix
-    ../../modules/git/git.nix
-    ../../modules/mpv/mpv.nix
-    ../../modules/mpd/mpd.nix
+    ../../modules/browsers
+    ../../modules/git
+    ../../modules/media
+    ../../modules/editors
+    ../../modules/shell
+    ../../modules/email
+    ../../modules/services
   ];
 
   # Home Manager needs a bit of information about you and the
@@ -43,7 +43,6 @@ in
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
   home.packages = with pkgs; [
-    lazygit
     jq
     manga-cli
     ani-cli
@@ -98,7 +97,6 @@ in
       categories = [ "Network" ];
     })
     random-wallpaper
-    random-character
     obs-studio
     discord
     wineWowPackages.stable
@@ -154,149 +152,6 @@ in
     pinentryFlavor = "tty";
   };
 
-  programs.zsh = {
-    enable = true;
-    shellAliases = {
-      ls = "exa --grid --color always --icons --sort=type";
-      ll = "exa --long --color always --icons --sort=type";
-      la = "exa --grid --all --color auto --icons --sort=type";
-      lla = "exa --long --all --color auto --icons --sort=type";
-      e = "$EDITOR";
-    };
-    history = {
-      size = 10000;
-      path = "${config.xdg.dataHome}/zsh/history";
-    };
-    enableAutosuggestions = true;
-    syntaxHighlighting.enable = true;
-    autocd = false;
-    defaultKeymap = "emacs";
-    plugins = [ ];
-    initExtra = "\n    export PATH=~/.config/emacs/bin:$PATH\n export PATH=~/.local/share/applications/:$PATH\n eval \"$(direnv hook zsh)\"   ";
-  };
-  programs.starship = {
-    enable = true;
-    enableZshIntegration = true;
-    package = pkgs.starship;
-    settings = {
-      add_newline = false;
-      palette = "gruvbox";
-      format = lib.concatStrings [
-        "$os$username$hostname$rust$python$node$lua$git_branch$git_status$git_state$cmd_duration$fill$time$line_break$directory$sudo$character"
-      ];
-      scan_timeout = 10;
-      character = {
-        success_symbol = "[ ](blue)";
-        error_symbol = "[ ](red)";
-      };
-      fill = { symbol = " "; };
-      time = {
-        disabled = false;
-        format = "[ $time ]($style)";
-        time_format = "%T";
-        style = "fg:bg  bg:yellow";
-      };
-      username = {
-        disabled = false;
-        style_user = "fg:bg bg:blue bold";
-        style_root = "fg:red bg:blue  italic";
-        format = "[ $user ]($style)";
-        show_always = true;
-      };
-      hostname = {
-        ssh_only = false;
-        format = "[ $hostname ]($style)";
-        style = " fg:bg bg:red bold";
-        disabled = false;
-      };
-      memory_usage = {
-        disabled = false;
-        threshold = -1;
-        symbol = " 󰍛 ";
-        format = "[$symbol]($style)[$ram( | $swap) ]($style)";
-        style = " fg:bg bg:green";
-      };
-      directory = {
-        read_only = " ";
-        home_symbol = " ~";
-        truncation_length = 4;
-        truncation_symbol = "…/";
-        truncate_to_repo = true;
-      };
-      rust = {
-        symbol = "🦀";
-        format = "[ $symbol $version ](bg:yellow fg:bg )";
-      };
-      python = { format = "[ $symbol $version ](bg:yellow fg:bg )"; };
-      c = {
-        symbol = " ";
-        detect_extensions = ''["c", "h", "cpp"]'';
-      };
-      os = {
-        disabled = false;
-        style = "bg:blue";
-        symbols = {
-          Arch = "[  ](fg:bg $style)";
-          NixOS = "[  ](fg:bg $style)";
-          Macos = "[  ](fg:red $style)";
-          Linux = "[  ](fg:fg $style)";
-        };
-      };
-      nix_shell = {
-        symbol = " ";
-        format = "[$symbol](bold blue)";
-      };
-      cmd_duration = {
-        min_time = 500;
-        format = "[ took $duration ](fg:bg bg:yellow)";
-      };
-      git_branch = {
-        format = "[ $symbol$branch(:$remote_branch) ](bg:purple fg:bg )";
-        symbol = " ";
-      };
-      git_status = {
-        format = "([$all_status ](bg:purple fg:bg ))";
-        stashed = "📦";
-        modified = "📝";
-        staged = "+($count)";
-      };
-      palettes.solarized = {
-        fg = "#93a1a1";
-        fg2 = "#839496";
-        fg3 = "#657b83";
-        fg4 = "#586e75";
-        bg = "#282828";
-        bg2 = "#073642";
-        red = "#dc322f";
-        green = "#b8bb26";
-        blue = "#268bd2";
-        cyan = "#2aa198";
-        yellow = "#b58900";
-        purple = "#6c71c4";
-        magenta = "#d33682";
-        brwhite = "#fbf1c7";
-        white = "#eee8d5";
-      };
-      palettes.gruvbox = {
-        fg = "#ebdbb2";
-        bg = "#1d2021";
-        yellow = "#fabd2f";
-        dark-yellow = "#d79921";
-        green = "#b8bb26";
-        dark-green = "#98971a";
-        red = "#fb4932";
-        dark-red = "#cc241d";
-        magenta = "#d3869b";
-        dark-magenta = "#b16286";
-        blue = "#83a598";
-        dark-blue = "#458588";
-        cyan = "#8ec07c";
-        dark-cyan = "#689d6a";
-        gray = "#666666";
-        dark-gray = "#3d3d3d";
-      };
-    };
-  };
 
   programs.kitty = {
     enable = true;
@@ -371,53 +226,7 @@ in
     '';
   };
 
-  services.dunst = {
-    enable = true;
-    settings = {
-      global = {
-        width = 300;
-        height = 300;
-        offset = "30x50";
-        origin = "top-right";
-        padding = 8;
-        gap_size = 5;
-        gaps = true;
-        transparency = 10;
-        max_icon_size = 90;
-        min_icon_size = 32;
-        frame_color = "#458588";
-        font = "JetBrainsMono Nerd Font 10";
-        format = ''
-          <b>%s</b>
-          %b'';
-        show_indicators = false;
-      };
 
-      urgency_normal = {
-        background = "#3c3836";
-        foreground = "#fbf1c7";
-        timeout = 10;
-      };
-
-      discord = {
-        appname = ".Discord-wrapped";
-        frame_color = "#d3869b";
-      };
-
-      flameshot = {
-        appname = ".flameshot-wrapped";
-        frame_color = "#cc241d";
-      };
-
-    };
-  };
-
-  services.redshift = {
-    enable = true;
-    provider = "manual";
-    latitude = 52.2297;
-    longitude = 21.0122;
-  };
 
   gtk = {
     enable = true;
@@ -455,81 +264,12 @@ in
 
   home.sessionVariables.GTK_THEME = "Gruvbox-Dark-BL";
 
-  services.flameshot = {
-    enable = true;
-    settings = {
-      General = {
-        autoCloseIdleDaemon = true;
-        checkForUpdates = false;
-        contrastOpacity = 188;
-        saveAfterCopy = true;
-        savePath = "/home/${username}/Pictures/Screenshots";
-        savePathFixed = true;
-        uiColor = "#282828";
-        useJpgForClipboard = false;
-        disabledTrayIcon = true;
-        showStartupLaunchMessage = false;
-      };
-    };
-  };
-
-  programs.thunderbird = {
-    enable = true;
-    profiles.${username} = {
-      isDefault = true;
-    };
-  };
-
-  services.picom = {
-    enable = true;
-    backend = "glx";
-    vSync = true;
-    opacityRules = [
-      "80:class_g = 'kitty' && !focused"
-      "90:class_g = 'kitty' && focused"
-      "95:class_g = 'Emacs' && !focused"
-      "98:class_g = 'Emacs' && focused"
-      "95:class_g = 'Zathura' && !focused"
-      "98:class_g = 'Zathura' && focused"
-      "95:class_g = 'discord' && !focused"
-      "98:class_g = 'discord' && focused"
-      "95:class_g = 'qutebrowser' && !focused"
-    ];
-    settings = { blur = { method = "dual_kawase"; }; };
-  };
-
   programs.rbw = {
     enable = true;
     settings = {
       email = "marcin.j.moskal@gmail.com";
       lock_timeout = 300;
     };
-  };
-
-  programs.emacs = {
-    enable = true;
-    package = pkgs.emacs29;
-    extraPackages = epkgs:
-      with epkgs; [
-        vterm-toggle # Added as doom-emacs vterm won't compile due to read only directory
-        elcord # Discord status
-        transient
-        mastodon
-      ];
-  };
-
-  programs.neovim = {
-    enable = true;
-    coc = { enable = true; };
-    vimAlias = true;
-    plugins = with pkgs.vimPlugins; [
-      vim-nix
-      vim-airline
-      vim-airline-themes
-    ];
-    extraConfig = ''
-      nnoremap <esc> :noh<return><esc>
-    '';
   };
 
   programs.rofi = {
@@ -551,18 +291,6 @@ in
     preset = "Bass";
   };
 
-  programs.btop = {
-    enable = true;
-    settings = {
-      color_theme = "gruvbox_dark_v2";
-      theme_background = false;
-    };
-  };
-
-  programs.zoxide = {
-    enable = true;
-    enableZshIntegration = true;
-  };
 
   programs.zathura = {
     enable = true;
@@ -617,15 +345,6 @@ in
       sub-langs = "all";
       downloader = "aria2c";
       downloader-args = "aria2c:'-c -x8 -s8 -k1M'";
-    };
-  };
-
-  programs.bat = {
-    enable = true;
-    config = {
-      theme = "gruvbox-dark";
-      color = "always";
-      pager = "less -FR";
     };
   };
 }

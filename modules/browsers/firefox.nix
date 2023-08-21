@@ -45,6 +45,11 @@
             definedAliases = [ "@nw" ];
           };
 
+          "Osu Beatmaps" = {
+            urls = "https://osu.ppy.sh/beatmapsets?q={searchTerms}";
+            definedAliases = [ "@ob" ];
+          };
+
           "Bing".metaData.hidden = true;
           "Google".metaData.alias =
             "@g"; # builtin engines only support specifying one additional alias
@@ -176,55 +181,6 @@
           --purple: #b16286;
           --aqua: #689d6a;
           --orange: #d65d0e;
-        }
-
-        @-moz-document domain(fosstodon.org) {
-          .layout-single-column .ui__header {
-            background-color: var(--bg0) !important;
-          }
-
-          a {
-            color: var(--orange) !important;
-          }
-
-          a.button {
-            background-color: var(--blue);
-          }
-
-          a.button:hover {
-            background-color: #83a598 !important;
-          }
-
-          .status__prepend,
-          .status,
-          .status-public,
-          .status-reply {
-            color: var(--fg0) !important;
-            background-color: var(--bg0) !important;
-          }
-
-          .column-header {
-            background-color: var(--bg1) !important;
-            color: var(--fg1) !important;
-          }
-
-          .status__prepend,
-          .status,
-          .status-public,
-          .status-reply,
-          .column-header>p {
-            color: var(--fg0) !important;
-          }
-
-          bdi {
-            strong {
-              color: #b8bb26 !important;
-            }
-          }
-
-          .columns-area__panels__pane--navigational .navigation-panel {
-            background-color: var(--bg0) !important;
-          }
         }
 
         @-moz-document domain(github.com) {

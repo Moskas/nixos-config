@@ -22,7 +22,7 @@
   # Github helper is also git so yeah
   programs.gh = {
     enable = true;
-    enableGitCredentialHelper = true;
+    gitCredentialHelper.enable = true;
     settings = {
       git_protocol = "ssh";
       prompt = "enabled";
@@ -31,5 +31,10 @@
         pv = "pr view";
       };
     };
+  };
+
+  # Sometimes you need to checkout the git history in a more managable way
+  programs.lazygit = {
+    enable = true;
   };
 }

@@ -7,15 +7,22 @@
 - Cheshire - my main PC
 - Pixel - not yet fully added
 - Laffey - not yet added
-
+Yes, these are names of warships.
 * Modules
 ** Browsers
 - Brave
 - Firefox
-** mpv
-** mpd
+- Qutebrowser
+** Media
+- mpv
+  With additional scripts to make watching youtube videos more enjoyable.
+- mpd
+  Best music player software ever.
 ** git
 - git
 - github cli
-** diff
+- lazygit
+** Scripts
+- random-wallpaper
+- diff
 Small script to show differences between newly generated nixos generation.
