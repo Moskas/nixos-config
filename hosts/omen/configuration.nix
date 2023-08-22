@@ -8,6 +8,8 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    ../../modules/fonts
+    ../../modules/scripts/diff.nix
   ];
 
   # Bootloader.
@@ -162,7 +164,7 @@
     description = "Moskas";
     extraGroups = [ "networkmanager" "wheel" "libvirtd" "i2c" ];
     shell = pkgs.zsh;
-    packages = with pkgs; [ firefox discord-canary vintagestory stdenv ];
+    packages = with pkgs; [ firefox stdenv ];
   };
   environment.variables = {
     EDITOR = "emacs";
@@ -229,18 +231,9 @@
   };
   programs.hyprland = {
     enable = false;
-    nvidiaPatches = true;
+    enableNvidiaPatches = true;
   };
   programs.dconf.enable = true;
-  fonts.enableDefaultFonts = false;
-  fonts.fonts = with pkgs; [
-    nerdfonts
-    noto-fonts-emoji
-    ipafont
-    kochi-substitute
-  ];
-
-  # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;

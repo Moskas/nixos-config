@@ -1,17 +1,18 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, e-mail, username, ... }:
 
 {
   imports = [
     ./wallpapers.nix
-    ../../modules/newsboat.nix
-    ../../modules/firefox.nix
-    ../../modules/mpv/mpv.nix
+    ../../modules/shell/newsboat.nix
+    ../../modules/browsers/firefox.nix
+    ../../modules/media
+    ../../modules/git/git.nix
   ];
 
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
-  home.username = "moskas";
-  home.homeDirectory = "/home/moskas";
+  home.username = "${username}";
+  home.homeDirectory = "/home/${username}";
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
@@ -26,7 +27,6 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
   home.packages = with pkgs; [
-    lazygit
     jq
     trackma
     manga-cli
@@ -46,6 +46,7 @@
     rnix-lsp
     nixfmt
     betterdiscordctl
+    discord
     steam
     protonup-ng
     heroic
@@ -73,7 +74,7 @@
     html-tidy
     nodePackages_latest.prettier
     pkg-config
-    osu-lazer
+    osu-lazer-bin
     epr
     direnv
   ];
@@ -132,37 +133,6 @@
         id = "aalmjfpohaedoddkobnibokclgeefamn"; # Gumbo: Twitch Companion
       }
     ];
-  };
-  programs.git = {
-    enable = true;
-    userName = "Moskas";
-    userEmail = "minemoskas@gmail.com";
-    extraConfig = { init.defaultBranch = "master"; };
-    aliases = {
-      c = "clone";
-      ci = "commit";
-      co = "checkout";
-      s = "status";
-      a = "add";
-      d = "diff";
-      p = "push";
-      pu = "pull";
-    };
-  };
-
-  programs.gh = {
-    enable = true;
-    enableGitCredentialHelper = true;
-    settings = {
-      git_protocol = "ssh";
-
-      prompt = "enabled";
-
-      aliases = {
-        co = "pr checkout";
-        pv = "pr view";
-      };
-    };
   };
 
   programs.gpg = { enable = true; };
@@ -387,38 +357,6 @@
     };
   };
 
-  services.mpd = {
-    enable = true;
-    musicDirectory = "/home/moskas/Music";
-    network = {
-      listenAddress = "any";
-      port = 6600;
-    };
-    extraConfig = ''
-      audio_output {
-      type  "pipewire"
-      name  "My Pipewire"
-      }
-      audio_output {
-      type    "fifo"
-      name    "my_fifo"
-      path    "/tmp/mpd.fifo"
-      format  "44100:16:2"
-      }
-    '';
-  };
-
-  programs.ncmpcpp = {
-    enable = true;
-    settings = {
-      visualizer_data_source = "/tmp/mpd.fifo";
-      visualizer_output_name = "my_fifo";
-      visualizer_in_stereo = "yes";
-      #visualizer_type = "spectrum";
-      visualizer_look = "+";
-    };
-  };
-
   services.mpd-discord-rpc = {
     enable = true;
     settings = {
@@ -451,7 +389,7 @@
         checkForUpdates = false;
         contrastOpacity = 188;
         saveAfterCopy = true;
-        savePath = "/home/moskas/Pictures/Screenshots";
+        savePath = "/home/${username}/Pictures/Screenshots";
         savePathFixed = true;
         uiColor = "#2075c7";
         useJpgForClipboard = false;

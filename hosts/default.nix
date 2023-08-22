@@ -54,7 +54,7 @@ in {
       {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
-        home-manager.extraSpecialArgs = { inherit username; };
+        home-manager.extraSpecialArgs = { inherit username e-mail; };
         home-manager.users.${username}.imports = [ (import ./omen/home.nix) ];
       }
     ];
