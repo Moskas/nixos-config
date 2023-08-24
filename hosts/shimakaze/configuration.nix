@@ -1,7 +1,10 @@
 { lib, pkgs, config, modulesPath, ... }:
 
 {
-  imports = [ "${modulesPath}/profiles/minimal.nix" ../../modules/diff.nix ];
+  imports = [
+    "${modulesPath}/profiles/minimal.nix"
+    ../../modules/scripts/diff.nix
+  ];
 
   wsl = {
     enable = true;
@@ -24,7 +27,7 @@
       dates = "daily";
       options = "--delete-older-than 3d";
     };
-    settings = { builders-use-substitutes = true; };
+    #settings = { builders-use-substitutes = true; };
   };
 
   programs.zsh.enable = true;
@@ -50,17 +53,10 @@
   '';
 
   environment.systemPackages = with pkgs; [
-    neofetch
-    onefetch
-    btop
-    neovim
-    ranger
     wget
     git
     ripgrep
     nixfmt
-    exa
-    zoxide
     direnv
   ];
 

@@ -76,7 +76,6 @@ in
     bitwarden
     pinentry
     easyeffects
-    exa
     xclip
     zip
     unzip

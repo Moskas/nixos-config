@@ -46,7 +46,9 @@
           };
 
           "Osu Beatmaps" = {
-            urls = "https://osu.ppy.sh/beatmapsets?q={searchTerms}";
+            urls = [{
+              template = "https://osu.ppy.sh/beatmapsets?q={searchTerms}";
+            }];
             definedAliases = [ "@ob" ];
           };
 

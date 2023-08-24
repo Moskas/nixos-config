@@ -18,23 +18,4 @@
       pu = "pull";
     };
   };
-
-  # Github helper is also git so yeah
-  programs.gh = {
-    enable = true;
-    gitCredentialHelper.enable = true;
-    settings = {
-      git_protocol = "ssh";
-      prompt = "enabled";
-      aliases = {
-        co = "pr checkout";
-        pv = "pr view";
-      };
-    };
-  };
-
-  # Sometimes you need to checkout the git history in a more managable way
-  programs.lazygit = {
-    enable = true;
-  };
 }

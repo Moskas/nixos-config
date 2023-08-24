@@ -475,10 +475,6 @@
         tags = [ "Twitch" ];
         title = "enlynn_";
       }
-      {
-        url = "https://twitchrss.appspot.com/vod/cirno_tv";
-        tags = [ "Twitch" ];
-      }
       #{
       #url = "https://twitchrss.appspot.com/vod/cirno_tv"; tags = [ "Twitch" ];
       #}

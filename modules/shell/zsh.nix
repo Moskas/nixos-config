@@ -4,10 +4,10 @@
   programs.zsh = {
     enable = true;
     shellAliases = {
-      ls = "exa --grid --color always --icons --sort=type";
-      ll = "exa --long --color always --icons --sort=type";
-      la = "exa --grid --all --color auto --icons --sort=type";
-      lla = "exa --long --all --color auto --icons --sort=type";
+      #ls = "exa --grid --color always --icons --sort=type";
+      #ll = "exa --long --color always --icons --sort=type";
+      #la = "exa --grid --all --color auto --icons --sort=type";
+      #lla = "exa --long --all --color auto --icons --sort=type";
       e = "$EDITOR";
     };
     history = {

@@ -1,5 +1,5 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports = [ ./git.nix ];
+  imports = [ ./git.nix ./lazygit.nix ./gh.nix ];
 }
