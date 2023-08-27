@@ -59,7 +59,6 @@ in
     rnix-lsp
     nixfmt
     betterdiscordctl
-    steam
     protonup-ng
     heroic
     bottles
