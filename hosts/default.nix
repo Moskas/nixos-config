@@ -1,4 +1,4 @@
-{ lib, inputs, nixpkgs, home-manager, username, e-mail, nur, NixOS-WSL, ... }:
+{ lib, inputs, nixpkgs, home-manager, username, e-mail, nur, wsl, ... }:
 
 let
   system = "x86_64-linux";
@@ -32,7 +32,7 @@ in {
     specialArgs = { inherit inputs username; };
     modules = [
       ./shimakaze/configuration.nix
-      NixOS-WSL.nixosModules.wsl
+      wsl.nixosModules.wsl
       home-manager.nixosModules.home-manager
       {
         home-manager.useGlobalPkgs = true;
