@@ -7,9 +7,6 @@ let
     config.allowUnfree = true;
   };
   lib = nixpkgs.lib;
-  #nur-modules = import nur {
-  #  nurpgks = pkgs.legacyPackages.x86_64-linux;
-  #};
 in {
   virtual = lib.nixosSystem {
     inherit system;
@@ -76,20 +73,20 @@ in {
       }
     ];
   };
-  #optiplex = lib.nixosSystem {
-  #  inherit system;
-  #  specialArgs = { inherit inputs username; };
-  #  modules = [
-  #    ./optiplex
-  #    ./optiplex/configuration.nix
-  #    home-manager.nixosModules.home-manager
-  #    {
-  #      home-manager.useGlobalPkgs = true;
-  #      home-manager.useUserPackages = true;
-  #      home-manager.extraSpecialArgs = { inherit username; };
-  #      home-manager.users.${username}.imports =
-  #        [ (import ./optiplex/home.nix) ];
-  #    }
-  #  ];
-  #};
+  laffey = lib.nixosSystem {
+    inherit system;
+    specialArgs = { inherit inputs username; };
+    modules = [
+      ./laffey
+      ./laffey/configuration.nix
+      home-manager.nixosModules.home-manager
+      {
+        home-manager.useGlobalPkgs = true;
+        home-manager.useUserPackages = true;
+        home-manager.extraSpecialArgs = { inherit username; };
+        home-manager.users.${username}.imports =
+          [ (import ./laffey/home.nix) ];
+      }
+    ];
+  };
 }
