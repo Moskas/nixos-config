@@ -1,4 +1,4 @@
-{ lib, inputs, nixpkgs, home-manager, username, e-mail, nur, wsl, ... }:
+{ lib, inputs, nixpkgs, nixpkgsStable, home-manager, username, e-mail, nur, wsl, ... }:
 
 let
   system = "x86_64-linux";
@@ -6,7 +6,12 @@ let
     inherit system;
     config.allowUnfree = true;
   };
+  stablePkgs = import nixpkgsStable {
+    inherit system;
+    config.allowUnfree = true;
+  };
   lib = nixpkgs.lib;
+  stableLib = nixpkgsStable.lib;
 in {
   virtual = lib.nixosSystem {
     inherit system;
@@ -73,20 +78,12 @@ in {
       }
     ];
   };
-  laffey = lib.nixosSystem {
+  laffey = stableLib.nixosSystem {
     inherit system;
     specialArgs = { inherit inputs username; };
     modules = [
       ./laffey
       ./laffey/configuration.nix
-      home-manager.nixosModules.home-manager
-      {
-        home-manager.useGlobalPkgs = true;
-        home-manager.useUserPackages = true;
-        home-manager.extraSpecialArgs = { inherit username; };
-        home-manager.users.${username}.imports =
-          [ (import ./laffey/home.nix) ];
-      }
     ];
   };
 }
