@@ -105,6 +105,18 @@
     };
   };
 
+  programs.steam = {
+    enable = true;
+    gamescopeSession.enable = false;
+  };
+
+  programs.gamescope = {
+    enable = true;
+    env = {
+      __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+    };
+  };
+
   services.xserver = {
     videoDrivers = [ "nvidia" ];
     dpi = 100;
@@ -272,6 +284,7 @@
     };
     docker = {
       enable = true;
+      enableNvidia = true;
       storageDriver = "btrfs";
     };
   };

@@ -9,10 +9,11 @@
       vim-nix
       vim-airline
       vim-airline-themes
-      gruvbox
+      gruvbox-material
     ];
     extraConfig = ''
       nnoremap <esc> :noh<return><esc>
+      colorscheme gruvbox-material
     '';
   };
 }

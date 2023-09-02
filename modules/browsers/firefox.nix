@@ -15,6 +15,7 @@
       };
       search = {
         default = "StartPage";
+        force = true;
         engines = {
           "Nix Packages" = {
             urls = [{
