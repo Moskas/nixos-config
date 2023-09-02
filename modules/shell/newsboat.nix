@@ -374,6 +374,10 @@
         tags = [ "Tech" "Nix" "Blog" ];
       }
       {
+        url = "https://determinate.systems/rss.xml";
+        tags = [ "Nix" ];
+      }
+      {
         url = "https://morss.it/https://www.phoronix.com/rss.php";
         tags = [ "Blog" ];
       }
