@@ -19,9 +19,9 @@
       fill = { symbol = " "; };
       time = {
         disabled = false;
-        format = "[ $time ]($style)";
+        format = "[ 󰅐 $time ]($style)";
         time_format = "%T";
-        style = "fg:bg  bg:yellow";
+        style = "fg:magenta  bg:bg";
       };
       username = {
         disabled = false;

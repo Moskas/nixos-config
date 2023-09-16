@@ -11,6 +11,7 @@
       ./hardware-configuration.nix
       ../../modules/fonts
       ../../modules/scripts/diff.nix
+      ../../modules/services/tailscale.nix
     ];
 
   services.udev = {
@@ -117,6 +118,10 @@
     };
   };
 
+  programs.nix-ld = {
+    enable = true;
+  };
+
   services.xserver = {
     videoDrivers = [ "nvidia" ];
     dpi = 100;
@@ -146,7 +151,7 @@
     };
     firewall = {
       allowedTCPPorts = [ 22 6600 24070 ];
-      allowedUDPPorts = [ 24070 ];
+      allowedUDPPorts = [ 22 24070 ];
       enable = true;
     };
   };
@@ -159,7 +164,9 @@
     layout = "pl";
     displayManager.gdm.enable = true;
     desktopManager.gnome.enable = false;
-    windowManager.qtile.enable = true;
+    windowManager.qtile = {
+      enable = true;
+    };
   };
 
   programs.hyprland = {
@@ -181,6 +188,7 @@
       volumeStep = "5%";
     };
   };
+
   hardware.pulseaudio.enable = false;
   services.pipewire = {
     enable = true;

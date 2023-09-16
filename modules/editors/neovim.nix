@@ -13,7 +13,6 @@
     ];
     extraConfig = ''
       nnoremap <esc> :noh<return><esc>
-      colorscheme gruvbox-material
     '';
   };
 }

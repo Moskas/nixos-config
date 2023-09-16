@@ -30,13 +30,32 @@
 
   programs.ncmpcpp = {
     enable = true;
+    mpdMusicDir = "~/Music";
     settings = {
       visualizer_data_source = "/tmp/mpd.fifo";
       visualizer_output_name = "my_fifo";
       visualizer_in_stereo = "yes";
       #visualizer_type = "spectrum";
       visualizer_look = "+";
+      song_library_format = "{{%a - %t}|{%f}}{$R%l}";
+      song_status_format = "{{%a{ - %t}}|{ - %f}{ - %b{ (%y)}}}";
+      progressbar_look = "── ";
+      progressbar_color = "black";
+      statusbar_visibility = "yes";
+      now_playing_prefix = "$b$5";
+      now_playing_suffix = "$/b$9";
+      playlist_shorten_total_times = "yes";
     };
+    bindings =
+      [
+        {
+          key = "j";
+          command = "scroll_down";
+        }
+        { key = "k"; command = "scroll_up"; }
+        { key = "J"; command = [ "select_item" "scroll_down" ]; }
+        { key = "K"; command = [ "select_item" "scroll_up" ]; }
+      ];
   };
 
   services.mpd-discord-rpc = {

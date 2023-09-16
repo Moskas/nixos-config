@@ -5,7 +5,8 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ # Include the results of the hardware scan.
+  imports = [
+    # Include the results of the hardware scan.
     ./hardware-configuration.nix
   ];
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -91,8 +92,16 @@
   };
 
   fonts.fontconfig.enable = true;
-  fonts.fonts = with pkgs; [ nerdfonts ];
-
+  fonts = {
+    fontDir.enable = true;
+    enableDefaultPackages = true;
+    packages = with pkgs; [
+      (nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" ]; })
+      noto-fonts-emoji
+      ipafont
+      kochi-substitute
+    ];
+  };
   #home-manager.users.moskas = { pkgs, ... }: {
   #  home.packages = with pkgs; [ ];
   #  programs.zsh.enable = true;

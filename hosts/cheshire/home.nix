@@ -11,9 +11,9 @@ let
   #    };
   #  }); Keeping that as a note to self if I ever need to override some package
   #random-character = import ../../modules/scripts/random-character.nix { inherit pkgs; };
-  random-wallpaper = import ../../modules/scripts/random-wallpaper.nix { inherit pkgs; };
-in
-{
+  random-wallpaper =
+    import ../../modules/scripts/random-wallpaper.nix { inherit pkgs; };
+in {
   imports = [
     ./wallpapers.nix
     ../../modules/browsers
@@ -61,6 +61,8 @@ in
     betterdiscordctl
     protonup-ng
     heroic
+    steam-run
+    protontricks
     bottles
     mangohud
     goverlay
@@ -101,7 +103,20 @@ in
     winetricks
     feh
     virt-manager
+
+    # wayland testing
+    #waybar
+    #wl-gammactl
+    #wlsunset
+    #swww
+    #mako
   ];
+
+  services.wlsunset = {
+    enable = false;
+    latitude = "52.2297";
+    longitude = "21.0122";
+  };
 
   dconf.settings = {
     "org/virt-manager/virt-manager/connections" = {
@@ -150,11 +165,10 @@ in
     pinentryFlavor = "tty";
   };
 
-
   programs.kitty = {
     enable = true;
     extraConfig = ''
-      window_padding_width 4
+      window_padding_width 5
       font_family JetBrainsMono Nerd Font
       bold_font auto
       italic_font auto
@@ -224,8 +238,6 @@ in
     '';
   };
 
-
-
   gtk = {
     enable = true;
     theme = {
@@ -288,7 +300,6 @@ in
     enable = true;
     preset = "Bass";
   };
-
 
   programs.zathura = {
     enable = true;
