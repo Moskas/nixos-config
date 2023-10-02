@@ -33,7 +33,7 @@
       hostname = {
         ssh_only = false;
         format = "[ $hostname ]($style)";
-        style = " fg:bg bg:red bold";
+        style = " fg:bg bg:dark-blue bold";
         disabled = false;
       };
       memory_usage = {

@@ -3,7 +3,7 @@
 {
   programs.qutebrowser = {
     enable = true;
-    package = pkgs.qutebrowser-qt6;
+    package = pkgs.qutebrowser;
     searchEngines = {
       w = "https://en.wikipedia.org/wiki/Special:Search?search={}&go=Go&ns0=1";
       aw = "https://wiki.archlinux.org/?search={}";
@@ -48,10 +48,9 @@
           unselected = "10pt JetBrainsMono Nerd Font";
         };
       };
-      url = {
-        start_pages = "https://www.google.com";
-      };
-      content.blocking.whitelist = [ "*://xeiaso.net/*" "*://ethicalads.io/*" "*://*.ethicalads.io/*" ];
+      url = { start_pages = "https://www.google.com"; };
+      content.blocking.whitelist =
+        [ "*://xeiaso.net/*" "*://ethicalads.io/*" "*://*.ethicalads.io/*" ];
       colors = {
         statusbar = {
           normal = {

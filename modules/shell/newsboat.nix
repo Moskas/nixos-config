@@ -98,11 +98,6 @@
         title = "Wolfgang";
       }
       {
-        url = "https://www.youtube.com/feeds/videos.xml?channel_id=UC5UAwBUum7CPN5buc-_N1Fw";
-        tags = [ "Youtube" ];
-        title = "TheLinuxExperiment";
-      }
-      {
         url = "https://www.youtube.com/feeds/videos.xml?channel_id=UCR-DXc1voovS8nhAvccRZhg";
         tags = [ "Youtube" ];
         title = "Jeff Geerling";
