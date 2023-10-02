@@ -3,32 +3,31 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgsStable.url = "github:NixOS/nixpkgs/nixos-23.05";
+    #nixpkgsStable.url = "github:NixOS/nixpkgs/nixos-23.05";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    stable-home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgsStable";
-    };
-    nur = {
-      url = "github:nix-community/NUR";
-    };
+    #stable-home-manager = {
+    #  url = "github:nix-community/home-manager";
+    #  inputs.nixpkgs.follows = "nixpkgsStable";
+    #};
+    #nur = {
+    #  url = "github:nix-community/NUR";
+    #};
     wsl = {
       url = "github:nix-community/NixOS-WSL";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
   outputs =
-    { self, nixpkgs, nixpkgsStable, home-manager, nur, wsl, ... }@inputs:
+    { self, nixpkgs, home-manager, nur, wsl, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system} { config.allowUnfree = true; };
       username = "moskas";
       e-mail = "minemoskas@gmail.com";
       lib = nixpkgs.lib;
-      stableLib = nixpkgsStable.lib;
     in
     {
       nixosConfigurations = {
@@ -97,14 +96,14 @@
             }
           ];
         };
-        laffey = stableLib.nixosSystem {
-          inherit system;
-          specialArgs = { inherit inputs username; };
-          modules = [
-            ./hosts/laffey
-            ./hosts/laffey/configuration.nix
-          ];
-        };
+        #laffey = stableLib.nixosSystem {
+        #  inherit system;
+        #  specialArgs = { inherit inputs username; };
+        #  modules = [
+        #    ./hosts/laffey
+        #    ./hosts/laffey/configuration.nix
+        #  ];
+        #};
       };
     };
 }
