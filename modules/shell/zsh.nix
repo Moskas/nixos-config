@@ -19,6 +19,11 @@
     autocd = false;
     defaultKeymap = "emacs";
     plugins = [ ];
-    initExtra = "\n    export PATH=~/.config/emacs/bin:$PATH\n export PATH=~/.local/share/applications/:$PATH\n eval \"$(direnv hook zsh)\"   ";
+    initExtra = ''
+      export PATH=~/.config/emacs/bin:$PATH
+      export PATH=~/.local/share/applications/:$PATH
+      eval "$(direnv hook zsh)"
+      export PATH=~/.cargo/bin/:$PATH
+    '';
   };
 }

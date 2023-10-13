@@ -7,7 +7,7 @@
       global = {
         width = 300;
         height = 300;
-        offset = "30x50";
+        offset = "20x50";
         origin = "top-right";
         padding = 8;
         gap_size = 5;
@@ -15,7 +15,7 @@
         transparency = 10;
         max_icon_size = 90;
         min_icon_size = 32;
-        frame_color = "#458588";
+        frame_color = "#bdae93";
         font = "JetBrainsMono Nerd Font 10";
         format = ''
           <b>%s</b>

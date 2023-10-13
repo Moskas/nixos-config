@@ -85,6 +85,7 @@
         format = "([$all_status ](bg:purple fg:bg ))";
         stashed = "📦";
         modified = "📝";
+        untracked = "❓";
         staged = "+($count)";
       };
       palettes.solarized = {

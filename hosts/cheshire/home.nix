@@ -1,15 +1,17 @@
 { config, pkgs, lib, username, ... }:
 let
-  #  osu-lazer-bin = pkgs.osu-lazer-bin.overrideAttrs (oldAttrs: rec {
-  #    #inherit (oldAttrs) pname;
-  #    version = "2023.720.0";
-  #    osu-lazer-bin-src = {
-  #      x86_64-linux = {
-  #        url = "https://github.com/ppy/osu/releases/download/${version}/osu.AppImage";
-  #        sha256 = "";
-  #      };
-  #    };
-  #  }); Keeping that as a note to self if I ever need to override some package
+  # osu-lazer-bin = pkgs.osu-lazer-bin.overrideAttrs (oldAttrs: rec {
+  #   pname = "osu-lazer-bin";
+  #   version = "2023.1008.0";
+  #   name = "osu-lazer-bin-2023.1008.0";
+  #   osu-lazer-bin-src = {
+  #     x86_64-linux = {
+  #       url =
+  #         "https://github.com/ppy/osu/releases/download/${version}/osu.AppImage";
+  #       sha256 = "sha256-18lajjn7asdvfby67sjz4w3pbfndvqz7hjsb6s0ql2w2jz0x3439=";
+  #     };
+  #   };
+  # }); # Keeping that as a note to self if I ever need to override some package
   #random-character = import ../../modules/scripts/random-character.nix { inherit pkgs; };
   random-wallpaper =
     import ../../modules/scripts/random-wallpaper.nix { inherit pkgs; };
@@ -60,31 +62,31 @@ in {
     nixfmt
     betterdiscordctl
     protonup-ng
-    heroic
+    #heroic
     steam-run
     protontricks
-    bottles
+    #bottles
     mangohud
     goverlay
     prismlauncher
+    yuzu
     jre8
     ferium
-    sxiv
+    nsxiv
     i2c-tools
     betterlockscreen
     libnotify
     pulsemixer
     bitwarden
-    pinentry
+    #pinentry
     easyeffects
     xclip
     zip
     unzip
-    html-tidy
-    nodePackages_latest.prettier
+    unrar
     pkg-config
     osu-lazer-bin
-    epr
+    obsidian
     openrgb-with-all-plugins
     distrobox
     nicotine-plus
@@ -102,7 +104,10 @@ in {
     wineWowPackages.stable
     winetricks
     feh
+    lutgen
     virt-manager
+
+    nyxt
 
     # wayland testing
     #waybar
@@ -124,21 +129,6 @@ in {
       uris = [ "qemu:///system" ];
     };
   };
-
-  #xresources = {
-  #  path = "$HOME/.Xresources";
-  #  extraConfig = ''
-  #    builtins.readFile
-  #      (
-  #        pkgs.fetchFromGitHub
-  #          {
-  #            owner = "solarized";
-  #            repo = "xresources";
-  #            rev = "025ceddbddf55f2eb4ab40b05889148aab9699fc";
-  #            sha256 = "0lxv37gmh38y9d3l8nbnsm1mskcv10g3i83j0kac0a2qmypv1k9f";
-  #          } + "/Xresources.dark"
-  #      )'';
-  #};
 
   #home.file = {
   #  ".config/qtile".source = pkgs.fetchFromGitHub {

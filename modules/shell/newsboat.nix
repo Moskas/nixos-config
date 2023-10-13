@@ -43,21 +43,11 @@
       bind-key h quit
     '';
     urls = [
-      {
-        url = "\"query:Youtube:tags # \\\"Youtube\\\"\"";
-      }
-      {
-        url = "\"query:Odysee:tags # \\\"Odysee\\\"\"";
-      }
-      {
-        url = "\"query:Piped:tags # \\\"Piped\\\"\"";
-      }
-      {
-        url = "\"query:Blog:tags # \\\"Blog\\\"\"";
-      }
-      {
-        url = "\"query:Wrocław:tags # \\\"Wrocław\\\"\"";
-      }
+      { url = ''"query:Youtube:tags # \"Youtube\""''; }
+      { url = ''"query:Odysee:tags # \"Odysee\""''; }
+      { url = ''"query:Piped:tags # \"Piped\""''; }
+      { url = ''"query:Blog:tags # \"Blog\""''; }
+      { url = ''"query:Wrocław:tags # \"Wrocław\""''; }
       {
         tags = [ "linux" ];
         url = "https://www.phoronix.com/rss.php";
@@ -69,11 +59,6 @@
       {
         tags = [ "linux" "tech" ];
         url = "https://myme.no/feed.xml";
-      }
-      {
-        tags = [ "media" ];
-        url =
-          "https://pipedapi.kavin.rocks/feed/rss?authToken=5f754893-4492-46a1-8d5a-bfbeb8def939";
       }
       {
         tags = [ "Youtube" ];
@@ -88,147 +73,182 @@
       #Videos
       ##Youtube
       {
-        url = "https://www.youtube.com/feeds/videos.xml?channel_id=UCMiyV_Ib77XLpzHPQH_q0qQ";
+        url =
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UCMiyV_Ib77XLpzHPQH_q0qQ";
         tags = [ "Youtube" ];
         title = "Veronica Explains";
       }
       {
-        url = "https://www.youtube.com/feeds/videos.xml?channel_id=UCsnGwSIHyoYN0kiINAGUKxg";
+        url =
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UCsnGwSIHyoYN0kiINAGUKxg";
         tags = [ "Youtube" ];
         title = "Wolfgang";
       }
       {
-        url = "https://www.youtube.com/feeds/videos.xml?channel_id=UCR-DXc1voovS8nhAvccRZhg";
+        url =
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UC5UAwBUum7CPN5buc-_N1Fw";
+        tags = [ "Youtube" ];
+        title = "TheLinuxExperiment";
+      }
+      {
+        url =
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UCR-DXc1voovS8nhAvccRZhg";
         tags = [ "Youtube" ];
         title = "Jeff Geerling";
       }
       {
-        url = "https://www.youtube.com/feeds/videos.xml?channel_id=UC9x0AN7BWHpCDHSm9NiJFJQ";
+        url =
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UC9x0AN7BWHpCDHSm9NiJFJQ";
         tags = [ "Youtube" ];
         title = "Network Chuck";
       }
       {
-        url = "https://www.youtube.com/feeds/videos.xml?channel_id=UCruD32HAzsb9UN4KpOcSxZg";
+        url =
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UCruD32HAzsb9UN4KpOcSxZg";
         tags = [ "Youtube" ];
         title = "London Eats";
       }
       {
-        url = "https://www.youtube.com/feeds/videos.xml?channel_id=UCC_NjLEb2Sley94py4vSYTA";
+        url =
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UCC_NjLEb2Sley94py4vSYTA";
         tags = [ "Youtube" ];
         title = "Andres Vidoza";
       }
       {
-        url = "https://www.youtube.com/feeds/videos.xml?channel_id=UCeOouRs24EmbFPdgEghtRZQ";
+        url =
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UCeOouRs24EmbFPdgEghtRZQ";
         tags = [ "Youtube" ];
         title = "Jon Imperial";
       }
       {
-        url = "https://www.youtube.com/feeds/videos.xml?channel_id=UCEfopmnijwEA9sCOD_hfRtA";
+        url =
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UCEfopmnijwEA9sCOD_hfRtA";
         tags = [ "Youtube" ];
         title = "Michael Soledad";
       }
       {
-        url = "https://www.youtube.com/feeds/videos.xml?channel_id=UC6vOAOQUX2v1dlDj5YLoJ5g";
+        url =
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UC6vOAOQUX2v1dlDj5YLoJ5g";
         tags = [ "Youtube" ];
         title = "Aivars Meijers";
       }
       {
-        url = "https://www.youtube.com/feeds/videos.xml?channel_id=UCCQ6SXMc7MoJ88jjpn6j-8Q";
+        url =
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UCCQ6SXMc7MoJ88jjpn6j-8Q";
         tags = [ "Youtube" ];
         title = "Marko";
       }
       {
-        url = "https://www.youtube.com/feeds/videos.xml?channel_id=UCnn3N0i3TVGbQ9bMb4ln2OQ";
+        url =
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UCnn3N0i3TVGbQ9bMb4ln2OQ";
         tags = [ "Youtube" ];
         title = "Kyle Erickson";
       }
       {
-        url = "https://www.youtube.com/feeds/videos.xml?channel_id=UCoOae5nYA7VqaXzerajD0lg";
+        url =
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UCoOae5nYA7VqaXzerajD0lg";
         tags = [ "Youtube" ];
         title = "Ali Abdaal";
       }
       {
-        url = "https://www.youtube.com/feeds/videos.xml?channel_id=UCAiiOTio8Yu69c3XnR7nQBQ";
+        url =
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UCAiiOTio8Yu69c3XnR7nQBQ";
         tags = [ "Youtube" ];
         title = "System Crafters";
       }
       {
-        url = "https://www.youtube.com/feeds/videos.xml?channel_id=UCgDqL4yzXb4BflimZaxL4Vg";
+        url =
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UCgDqL4yzXb4BflimZaxL4Vg";
         tags = [ "Youtube" ];
         title = "Andrew E.Zeng";
       }
       {
-        url = "https://www.youtube.com/feeds/videos.xml?channel_id=UC2hi12ngz1aiGv_vditVHGw";
+        url =
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UC2hi12ngz1aiGv_vditVHGw";
         tags = [ "Youtube" ];
         title = "Brandon Boswell";
       }
       {
-        url = "https://www.youtube.com/feeds/videos.xml?channel_id=UCvfUcuSDNOoFsAPsiGdaGPg";
+        url =
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UCvfUcuSDNOoFsAPsiGdaGPg";
         tags = [ "Youtube" ];
         title = "Notebook Check";
       }
       {
-        url = "https://www.youtube.com/feeds/videos.xml?channel_id=UCxQKHvKbmSzGMvUrVtJYnUA";
+        url =
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UCxQKHvKbmSzGMvUrVtJYnUA";
         tags = [ "Youtube" ];
         title = "Learn Linux TV";
       }
       {
-        url = "https://www.youtube.com/feeds/videos.xml?channel_id=UCLuJuI0M95qWsVw_KQOkTgQ";
+        url =
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UCLuJuI0M95qWsVw_KQOkTgQ";
         tags = [ "Youtube" ];
         title = "Pinsplash";
       }
       {
-        url = "https://www.youtube.com/feeds/videos.xml?channel_id=UCJ6KZTTnkE-s2XFJJmoTAkw";
+        url =
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UCJ6KZTTnkE-s2XFJJmoTAkw";
         tags = [ "Youtube" ];
         title = "Accursed Farms";
       }
       {
-        url = "https://www.youtube.com/feeds/videos.xml?channel_id=UCXuqSBlHAE6Xw-yeJA0Tunw";
+        url =
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UCXuqSBlHAE6Xw-yeJA0Tunw";
         tags = [ "Youtube" ];
         title = "LinusTechTips";
       }
       {
-        url = "https://www.youtube.com/feeds/videos.xml?channel_id=UCjREVt2ZJU8ql-NC9Gu-TJw";
+        url =
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UCjREVt2ZJU8ql-NC9Gu-TJw";
         tags = [ "Youtube" ];
         title = "Code to the Moon";
       }
       {
-        url = "https://www.youtube.com/feeds/videos.xml?channel_id=UCNhWSOlt_UoCzS2YSMhHYmA";
+        url =
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UCNhWSOlt_UoCzS2YSMhHYmA";
         tags = [ "Youtube" ];
         title = "Kai Notebook";
       }
       {
-        url = "https://www.youtube.com/feeds/videos.xml?channel_id=UCLx053rWZxCiYWsBETgdKrQ";
+        url =
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UCLx053rWZxCiYWsBETgdKrQ";
         tags = [ "Youtube" ];
         title = "LGR";
       }
       {
-        url = "https://www.youtube.com/feeds/videos.xml?channel_id=UC8uT9cgJorJPWu7ITLGo9Ww";
+        url =
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UC8uT9cgJorJPWu7ITLGo9Ww";
         tags = [ "Youtube" ];
         title = "The 8-Bit Guy";
       }
       {
-        url = "https://www.youtube.com/feeds/videos.xml?channel_id=UCerEIdrEW-IqwvlH8lTQUJQ";
+        url =
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UCerEIdrEW-IqwvlH8lTQUJQ";
         tags = [ "Youtube" ];
         title = "Tech Tangents";
       }
       {
-        url = "https://www.youtube.com/feeds/videos.xml?channel_id=UCoL8olX-259lS1N6QPyP4IQ";
+        url =
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UCoL8olX-259lS1N6QPyP4IQ";
         tags = [ "Youtube" ];
         title = "Action Retro";
       }
       {
-        url = "https://www.youtube.com/feeds/videos.xml?channel_id=UC7yZ6keOGsvERMp2HaEbbXQ";
+        url =
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UC7yZ6keOGsvERMp2HaEbbXQ";
         tags = [ "Youtube" ];
         title = "devaslife";
       }
       {
-        url = "https://www.youtube.com/feeds/videos.xml?channel_id=UC0lE_IPPXhb_J9sZnMyIEwA";
+        url =
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UC0lE_IPPXhb_J9sZnMyIEwA";
         tags = [ "Youtube" ];
         title = "llll colonq";
       }
       {
-        url = "https://www.youtube.com/feeds/videos.xml?channel_id=UCUMwY9iS8oMyWDYIe6_RmoA";
+        url =
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UCUMwY9iS8oMyWDYIe6_RmoA";
         tags = [ "Youtube" ];
         title = "No Boilerplate";
       }
@@ -334,13 +354,10 @@
         url = "https://odysee.com/$/rss/@GavinFreeborn:d";
         tags = [ "Odysee" ];
         title = "Gavin Freeborn";
-      } ##Piped
+      } # #Piped
       {
-        url = "https://pipedapi.kavin.rocks/feed/rss?authToken=5f754893-4492-46a1-8d5a-bfbeb8def939";
-        tags = [ "Piped" ];
-      }
-      {
-        url = "https://pipedapi.kavin.rocks/feed/unauthenticated/rss?channels=UCBJycsmduvYEL83R_U4JriQ";
+        url =
+          "https://pipedapi.kavin.rocks/feed/rss?authToken=5f754893-4492-46a1-8d5a-bfbeb8def939";
         tags = [ "Piped" ];
       }
       #Blog
@@ -357,7 +374,7 @@
         tags = [ "Tech" "Emacs" "Blog" ];
       }
       {
-        url = ''https://mbork.pl/?action=rss;days=30;all=0;showedit=0;full=1'';
+        url = "https://mbork.pl/?action=rss;days=30;all=0;showedit=0;full=1";
         tags = [ "Tech" "Emacs" "Blog" ];
       }
       {
@@ -395,18 +412,6 @@
       #{
       #url = "https://dev.to/feed"; tags = [ "Blog"  "Programming" ];
       #}
-      {
-        url = "https://dev.to/feed/tag/rust";
-        tags = [ "Blog" "Programming" "Rust" ];
-      }
-      {
-        url = "https://dev.to/feed/tag/python";
-        tags = [ "Blog" "Programming" ];
-      }
-      {
-        url = "https://dev.to/feed/tag/cpp";
-        tags = [ "Blog" "Programming" ];
-      }
       {
         url = "https://zettelkasten.de/feed.atom";
         tags = [ "Blog" "Notes" ];
@@ -484,7 +489,8 @@
       }
       #News
       {
-        url = "https://morss.it/https://gazetawroclawska.pl/rss/gazetawroclawska.xml";
+        url =
+          "https://morss.it/https://gazetawroclawska.pl/rss/gazetawroclawska.xml";
         tags = [ "Wrocław" ];
       }
       {

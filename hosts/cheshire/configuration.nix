@@ -5,14 +5,13 @@
 { config, pkgs, username, ... }:
 
 {
-  imports =
-    [
-      # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ../../modules/fonts
-      ../../modules/scripts/diff.nix
-      ../../modules/services/tailscale.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    ../../modules/fonts
+    ../../modules/scripts/diff.nix
+    ../../modules/services/tailscale.nix
+  ];
 
   services.udev = {
     enable = true;
@@ -30,9 +29,18 @@
       auto-optimise-store = true;
       builders-use-substitutes = true;
     };
+    extraOptions = ''
+      warn-dirty = false
+    '';
+
   };
 
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs = {
+    config = {
+      allowUnfree = true;
+      permittedInsecurePackages = [ "openssl-1.1.1w" ];
+    };
+  };
   # Use the systemd-boot EFI boot loader.
   boot = {
     loader = {
@@ -69,7 +77,6 @@
   #  coreOffset = -50;
   #};
 
-
   # Enable nvidia driver
   hardware = {
     cpu.amd.updateMicrocode = true;
@@ -84,10 +91,7 @@
       extraPackages = with pkgs; [ mangohud nvidia-vaapi-driver ];
       extraPackages32 = with pkgs; [ mangohud ];
     };
-    bluetooth = {
-      enable = true;
-      package = pkgs.bluezFull;
-    };
+    bluetooth = { enable = true; };
     steam-hardware.enable = true;
     fancontrol = {
       enable = false;
@@ -113,14 +117,10 @@
 
   programs.gamescope = {
     enable = true;
-    env = {
-      __GLX_VENDOR_LIBRARY_NAME = "nvidia";
-    };
+    env = { __GLX_VENDOR_LIBRARY_NAME = "nvidia"; };
   };
 
-  programs.nix-ld = {
-    enable = true;
-  };
+  programs.nix-ld = { enable = true; };
 
   services.xserver = {
     videoDrivers = [ "nvidia" ];
@@ -164,9 +164,7 @@
     layout = "pl";
     displayManager.gdm.enable = true;
     desktopManager.gnome.enable = false;
-    windowManager.qtile = {
-      enable = true;
-    };
+    windowManager.qtile = { enable = true; };
   };
 
   programs.hyprland = {
@@ -225,18 +223,16 @@
     createHome = true;
     isNormalUser = true;
     shell = pkgs.zsh;
-    extraGroups = [ "wheel" "storage" "networkmanager" "libvirtd" "i2c" "docker" ];
-    packages = with pkgs; [
-      firefox
-      neovim
-    ];
+    extraGroups =
+      [ "wheel" "storage" "networkmanager" "libvirtd" "i2c" "docker" ];
+    packages = with pkgs; [ neovim ];
   };
 
   environment.variables = {
     EDITOR = "emacs";
-    DEFAULT_BROWSER = "${pkgs.qutebrowser}/bin/qutebrowser";
-    MANPAGER = "sh -c 'col -bx | bat -l man -p'";
-    PAGER = "bat";
+    #DEFAULT_BROWSER = "${pkgs.qutebrowser}/bin/qutebrowser";
+    #MANPAGER = "sh -c 'col -bx | bat -l man -p'";
+    #PAGER = "bat";
   };
 
   # List packages installed in system profile. To search, run:
@@ -251,6 +247,7 @@
     mpdas
     dbus
     direnv
+    openssl_1_1
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -261,9 +258,7 @@
     enableSSHSupport = true;
   };
 
-  programs.dconf = {
-    enable = true;
-  };
+  programs.dconf = { enable = true; };
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
@@ -287,9 +282,7 @@
   };
 
   virtualisation = {
-    libvirtd = {
-      enable = true;
-    };
+    libvirtd = { enable = true; };
     docker = {
       enable = true;
       enableNvidia = true;
