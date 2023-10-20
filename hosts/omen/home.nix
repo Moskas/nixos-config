@@ -57,7 +57,7 @@
     jre8
     ferium
     feh
-    sxiv
+    nsxiv
     openrgb
     i2c-tools
     betterlockscreen
@@ -67,7 +67,7 @@
     bitwarden
     pinentry
     easyeffects
-    exa
+    eza
     xclip
     zip
     unzip

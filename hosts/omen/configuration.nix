@@ -10,6 +10,7 @@
     ./hardware-configuration.nix
     ../../modules/fonts
     ../../modules/scripts/diff.nix
+    ../../modules/nix/nix.nix
   ];
 
   # Bootloader.
@@ -46,10 +47,7 @@
       modesetting.enable = true;
       package = config.boot.kernelPackages.nvidiaPackages.beta;
     };
-    bluetooth = {
-      enable = true;
-      package = pkgs.bluezFull;
-    };
+    bluetooth = { enable = true; };
   };
   # For steam streaming
   hardware.steam-hardware.enable = true;
@@ -207,7 +205,7 @@
     xorg.xbacklight
     virt-manager
     alsaLib
-    pkgconfig
+    pkg-config
     udev
     vulkan-loader
     xorg.libX11

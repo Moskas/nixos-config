@@ -165,83 +165,78 @@
         }
       '';
       userContent = ''
-                  :root {
-          --bg0: #282828;
-          --bg0h: #1d2021;
-          --bg1: #3c3836;
-          --bg2: #504945;
-          --bg3: #665c54;
-          --bg4: #7c6f64;
-          --bg5: #928374;
-          --bg6: #a89984;
-          --fg0: #fbf1c7;
-          --fg1: #ebdbb2;
-          --fg2: #d5c4a1;
-          --red: #cc241d;
-          --green: #98971a;
-          --yellow: #d79921;
-          --blue: #458588;
-          --purple: #b16286;
-          --aqua: #689d6a;
-          --orange: #d65d0e;
-        }
-
-        @-moz-document domain(github.com) {
-          .Header {
-            background-color: var(--bg0) !important;
-          }
-
-          .header-search-button {
-            background-color: var(--bg0h) !important;
-          }
-
-          repo>a {
-            color: var(--red) !important;
-          }
-
-          repo>pinned-item-list-item {
-            background-color: var(--bg1) !important;
-            color: var(--fg0);
-          }
-        }
-
-        @-moz-document domain(chat.openai.com) {
-          * {
-            font-family: "JetBrainsMono Nerd Font" !important;
-            color: var(--fg0) !important;
-          }
-
-          pre {
-            bg-black {
-              background-color: var(--bg0);
+        @media (prefers-color-scheme: dark) {
+            :root {
+                /*  Accent colors       */
+                --gruv-dark-red: #cc241d;
+                --gruv-red: #fb4934;
+                --gruv-dark-green: #98971a;
+                --gruv-green: #b8bb26;
+                --gruv-dark-yellow: #d79921;
+                --gruv-yellow: #fabd2f;
+                --gruv-orange: #d65d0e;
+                --gruv-dark-orange: #af3a03;
+                --gruv-dark-blue: #458588;
+                --gruv-blue: #83a598;
+                --gruv-dark-magenta: #b16286;
+                --gruv-magenta: #d3869b;
+                --gruv-dark-cyan: #689d6a;
+                --gruv-cyan: #8ec07c;
+                --gruv-dark-gray: #928374;
+                --gruv-gray: #a89984;
+                /*  Dark colors   */
+                --bg: #282828;
+                --bg0_h: #1d2021;
+                --bg0_s: #32302f;
+                --bg1: #3c3836;
+                --bg2: #504945;
+                --bg3: #665c54;
+                --bg4: #7c6f64;
+                /*  Light colors   */
+                --fg: #ebdbb2;
+                --fg0: #fbf1c7;
+                --fg1: #ebdbb2;
+                --fg2: #d5c4a1;
+                --fg3: #bdae93;
+                --fg4: #a89984;
             }
-          }
-
-          text-base {}
         }
 
-        @-moz-document domain(youtube.com) {
-          * {
-            font-family: "JetBrainsMono Nerd Font" !important;
-          }
-        }
-
-        @-moz-document domain(soundcloud.com) {
-          * {
-            font-family: "FiraCode Nerd Font" !important;
-          }
-        }
-
-        @-moz-document domain(bevyengine.org) {
-          * {
-            font-family: "JetBrainsMono Nerd Font" !important;
-          }
-        }
-
-        @-moz-document domain(codewars.com) {
-          * {
-            font-family: "JetBrainsMono Nerd Font" !important;
-          }
+        @media (prefers-color-scheme: light) {
+            :root {
+                /*  Accent colors       */
+                --gruv-dark-red: #cc241d;
+                --gruv-red: #9d0006;
+                --gruv-dark-green: #98971a;
+                --gruv-green: #79740e;
+                --gruv-dark-yellow: #d79921;
+                --gruv-yellow: #b57614;
+                --gruv-dark-orange: #af3a03;
+                --gruv-orange: #d65d0e;
+                --gruv-dark-blue: #458588;
+                --gruv-blue: #076678;
+                --gruv-dark-magenta: #b16286;
+                --gruv-magenta: #8f3f71;
+                --gruv-dark-cyan: #689d6a;
+                --gruv-cyan: #427b58;
+                --gruv-dark-gray: #928374;
+                --gruv-gray: #7c6f64;
+                /*  Dark colors   */
+                --bg: #fbf1c7;
+                --bg0_h: #f9f5d7;
+                --bg0_s: #f2e5bc;
+                --bg1: #ebdbb2;
+                --bg2: #d5c4a1;
+                --bg3: #bdae93;
+                --bg4: #a89984;
+                /*  Light colors   */
+                --fg: #3c3836;
+                --fg0: #282828;
+                --fg1: #3c3836;
+                --fg2: #504945;
+                --fg3: #665c54;
+                --fg4: #7c6f64;
+            }
         }
       '';
       #extensions = with pkgs.nur.repos.rycee.firefox-addons; [

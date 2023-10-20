@@ -11,7 +11,7 @@
     neofetch
     helix
     btop
-    exa
+    eza
     clojure
     clojure-lsp
     leiningen

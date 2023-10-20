@@ -50,6 +50,7 @@ in {
     ani-cli
     python310Packages.aria2p # aria2c
     python310Packages.mpd2
+    python310Packages.requests
     ranger
     ffmpeg
     duf
@@ -107,7 +108,9 @@ in {
     lutgen
     virt-manager
 
-    nyxt
+    rates
+    tickrs
+    monero-gui
 
     # wayland testing
     #waybar

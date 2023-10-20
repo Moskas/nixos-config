@@ -8,6 +8,7 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    ../../modules/nix/nix.nix
     ../../modules/fonts
     ../../modules/scripts/diff.nix
     ../../modules/services/tailscale.nix
@@ -18,29 +19,6 @@
     packages = [ "/home/moskas/.config/60-openrgb.rules" ];
   };
 
-  nix = {
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 7d";
-    };
-    settings = {
-      experimental-features = [ "nix-command" "flakes" ];
-      auto-optimise-store = true;
-      builders-use-substitutes = true;
-    };
-    extraOptions = ''
-      warn-dirty = false
-    '';
-
-  };
-
-  nixpkgs = {
-    config = {
-      allowUnfree = true;
-      permittedInsecurePackages = [ "openssl-1.1.1w" ];
-    };
-  };
   # Use the systemd-boot EFI boot loader.
   boot = {
     loader = {
@@ -233,6 +211,7 @@
     #DEFAULT_BROWSER = "${pkgs.qutebrowser}/bin/qutebrowser";
     #MANPAGER = "sh -c 'col -bx | bat -l man -p'";
     #PAGER = "bat";
+    PULSE_LATENCY_MSEC = "50";
   };
 
   # List packages installed in system profile. To search, run:
@@ -247,7 +226,6 @@
     mpdas
     dbus
     direnv
-    openssl_1_1
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
