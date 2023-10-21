@@ -1,13 +1,16 @@
-{ config, pkgs, lib, e-mail, username, ... }:
+{ config, pkgs, lib, e-mail, username, nix-colors, ... }:
 
 {
   imports = [
+    nix-colors.homeManagerModules.default
     ./wallpapers.nix
     ../../modules/shell/newsboat.nix
     ../../modules/browsers/firefox.nix
     ../../modules/media
     ../../modules/git/git.nix
   ];
+
+  colorScheme = nix-colors.colorSchemes.solarized-dark;
 
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
@@ -65,7 +68,7 @@
     libnotify
     pulsemixer
     bitwarden
-    pinentry
+    #pinentry
     easyeffects
     eza
     xclip
@@ -175,7 +178,7 @@
       add_newline = false;
       palette = "solarized";
       format = lib.concatStrings [
-        "$os$username$hostname$rust$python$node$lua$git_branch$git_status$git_state$cmd_duration$fill$time$line_break$directory$sudo$character "
+        "$os$username$hostname$rust$python$node$lua$git_branch$git_status$git_state$cmd_duration$fill$time$line_break$directory$sudo$character"
       ];
       scan_timeout = 10;
       character = {

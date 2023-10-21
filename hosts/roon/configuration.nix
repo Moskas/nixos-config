@@ -11,6 +11,7 @@
     ../../modules/fonts
     ../../modules/scripts/diff.nix
     ../../modules/nix/nix.nix
+    ../../modules/services/tailscale.nix
   ];
 
   # Bootloader.
@@ -63,7 +64,7 @@
     enable = true;
     coreOffset = -50;
   };
-  networking.hostName = "omen";
+  networking.hostName = "roon";
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary

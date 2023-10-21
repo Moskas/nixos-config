@@ -15,21 +15,20 @@
     #nur = {
     #  url = "github:nix-community/NUR";
     #};
+    nix-colors.url = "github:misterio77/nix-colors";
     wsl = {
       url = "github:nix-community/NixOS-WSL";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  outputs =
-    { self, nixpkgs, home-manager, nur, wsl, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, nur, wsl, nix-colors, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system} { config.allowUnfree = true; };
       username = "moskas";
       e-mail = "minemoskas@gmail.com";
       lib = nixpkgs.lib;
-    in
-    {
+    in {
       nixosConfigurations = {
         virtual = lib.nixosSystem {
           inherit system;
@@ -63,19 +62,22 @@
             }
           ];
         };
-        omen = lib.nixosSystem {
+        roon = lib.nixosSystem {
           inherit system;
           specialArgs = { inherit inputs username; };
           modules = [
             ./hosts/common-configuration.nix
-            ./hosts/omen
-            ./hosts/omen/configuration.nix
+            ./hosts/roon
+            ./hosts/roon/configuration.nix
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.extraSpecialArgs = { inherit username e-mail; };
-              home-manager.users.${username}.imports = [ (import ./hosts/omen/home.nix) ];
+              home-manager.extraSpecialArgs = {
+                inherit username e-mail nix-colors;
+              };
+              home-manager.users.${username}.imports =
+                [ (import ./hosts/roon/home.nix) ];
             }
           ];
         };

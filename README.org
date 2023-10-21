@@ -1,28 +1,8 @@
-#+title: My NixOS configs
+#+title: My NixOS flakes
 
 * Devices
-- Virtual - virtual machine for testing
-- Shimakaze - NixOS WSL config
-- Omen - my (gaming) laptop
 - Cheshire - my main PC
-- Pixel - not yet fully added
-- Laffey - not yet added
-Yes, these are names of warships.
-* Modules
-** Browsers
-- Brave
-- Firefox
-- Qutebrowser
-** Media
-- mpv
-  With additional scripts to make watching youtube videos more enjoyable.
-- mpd
-  Best music player software ever.
-** git
-- git
-- github cli
-- lazygit
-** Scripts
-- random-wallpaper
-- diff
-Small script to show differences between newly generated nixos generation.
+- Roon - my (gaming) laptop
+- Shimakaze - NixOS WSL config
+- Laffey - home server
+Yes, these are the names of warships.
