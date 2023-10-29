@@ -209,7 +209,7 @@
   environment.variables = {
     EDITOR = "emacs";
     #DEFAULT_BROWSER = "${pkgs.qutebrowser}/bin/qutebrowser";
-    #MANPAGER = "sh -c 'col -bx | bat -l man -p'";
+    MANPAGER = "less -FR";
     #PAGER = "bat";
     PULSE_LATENCY_MSEC = "50";
   };

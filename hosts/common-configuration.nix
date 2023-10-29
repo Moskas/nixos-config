@@ -36,8 +36,8 @@
 
   environment.variables = {
     EDITOR = "emacs";
-    PAGER = "bat";
-    MANPAGER = "sh -c 'col -bx | bat -l man -p'";
+    #PAGER = "bat";
+    #MANPAGER = "sh -c 'col -bx | bat -l man -p'";
   };
 
   environment.systemPackages = with pkgs; [ git neovim curl wget nixfmt ];

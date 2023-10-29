@@ -1,4 +1,4 @@
-{ config, pkgs, lib, username, ... }:
+{ config, pkgs, lib, username, nix-colors, ... }:
 let
   # osu-lazer-bin = pkgs.osu-lazer-bin.overrideAttrs (oldAttrs: rec {
   #   pname = "osu-lazer-bin";
@@ -17,6 +17,7 @@ let
     import ../../modules/scripts/random-wallpaper.nix { inherit pkgs; };
 in {
   imports = [
+    nix-colors.homeManagerModules.default
     ./wallpapers.nix
     ../../modules/browsers
     ../../modules/git
@@ -26,6 +27,8 @@ in {
     ../../modules/email
     ../../modules/services
   ];
+
+  colorScheme = nix-colors.colorSchemes.gruvbox-dark-medium;
 
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
@@ -186,10 +189,10 @@ in {
       active_border_color     #d3869b
       inactive_border_color   #665c54
 
-      foreground              #ebdbb2
-      background              #282828
+      foreground              #${config.colorScheme.colors.base06}
+      background              #${config.colorScheme.colors.base00}
       selection_foreground    #928374
-      selection_background    #ebdbb2
+      selection_background    #${config.colorScheme.colors.base06}
 
       active_tab_foreground   #fbf1c7
       active_tab_background   #665c54

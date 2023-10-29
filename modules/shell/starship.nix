@@ -83,10 +83,12 @@
       };
       git_status = {
         format = "([$all_status ](bg:purple fg:bg ))";
-        stashed = "📦";
-        modified = "📝";
-        untracked = "❓";
-        staged = "+($count)";
+        stashed = "󰿺";
+        modified = "󱞁";
+        untracked = "󱙓";
+        deleted = "󱙑";
+        renamed = "󱙓";
+        staged = " +($count)";
       };
       palettes.solarized = {
         fg = "#93a1a1";
