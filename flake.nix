@@ -30,22 +30,22 @@
       lib = nixpkgs.lib;
     in {
       nixosConfigurations = {
-        virtual = lib.nixosSystem {
-          inherit system;
-          specialArgs = { inherit inputs username; };
-          modules = [
-            ./hosts/virtual
-            ./hosts/virtual/configuration.nix
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.extraSpecialArgs = { inherit username; };
-              home-manager.users.${username}.imports =
-                [ (import ./hosts/virtual/home.nix) ];
-            }
-          ];
-        };
+        #virtual = lib.nixosSystem {
+        #  inherit system;
+        #  specialArgs = { inherit inputs username; };
+        #  modules = [
+        #    ./hosts/ virtual
+        #    ./hosts/virtual/configuration.nix
+        #    home-manager.nixosModules.home-manager
+        #    {
+        #      home-manager.useGlobalPkgs = true;
+        #      home-manager.useUserPackages = true;
+        #      home-manager.extraSpecialArgs = { inherit username; };
+        #      home-manager.users.${username}.imports =
+        #        [ (import ./hosts/virtual/home.nix) ];
+        #    }
+        #  ];
+        #};
         shimakaze = lib.nixosSystem {
           inherit system;
           specialArgs = { inherit inputs username; };
@@ -64,7 +64,7 @@
         };
         roon = lib.nixosSystem {
           inherit system;
-          specialArgs = { inherit inputs username; };
+          specialArgs = { inherit inputs username nix-colors; };
           modules = [
             ./hosts/common-configuration.nix
             ./hosts/roon
@@ -83,7 +83,7 @@
         };
         cheshire = lib.nixosSystem {
           inherit system;
-          specialArgs = { inherit inputs username e-mail; };
+          specialArgs = { inherit inputs username e-mail nix-colors; };
           modules = [
             ./hosts/common-configuration.nix
             ./hosts/cheshire
@@ -92,7 +92,9 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.extraSpecialArgs = { inherit username e-mail; };
+              home-manager.extraSpecialArgs = {
+                inherit username e-mail nix-colors;
+              };
               home-manager.users.${username}.imports =
                 [ (import ./hosts/cheshire/home.nix) ];
             }
