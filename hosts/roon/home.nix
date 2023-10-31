@@ -6,8 +6,11 @@
     ./wallpapers.nix
     ../../modules/shell/newsboat.nix
     ../../modules/browsers/firefox.nix
+    ../../modules/browsers/brave.nix
     ../../modules/media
     ../../modules/git/git.nix
+    ../../modules/services/picom.nix
+    ../../modules/services/easyeffects.nix
   ];
 
   colorScheme = nix-colors.colorSchemes.solarized-dark;
@@ -31,11 +34,10 @@
   programs.home-manager.enable = true;
   home.packages = with pkgs; [
     jq
-    trackma
     manga-cli
     ani-cli
-    python310Packages.aria2p # aria2c
-    python310Packages.mpd2
+    python311Packages.aria2p # aria2c
+    python311Packages.mpd2
     ranger
     ffmpeg
     duf
@@ -43,7 +45,6 @@
     neofetch
     onefetch
     tickrs
-    spotify
     mpc-cli
     cava
     rnix-lsp
@@ -52,8 +53,8 @@
     discord
     steam
     protonup-ng
-    heroic
-    bottles
+    #heroic
+    #bottles
     mangohud
     goverlay
     prismlauncher
@@ -80,6 +81,7 @@
     osu-lazer-bin
     epr
     direnv
+    lutgen
   ];
 
   xresources = {
@@ -114,29 +116,6 @@
   };
 
   programs.pandoc = { enable = true; };
-
-  programs.brave = {
-    enable = true;
-    extensions = [
-      {
-        id = "dcpihecpambacapedldabdbpakmachpb";
-        updateUrl =
-          "https://raw.githubusercontent.com/iamadamdev/bypass-paywalls-chrome/master/updates.xml";
-      }
-      {
-        id = "nngceckbapebfimnlniiiahkandclblb"; # bitwarden
-      }
-      {
-        id = "ajopnjidmegmdimjlfnijceegpefgped"; # BTTV
-      }
-      {
-        id = "fadndhdgpmmaapbmfcknlfgcflmmmieb"; # FFZ
-      }
-      {
-        id = "aalmjfpohaedoddkobnibokclgeefamn"; # Gumbo: Twitch Companion
-      }
-    ];
-  };
 
   programs.gpg = { enable = true; };
 
@@ -402,24 +381,6 @@
     };
   };
 
-  services.picom = {
-    enable = true;
-    backend = "glx";
-    vSync = true;
-    opacityRules = [
-      "80:class_g = 'kitty' && !focused"
-      "90:class_g = 'kitty' && focused"
-      "95:class_g = 'Emacs' && !focused"
-      "98:class_g = 'Emacs' && focused"
-      "95:class_g = 'Zathura' && !focused"
-      "98:class_g = 'Zathura' && focused"
-      "95:class_g = 'discord' && !focused"
-      "98:class_g = 'discord' && focused"
-      "95:class_g = 'qutebrowser' && !focused"
-    ];
-    settings = { blur = { method = "dual_kawase"; }; };
-  };
-
   programs.rbw = {
     enable = true;
     settings = {
@@ -617,11 +578,6 @@
     plugins = with pkgs; [ rofimoji rofi-power-menu rofi-bluetooth ];
     theme = "${pkgs.rofi}/share/rofi/themes/solarized_alternate.rasi";
     terminal = "${pkgs.kitty}/bin/kitty";
-  };
-
-  services.easyeffects = {
-    enable = true;
-    preset = "Bass";
   };
 
   programs.btop = {

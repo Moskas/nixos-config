@@ -5,6 +5,7 @@
     enable = true;
     package = pkgs.picom-next;
     backend = "glx";
+    unredir-if-possible = false;
     vSync = true;
     opacityRules = [
       "90:class_g = 'kitty' && !focused"

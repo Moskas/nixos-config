@@ -123,12 +123,6 @@ in {
     #mako
   ];
 
-  services.wlsunset = {
-    enable = false;
-    latitude = "52.2297";
-    longitude = "21.0122";
-  };
-
   dconf.settings = {
     "org/virt-manager/virt-manager/connections" = {
       autoconnect = [ "qemu:///system" ];
@@ -290,11 +284,6 @@ in {
     plugins = with pkgs; [ rofimoji rofi-power-menu rofi-bluetooth ];
     theme = "${pkgs.rofi}/share/rofi/themes/gruvbox-dark-hard.rasi";
     terminal = "${pkgs.kitty}/bin/kitty";
-  };
-
-  services.easyeffects = {
-    enable = true;
-    preset = "Bass";
   };
 
   programs.zathura = {

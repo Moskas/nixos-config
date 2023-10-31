@@ -14,12 +14,19 @@
     ../../modules/services/tailscale.nix
   ];
 
+  services.udev = {
+    enable = true;
+    packages = [ "/home/moskas/.config/60-openrgb.rules" ];
+  };
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
-  # Enabling latest linux kernel
-  boot.kernelPackages = pkgs.linuxPackages_zen;
+  # Enabling latest xanmod linux kernel
+  boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
+
+  programs.nix-ld = { enable = true; };
 
   # Virtualisation and virt-manager
   virtualisation.libvirtd.enable = true;
@@ -38,6 +45,8 @@
     opengl = {
       enable = true;
       driSupport32Bit = true;
+      extraPackages = with pkgs; [ mangohud nvidia-vaapi-driver ];
+      extraPackages32 = with pkgs; [ mangohud ];
     };
     #fancontrol = { enable = true; };
     # For accessing the rgb
@@ -46,7 +55,8 @@
     nvidia = {
       powerManagement.enable = true;
       modesetting.enable = true;
-      package = config.boot.kernelPackages.nvidiaPackages.beta;
+      package =
+        config.boot.kernelPackages.nvidiaPackages.stable; # Changed to stable due to issues with brightness control on beta
     };
     bluetooth = { enable = true; };
   };
@@ -73,6 +83,7 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
+  networking.networkmanager.wifi.macAddress = "random";
   networking.firewall = {
     enable = true;
     allowedTCPPorts = [ 6600 ];
@@ -132,13 +143,20 @@
   console.keyMap = "pl2";
 
   # Enable CUPS to print documents.
-  services.printing.enable = false;
+  # services.printing.enable = false;
 
   # Enable TLP for laptop
-  #services.tlp.enable = true;
+  services.tlp.enable = true;
 
+  # Enable sound.
+  sound = {
+    enable = true;
+    mediaKeys = {
+      enable = true;
+      volumeStep = "5%";
+    };
+  };
   # Enable sound with pipewire.
-  sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -146,8 +164,9 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
+    wireplumber.enable = true;
     # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
+    jack.enable = true;
 
     # use the example session manager (no others are packaged yet so this is enabled by default,
     # no need to redefine it in your config for now)
@@ -156,6 +175,7 @@
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
+  users.defaultUserShell = pkgs.zsh;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.moskas = {
@@ -163,14 +183,15 @@
     description = "Moskas";
     extraGroups = [ "networkmanager" "wheel" "libvirtd" "i2c" ];
     shell = pkgs.zsh;
-    packages = with pkgs; [ firefox stdenv ];
+    packages = with pkgs; [ firefox ];
   };
   environment.variables = {
     EDITOR = "emacs";
-    DEFAULT_BROWSER = "${pkgs.qutebrowser}/bin/qutebrowser";
-    MANPAGER = "sh -c 'col -bx | bat -l man -p'";
-    PAGER = "bat";
+    #DEFAULT_BROWSER = "${pkgs.qutebrowser}/bin/qutebrowser";
+    #MANPAGER = "sh -c 'col -bx | bat -l man -p'";
+    #PAGER = "bat";
     PKG_CONFIG_PATH = "${pkgs.openssl.dev}/lib/pkgconfig";
+    PULSE_LATENCY_MSEC = "50";
   };
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -179,7 +200,6 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     neovim
-    neofetch
     wget
     git
     ripgrep
@@ -197,9 +217,6 @@
     cargo
     rustc
     rust-analyzer
-    python310
-    rustpython
-    python310Packages.mpd2
     zathura
     kitty
     libtool
