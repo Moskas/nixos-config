@@ -1,5 +1,5 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports = [ ./zathura.nix ];
+  imports = [ ./zathura.nix ./kitty.nix ];
 }

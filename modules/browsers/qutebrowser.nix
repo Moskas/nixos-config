@@ -26,7 +26,7 @@
       scrolling.smooth = true;
       fonts = {
         prompts = "12pt JetBrainsMono Nerd Font";
-        hints = "10pt JetBrainsMono Nerd Font";
+        hints = "12pt JetBrainsMono Nerd Font";
         statusbar = "12pt JetBrainsMono Nerd Font";
         contextmenu = "10pt JetBrainsMono Nerd Font";
         completion = {
@@ -34,7 +34,7 @@
           category = "12pt JetBrainsMono Nerd Font";
         };
         web = {
-          size.default = 14;
+          size.default = 16;
           family = {
             standard = "JetBrainsMono Nerd Font";
             sans_serif = "JetBrainsMono Nerd Font";
@@ -44,8 +44,8 @@
           };
         };
         tabs = {
-          selected = "10pt JetBrainsMono Nerd Font";
-          unselected = "10pt JetBrainsMono Nerd Font";
+          selected = "12pt JetBrainsMono Nerd Font";
+          unselected = "12pt JetBrainsMono Nerd Font";
         };
       };
       url = { start_pages = "https://www.google.com"; };
@@ -54,116 +54,116 @@
       colors = {
         statusbar = {
           normal = {
-            bg = "#282828";
-            fg = "#fbf1c7";
+            bg = "#${config.colorScheme.colors.base00}";
+            fg = "#${config.colorScheme.colors.base07}";
           };
           command = {
-            bg = "#282828";
-            fg = "#fbf1c7";
+            bg = "#${config.colorScheme.colors.base00}";
+            fg = "#${config.colorScheme.colors.base07}";
           };
           insert = {
-            bg = "#282828";
-            fg = "#b8bb26";
+            bg = "#${config.colorScheme.colors.base00}";
+            fg = "#${config.colorScheme.colors.base0B}";
           };
           url = {
-            success.http.fg = "#b8bb26";
-            success.https.fg = "#b8bb26";
-            fg = "#fbf1c7";
-            error.fg = "#cc241d";
-            warn.fg = "#cc241d";
-            hover.fg = "#83a598";
+            success.http.fg = "#${config.colorScheme.colors.base0B}";
+            success.https.fg = "#${config.colorScheme.colors.base0B}";
+            fg = "#${config.colorScheme.colors.base07}";
+            error.fg = "#${config.colorScheme.colors.base08}";
+            warn.fg = "#${config.colorScheme.colors.base08}";
+            hover.fg = "#${config.colorScheme.colors.base0D}";
           };
         };
         messages = {
           error = {
-            bg = "#cc241d";
-            fg = "#fbf1c7";
-            border = "#fbf1c7";
+            bg = "#${config.colorScheme.colors.base08}";
+            fg = "#${config.colorScheme.colors.base07}";
+            border = "#${config.colorScheme.colors.base07}";
           };
           warning = {
-            bg = "#cc241d";
-            fg = "#fbf1c7";
-            border = "#fbf1c7";
+            bg = "#${config.colorScheme.colors.base08}";
+            fg = "#${config.colorScheme.colors.base07}";
+            border = "#${config.colorScheme.colors.base07}";
           };
           info = {
-            fg = "#fbf1c7";
-            bg = "#83a598";
+            fg = "#${config.colorScheme.colors.base07}";
+            bg = "#${config.colorScheme.colors.base0D}";
           };
         };
         tabs = {
-          indicator.stop = "#83a598";
+          indicator.stop = "#${config.colorScheme.colors.base0D}";
           odd = {
-            fg = "#fbf1c7";
-            bg = "#282828";
+            fg = "#${config.colorScheme.colors.base07}";
+            bg = "#${config.colorScheme.colors.base00}";
           };
           even = {
-            fg = "#fbf1c7";
-            bg = "#3c3836";
+            fg = "#${config.colorScheme.colors.base07}";
+            bg = "#${config.colorScheme.colors.base01}";
           };
           selected = {
             odd = {
-              fg = "#282828";
-              bg = "#458588";
+              fg = "#${config.colorScheme.colors.base00}";
+              bg = "#${config.colorScheme.colors.base0D}";
             };
             even = {
-              fg = "#282828";
-              bg = "#458588";
+              fg = "#${config.colorScheme.colors.base00}";
+              bg = "#${config.colorScheme.colors.base0D}";
             };
           };
         };
         hints = {
-          bg = "#282828";
-          fg = "#fbf1c7";
-          match.fg = "#b8bb26";
+          bg = "#${config.colorScheme.colors.base00}";
+          fg = "#${config.colorScheme.colors.base07}";
+          match.fg = "#${config.colorScheme.colors.base0B}";
         };
         completion = {
-          fg = "#fbf1c7";
-          odd.bg = "#282828";
-          even.bg = "#3c3836";
+          fg = "#${config.colorScheme.colors.base07}";
+          odd.bg = "#${config.colorScheme.colors.base00}";
+          even.bg = "#${config.colorScheme.colors.base01}";
           category = {
-            bg = "#282828";
-            fg = "#fbf1c7";
+            bg = "#${config.colorScheme.colors.base00}";
+            fg = "#${config.colorScheme.colors.base07}";
           };
           item.selected = {
-            bg = "#282828";
-            fg = "#fbf1c7";
-            match.fg = "#b8bb26";
+            bg = "#${config.colorScheme.colors.base00}";
+            fg = "#${config.colorScheme.colors.base07}";
+            match.fg = "#${config.colorScheme.colors.base0B}";
           };
-          match = { fg = "#fbf1c7"; };
+          match = { fg = "#${config.colorScheme.colors.base07}"; };
           scrollbar = {
-            fg = "#3c3836";
-            bg = "#282828";
+            fg = "#${config.colorScheme.colors.base01}";
+            bg = "#${config.colorScheme.colors.base00}";
           };
         };
         webpage = {
-          bg = "#282828";
+          bg = "#${config.colorScheme.colors.base00}";
           preferred_color_scheme = "dark";
           darkmode.enabled = false;
           darkmode.policy.images = "never";
         };
         downloads = {
-          bar.bg = "#282828";
+          bar.bg = "#${config.colorScheme.colors.base00}";
           error = {
-            fg = "#fbf1c7";
-            bg = "#cc241d";
+            fg = "#${config.colorScheme.colors.base07}";
+            bg = "#${config.colorScheme.colors.base08}";
           };
           start = {
-            fg = "#fbf1c7";
-            bg = "#d79921";
+            fg = "#${config.colorScheme.colors.base07}";
+            bg = "#${config.colorScheme.colors.base09}";
           };
           stop = {
-            fg = "#fbf1c7";
-            bg = "#b8bb26";
+            fg = "#${config.colorScheme.colors.base07}";
+            bg = "#${config.colorScheme.colors.base0B}";
           };
         };
         prompts = {
-          fg = "#fbf1c7";
-          bg = "#282828";
+          fg = "#${config.colorScheme.colors.base07}";
+          bg = "#${config.colorScheme.colors.base00}";
         };
         keyhint = {
-          fg = "#fbf1c7";
-          bg = "#282828";
-          suffix.fg = "#b8bb26";
+          fg = "#${config.colorScheme.colors.base07}";
+          bg = "#${config.colorScheme.colors.base00}";
+          suffix.fg = "#${config.colorScheme.colors.base0B}";
         };
       };
     };

@@ -5,12 +5,11 @@
     nix-colors.homeManagerModules.default
     ./wallpapers.nix
     ../../modules/shell/newsboat.nix
-    ../../modules/browsers/firefox.nix
-    ../../modules/browsers/brave.nix
+    ../../modules/browsers
     ../../modules/media
+    ../../modules/apps
     ../../modules/git/git.nix
-    ../../modules/services/picom.nix
-    ../../modules/services/easyeffects.nix
+    ../../modules/services
   ];
 
   colorScheme = nix-colors.colorSchemes.solarized-dark;
@@ -65,7 +64,6 @@
     openrgb
     i2c-tools
     betterlockscreen
-    dunst
     libnotify
     pulsemixer
     bitwarden
@@ -255,89 +253,89 @@
     };
   };
 
-  programs.kitty = {
-    enable = true;
-    extraConfig = ''
-      window_padding_width 4
-      font_family FiraCode Nerd Font
-      bold_font auto
-      italic_font auto
-      bold_italic_font  auto
-      font_size 14
-      disable_ligatures never
+  #  programs.kitty = {
+  #    enable = true;
+  #    extraConfig = ''
+  #      window_padding_width 4
+  #      font_family FiraCode Nerd Font
+  #      bold_font auto
+  #      italic_font auto
+  #      bold_italic_font  auto
+  #      font_size 14
+  #      disable_ligatures never
+  #
+  #      tab_bar_edge bottom
+  #      tab_bar_style powerline
+  #      tab_powerline_style slanted
+  #      active_tab_foreground   #e9e2cb
+  #      active_tab_background   #002731
+  #      active_tab_font_style   bold-italic
+  #      inactive_tab_foreground #708183
+  #      inactive_tab_background #001e26
+  #      inactive_tab_font_style normal
+  #      cursor  #2075c7
+  #      confirm_os_window_close 0
+  #      background #001e26
+  #      foreground #708183
+  #      cursor #708183
+  #      selection_background #002731
+  #      color0 #002731
+  #      color1 #d01b24
+  #      color2 #728905
+  #      color3 #a57705
+  #      color4 #2075c7
+  #      color5 #c61b6e
+  #      color6 #259185
+  #      color7 #e9e2cb
+  #      color8 #001e26
+  #      color9 #bd3612
+  #      color10 #465a61
+  #      color11 #52676f
+  #      color12 #708183
+  #      color13 #5856b9
+  #      color14 #81908f
+  #      color15 #fcf4dc
+  #      selection_foreground #001e26
+  #    '';
+  #  };
 
-      tab_bar_edge bottom
-      tab_bar_style powerline
-      tab_powerline_style slanted
-      active_tab_foreground   #e9e2cb
-      active_tab_background   #002731
-      active_tab_font_style   bold-italic
-      inactive_tab_foreground #708183
-      inactive_tab_background #001e26
-      inactive_tab_font_style normal
-      cursor  #2075c7
-      confirm_os_window_close 0
-      background #001e26
-      foreground #708183
-      cursor #708183
-      selection_background #002731
-      color0 #002731
-      color1 #d01b24
-      color2 #728905
-      color3 #a57705
-      color4 #2075c7
-      color5 #c61b6e
-      color6 #259185
-      color7 #e9e2cb
-      color8 #001e26
-      color9 #bd3612
-      color10 #465a61
-      color11 #52676f
-      color12 #708183
-      color13 #5856b9
-      color14 #81908f
-      color15 #fcf4dc
-      selection_foreground #001e26
-    '';
-  };
-
-  services.dunst = {
-    enable = true;
-    settings = {
-      global = {
-        width = 300;
-        height = 300;
-        offset = "30x50";
-        origin = "top-right";
-        transparency = 10;
-        max_icon_size = 64;
-        min_icon_size = 32;
-        frame_color = "#458588";
-        font = "JetBrainsMono Nerd Font 9";
-        format = ''
-          <b>%s</b>
-          %b'';
-        show_indicators = false;
-      };
-
-      urgency_normal = {
-        background = "#002b36";
-        foreground = "#839496";
-        timeout = 10;
-      };
-
-      discord = {
-        appname = "discord";
-        frame_color = "#5856b9";
-      };
-
-      spotify = {
-        appname = ".spotify";
-        urgency = "Normal";
-        frame_color = "#5856b9";
-      };
-    };
-  };
+  #  services.dunst = {
+  #    enable = true;
+  #    settings = {
+  #      global = {
+  #        width = 300;
+  #        height = 300;
+  #        offset = "30x50";
+  #        origin = "top-right";
+  #        transparency = 10;
+  #        max_icon_size = 64;
+  #        min_icon_size = 32;
+  #        frame_color = "#458588";
+  #        font = "JetBrainsMono Nerd Font 9";
+  #        format = ''
+  #          <b>%s</b>
+  #          %b'';
+  #        show_indicators = false;
+  #      };
+  #
+  #      urgency_normal = {
+  #        background = "#002b36";
+  #        foreground = "#839496";
+  #        timeout = 10;
+  #      };
+  #
+  #      discord = {
+  #        appname = "discord";
+  #        frame_color = "#5856b9";
+  #      };
+  #
+  #      spotify = {
+  #        appname = ".spotify";
+  #        urgency = "Normal";
+  #        frame_color = "#5856b9";
+  #      };
+  #    };
+  #  };
 
   services.mpd-discord-rpc = {
     enable = true;
@@ -349,12 +347,12 @@
       };
     };
   };
-  services.redshift = {
-    enable = true;
-    provider = "manual";
-    latitude = 52.2297;
-    longitude = 21.0122;
-  };
+  #  services.redshift = {
+  #    enable = true;
+  #    provider = "manual";
+  #    latitude = 52.2297;
+  #    longitude = 21.0122;
+  #  };
   gtk = {
     enable = true;
     theme = {
@@ -363,23 +361,23 @@
     };
   };
 
-  services.flameshot = {
-    enable = true;
-    settings = {
-      General = {
-        autoCloseIdleDaemon = true;
-        checkForUpdates = false;
-        contrastOpacity = 188;
-        saveAfterCopy = true;
-        savePath = "/home/${username}/Pictures/Screenshots";
-        savePathFixed = true;
-        uiColor = "#2075c7";
-        useJpgForClipboard = false;
-        disabledTrayIcon = true;
-        showStartupLaunchMessage = false;
-      };
-    };
-  };
+  #  services.flameshot = {
+  #    enable = true;
+  #    settings = {
+  #      General = {
+  #        autoCloseIdleDaemon = true;
+  #        checkForUpdates = false;
+  #        contrastOpacity = 188;
+  #        saveAfterCopy = true;
+  #        savePath = "/home/${username}/Pictures/Screenshots";
+  #        savePathFixed = true;
+  #        uiColor = "#2075c7";
+  #        useJpgForClipboard = false;
+  #        disabledTrayIcon = true;
+  #        showStartupLaunchMessage = false;
+  #      };
+  #    };
+  #  };
 
   programs.rbw = {
     enable = true;
@@ -417,154 +415,154 @@
     '';
   };
 
-  programs.qutebrowser = {
-    enable = true;
-    searchEngines = {
-      w = "https://en.wikipedia.org/wiki/Special:Search?search={}&go=Go&ns0=1";
-      aw = "https://wiki.archlinux.org/?search={}";
-      nw = "https://nixos.wiki/index.php?search={}";
-      g = "https://www.google.com/search?hl=en&q={}";
-      b = "https://www.search.brave.com/search?q={}";
-      s = "https://startpage.com/search?q={}";
-    };
-    settings = {
-      statusbar.show = "in-mode";
-      #content.user_styles = "solarized.css";
-      downloads.position = "bottom";
-      tabs = {
-        show = "multiple";
-        show_switching_delay = 1500;
-        background = true;
-        title.format = "{audio}{current_title}";
-      };
-      scrolling.smooth = true;
-      fonts = {
-        prompts = "12pt JetBrainsMono Nerd Font";
-        hints = "10pt JetBrainsMono Nerd Font";
-        statusbar = "12pt JetBrainsMono Nerd Font";
-        contextmenu = "10pt JetBrainsMono Nerd Font";
-        completion = {
-          entry = "12pt JetBrainsMono Nerd Font";
-          category = "12pt JetBrainsMono Nerd Font";
-        };
-        web = {
-          size.default = 16;
-          family = {
-            standard = "JetBrainsMono Nerd Font";
-            sans_serif = "JetBrainsMono Nerd Font";
-            fixed = "JetBrainsMono Nerd Font";
-            cursive = "JetBrainsMono Nerd Font";
-            fantasy = "JetBrainsMono Nerd Font";
-          };
-        };
-        tabs = {
-          selected = "10pt JetBrainsMono Nerd Font";
-          unselected = "10pt JetBrainsMono Nerd Font";
-        };
-      };
-      url = { start_pages = "https://www.google.com"; };
-      content.blocking.whitelist =
-        [ "*://xeiaso.net/*" "*://ethicalads.io/*" "*://*.ethicalads.io/*" ];
-      colors = {
-        statusbar = {
-          normal = {
-            bg = "#002b36";
-            fg = "#fdf6e3";
-          };
-          command = {
-            bg = "#002b36";
-            fg = "#fdf6e3";
-          };
-          insert = {
-            bg = "#002b36";
-            fg = "#859900";
-          };
-          url = {
-            success.http.fg = "#859900";
-            success.https.fg = "#859900";
-          };
-        };
-        tabs = {
-          indicator.stop = "#93a1a1";
-          odd.bg = "#002b36";
-          even.bg = "#073642";
-          selected = {
-            odd.bg = "#002b36";
-            even.bg = "#073642";
-          };
-        };
-        hints = {
-          bg = "#002b36";
-          fg = "#fdf6e3";
-          match.fg = "#859900";
-        };
-        completion = {
-          fg = "#fdf6e3";
-          odd.bg = "#002b36";
-          even.bg = "#073642";
-          category = {
-            bg = "#002b36";
-            fg = "#fdf6e3";
-          };
-          item.selected = {
-            bg = "#002b36";
-            fg = "#fdf6e3";
-            match.fg = "#859900";
-          };
-          match = { fg = "#fdf6e3"; };
-          scrollbar = {
-            fg = "#073642";
-            bg = "#002b36";
-          };
-        };
-        webpage = {
-          bg = "#fdf6e3";
-          preferred_color_scheme = "dark";
-          darkmode.enabled = false;
-          darkmode.policy.images = "never";
-        };
-        downloads = {
-          bar.bg = "#002b36";
-          error = {
-            fg = "#fdf6e3";
-            bg = "#cc241d";
-          };
-          start = {
-            fg = "#fdf6e3";
-            bg = "#d79921";
-          };
-          stop = {
-            fg = "#fdf6e3";
-            bg = "#859900";
-          };
-        };
-        prompts = {
-          fg = "#fdf6e3";
-          bg = "#002b36";
-        };
-        keyhint = {
-          fg = "#fdf6e3";
-          bg = "#002b36";
-          suffix.fg = "#859900";
-        };
-      };
-    };
-    keyBindings = {
-      normal = {
-        "<Ctrl-v>" = "spawn mpv {url}";
-        ",p" = "spawn --userscript qute-bitwarden";
-        ",u" = "adblock-update";
-        ",l" =
-          ''config-cycle spellcheck.languages ["en-GB"] ["en-US"] ["pl-PL"]'';
-        "Wd" =
-          "hint links spawn kitty -e yt-dlp {hint-url}"; # make it more terminal agnostic
-        "W" = "hint links spawn --detach mpv {hint-url}";
-        "q" = "tab-close";
-      };
-      prompt = { "<Ctrl-y>" = "prompt-yes"; };
-    };
-    extraConfig = "config.unbind('d')";
-  };
+  #programs.qutebrowser = {
+  #  enable = true;
+  #  searchEngines = {
+  #    w = "https://en.wikipedia.org/wiki/Special:Search?search={}&go=Go&ns0=1";
+  #    aw = "https://wiki.archlinux.org/?search={}";
+  #    nw = "https://nixos.wiki/index.php?search={}";
+  #    g = "https://www.google.com/search?hl=en&q={}";
+  #    b = "https://www.search.brave.com/search?q={}";
+  #    s = "https://startpage.com/search?q={}";
+  #  };
+  #  settings = {
+  #    statusbar.show = "in-mode";
+  #    #content.user_styles = "solarized.css";
+  #    downloads.position = "bottom";
+  #    tabs = {
+  #      show = "multiple";
+  #      show_switching_delay = 1500;
+  #      background = true;
+  #      title.format = "{audio}{current_title}";
+  #    };
+  #    scrolling.smooth = true;
+  #    fonts = {
+  #      prompts = "12pt JetBrainsMono Nerd Font";
+  #      hints = "10pt JetBrainsMono Nerd Font";
+  #      statusbar = "12pt JetBrainsMono Nerd Font";
+  #      contextmenu = "10pt JetBrainsMono Nerd Font";
+  #      completion = {
+  #        entry = "12pt JetBrainsMono Nerd Font";
+  #        category = "12pt JetBrainsMono Nerd Font";
+  #      };
+  #      web = {
+  #        size.default = 16;
+  #        family = {
+  #          standard = "JetBrainsMono Nerd Font";
+  #          sans_serif = "JetBrainsMono Nerd Font";
+  #          fixed = "JetBrainsMono Nerd Font";
+  #          cursive = "JetBrainsMono Nerd Font";
+  #          fantasy = "JetBrainsMono Nerd Font";
+  #        };
+  #      };
+  #      tabs = {
+  #        selected = "10pt JetBrainsMono Nerd Font";
+  #        unselected = "10pt JetBrainsMono Nerd Font";
+  #      };
+  #    };
+  #    url = { start_pages = "https://www.google.com"; };
+  #    content.blocking.whitelist =
+  #      [ "*://xeiaso.net/*" "*://ethicalads.io/*" "*://*.ethicalads.io/*" ];
+  #    colors = {
+  #      statusbar = {
+  #        normal = {
+  #          bg = "#002b36";
+  #          fg = "#fdf6e3";
+  #        };
+  #        command = {
+  #          bg = "#002b36";
+  #          fg = "#fdf6e3";
+  #        };
+  #        insert = {
+  #          bg = "#002b36";
+  #          fg = "#859900";
+  #        };
+  #        url = {
+  #          success.http.fg = "#859900";
+  #          success.https.fg = "#859900";
+  #        };
+  #      };
+  #      tabs = {
+  #        indicator.stop = "#93a1a1";
+  #        odd.bg = "#002b36";
+  #        even.bg = "#073642";
+  #        selected = {
+  #          odd.bg = "#002b36";
+  #          even.bg = "#073642";
+  #        };
+  #      };
+  #      hints = {
+  #        bg = "#002b36";
+  #        fg = "#fdf6e3";
+  #        match.fg = "#859900";
+  #      };
+  #      completion = {
+  #        fg = "#fdf6e3";
+  #        odd.bg = "#002b36";
+  #        even.bg = "#073642";
+  #        category = {
+  #          bg = "#002b36";
+  #          fg = "#fdf6e3";
+  #        };
+  #        item.selected = {
+  #          bg = "#002b36";
+  #          fg = "#fdf6e3";
+  #          match.fg = "#859900";
+  #        };
+  #        match = { fg = "#fdf6e3"; };
+  #        scrollbar = {
+  #          fg = "#073642";
+  #          bg = "#002b36";
+  #        };
+  #      };
+  #      webpage = {
+  #        bg = "#fdf6e3";
+  #        preferred_color_scheme = "dark";
+  #        darkmode.enabled = false;
+  #        darkmode.policy.images = "never";
+  #      };
+  #      downloads = {
+  #        bar.bg = "#002b36";
+  #        error = {
+  #          fg = "#fdf6e3";
+  #          bg = "#cc241d";
+  #        };
+  #        start = {
+  #          fg = "#fdf6e3";
+  #          bg = "#d79921";
+  #        };
+  #        stop = {
+  #          fg = "#fdf6e3";
+  #          bg = "#859900";
+  #        };
+  #      };
+  #      prompts = {
+  #        fg = "#fdf6e3";
+  #        bg = "#002b36";
+  #      };
+  #      keyhint = {
+  #        fg = "#fdf6e3";
+  #        bg = "#002b36";
+  #        suffix.fg = "#859900";
+  #      };
+  #    };
+  #  };
+  #  keyBindings = {
+  #    normal = {
+  #      "<Ctrl-v>" = "spawn mpv {url}";
+  #      ",p" = "spawn --userscript qute-bitwarden";
+  #      ",u" = "adblock-update";
+  #      ",l" =
+  #        ''config-cycle spellcheck.languages ["en-GB"] ["en-US"] ["pl-PL"]'';
+  #      "Wd" =
+  #        "hint links spawn kitty -e yt-dlp {hint-url}"; # make it more terminal agnostic
+  #      "W" = "hint links spawn --detach mpv {hint-url}";
+  #      "q" = "tab-close";
+  #    };
+  #    prompt = { "<Ctrl-y>" = "prompt-yes"; };
+  #  };
+  #  extraConfig = "config.unbind('d')";
+  #};
 
   programs.rofi = {
     enable = true;
@@ -593,38 +591,38 @@
     enableZshIntegration = true;
   };
 
-  programs.zathura = {
-    enable = true;
-    options = {
-      notification-error-bg = "#586e75"; # base01
-      notification-error-fg = "#dc322f"; # red
-      notification-warning-bg = "#586e75"; # base01
-      notification-warning-fg = "#dc322f"; # red
-      notification-bg = "#586e75"; # base01
-      notification-fg = "#b58900"; # yellow
-      completion-group-bg = "#002b36"; # base03
-      completion-group-fg = "#839496"; # base0
-      completion-bg = "#073642"; # base02
-      completion-fg = "#93a1a1"; # base1
-      completion-highlight-bg = "#586e75"; # base01
-      completion-highlight-fg = "#eee8d5"; # base2
-      index-bg = "#073642"; # base02
-      index-fg = "#93a1a1"; # base1
-      index-active-bg = "#586e75"; # base01
-      index-active-fg = "#eee8d5"; # base2
-      inputbar-bg = "#586e75"; # base01
-      inputbar-fg = "#eee8d5"; # base2
-      statusbar-bg = "#073642"; # base02
-      statusbar-fg = "#93a1a1"; # base1
-      highlight-color = "#657b83"; # base00
-      highlight-active-color = "#268bd2"; # blue
-      default-bg = "#073642"; # base02
-      default-fg = "#93a1a1"; # base1
-      recolor = true;
-      recolor-lightcolor = "#073642"; # base02
-      recolor-darkcolor = "#93a1a1"; # base1
-    };
-  };
+  #programs.zathura = {
+  #  enable = true;
+  #  options = {
+  #    notification-error-bg = "#586e75"; # base01
+  #    notification-error-fg = "#dc322f"; # red
+  #    notification-warning-bg = "#586e75"; # base01
+  #    notification-warning-fg = "#dc322f"; # red
+  #    notification-bg = "#586e75"; # base01
+  #    notification-fg = "#b58900"; # yellow
+  #    completion-group-bg = "#002b36"; # base03
+  #    completion-group-fg = "#839496"; # base0
+  #    completion-bg = "#073642"; # base02
+  #    completion-fg = "#93a1a1"; # base1
+  #    completion-highlight-bg = "#586e75"; # base01
+  #    completion-highlight-fg = "#eee8d5"; # base2
+  #    index-bg = "#073642"; # base02
+  #    index-fg = "#93a1a1"; # base1
+  #    index-active-bg = "#586e75"; # base01
+  #    index-active-fg = "#eee8d5"; # base2
+  #    inputbar-bg = "#586e75"; # base01
+  #    inputbar-fg = "#eee8d5"; # base2
+  #    statusbar-bg = "#073642"; # base02
+  #    statusbar-fg = "#93a1a1"; # base1
+  #    highlight-color = "#657b83"; # base00
+  #    highlight-active-color = "#268bd2"; # blue
+  #    default-bg = "#073642"; # base02
+  #    default-fg = "#93a1a1"; # base1
+  #    recolor = true;
+  #    recolor-lightcolor = "#073642"; # base02
+  #    recolor-darkcolor = "#93a1a1"; # base1
+  #  };
+  #};
   programs.yt-dlp = {
     enable = true;
     settings = {

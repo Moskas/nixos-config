@@ -107,6 +107,16 @@
         brwhite = "#fbf1c7";
         white = "#eee8d5";
       };
+      palettes.dynamic = {
+        fg = "#${config.colorSchemes.colors.base06}";
+        bg = "#${config.colorScheme.colors.base00}";
+        red = "#${config.colorScheme.colors.base08}";
+        yellow = "#${config.colorScheme.colors.base0A}";
+        green = "#${config.colorScheme.colors.base0B}";
+        cyan = "#${config.colorScheme.colors.base0C}";
+        blue = "#${config.colorScheme.colors.base0D}";
+        magenta = "#${config.colorScheme.colors.base0E}";
+      };
       palettes.gruvbox = {
         fg = "#ebdbb2";
         bg = "#1d2021";

@@ -5,46 +5,50 @@
   programs.zathura = {
     enable = true;
     options = {
-      notification-error-bg = "#32302f"; # bg
-      notification-error-fg = "#fb4934"; # bright:red
-      notification-warning-bg = "#32302f"; # bg
-      notification-warning-fg = "#fabd2f"; # bright:yellow
-      notification-bg = "#32302f"; # bg
-      notification-fg = "#b8bb26"; # bright:green
+      notification-error-bg = "#${config.colorScheme.colors.base00}"; # bg
+      notification-error-fg =
+        "#${config.colorScheme.colors.base08}"; # bright:red
+      notification-warning-bg = "#${config.colorScheme.colors.base00}"; # bg
+      notification-warning-fg =
+        "#${config.colorScheme.colors.base0A}"; # bright:yellow
+      notification-bg = "#${config.colorScheme.colors.base00}"; # bg
+      notification-fg = "#${config.colorScheme.colors.base0B}"; # bright:green
 
-      completion-bg = "#504945"; # bg2
-      completion-fg = "#ebdbb2"; # fg
-      completion-group-bg = "#3c3836"; # bg1
-      completion-group-fg = "#928374"; # gray
-      completion-highlight-bg = "#83a598"; # bright:blue
-      completion-highlight-fg = "#504945"; # bg2
+      completion-bg = "#${config.colorScheme.colors.base01}"; # bg2
+      completion-fg = "#${config.colorScheme.colors.base06}"; # fg
+      completion-group-bg = "#${config.colorScheme.colors.base02}"; # bg1
+      completion-group-fg = "#${config.colorScheme.colors.base03}"; # gray
+      completion-highlight-bg =
+        "#${config.colorScheme.colors.base0D}"; # bright:blue
+      completion-highlight-fg = "#${config.colorScheme.colors.base01}"; # bg2
 
       # Define the color in index mode
-      index-bg = "#504945"; # bg2
-      index-fg = "#ebdbb2"; # fg
-      index-active-bg = "#83a598"; # bright:blue
-      index-active-fg = "#504945"; # bg2
+      index-bg = "#${config.colorScheme.colors.base01}"; # bg2
+      index-fg = "#${config.colorScheme.colors.base06}"; # fg
+      index-active-bg = "#${config.colorScheme.colors.base0D}"; # bright:blue
+      index-active-fg = "#${config.colorScheme.colors.base01}"; # bg2
 
-      inputbar-bg = "#32302f"; # bg
-      inputbar-fg = "#ebdbb2"; # fg
+      inputbar-bg = "#${config.colorScheme.colors.base00}"; # bg
+      inputbar-fg = "#${config.colorScheme.colors.base06}"; # fg
 
-      statusbar-bg = "#504945"; # bg2
-      statusbar-fg = "#ebdbb2"; # fg
+      statusbar-bg = "#${config.colorScheme.colors.base01}"; # bg2
+      statusbar-fg = "#${config.colorScheme.colors.base06}"; # fg
 
-      highlight-color = "#fabd2f"; # bright:yellow
-      highlight-active-color = "#fe8019"; # bright:orange
+      highlight-color = "#${config.colorScheme.colors.base0A}"; # bright:yellow
+      highlight-active-color =
+        "#${config.colorScheme.colors.base09}"; # bright:orange
 
-      default-bg = "#32302f"; # bg
-      default-fg = "#ebdbb2"; # fg
+      default-bg = "#${config.colorScheme.colors.base00}"; # bg
+      default-fg = "#${config.colorScheme.colors.base06}"; # fg
       render-loading = true;
-      render-loading-bg = "#32302f"; # bg
-      render-loading-fg = "#ebdbb2"; # fg
+      render-loading-bg = "#${config.colorScheme.colors.base00}"; # bg
+      render-loading-fg = "#${config.colorScheme.colors.base06}"; # fg
 
       # Recolor book content's color
-      recolor-lightcolor = "#32302f"; # bg
-      recolor-darkcolor = "#ebdbb2"; # fg
+      recolor-lightcolor = "#${config.colorScheme.colors.base00}"; # bg
+      recolor-darkcolor = "#${config.colorScheme.colors.base06}"; # fg
       recolor = true;
-      recolor-keephue = true; # keep original color
+      recolor-keephue = false; # keep original color
     };
   };
 

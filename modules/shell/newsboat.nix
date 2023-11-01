@@ -7,13 +7,13 @@
     autoReload = true;
     reloadThreads = 8;
     extraConfig = ''
-      color article                                       color15  color235
-      color background                                    color2   color235
-      color info                                          color2   color235
-      color listfocus                                     color15  color8   bold
-      color listfocus_unread                              color15  color8   bold
-      color listnormal                                    color8   color235
-      color listnormal_unread                             color6   color235
+      color background         default   default
+      color listnormal         default   default
+      color listnormal_unread  default   default
+      color listfocus          black     yellow bold
+      color listfocus_unread   black     yellow bold
+      color info               default   black
+      color article            default   default
       highlight article "^Feed:.*"                        color14  color235
       highlight article "^Title:.*"                       color11  color235 bold
       highlight article "^Author:.*"                      color13  color235
