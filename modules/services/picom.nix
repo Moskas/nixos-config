@@ -3,7 +3,7 @@
 {
   services.picom = {
     enable = true;
-    package = pkgs.picom-next;
+    #package = pkgs.picom-next;
     backend = "glx";
     #unredir-if-possible = false;
     vSync = true;

@@ -8,28 +8,28 @@
     reloadThreads = 8;
     extraConfig = ''
       color background         default   default
-      color listnormal         default   default
+      color listnormal         black     default
       color listnormal_unread  default   default
       color listfocus          black     yellow bold
       color listfocus_unread   black     yellow bold
-      color info               default   black
+      color info               black     cyan bold
       color article            default   default
-      highlight article "^Feed:.*"                        color14  color235
-      highlight article "^Title:.*"                       color11  color235 bold
-      highlight article "^Author:.*"                      color13  color235
-      highlight article "^Link:.*"                        color12  color235
-      highlight article "^Links:.*"                       color12  color235
-      highlight article "\\[[0-9]\\]:.*"                  color3   color235 bold
-      highlight article "^Podcast Download URL:.*"        color12  color235
-      highlight article "^\\[image.*"                     color14  color235
-      highlight article "\\ \\[image*\\]\\ "                     color14  color235
-      highlight article "^https://.*"                     color12  color235
-      highlight article "^http://.*"                      color12  color235
-      highlight article "^Date:.*"                        color10  color235
-      highlight article "\\*\ "                           color13  color235 bold
-      highlight article "\\[0-9]\\.\ "                           color13  color235 bold
-      highlight article "\\[[0-9]\\+\\]"                  color3   color235 bold
-      highlight article "\\[[^0-9].*[0-9]\\+\\]"          color13  color235 bold
+      highlight article "^Feed:.*"                        cyan  default
+      highlight article "^Title:.*"                       yellow default bold
+      highlight article "^Author:.*"                      magenta default
+      highlight article "^Link:.*"                        blue  default
+      highlight article "^Links:.*"                       blue  default
+      highlight article "\\[[0-9]\\]:.*"                  yellow   default bold
+      highlight article "^Podcast Download URL:.*"        blue  default
+      highlight article "^\\[image.*"                     cyan  default
+      highlight article "\\ \\[image*\\]\\ "              cyan  default
+      highlight article "^https://.*"                     blue  default
+      highlight article "^http://.*"                      blue  default
+      highlight article "^Date:.*"                        green  default
+      highlight article "\\*\ "                           magenta  default bold
+      highlight article "\\[0-9]\\.\ "                    magenta  default bold
+      highlight article "\\[[0-9]\\+\\]"                  yellow   default bold
+      highlight article "\\[[^0-9].*[0-9]\\+\\]"          magenta  default bold
 
       macro v set browser "setsid -f mpv --really-quiet --no-terminal" ; open-in-browser ; set browser brave
       player "mpv"
@@ -42,6 +42,7 @@
       bind-key k up
       bind-key h quit
     '';
+    #queries = { Programming = ''rssurl =~ "Programming"''; };
     urls = [
       { url = ''"query:Youtube:tags # \"Youtube\""''; }
       { url = ''"query:Odysee:tags # \"Odysee\""''; }
@@ -59,11 +60,6 @@
       {
         tags = [ "linux" "tech" ];
         url = "https://myme.no/feed.xml";
-      }
-      {
-        tags = [ "Youtube" ];
-        url =
-          "https://www.youtube.com/feeds/videos.xml?channel_id=UC5UAwBUum7CPN5buc-_N1Fw";
       }
       #Jobs
       {
@@ -252,6 +248,12 @@
         tags = [ "Youtube" ];
         title = "No Boilerplate";
       }
+      {
+        url =
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UCnCmb1vpv90EeSX5g7K4UYQ";
+        tags = [ "YouTube" ];
+        title = "The Librarian";
+      }
       #{
       #url = "https://www.youtube.com/feeds/videos.xml?channel_id="; tags = [ "Youtube" ];
       #title = "";
@@ -379,7 +381,11 @@
       }
       {
         url = "https://morss.it/https://planet.emacslife.com/atom.xml";
-        tags = [ "Tech" "Emacs" ];
+        tags = [ "Tech" "Emacs" "Blog" ];
+      }
+      {
+        url = "https://planet.clojure.in/atom.xml";
+        tags = [ "Tech" "Programming" "Blog" ];
       }
       {
         url = "https://xeiaso.net/blog.rss";
@@ -389,14 +395,14 @@
         url = "https://determinate.systems/rss.xml";
         tags = [ "Nix" ];
       }
-      {
-        url = "https://morss.it/https://www.phoronix.com/rss.php";
-        tags = [ "Blog" ];
-      }
-      {
-        url = "https://hackaday.com/feed/";
-        tags = [ "Blog" ];
-      }
+      #      {
+      #        url = "https://morss.it/https://www.phoronix.com/rss.php";
+      #        tags = [ "Blog" ];
+      #      }
+      #      {
+      #        url = "https://hackaday.com/feed/";
+      #        tags = [ "Blog" ];
+      #      }
       {
         url = "https://itsfoss.com/rss/";
         tags = [ "Blog" ];

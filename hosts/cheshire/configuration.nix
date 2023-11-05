@@ -26,10 +26,7 @@
         enable = true;
         configurationLimit = 20;
       };
-      efi = {
-        canTouchEfiVariables = true;
-        #efiSysMountPoint = "/boot/EFI";
-      };
+      efi = { canTouchEfiVariables = true; };
       grub = {
         enable = false;
         devices = [ "/dev/disk/by-uuid/DDA7-8FC1" ];

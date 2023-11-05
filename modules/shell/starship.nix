@@ -7,7 +7,7 @@
     package = pkgs.starship;
     settings = {
       add_newline = false;
-      palette = "gruvbox";
+      palette = "dynamic";
       format = lib.concatStrings [
         "$os$username$hostname$rust$python$node$lua$git_branch$git_status$git_state$cmd_duration$fill$time$line_break$directory$sudo$character"
       ];
@@ -32,8 +32,9 @@
       };
       hostname = {
         ssh_only = false;
+        ssh_symbol = "󰣀 ";
         format = "[ $hostname ]($style)";
-        style = " fg:bg bg:dark-blue bold";
+        style = " fg:bg bg:dark-cyan bold";
         disabled = false;
       };
       memory_usage = {
@@ -108,14 +109,22 @@
         white = "#eee8d5";
       };
       palettes.dynamic = {
-        fg = "#${config.colorSchemes.colors.base06}";
+        fg = "#${config.colorScheme.colors.base06}";
         bg = "#${config.colorScheme.colors.base00}";
         red = "#${config.colorScheme.colors.base08}";
         yellow = "#${config.colorScheme.colors.base0A}";
+        dark-yellow = "#${config.colorScheme.colors.base0A}";
         green = "#${config.colorScheme.colors.base0B}";
+        dark-green = "#${config.colorScheme.colors.base0B}";
         cyan = "#${config.colorScheme.colors.base0C}";
+        dark-cyan = "#${config.colorScheme.colors.base0C}";
         blue = "#${config.colorScheme.colors.base0D}";
+        dark-blue = "#${config.colorScheme.colors.base0D}";
         magenta = "#${config.colorScheme.colors.base0E}";
+        dark-magenta = "#${config.colorScheme.colors.base0E}";
+        orange = "#${config.colorScheme.colors.base09}";
+        gray = "#${config.colorScheme.colors.base03}";
+        dark-gray = "#${config.colorScheme.colors.base02}";
       };
       palettes.gruvbox = {
         fg = "#ebdbb2";

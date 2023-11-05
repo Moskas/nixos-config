@@ -19,5 +19,7 @@
 
   };
 
+  environment.variables = { NIX_SSHOPS = "-t"; };
+
   nixpkgs = { config = { allowUnfree = true; }; };
 }

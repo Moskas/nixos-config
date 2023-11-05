@@ -6,4 +6,5 @@
     backend = "x11";
     extraPackages = [ ];
   };
+
 }
