@@ -174,9 +174,11 @@
         ",u" = "adblock-update";
         ",l" =
           ''config-cycle spellcheck.languages ["en-GB"] ["en-US"] ["pl-PL"]'';
-        "Wd" =
-          "hint links spawn kitty -e yt-dlp {hint-url}"; # make it more terminal agnostic
-        "W" = "hint links spawn --detach mpv {hint-url}";
+        "wd" =
+          "hint links spawn kitty -e ${pkgs.yt-dlp}/bin/yt-dlp {hint-url}"; # make it more terminal agnostic
+        "ww" = "hint links spawn --detach mpv {hint-url}";
+        "ws" =
+          "hint links spawn --detach ${pkgs.streamlink}/bin/streamlink {hint-url} best --player mpv";
         "q" = "tab-close";
       };
       prompt = { "<Ctrl-y>" = "prompt-yes"; };

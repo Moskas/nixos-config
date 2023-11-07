@@ -56,7 +56,9 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.extraSpecialArgs = { inherit username e-mail; };
+              home-manager.extraSpecialArgs = {
+                inherit username e-mail nix-colors;
+              };
               home-manager.users.${username}.imports =
                 [ (import ./hosts/shimakaze/home.nix) ];
             }
@@ -66,7 +68,6 @@
           inherit system;
           specialArgs = { inherit inputs username nix-colors; };
           modules = [
-            ./hosts/common-configuration.nix
             ./hosts/roon
             ./hosts/roon/configuration.nix
             home-manager.nixosModules.home-manager
@@ -85,7 +86,6 @@
           inherit system;
           specialArgs = { inherit inputs username e-mail nix-colors; };
           modules = [
-            ./hosts/common-configuration.nix
             ./hosts/cheshire
             ./hosts/cheshire/configuration.nix
             home-manager.nixosModules.home-manager

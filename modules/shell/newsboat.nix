@@ -31,7 +31,7 @@
       highlight article "\\[[0-9]\\+\\]"                  yellow   default bold
       highlight article "\\[[^0-9].*[0-9]\\+\\]"          magenta  default bold
 
-      macro v set browser "setsid -f mpv --really-quiet --no-terminal" ; open-in-browser ; set browser brave
+      macro v set browser "setsid -f mpv --really-quiet --no-terminal" ; open-in-browser ; set browser firefox
       player "mpv"
 
       bind-key RIGHT open
@@ -42,30 +42,31 @@
       bind-key k up
       bind-key h quit
     '';
-    #queries = { Programming = ''rssurl =~ "Programming"''; };
     urls = [
       { url = ''"query:Youtube:tags # \"Youtube\""''; }
       { url = ''"query:Odysee:tags # \"Odysee\""''; }
       { url = ''"query:Piped:tags # \"Piped\""''; }
       { url = ''"query:Blog:tags # \"Blog\""''; }
-      { url = ''"query:Wrocław:tags # \"Wrocław\""''; }
       {
-        tags = [ "linux" ];
-        url = "https://www.phoronix.com/rss.php";
+        url = ''"query:Wrocław:tags # \"Wrocław\""'';
       }
+      #{
+      #  tags = [ "Linux" ];
+      #  url = "https://www.phoronix.com/rss.php";
+      #}
       {
-        tags = [ "games" ];
+        tags = [ "Games" ];
         url = "https://terrysfreegameoftheweek.com/feed/";
       }
       {
-        tags = [ "linux" "tech" ];
+        tags = [ "Linux" "Tech" ];
         url = "https://myme.no/feed.xml";
       }
       #Jobs
-      {
-        url = "https://justjoin.it/feed.atom";
-        tags = [ "jobs" ];
-      }
+      #{
+      #  url = "https://justjoin.it/feed.atom";
+      #  tags = [ "Jobs" ];
+      #}
       #Videos
       ##Youtube
       {
@@ -251,13 +252,15 @@
       {
         url =
           "https://www.youtube.com/feeds/videos.xml?channel_id=UCnCmb1vpv90EeSX5g7K4UYQ";
-        tags = [ "YouTube" ];
+        tags = [ "Youtube" ];
         title = "The Librarian";
       }
-      #{
-      #url = "https://www.youtube.com/feeds/videos.xml?channel_id="; tags = [ "Youtube" ];
-      #title = "";
-      #}
+      {
+        url =
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UC_zBdZ0_H_jn41FDRG7q4Tw";
+        tags = [ "Youtube" "Nix" ];
+        title = "Vimjoyer";
+      }
       #{
       #url = "https://www.youtube.com/feeds/videos.xml?channel_id="; tags = [ "Youtube" ];
       #title = "";

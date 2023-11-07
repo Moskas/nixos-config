@@ -46,16 +46,24 @@
       now_playing_suffix = "$/b$9";
       playlist_shorten_total_times = "yes";
     };
-    bindings =
-      [
-        {
-          key = "j";
-          command = "scroll_down";
-        }
-        { key = "k"; command = "scroll_up"; }
-        { key = "J"; command = [ "select_item" "scroll_down" ]; }
-        { key = "K"; command = [ "select_item" "scroll_up" ]; }
-      ];
+    bindings = [
+      {
+        key = "j";
+        command = "scroll_down";
+      }
+      {
+        key = "k";
+        command = "scroll_up";
+      }
+      {
+        key = "J";
+        command = [ "select_item" "scroll_down" ];
+      }
+      {
+        key = "K";
+        command = [ "select_item" "scroll_up" ];
+      }
+    ];
   };
 
   services.mpd-discord-rpc = {

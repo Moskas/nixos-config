@@ -79,16 +79,16 @@
         format = "[ took $duration ](fg:bg bg:yellow)";
       };
       git_branch = {
-        format = "[ $symbol$branch(:$remote_branch) ](bg:purple fg:bg )";
+        format = "[ $symbol$branch(:$remote_branch)](bg:purple fg:bg )";
         symbol = " ";
       };
       git_status = {
         format = "([$all_status ](bg:purple fg:bg ))";
-        stashed = "󰿺";
-        modified = "󱞁";
-        untracked = "󱙓";
-        deleted = "󱙑";
-        renamed = "󱙓";
+        stashed = " 󰿺";
+        modified = " 󱞁";
+        untracked = " 󱙓";
+        deleted = " 󱙑";
+        renamed = " 󱙓";
         staged = " +($count)";
       };
       palettes.solarized = {

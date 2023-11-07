@@ -1,7 +1,16 @@
-{ config, pkgs, lib, username, e-mail, ... }:
+{ config, pkgs, lib, username, e-mail, nix-colors, ... }:
 
 {
-  imports = [ ../../modules/git ../../modules/shell ../../modules/media/mpv.nix ../../modules/editors/neovim.nix ];
+  imports = [
+    nix-colors.homeManagerModules.default
+    ../../modules/git
+    ../../modules/shell
+    ../../modules/media/mpv.nix
+    ../../modules/editors/neovim.nix
+  ];
+
+  colorScheme = nix-colors.colorSchemes.gruvbox-dark-medium;
+
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
   home.username = "${username}";

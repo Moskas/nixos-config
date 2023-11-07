@@ -9,7 +9,6 @@
       noto-fonts-emoji
       ipafont
       kochi-substitute
-      cozette
     ];
   };
 }

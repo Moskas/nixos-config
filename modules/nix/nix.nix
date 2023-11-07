@@ -1,6 +1,7 @@
 { config, lib, pkgs, ... }:
 
 {
+
   nix = {
     gc = {
       automatic = true;
@@ -20,6 +21,6 @@
   };
 
   environment.variables = { NIX_SSHOPS = "-t"; };
-
+  # Additional config for nixpkgs, mainly unfree due to Discord, Steam etc
   nixpkgs = { config = { allowUnfree = true; }; };
 }

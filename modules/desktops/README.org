@@ -1,0 +1,9 @@
+#+title: My currently (mostly) configured desktops aka tiling window managers
+
+* Qtile
+It's currently my main graphical environment due to it's ease of use and expandability not to mention the fact that I'm just familiar with Python in general.
+The config that I use is available [[https://github.com/Moskas/qtile-config][here]]. I tried to keep it in a separate repository to easily use it if I ever have to use it outside of NixOS.
+* Hyprland
+Experimental config to test out Wayland in my workflow, perhaps it won't be needed if Qtile Wayland will be polished enough (tbh I have never checked the Wayland version as of now).
+* Awesome
+It's here if I ever feel the need to learn Lua, mostly because it has very cool features like window/widget creation and such but ~ugh~ lua...

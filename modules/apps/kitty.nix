@@ -68,8 +68,8 @@
       color14                 #${config.colorScheme.colors.base0C}
 
       # white (fg4/fg3)
-      color7                  #${config.colorScheme.colors.base05}
-      color15                 #${config.colorScheme.colors.base04}
+      color7                  #${config.colorScheme.colors.base06}
+      color15                 #${config.colorScheme.colors.base07}
       selection_foreground    #${config.colorScheme.colors.base07}
     '';
   };

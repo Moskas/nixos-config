@@ -5,10 +5,12 @@
     nix-colors.homeManagerModules.default
     ./wallpapers.nix
     ../../modules/shell/newsboat.nix
+    ../../modules/shell/eza.nix
+    ../../modules/shell/zsh.nix
     ../../modules/browsers
     ../../modules/media
     ../../modules/apps
-    ../../modules/git/git.nix
+    ../../modules/git
     ../../modules/services
   ];
 
@@ -97,15 +99,15 @@
         )'';
   };
 
-  home.file = {
-    ".config/qtile".source = pkgs.fetchFromGitea {
-      domain = "codeberg.org";
-      owner = "Moskas";
-      repo = "qtile-org";
-      rev = "d293ab37d6";
-      sha256 = "sha256-9wEoLw3/ma1mvt2Jj2xPc6LejP2HIpBzqxQ+h7E50t8=";
-    };
-  };
+  #home.file = {
+  #  ".config/qtile".source = pkgs.fetchFromGitea {
+  #    domain = "codeberg.org";
+  #    owner = "Moskas";
+  #    repo = "qtile-org";
+  #    rev = "d293ab37d6";
+  #    sha256 = "sha256-9wEoLw3/ma1mvt2Jj2xPc6LejP2HIpBzqxQ+h7E50t8=";
+  #  };
+  #};
 
   home.pointerCursor = {
     size = 64;
@@ -123,30 +125,30 @@
     pinentryFlavor = "tty";
   };
 
-  programs.zsh = {
-    enable = true;
-    shellAliases = {
-      ls = "exa --grid --color always --icons --sort=type";
-      ll = "exa --long --color always --icons --sort=type";
-      la = "exa --grid --all --color auto --icons --sort=type";
-      lla = "exa --long --all --color auto --icons --sort=type";
-      e = "$EDITOR";
-      en = "sudoedit /etc/nixos/configuration.nix";
-      ehn = "$EDITOR ~/.config/nixpkgs/home.nix";
-      update = "sudo nixos-rebuild switch";
-    };
-    history = {
-      size = 10000;
-      path = "${config.xdg.dataHome}/zsh/history";
-    };
-    enableAutosuggestions = true;
-    syntaxHighlighting.enable = true;
-    autocd = false;
-    defaultKeymap = "emacs";
-    plugins = [ ];
-    initExtra =
-      "\n    export PATH=~/.config/emacs/bin:$PATH\n export PATH=~/.local/share/applications/:$PATH\n eval \"$(direnv hook zsh)\"   ";
-  };
+  #programs.zsh = {
+  #  enable = true;
+  #  shellAliases = {
+  #    ls = "exa --grid --color always --icons --sort=type";
+  #    ll = "exa --long --color always --icons --sort=type";
+  #    la = "exa --grid --all --color auto --icons --sort=type";
+  #    lla = "exa --long --all --color auto --icons --sort=type";
+  #    e = "$EDITOR";
+  #    en = "sudoedit /etc/nixos/configuration.nix";
+  #    ehn = "$EDITOR ~/.config/nixpkgs/home.nix";
+  #    update = "sudo nixos-rebuild switch";
+  #  };
+  #  history = {
+  #    size = 10000;
+  #    path = "${config.xdg.dataHome}/zsh/history";
+  #  };
+  #  enableAutosuggestions = true;
+  #  syntaxHighlighting.enable = true;
+  #  autocd = false;
+  #  defaultKeymap = "emacs";
+  #  plugins = [ ];
+  #  initExtra =
+  #    "\n    export PATH=~/.config/emacs/bin:$PATH\n export PATH=~/.local/share/applications/:$PATH\n eval \"$(direnv hook zsh)\"   ";
+  #};
   programs.starship = {
     enable = true;
     enableZshIntegration = true;
