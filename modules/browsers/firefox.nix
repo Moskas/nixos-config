@@ -11,7 +11,64 @@
         "browser.search.isUS" = false;
         "distribution.searchplugins.defaultLocale" = "pl-PL";
         "general.useragent.locale" = "pl-PL";
+        "app.update.auto" = false;
         "browser.bookmarks.showMobileBookmarks" = true;
+        "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+
+        # Startup
+        #"browser.aboutConfig.showWarning" = false;
+        #"browser.newtabpage.enabled" = false;
+        #"browser.newtab.preload" = false;
+        #"browser.newtabpage.activity-stream.feeds.telemetry" = false;
+        #"browser.newtabpage.activity-stream.telemetry" = false;
+        #"browser.newtabpage.activity-stream.feeds.snippets" = false;
+        #"browser.newtabpage.activity-stream.feeds.section.topstories" = false;
+        #"browser.newtabpage.activity-stream.section.highlights.includePocket" =
+        #  false;
+        #"browser.newtabpage.activity-stream.feeds.discoverystreamfeed" = false;
+        #"browser.newtabpage.activity-stream.showSponsored" = false;
+        #"browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
+        #"browser.newtabpage.activity-stream.default.sites" = "";
+
+        # Login prompts
+        "signon.rememberSignons" = false;
+        "signon.autofillForms" = false;
+        "signon.formlessCapture.enabled" = false;
+        "network.auth.subresource-http-auth-allow" = 1;
+        "extensions.enabledScopes" = 5;
+        "extensions.webextensions.restrictedDomains" = "";
+
+        # Telemetry
+        "datareporting.policy.dataSubmissionEnabled" = false;
+        "datareporting.healthreport.uploadEnabled" = false;
+        "toolkit.telemetry.enabled" = false;
+        "toolkit.telemetry.unified" = false;
+        "toolkit.telemetry.server" = "data:,";
+        "toolkit.telemetry.archive.enabled" = false;
+        "toolkit.telemetry.newProfilePing.enabled" = false;
+        "toolkit.telemetry.shutdownPingSender.enabled" = false;
+        "toolkit.telemetry.updatePing.enabled" = false;
+        "toolkit.telemetry.bhrPing.enabled" = false;
+        "toolkit.telemetry.firstShutdownPing.enabled" = false;
+        "toolkit.telemetry.coverage.opt-out" = true;
+        "toolkit.coverage.opt-out" = true;
+        "toolkit.coverage.endpoint.base" = "";
+        "browser.ping-centre.telemetry" = false;
+        "beacon.enabled" = false;
+
+        # Fingerprinting
+        #"privacy.resistFingerprinting" = true;
+        #"privacy.resistFingerprinting.block_mozAddonManager" = true;
+        #"browser.startup.blankWindow" = false;
+        "browser.display.use_system_colors" = true;
+
+        # Cookies
+        "browser.contentblocking.category" = "strict";
+        "privacy.partition.serviceWorkers" = true;
+        "privacy.partition.always_partition_third_party_non_cookie_storage" =
+          true;
+        "privacy.partition.always_partition_third_party_non_cookie_storage.exempt_sessionstorage" =
+          true;
       };
       search = {
         default = "StartPage";
@@ -36,7 +93,6 @@
               "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
             definedAliases = [ "@np" ];
           };
-
           "NixOS Wiki" = {
             urls = [{
               template = "https://nixos.wiki/index.php?search={searchTerms}";
@@ -45,14 +101,37 @@
             updateInterval = 24 * 60 * 60 * 1000; # every day
             definedAliases = [ "@nw" ];
           };
-
           "Osu Beatmaps" = {
             urls = [{
               template = "https://osu.ppy.sh/beatmapsets?q={searchTerms}";
             }];
+            iconUpdateURL =
+              "https://upload.wikimedia.org/wikipedia/commons/1/1e/Osu%21_Logo_2016.svg";
             definedAliases = [ "@ob" ];
           };
-
+          "StartPage" = {
+            urls =
+              [{ template = "https://startpage.com/search?q={searchTerms}"; }];
+            iconUpdateURL =
+              "https://www.startpage.com/sp/cdn/images/startpage-logo-dark-new.svg";
+            definedAliases = [ "@s" ];
+          };
+          "Brave" = {
+            urls = [{
+              template = "https://search.brave.com/search?q={searchTerms}";
+            }];
+            iconUpdateURL =
+              "https://brave.com/static-assets/images/brave-logo-dark.svg";
+            definedAliases = [ "@b" ];
+          };
+          "Docs.rs" = {
+            urls = [{
+              template = "https://docs.rs/releases/search?query={searchTerms}";
+            }];
+            iconUpdateURL =
+              "https://upload.wikimedia.org/wikipedia/commons/d/d5/Rust_programming_language_black_logo.svg";
+            definedAliases = [ "d" ];
+          };
           "Bing".metaData.hidden = true;
           "Google".metaData.alias =
             "@g"; # builtin engines only support specifying one additional alias
@@ -175,36 +254,36 @@
       #  return-youtube-dislikes
       #];
       bookmarks = [
-        {
-          name = "Wikipedia";
-          tags = [ "wiki" ];
-          keyword = "wiki";
-          url = "https://en.wikipedia.org/wiki/Special:Search?search=%s&go=Go";
-        }
-        {
-          name = "Odysee";
-          url = "https://odysse.com/";
-        }
-        {
-          name = "Nix sites";
-          toolbar = true;
-          bookmarks = [
-            {
-              name = "Homepage";
-              url = "https://nixos.org/";
-            }
-            {
-              name = "Wiki";
-              tags = [ "wiki" "nix" ];
-              url = "https://nixos.wiki/";
-            }
-            {
-              name = "Home-manager";
-              tags = [ "home-manager" "nix" ];
-              url = "https://nix-community.github.io/home-manager";
-            }
-          ];
-        }
+        #  {
+        #    name = "Wikipedia";
+        #    tags = [ "wiki" ];
+        #    keyword = "wiki";
+        #    url = "https://en.wikipedia.org/wiki/Special:Search?search=%s&go=Go";
+        #  }
+        #  {
+        #    name = "Odysee";
+        #    url = "https://odysse.com/";
+        #  }
+        #  {
+        #    name = "Nix sites";
+        #    toolbar = true;
+        #    bookmarks = [
+        #      {
+        #        name = "Homepage";
+        #        url = "https://nixos.org/";
+        #      }
+        #      {
+        #        name = "Wiki";
+        #        tags = [ "wiki" "nix" ];
+        #        url = "https://nixos.wiki/";
+        #      }
+        #      {
+        #        name = "Home-manager";
+        #        tags = [ "home-manager" "nix" ];
+        #        url = "https://nix-community.github.io/home-manager";
+        #      }
+        #    ];
+        #  }
       ];
     };
   };

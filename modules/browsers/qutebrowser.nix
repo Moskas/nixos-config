@@ -10,9 +10,10 @@
       np = "https://search.nixos.org/packages?&query={}";
       nw = "https://nixos.wiki/index.php?search={}";
       g = "https://www.google.com/search?hl=en&q={}";
-      b = "https://www.search.brave.com/search?q={}";
+      b = "https://search.brave.com/search?q={}";
       s = "https://startpage.com/search?q={}";
       e = "https://ecosia.org/search?&q={}";
+      d = "https://docs.rs/releases/search?query={}";
     };
     settings = {
       statusbar.show = "in-mode";
@@ -27,7 +28,7 @@
       fonts = {
         prompts = "12pt JetBrainsMono Nerd Font";
         hints = "12pt JetBrainsMono Nerd Font";
-        statusbar = "12pt JetBrainsMono Nerd Font";
+        statusbar = "10pt JetBrainsMono Nerd Font";
         contextmenu = "10pt JetBrainsMono Nerd Font";
         completion = {
           entry = "12pt JetBrainsMono Nerd Font";
@@ -44,8 +45,8 @@
           };
         };
         tabs = {
-          selected = "12pt JetBrainsMono Nerd Font";
-          unselected = "12pt JetBrainsMono Nerd Font";
+          selected = "10pt JetBrainsMono Nerd Font";
+          unselected = "10pt JetBrainsMono Nerd Font";
         };
       };
       url = { start_pages = "https://www.google.com"; };
