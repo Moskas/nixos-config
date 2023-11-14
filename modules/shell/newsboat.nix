@@ -418,6 +418,10 @@
         url = "https://thelinuxexp.com/feed.xml";
         tags = [ "Blog" ];
       }
+      {
+        url = "https://thelinuxcast.org/feed/feed.xml";
+        tags = [ "Blog" ];
+      }
       #{
       #url = "https://dev.to/feed"; tags = [ "Blog"  "Programming" ];
       #}

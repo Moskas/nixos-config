@@ -50,12 +50,12 @@ in {
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
   home.packages = with pkgs; [
+    nvtop
     jq
     manga-cli
     ani-cli
-    python310Packages.aria2p # aria2c
-    python310Packages.mpd2
-    python310Packages.requests
+    python311Packages.aria2p # aria2c
+    python311Packages.mpd2
     ranger
     ffmpeg
     duf
@@ -64,6 +64,7 @@ in {
     onefetch
     mpc-cli
     cava
+    cargo
     rnix-lsp
     nixfmt
     betterdiscordctl
@@ -84,13 +85,11 @@ in {
     libnotify
     pulsemixer
     bitwarden
-    #pinentry
     easyeffects
     xclip
     zip
     unzip
     unrar
-    gnome.nautilus
     pkg-config
     osu-lazer-bin
     obsidian

@@ -9,7 +9,7 @@
       add_newline = false;
       palette = "dynamic";
       format = lib.concatStrings [
-        "$os$username$hostname$rust$python$node$lua$git_branch$git_status$git_state$cmd_duration$fill$time$line_break$directory$sudo$character"
+        "$os$username$hostname$rust$python$node$lua$git_branch$git_status$git_state$fill$nix_shell$time$line_break$directory$sudo$character"
       ];
       scan_timeout = 10;
       character = {
@@ -21,7 +21,7 @@
         disabled = false;
         format = "[ 󰅐 $time ]($style)";
         time_format = "%T";
-        style = "fg:magenta  bg:bg";
+        style = "fg:magenta  bg:dark-gray";
       };
       username = {
         disabled = false;
@@ -71,15 +71,16 @@
         };
       };
       nix_shell = {
-        symbol = " ";
-        format = "[$symbol](bold blue)";
+        disabled = false;
+        symbol = "";
+        format = "[ $symbol $state ](bg:blue fg:bg bold)";
       };
       cmd_duration = {
         min_time = 500;
-        format = "[ took $duration ](fg:bg bg:yellow)";
+        format = "[ $duration ](fg:yellow bg:dark-gray)";
       };
       git_branch = {
-        format = "[ $symbol$branch(:$remote_branch)](bg:purple fg:bg )";
+        format = "[ $symbol$branch(:$remote_branch) ](bg:purple fg:bg )";
         symbol = " ";
       };
       git_status = {
