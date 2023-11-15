@@ -27,8 +27,9 @@
       dates = "daily";
       options = "--delete-older-than 3d";
     };
-    #settings = { builders-use-substitutes = true; };
+    settings = { builders-use-substitutes = true; };
   };
+  nixpkgs.config.allowUnfree = true;
 
   programs.zsh.enable = true;
 
@@ -58,7 +59,13 @@
     ripgrep
     nixfmt
     direnv
+    cmake
+    pkg-config
   ];
+
+  environment.variables = {
+    EDITOR = "nvim";
+  };
 
   system.stateVersion = "22.05";
 }

@@ -4,9 +4,7 @@
   imports = [
     nix-colors.homeManagerModules.default
     ./wallpapers.nix
-    ../../modules/shell/newsboat.nix
-    ../../modules/shell/eza.nix
-    ../../modules/shell/zsh.nix
+    ../../modules/shell
     ../../modules/browsers
     ../../modules/media
     ../../modules/apps
@@ -34,17 +32,11 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
   home.packages = with pkgs; [
-    jq
     manga-cli
     ani-cli
     python311Packages.aria2p # aria2c
     python311Packages.mpd2
-    ranger
     ffmpeg
-    duf
-    du-dust
-    neofetch
-    onefetch
     tickrs
     mpc-cli
     cava
@@ -71,10 +63,7 @@
     bitwarden
     #pinentry
     easyeffects
-    eza
     xclip
-    zip
-    unzip
     html-tidy
     nodePackages_latest.prettier
     pkg-config
@@ -150,108 +139,108 @@
   #    "\n    export PATH=~/.config/emacs/bin:$PATH\n export PATH=~/.local/share/applications/:$PATH\n eval \"$(direnv hook zsh)\"   ";
   #};
   programs.starship = {
-    enable = true;
-    enableZshIntegration = true;
-    package = pkgs.starship;
+    #enable = true;
+    #enableZshIntegration = true;
+    #package = pkgs.starship;
     settings = {
-      add_newline = false;
-      palette = "solarized";
-      format = lib.concatStrings [
-        "$os$username$hostname$rust$python$node$lua$git_branch$git_status$git_state$cmd_duration$fill$time$line_break$directory$sudo$character"
-      ];
-      scan_timeout = 10;
-      character = {
-        success_symbol = "[ ]( blue)";
-        error_symbol = "[ ]( red)";
-      };
-      fill = { symbol = " "; };
-      time = {
-        disabled = false;
-        format = "[ $time ]($style)";
-        time_format = "%T";
-        style = "fg:bg  bg:yellow";
-      };
-      username = {
-        disabled = false;
-        style_user = "fg:bg bg:blue ";
-        style_root = "fg:red bg:blue  italic";
-        format = "[ $user ]($style)";
-        show_always = true;
-      };
-      hostname = {
-        ssh_only = false;
-        format = "[ $hostname ]($style)";
-        style = " fg:bg bg:red";
-        disabled = false;
-      };
-      memory_usage = {
-        disabled = false;
-        threshold = -1;
-        symbol = " 󰍛 ";
-        format = "[$symbol]($style)[$ram( | $swap) ]($style)";
-        style = " fg:bg bg:green";
-      };
-      directory = {
-        read_only = " ";
-        home_symbol = " ~";
-        truncation_length = 4;
-        truncation_symbol = "…/";
-        truncate_to_repo = true;
-      };
-      rust = {
-        symbol = "🦀";
-        format = "[ $symbol $version ](bg:yellow fg:bg )";
-      };
-      python = { format = "[ $symbol $version ](bg:yellow fg:bg )"; };
-      c = {
-        symbol = " ";
-        detect_extensions = ''["c", "h", "cpp"]'';
-      };
-      os = {
-        disabled = false;
-        style = "bg:blue";
-        symbols = {
-          Arch = "[  ](fg:bg $style)";
-          NixOS = "[  ](fg:bg $style)";
-          Macos = "[  ](fg:red $style)";
-          Linux = "[  ](fg:fg $style)";
-        };
-      };
-      nix_shell = {
-        symbol = " ";
-        format = "[$symbol](bold blue)";
-      };
-      cmd_duration = {
-        min_time = 500;
-        format = "[ took $duration ](fg:bg bg:yellow)";
-      };
-      git_branch = {
-        format = "[ $symbol$branch(:$remote_branch) ](bg:purple fg:bg )";
-        symbol = " ";
-      };
-      git_status = {
-        format = "([ $all_status ](bg:purple fg:bg ))";
-        stashed = "📦";
-        modified = "📝";
-        staged = "+($count)";
-      };
-      palettes.solarized = {
-        fg = "#93a1a1";
-        fg2 = "#839496";
-        fg3 = "#657b83";
-        fg4 = "#586e75";
-        bg = "#002b36";
-        bg2 = "#073642";
-        red = "#dc322f";
-        green = "#859900";
-        blue = "#268bd2";
-        cyan = "#2aa198";
-        yellow = "#b58900";
-        purple = "#6c71c4";
-        magenta = "#d33682";
-        brwhite = "#fdf6e3"; # "white" according to wikipedia lol
-        white = "#eee8d5";
-      };
+      #add_newline = false;
+      palette = lib.mkForce "solarized";
+      #format = lib.concatStrings [
+        #"$os$username$hostname$rust$python$node$lua$git_branch$git_status$git_state$cmd_duration$fill$time$line_break$directory$sudo$character"
+      #];
+      #scan_timeout = 10;
+      #character = {
+      #  success_symbol = "[ ]( blue)";
+      #  error_symbol = "[ ]( red)";
+      #};
+      #fill = { symbol = " "; };
+      #time = {
+      #  disabled = false;
+      #  format = "[ $time ]($style)";
+      #  time_format = "%T";
+      #  style = "fg:bg  bg:yellow";
+      #};
+      #username = {
+      #  disabled = false;
+      #  style_user = "fg:bg bg:blue ";
+      #  style_root = "fg:red bg:blue  italic";
+      #  format = "[ $user ]($style)";
+      #  show_always = true;
+      #};
+      #hostname = {
+      #  ssh_only = false;
+      #  format = "[ $hostname ]($style)";
+      #  style = " fg:bg bg:red";
+      #  disabled = false;
+      #};
+      #memory_usage = {
+      #  disabled = false;
+      #  threshold = -1;
+      #  symbol = " 󰍛 ";
+      #  format = "[$symbol]($style)[$ram( | $swap) ]($style)";
+      #  style = " fg:bg bg:green";
+      #};
+      #directory = {
+      #  read_only = " ";
+      #  home_symbol = " ~";
+      #  truncation_length = 4;
+      #  truncation_symbol = "…/";
+      #  truncate_to_repo = true;
+      #};
+      #rust = {
+      #  symbol = "🦀";
+      #  format = "[ $symbol $version ](bg:yellow fg:bg )";
+      #};
+      #python = { format = "[ $symbol $version ](bg:yellow fg:bg )"; };
+      #c = {
+      #  symbol = " ";
+      #  detect_extensions = ''["c", "h", "cpp"]'';
+      #};
+      #os = {
+      #  disabled = false;
+      #  style = "bg:blue";
+      #  symbols = {
+      #    Arch = "[  ](fg:bg $style)";
+      #    NixOS = "[  ](fg:bg $style)";
+      #    Macos = "[  ](fg:red $style)";
+      #    Linux = "[  ](fg:fg $style)";
+      #  };
+      #};
+      #nix_shell = {
+      #  symbol = " ";
+      #  format = "[$symbol](bold blue)";
+      #};
+      #cmd_duration = {
+      #  min_time = 500;
+      #  format = "[ took $duration ](fg:bg bg:yellow)";
+      #};
+      #git_branch = {
+      #  format = "[ $symbol$branch(:$remote_branch) ](bg:purple fg:bg )";
+      #  symbol = " ";
+      #};
+      #git_status = {
+      #  format = "([ $all_status ](bg:purple fg:bg ))";
+      #  stashed = "📦";
+      #  modified = "📝";
+      #  staged = "+($count)";
+      #};
+      #palettes.solarized = {
+      #  fg = "#93a1a1";
+      #  fg2 = "#839496";
+      #  fg3 = "#657b83";
+      #  fg4 = "#586e75";
+      #  bg = "#002b36";
+      #  bg2 = "#073642";
+      #  red = "#dc322f";
+      #  green = "#859900";
+      #  blue = "#268bd2";
+      #  cyan = "#2aa198";
+      #  yellow = "#b58900";
+      #  purple = "#6c71c4";
+      #  magenta = "#d33682";
+      #  brwhite = "#fdf6e3"; # "white" according to wikipedia lol
+      #  white = "#eee8d5";
+      #};
     };
   };
 
@@ -583,7 +572,7 @@
   programs.btop = {
     enable = true;
     settings = {
-      color_theme = "solarized_dark";
+      color_theme = lib.mkForce "solarized_dark";
       theme_background = false;
     };
   };
@@ -639,7 +628,7 @@
   programs.bat = {
     enable = true;
     config = {
-      theme = "Solarized (dark)";
+      theme = lib.mkForce "Solarized (dark)";
       color = "always";
       pager = "less -FR";
     };

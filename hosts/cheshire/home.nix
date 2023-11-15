@@ -51,17 +51,11 @@ in {
   programs.home-manager.enable = true;
   home.packages = with pkgs; [
     nvtop
-    jq
     manga-cli
     ani-cli
     python311Packages.aria2p # aria2c
     python311Packages.mpd2
-    ranger
     ffmpeg
-    duf
-    du-dust
-    neofetch
-    onefetch
     mpc-cli
     cava
     cargo
@@ -87,9 +81,6 @@ in {
     bitwarden
     easyeffects
     xclip
-    zip
-    unzip
-    unrar
     pkg-config
     osu-lazer-bin
     obsidian

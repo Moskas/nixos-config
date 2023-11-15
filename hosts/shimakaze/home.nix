@@ -5,7 +5,7 @@
     nix-colors.homeManagerModules.default
     ../../modules/git
     ../../modules/shell
-    ../../modules/media/mpv.nix
+    #../../modules/media/mpv.nix
     ../../modules/editors/neovim.nix
   ];
 
@@ -16,7 +16,7 @@
   home.username = "${username}";
   home.homeDirectory = "/home/${username}";
 
-  home.packages = with pkgs; [ onefetch neofetch ranger w3m ];
+  home.packages = with pkgs; [ ];
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
@@ -29,5 +29,5 @@
   home.stateVersion = "23.05";
 
   # Let Home Manager install and manage itself.
-  # programs.home-manager.enable = true;
+  programs.home-manager.enable = true;
 }
