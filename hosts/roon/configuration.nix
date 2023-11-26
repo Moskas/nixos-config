@@ -12,6 +12,7 @@
     ../../modules/scripts/diff.nix
     ../../modules/nix/nix.nix
     ../../modules/services/tailscale.nix
+    ../../modules/services/fwupd.nix
   ];
 
   services.udev = {

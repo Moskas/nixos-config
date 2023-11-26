@@ -18,6 +18,7 @@
     settings = {
       statusbar.show = "in-mode";
       downloads.position = "bottom";
+      content.blocking.method = "both";
       tabs = {
         show = "multiple";
         show_switching_delay = 1500;
