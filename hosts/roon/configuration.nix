@@ -56,8 +56,9 @@
     nvidia = {
       powerManagement.enable = true;
       modesetting.enable = true;
+      nvidiaSettings = true;
       package =
-        config.boot.kernelPackages.nvidiaPackages.stable; # Changed to stable due to issues with brightness control on beta
+        config.boot.kernelPackages.nvidiaPackages.production; # Changed to stable due to issues with brightness control on beta
     };
     bluetooth = { enable = true; };
   };

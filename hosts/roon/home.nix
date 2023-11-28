@@ -146,7 +146,7 @@
       #add_newline = false;
       palette = lib.mkForce "solarized";
       #format = lib.concatStrings [
-        #"$os$username$hostname$rust$python$node$lua$git_branch$git_status$git_state$cmd_duration$fill$time$line_break$directory$sudo$character"
+      #"$os$username$hostname$rust$python$node$lua$git_branch$git_status$git_state$cmd_duration$fill$time$line_break$directory$sudo$character"
       #];
       #scan_timeout = 10;
       #character = {
@@ -557,13 +557,13 @@
 
   programs.rofi = {
     enable = true;
-    font = "FiraCode Nerd Font 12";
+    font = "JetBrainsMono Nerd Font 12";
     extraConfig = {
       modi = "drun";
       kb-primary-paste = "Control+V,Shift+Insert";
       kb-secondary-paste = "Control+v,Insert";
     };
-    location = "top-left";
+    location = "center";
     plugins = with pkgs; [ rofimoji rofi-power-menu rofi-bluetooth ];
     theme = "${pkgs.rofi}/share/rofi/themes/solarized_alternate.rasi";
     terminal = "${pkgs.kitty}/bin/kitty";

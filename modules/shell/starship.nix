@@ -103,6 +103,7 @@
         green = "#b8bb26";
         blue = "#268bd2";
         cyan = "#2aa198";
+        dark-cyan = "#2aa198";
         yellow = "#b58900";
         purple = "#6c71c4";
         magenta = "#d33682";
