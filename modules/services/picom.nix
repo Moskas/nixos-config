@@ -5,7 +5,6 @@
     enable = true;
     #package = pkgs.picom-next;
     backend = "glx";
-    #unredir-if-possible = false;
     vSync = true;
     opacityRules = [
       "90:class_g = 'kitty' && !focused"
@@ -17,6 +16,9 @@
       "95:class_g = 'discord' && !focused"
       "98:class_g = 'discord' && focused"
     ];
-    settings = { blur = { method = "dual_kawase"; }; };
+    settings = {
+      blur = { method = "dual_kawase"; };
+      unredir-if-possible = true;
+    };
   };
 }

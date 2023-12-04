@@ -6,8 +6,8 @@
     "./Pictures/Wallpapers/".source = pkgs.fetchFromGitHub {
       owner = "Moskas";
       repo = "wallpapers";
-      rev = "94bc6d9";
-      sha256 = "sha256-EUQRHr7iWsNpucIyctTU/acEux1r2gZww1qAch+4igo=";
+      rev = "8b8f6f8";
+      sha256 = "sha256-bMcAhrG9Aj6NgnpOKzmw3/eZTvvXGtKaSti2lFrP56g=";
     };
   };
 

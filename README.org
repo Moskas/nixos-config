@@ -4,5 +4,8 @@
 - Cheshire - my main PC
 - Roon - my (gaming) laptop
 - Shimakaze - NixOS WSL config
-- Laffey - home server
+- TODO Laffey - home server
 Yes, these are the names of warships.
+* TODO List
+- Add disko [[https://github.com/nix-community/disko][link]]
+- Add agenix [[https://github.com/ryantm/agenix][link]]
