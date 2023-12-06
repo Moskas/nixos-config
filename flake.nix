@@ -1,5 +1,5 @@
 {
-  description = "Your new nix config";
+  description = "Moskas' flake configs";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
