@@ -60,6 +60,10 @@
         symbol = " ";
         detect_extensions = ''["c", "h", "cpp"]'';
       };
+      lua = {
+        symbol = "";
+        format = "[ $symbol $version ](bg:blue fg:bg)";
+      };
       os = {
         disabled = false;
         style = "bg:blue";

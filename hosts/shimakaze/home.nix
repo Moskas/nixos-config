@@ -16,7 +16,12 @@
   home.username = "${username}";
   home.homeDirectory = "/home/${username}";
 
-  home.packages = with pkgs; [ ];
+  home.packages = with pkgs; [ rnix-lsp ];
+
+  programs.emacs = {
+    enable = true;
+    package = pkgs.emacs28-gtk2;
+  };
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
