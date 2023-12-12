@@ -422,6 +422,10 @@
         url = "https://thelinuxcast.org/feed/feed.xml";
         tags = [ "Blog" ];
       }
+      {
+        url = "https://michal.sapka.me/index.xml";
+        tags = [ "Blog" "BSD" ];
+      }
       #{
       #url = "https://dev.to/feed"; tags = [ "Blog"  "Programming" ];
       #}

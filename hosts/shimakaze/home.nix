@@ -5,8 +5,7 @@
     nix-colors.homeManagerModules.default
     ../../modules/git
     ../../modules/shell
-    #../../modules/media/mpv.nix
-    ../../modules/editors/neovim.nix
+    ../../modules/editors
   ];
 
   colorScheme = nix-colors.colorSchemes.gruvbox-dark-medium;
@@ -17,11 +16,6 @@
   home.homeDirectory = "/home/${username}";
 
   home.packages = with pkgs; [ rnix-lsp ];
-
-  programs.emacs = {
-    enable = true;
-    package = pkgs.emacs28-gtk2;
-  };
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage

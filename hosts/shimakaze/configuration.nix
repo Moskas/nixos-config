@@ -1,10 +1,8 @@
 { lib, pkgs, config, modulesPath, ... }:
 
 {
-  imports = [
-    "${modulesPath}/profiles/minimal.nix"
-    ../../modules/scripts/diff.nix
-  ];
+  imports =
+    [ "${modulesPath}/profiles/minimal.nix" ../../modules/scripts/diff.nix ];
 
   wsl = {
     enable = true;
@@ -63,9 +61,9 @@
     pkg-config
   ];
 
-  environment.variables = {
-    EDITOR = "nvim";
-  };
+  environment.noXlibs = false;
+
+  environment.variables = { EDITOR = "nvim"; };
 
   system.stateVersion = "22.05";
 }
