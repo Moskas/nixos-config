@@ -5,12 +5,7 @@
     enable = true;
     coc = { enable = true; };
     vimAlias = true;
-    plugins = with pkgs.vimPlugins; [
-      vim-nix
-      vim-airline
-      vim-airline-themes
-      gruvbox-material
-    ];
+    plugins = with pkgs.vimPlugins; [ vim-nix vim-airline vim-airline-themes ];
     extraConfig = ''
       nnoremap <esc> :noh<return><esc>
     '';

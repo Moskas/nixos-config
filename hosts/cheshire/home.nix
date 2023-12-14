@@ -83,7 +83,6 @@ in {
     xclip
     pkg-config
     osu-lazer-bin
-    obsidian
     openrgb-with-all-plugins
     distrobox
     nicotine-plus
@@ -103,6 +102,8 @@ in {
     feh
     lutgen
     virt-manager
+
+    gimp
 
     rates
     tickrs

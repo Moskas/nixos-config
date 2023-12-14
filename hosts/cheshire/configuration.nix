@@ -39,6 +39,12 @@
     supportedFilesystems = [ "ntfs" ];
   };
 
+  services.btrfs.autoScrub = {
+    enable = true;
+    interval = "weekly";
+    fileSystems = [ "/" ];
+  };
+
   # Enabling latest linux kernel
   boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
 
@@ -188,6 +194,7 @@
   programs.thunar = {
     enable = true;
     plugins = with pkgs.xfce; [
+      tumbler
       thunar-archive-plugin
       thunar-volman
       thunar-media-tags-plugin
@@ -214,6 +221,9 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
+
+  #nixpkgs.config.permittedInsecurePackages = [ "openssl-1.1.1w" ];
+
   environment.systemPackages = with pkgs; [
     wget
     git
@@ -224,6 +234,9 @@
     mpdas
     dbus
     direnv
+
+    timeshift
+    #openssl_1_1 # For Etterna sigh
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
