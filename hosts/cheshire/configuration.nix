@@ -225,9 +225,6 @@
   #nixpkgs.config.permittedInsecurePackages = [ "openssl-1.1.1w" ];
 
   environment.systemPackages = with pkgs; [
-    wget
-    git
-    neofetch
     i2c-tools
     openrgb-with-all-plugins
     mpd

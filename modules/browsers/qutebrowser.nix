@@ -9,6 +9,7 @@
       aw = "https://wiki.archlinux.org/?search={}";
       np = "https://search.nixos.org/packages?&query={}";
       nw = "https://nixos.wiki/index.php?search={}";
+      hm = "https://mipmip.github.io/home-manager-option-search/?query={}";
       g = "https://www.google.com/search?hl=en&q={}";
       b = "https://search.brave.com/search?q={}";
       s = "https://startpage.com/search?q={}";

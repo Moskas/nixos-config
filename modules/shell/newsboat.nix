@@ -426,6 +426,10 @@
         url = "https://michal.sapka.me/index.xml";
         tags = [ "Blog" "BSD" ];
       }
+      {
+        url = "https://panoptykon.org/rss.xml";
+        tags = [ "Blog" "Politics" ];
+      }
       #{
       #url = "https://dev.to/feed"; tags = [ "Blog"  "Programming" ];
       #}

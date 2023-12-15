@@ -23,5 +23,6 @@
     unzip
     unrar
     p7zip
+    wget
   ];
 }
