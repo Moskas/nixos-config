@@ -22,9 +22,10 @@ To install my config you need a NixOS with flakes enabled:
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
 ```
 After that you need to copy ``hardware-config.nix`` from your current install to the desired host name for example ``hosts/cheshire``.
-Then it's the matter of one ``sudo nixos-rebuild switch --flake .#<hostname from flake.nix>`` in the cloned repo directory.
+Then it's the matter of one ``sudo nixos-rebuild switch --flake .#<hostname from flake.nix>`` in the cloned repo directory.  
+Although it's the best to just look and copy the desired nix code as it's tailored for me so not everything will work for everyone.
 
-> **Important note!**
+> [!IMPORTANT]
 > My qtile config isn't managed by the flake; it requires manual cloning from my [qtile-config repo](https://github.com/Moskas/qtile-config).
 > I'm doing that because I'm constantly tweaking the qtile config, and since having it managed by the flake makes it read-only by default, it's a major inconvenience right now.
 
@@ -49,7 +50,8 @@ xdg.confileFile.qtile.source = ./qtile;
 ## Why NixOS?
 Since I have multiple devices and I'm using some more frequent than others, I've had more than one occurrence of, for example, my laptop being out of date compared to the desktop and just simply missing some of my configs that I have changed in the meantime.  
 It was annoying and tedious to keep everything up-to-date on every device, especially when I did install some additional applications on one host, removed some on the other, etc.  
-So when I learned about NixOS, I knew that it is something that will help me with that. I tested it on my laptop for about half a year, then I decided to fully switch to it on all my devices and jump from ``configuration.nix`` to ``flake.nix`` for even easier device management.  
+So when I learned about NixOS, I knew that it is something that will help me with that.  
+I tested it on my laptop for about half a year, then I decided to fully switch to it on all my devices and jump from ``configuration.nix`` to ``flake.nix`` for even easier device management.  
 
 ## TODO List
 - Add [disko](https://github.com/nix-community/disko)
