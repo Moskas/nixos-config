@@ -30,7 +30,7 @@
       efi = { canTouchEfiVariables = true; };
       grub = {
         enable = false;
-        devices = [ "/dev/disk/by-uuid/DDA7-8FC1" ];
+        devices = [ "/dev/disk/nvme0n1" ];
         useOSProber = true;
         efiSupport = true;
       };
@@ -146,12 +146,19 @@
     layout = "pl";
     displayManager.gdm.enable = true;
     desktopManager.gnome.enable = false;
-    windowManager.qtile = { enable = true; };
+    windowManager.qtile = {
+      enable = true;
+      package = pkgs.python311Packages.qtile;
+    };
+    windowManager.awesome = {
+      enable = true;
+      luaModules = with pkgs.luaPackages; [ luarocks ];
+    };
   };
 
   programs.hyprland = {
     enable = true;
-    enableNvidiaPatches = true;
+    # enableNvidiaPatches = true;
     xwayland.enable = true;
   };
 
@@ -205,6 +212,7 @@
   users.users.${username} = {
     createHome = true;
     isNormalUser = true;
+    initialPassword = "nix";
     shell = pkgs.zsh;
     extraGroups =
       [ "wheel" "storage" "networkmanager" "libvirtd" "i2c" "docker" ];
@@ -275,6 +283,8 @@
       storageDriver = "btrfs";
     };
   };
+
+  programs.nano.enable = false; # Be gone
 
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you

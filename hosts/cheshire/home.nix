@@ -97,6 +97,7 @@ in {
     random-wallpaper
     obs-studio
     discord
+    discord-screenaudio
     wineWowPackages.stable
     winetricks
     feh
@@ -110,11 +111,15 @@ in {
     monero-gui
 
     # wayland testing
-    #waybar
-    #wl-gammactl
-    #wlsunset
-    #swww
-    #mako
+    waybar
+    wl-gammactl
+    wlsunset
+    grim
+    slurp
+    wl-clipboard
+    grimblast
+    swww
+    mako
   ];
 
   dconf.settings = {
@@ -263,6 +268,7 @@ in {
     settings = {
       email = "marcin.j.moskal@gmail.com";
       lock_timeout = 300;
+      pinentry = "gnome3";
     };
   };
 

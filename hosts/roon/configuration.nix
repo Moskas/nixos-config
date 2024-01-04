@@ -183,10 +183,12 @@
   users.users.moskas = {
     isNormalUser = true;
     description = "Moskas";
+    initialPassword = "nix";
     extraGroups = [ "networkmanager" "wheel" "libvirtd" "i2c" ];
     shell = pkgs.zsh;
     packages = with pkgs; [ firefox ];
   };
+
   environment.variables = {
     EDITOR = "emacs";
     #DEFAULT_BROWSER = "${pkgs.qutebrowser}/bin/qutebrowser";
@@ -247,10 +249,7 @@
     enable = true;
     enableSSHSupport = true;
   };
-  programs.hyprland = {
-    enable = false;
-    enableNvidiaPatches = true;
-  };
+  programs.hyprland = { enable = false; };
   programs.dconf.enable = true;
 
   # Enable the OpenSSH daemon.

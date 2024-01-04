@@ -375,6 +375,7 @@
     settings = {
       email = "marcin.j.moskal@gmail.com";
       lock_timeout = 300;
+      pinentry = "tty";
     };
   };
 
