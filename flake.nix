@@ -27,22 +27,6 @@
       lib = nixpkgs.lib;
     in {
       nixosConfigurations = {
-        #virtual = lib.nixosSystem {
-        #  inherit system;
-        #  specialArgs = { inherit inputs username; };
-        #  modules = [
-        #    ./hosts/ virtual
-        #    ./hosts/virtual/configuration.nix
-        #    home-manager.nixosModules.home-manager
-        #    {
-        #      home-manager.useGlobalPkgs = true;
-        #      home-manager.useUserPackages = true;
-        #      home-manager.extraSpecialArgs = { inherit username; };
-        #      home-manager.users.${username}.imports =
-        #        [ (import ./hosts/virtual/home.nix) ];
-        #    }
-        #  ];
-        #};
         shimakaze = lib.nixosSystem {
           inherit system;
           specialArgs = { inherit inputs username; };
@@ -97,6 +81,11 @@
                 [ (import ./hosts/cheshire/home.nix) ];
             }
           ];
+        };
+        glasgow = lib.nixosSystem {
+          system = "i686-linux";
+          specialArgs = { inherit self nixpkgs home-manager; };
+          modules = [ ./hosts/glasgow/configuration.nix ];
         };
       };
     };
