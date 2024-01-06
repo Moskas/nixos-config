@@ -18,6 +18,8 @@
       export PATH=~/.local/share/applications/:$PATH
       export PATH=~/.cargo/bin/:$PATH
       eval "$(direnv hook zsh)"
+
+      alias cat='bat --decorations=never'
     '';
   };
 }

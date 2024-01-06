@@ -94,7 +94,7 @@
 
   programs.steam = {
     enable = true;
-    gamescopeSession.enable = false;
+    gamescopeSession.enable = true;
   };
 
   programs.gamescope = {
@@ -283,6 +283,8 @@
       storageDriver = "btrfs";
     };
   };
+
+  programs.virt-manager.enable = true;
 
   programs.nano.enable = false; # Be gone
 
