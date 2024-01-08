@@ -1,13 +1,69 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, nixvim, ... }:
 
 {
-  programs.neovim = {
+  imports = [ nixvim.homeManagerModules.nixvim ];
+
+  programs.nixvim = {
     enable = true;
-    coc = { enable = true; };
-    vimAlias = true;
-    plugins = with pkgs.vimPlugins; [ vim-nix vim-airline vim-airline-themes ];
-    extraConfig = ''
-      nnoremap <esc> :noh<return><esc>
-    '';
+    colorschemes.gruvbox.enable = true;
+    plugins = {
+      lualine.enable = true;
+      telescope.enable = true;
+      treesitter.enable = true;
+      luasnip.enable = true;
+      lsp = {
+        enable = true;
+        servers = {
+          rust-analyzer = {
+            enable = true;
+            installRustc = false;
+            installCargo = false;
+          };
+          lua-ls = {
+            enable = true;
+            settings.telemetry.enable = false;
+          };
+        };
+      };
+      nvim-cmp = {
+        enable = true;
+        autoEnableSources = true;
+        sources = [
+          { name = "nvim_lsp"; }
+          { name = "path"; }
+          { name = "buffer"; }
+          { name = "luasnip"; }
+        ];
+
+        mapping = {
+          "<CR>" = "cmp.mapping.confirm({ select = true })";
+          "<Tab>" = {
+            action = ''
+              function(fallback)
+                if cmp.visible() then
+                  cmp.select_next_item()
+                elseif luasnip.expandable() then
+                  luasnip.expand()
+                elseif luasnip.expand_or_jumpable() then
+                  luasnip.expand_or_jump()
+                elseif check_backspace() then
+                  fallback()
+                else
+                  fallback()
+                end
+              end
+            '';
+            modes = [ "i" "s" ];
+          };
+        };
+      };
+    };
+    options = { number = true; };
+    globals.mapleader = " ";
+    keymaps = [{
+      key = "<esc>";
+      action = ":noh<return><esc>";
+    }];
+    extraPlugins = with pkgs.vimPlugins; [ vim-nix ];
   };
 }

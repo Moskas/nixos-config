@@ -16,9 +16,14 @@
       url = "github:nix-community/NixOS-WSL";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixvim = {
+      url =
+        "github:nix-community/nixvim?rev=1d8e7906c9606c956c6b40d8d088c8d2110dc0c0";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
-  outputs =
-    { self, nixpkgs, home-manager, nur, wsl, nix-colors, sops-nix, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, nur, wsl, nix-colors, sops-nix
+    , nixvim, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system} { config.allowUnfree = true; };
@@ -38,7 +43,7 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.extraSpecialArgs = {
-                inherit username e-mail nix-colors;
+                inherit username e-mail nix-colors nixvim;
               };
               home-manager.users.${username}.imports =
                 [ (import ./hosts/shimakaze/home.nix) ];

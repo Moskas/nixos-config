@@ -1,8 +1,11 @@
 { lib, pkgs, config, modulesPath, ... }:
 
 {
-  imports =
-    [ "${modulesPath}/profiles/minimal.nix" ../../modules/scripts/diff.nix ];
+  imports = [
+    "${modulesPath}/profiles/minimal.nix"
+    ../../modules/scripts/diff.nix
+    ../../modules/nix/nix.nix
+  ];
 
   wsl = {
     enable = true;
@@ -19,14 +22,14 @@
     wslConf.network.generateResolvConf = false;
   };
 
-  nix = {
-    gc = {
-      automatic = true;
-      dates = "daily";
-      options = "--delete-older-than 3d";
-    };
-    settings = { builders-use-substitutes = true; };
-  };
+  # nix = {
+  #   gc = {
+  #     automatic = true;
+  #     dates = "daily";
+  #     options = "--delete-older-than 3d";
+  #   };
+  #   settings = { builders-use-substitutes = true; };
+  # };
   nixpkgs.config.allowUnfree = true;
 
   programs.zsh.enable = true;
