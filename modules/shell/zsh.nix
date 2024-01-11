@@ -19,7 +19,7 @@
       export PATH=~/.cargo/bin/:$PATH
       eval "$(direnv hook zsh)"
 
-      alias cat='bat --decorations=never'
+      alias cat='bat --decorations=never --paging=never'
     '';
   };
 }

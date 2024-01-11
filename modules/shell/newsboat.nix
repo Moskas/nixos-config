@@ -423,11 +423,11 @@
         tags = [ "Blog" ];
       }
       {
-        url = "https://michal.sapka.me/index.xml";
+        url = "https://morss.it/https://michal.sapka.me/index.xml";
         tags = [ "Blog" "BSD" ];
       }
       {
-        url = "https://panoptykon.org/rss.xml";
+        url = "https://morss.it/https://panoptykon.org/rss.xml";
         tags = [ "Blog" "Politics" ];
       }
       #{
