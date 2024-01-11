@@ -1,17 +1,5 @@
 { config, pkgs, lib, username, nix-colors, ... }:
 let
-  # osu-lazer-bin = pkgs.osu-lazer-bin.overrideAttrs (oldAttrs: rec {
-  #   pname = "osu-lazer-bin";
-  #   version = "2023.1008.0";
-  #   name = "osu-lazer-bin-2023.1008.0";
-  #   osu-lazer-bin-src = {
-  #     x86_64-linux = {
-  #       url =
-  #         "https://github.com/ppy/osu/releases/download/${version}/osu.AppImage";
-  #       sha256 = "sha256-18lajjn7asdvfby67sjz4w3pbfndvqz7hjsb6s0ql2w2jz0x3439=";
-  #     };
-  #   };
-  # }); # Keeping that as a note to self if I ever need to override some package
   #random-character = import ../../modules/scripts/random-character.nix { inherit pkgs; };
   random-wallpaper =
     import ../../modules/scripts/random-wallpaper.nix { inherit pkgs; };
@@ -193,7 +181,7 @@ in {
     };
   };
 
-  home.sessionVariables.GTK_THEME = "Gruvbox-Dark-BL";
+  home.sessionVariables.GTK_THEME = "Gruvbox-Plus-Dark";
 
   programs.rbw = {
     enable = true;

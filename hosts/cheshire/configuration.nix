@@ -216,7 +216,7 @@
     shell = pkgs.zsh;
     extraGroups =
       [ "wheel" "storage" "networkmanager" "libvirtd" "i2c" "docker" ];
-    packages = with pkgs; [ neovim ];
+    packages = with pkgs; [ ];
   };
 
   environment.variables = {
