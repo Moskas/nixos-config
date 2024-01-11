@@ -16,6 +16,32 @@
 
 > *Yes, these are the names of warships.*
 
+## Flake structure
+
+``` shell
+  .
+ ├──  hosts # All devices with their corresponding configurations
+ │  ├──  cheshire
+ │  ├──  glasgow
+ │  ├──  laffey
+ │  ├──  roon
+ │  └──  shimakaze
+ └──  modules # All modular configurations like shells, apps etc.
+    ├──  apps
+    ├──  browsers
+    ├──  desktops
+    ├──  editors
+    ├──  email
+    ├──  fonts
+    ├──  git
+    ├──  media
+    ├──  nix
+    ├──  nvidia
+    ├──  scripts
+    ├──  services
+    └──  shell
+```
+
 ## Installation
 To install my config you need a NixOS with flakes enabled:
 ```nix

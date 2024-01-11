@@ -80,7 +80,7 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.extraSpecialArgs = {
-                inherit username e-mail nix-colors;
+                inherit username e-mail nix-colors nixvim;
               };
               home-manager.users.${username}.imports =
                 [ (import ./hosts/cheshire/home.nix) ];
