@@ -15,6 +15,7 @@
       s = "https://startpage.com/search?q={}";
       e = "https://ecosia.org/search?&q={}";
       d = "https://docs.rs/releases/search?query={}";
+      a = "https://annas-archive.org/search?q={}";
     };
     settings = {
       statusbar.show = "in-mode";

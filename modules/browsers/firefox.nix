@@ -108,7 +108,7 @@
             }];
             iconUpdateURL =
               "https://mipmip.github.io/home-manager-option-search/images/favicon.png";
-            updateInterval = 24 * 60 * 60 * 1000; # every day
+            # updateInterval = 24 * 60 * 60 * 1000; # every day
             definedAliases = [ "hm" ];
           };
           "Osu Beatmaps" = {
@@ -142,6 +142,14 @@
               "https://upload.wikimedia.org/wikipedia/commons/d/d5/Rust_programming_language_black_logo.svg";
             definedAliases = [ "d" ];
           };
+          "Anna's Archive" = {
+            urls = [{
+              template = "https://annas-archive.org/search?q={searchTerms}";
+            }];
+            iconUpdateURL =
+              "https://annas-archive.org/favicon-32x32.png?hash=989ac03e6b8daade6d2d";
+            definedAliases = [ "a" ];
+          };
           "Bing".metaData.hidden = true;
           "Google".metaData.alias =
             "@g"; # builtin engines only support specifying one additional alias
@@ -172,6 +180,10 @@
           	--toolbar-field-focus-background-color: var(--urlbar-focused-bg-color) !important;
           	--toolbar-field-background-color: var(--urlbar-not-focused-bg-color) !important;
           	--toolbar-field-focus-border-color: transparent !important;
+
+                --newtab-background-color-secondary: #${config.colorScheme.colors.base02};
+                --newtab-background-color: #${config.colorScheme.colors.base00};
+                --newtab-wordmark-color: #${config.colorScheme.colors.base06};
           }
 
           /* --- GENERAL DEBLOAT ---------------------------------- */
@@ -415,6 +427,7 @@
             transform: translateY(0);
             opacity: 1;
           }
+
       '';
       userContent = "";
       #extensions = with pkgs.nur.repos.rycee.firefox-addons; [
