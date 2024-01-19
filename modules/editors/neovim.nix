@@ -10,7 +10,15 @@
       lualine.enable = true;
       telescope.enable = true;
       treesitter.enable = true;
-      luasnip.enable = true;
+      luasnip = {
+        enable = true;
+        extraConfig = {
+          enable_autosnippets = true;
+          #   store_selection_keys = “<Tab>”;
+        };
+      };
+      nix.enable = true;
+      lsp-format = { enable = true; };
       lsp = {
         enable = true;
         servers = {
@@ -64,6 +72,6 @@
       key = "<esc>";
       action = ":noh<return><esc>";
     }];
-    extraPlugins = with pkgs.vimPlugins; [ vim-nix ];
+    extraPlugins = with pkgs.vimPlugins; [ ];
   };
 }
