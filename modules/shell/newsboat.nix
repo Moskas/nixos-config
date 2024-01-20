@@ -398,6 +398,10 @@
         url = "https://determinate.systems/rss.xml";
         tags = [ "Nix" ];
       }
+      {
+        url = "https://thewagner.net/feeds/all.atom.xml";
+        tags = [ "Nix" "Clojure" "Homelab" ];
+      }
       #      {
       #        url = "https://morss.it/https://www.phoronix.com/rss.php";
       #        tags = [ "Blog" ];

@@ -10,6 +10,7 @@
       lualine.enable = true;
       telescope.enable = true;
       treesitter.enable = true;
+      indent-blankline.enable = true;
       luasnip = {
         enable = true;
         extraConfig = {
@@ -17,8 +18,9 @@
           #   store_selection_keys = “<Tab>”;
         };
       };
+      gitblame.enable = true;
       nix.enable = true;
-      lsp-format = { enable = true; };
+      lsp-format = { enable = true;};
       lsp = {
         enable = true;
         servers = {
@@ -30,6 +32,9 @@
           lua-ls = {
             enable = true;
             settings.telemetry.enable = false;
+          };
+          vuels = {
+            enable = true;
           };
         };
       };
