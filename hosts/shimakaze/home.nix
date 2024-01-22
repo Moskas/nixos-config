@@ -5,7 +5,8 @@
     nix-colors.homeManagerModules.default
     ../../modules/git
     ../../modules/shell
-    ../../modules/editors
+    ../../modules/editors/emacs.nix
+    ../../modules/editors/neovim.nix
   ];
 
   colorScheme = nix-colors.colorSchemes.gruvbox-dark-medium;
