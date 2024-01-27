@@ -127,7 +127,7 @@ in {
   #};
 
   home.pointerCursor = {
-    size = 64;
+    size = 16;
     package = pkgs.phinger-cursors;
     name = "phinger-cursors-light";
   };

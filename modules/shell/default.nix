@@ -16,7 +16,9 @@
     jq
     du-dust
     duf
-    neofetch
+    (pkgs.neofetch.overrideAttrs (o: {
+      patches = (o.patches or [ ]) ++ [ ./neofetch-nixos-small.patch ];
+    }))
     onefetch
     ranger
     zip
