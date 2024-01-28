@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, username, ... }:
 
 {
   imports = [
@@ -179,8 +179,18 @@
   # services.xserver.libinput.enable = true;
   users.defaultUserShell = pkgs.zsh;
 
+  programs.thunar = {
+    enable = true;
+    plugins = with pkgs.xfce; [
+      tumbler
+      thunar-archive-plugin
+      thunar-volman
+      thunar-media-tags-plugin
+    ];
+  };
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.moskas = {
+  users.users.${username} = {
     isNormalUser = true;
     description = "Moskas";
     initialPassword = "nix";
@@ -203,7 +213,6 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    neovim
     wget
     git
     ripgrep
@@ -245,15 +254,14 @@
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
-  };
+  programs.gnupg.agent = { enable = true; };
   programs.hyprland = { enable = false; };
   programs.dconf.enable = true;
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
+
+  programs.ssh.startAgent = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
