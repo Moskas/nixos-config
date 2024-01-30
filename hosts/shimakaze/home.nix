@@ -5,6 +5,7 @@
     nix-colors.homeManagerModules.default
     ../../modules/git
     ../../modules/shell
+    ../../modules/shell/tmux.nix
     ../../modules/editors/emacs.nix
     ../../modules/editors/neovim.nix
   ];
