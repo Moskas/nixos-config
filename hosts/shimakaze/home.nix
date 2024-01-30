@@ -17,7 +17,7 @@
   home.username = "${username}";
   home.homeDirectory = "/home/${username}";
 
-  home.packages = with pkgs; [ rnix-lsp ];
+  home.packages = with pkgs; [ rnix-lsp nmap w3m ];
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage

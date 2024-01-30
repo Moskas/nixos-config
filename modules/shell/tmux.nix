@@ -8,10 +8,10 @@
     keyMode = "emacs";
     baseIndex = 1;
     shortcut = "Space";
-    terminal = "tmux-256color";
+    terminal = "screen-256color";
     shell = "${pkgs.zsh}/bin/zsh";
+    extraConfig = "set-option -sa terminal-overrides ',xterm*:Tc'";
     plugins = with pkgs; [
-      tmuxPlugins.cpu
       {
         plugin = tmuxPlugins.resurrect;
         extraConfig = "set -g @resurrect-strategy-nvim 'session'";
@@ -23,6 +23,8 @@
       }
       tmuxPlugins.tilish
       tmuxPlugins.tmux-fzf
+      tmuxPlugins.yank
+      #tmuxPlugins.vim-tmux-navigator
     ];
   };
 }
