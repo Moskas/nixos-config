@@ -18,8 +18,12 @@
       }
       {
         plugin = tmuxPlugins.continuum;
-        extraConfig =
-          "set -g @continuum-restore 'on'";
+        extraConfig = "set -g @continuum-restore 'on'";
+      }
+      {
+        plugin = (pkgs.tmuxPlugins.catppuccin.overrideAttrs
+          (o: { patches = (o.patches or [ ]) ++ [ ./catppuccin.patch ]; }));
+        extraConfig = "set -g @catppuccin_flavour 'mocha'";
       }
       tmuxPlugins.tilish
       tmuxPlugins.tmux-fzf

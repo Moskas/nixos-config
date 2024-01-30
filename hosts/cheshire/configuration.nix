@@ -148,7 +148,7 @@
     desktopManager.gnome.enable = false;
     windowManager.qtile = {
       enable = true;
-      package = pkgs.python311Packages.qtile;
+      package = pkgs.qtile;
     };
     windowManager.awesome = {
       enable = true;

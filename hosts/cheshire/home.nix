@@ -70,7 +70,7 @@ in {
     easyeffects
     xclip
     pkg-config
-    osu-lazer-bin
+    (callPackage ../../pkgs/osu-bin.nix {})
     openrgb-with-all-plugins
     distrobox
     nicotine-plus
