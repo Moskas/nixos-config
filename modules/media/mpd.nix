@@ -1,6 +1,11 @@
 { config, lib, pkgs, username, ... }:
 
 {
+  home.packages = with pkgs; [
+    (callPackage ../../pkgs/mpdnotify.nix {})
+    mpc-cli
+  ];
+
   services.mpd = {
     enable = true;
     musicDirectory = "/home/${username}/Music";

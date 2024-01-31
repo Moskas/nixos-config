@@ -44,7 +44,6 @@ in {
     python311Packages.aria2p # aria2c
     python311Packages.mpd2
     ffmpeg
-    mpc-cli
     cava
     cargo
     rnix-lsp
