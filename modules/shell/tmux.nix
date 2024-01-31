@@ -10,7 +10,10 @@
     shortcut = "Space";
     terminal = "screen-256color";
     shell = "${pkgs.zsh}/bin/zsh";
-    extraConfig = "set-option -sa terminal-overrides ',xterm*:Tc'";
+    extraConfig = ''
+      set-option -sa terminal-overrides ',xterm*:Tc'
+      set-option -g renumber-windows on
+    '';
     plugins = with pkgs; [
       {
         plugin = tmuxPlugins.resurrect;

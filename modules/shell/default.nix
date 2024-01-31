@@ -20,6 +20,7 @@
     (pkgs.neofetch.overrideAttrs (o: {
       patches = (o.patches or [ ]) ++ [ ./neofetch-nixos-small.patch ];
     }))
+    (callPackage ../../pkgs/whdl.nix {})
     onefetch
     ranger
     zip
@@ -27,5 +28,6 @@
     unrar
     p7zip
     wget
+    nurl
   ];
 }
