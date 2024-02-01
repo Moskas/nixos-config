@@ -7,12 +7,27 @@
     enable = true;
     colorschemes.gruvbox.enable = true;
     plugins = {
-      lualine.enable = true;
+      lualine = {
+        enable = true;
+        componentSeparators = {
+          left = "|";
+          right = "|";
+        };
+        sectionSeparators = {
+          left = "";
+          right = "";
+        };
+      };
       treesitter.enable = true;
       indent-blankline.enable = true;
       nvim-autopairs.enable = true;
       which-key.enable = true;
-      floaterm.enable = true;
+      tmux-navigator.enable = true;
+      floaterm = {
+        enable = true;
+        height = 0.8;
+        width = 0.8;
+      };
       alpha = {
         enable = true;
         theme = null;
@@ -56,7 +71,6 @@
                 }
               ];
               shortcut = "f";
-
               position = "center";
               cursor = 3;
               width = 38;
@@ -363,6 +377,6 @@
       key = "<esc>";
       action = ":noh<return><esc>";
     }];
-    extraPlugins = with pkgs.vimPlugins; [ ];
+    extraPlugins = with pkgs.vimPlugins; [ formatter-nvim ];
   };
 }

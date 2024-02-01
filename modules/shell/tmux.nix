@@ -13,6 +13,11 @@
     extraConfig = ''
       set-option -sa terminal-overrides ',xterm*:Tc'
       set-option -g renumber-windows on
+      bind V split-window -h -c '#{pane_current_path}'
+      bind S split-window -v -c '#{pane_current_path}'
+      unbind '%'
+      unbind '"'
+      bind C-l send-keys 'C-l'
     '';
     plugins = with pkgs; [
       {
@@ -31,7 +36,7 @@
       tmuxPlugins.tilish
       tmuxPlugins.tmux-fzf
       tmuxPlugins.yank
-      #tmuxPlugins.vim-tmux-navigator
+      tmuxPlugins.vim-tmux-navigator
     ];
   };
 }

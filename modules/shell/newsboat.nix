@@ -8,11 +8,11 @@
     reloadThreads = 8;
     extraConfig = ''
       color background         default   default
-      color listnormal         black     default
+      color listnormal         color8    default
       color listnormal_unread  default   default
       color listfocus          black     yellow bold
       color listfocus_unread   black     yellow bold
-      color info               black     cyan bold
+      color info               green     black bold
       color article            default   default
       highlight article "^Feed:.*"                        cyan  default
       highlight article "^Title:.*"                       yellow default bold
@@ -49,6 +49,9 @@
       { url = ''"query:Blog:tags # \"Blog\""''; }
       {
         url = ''"query:Wrocław:tags # \"Wrocław\""'';
+      }
+      {
+        url = "http://localhost:8000/feed";
       }
       #{
       #  tags = [ "Linux" ];
@@ -452,6 +455,7 @@
       {
         url = "https://vermaden.wordpress.com/feed";
         tags = [ "Blog" "Tech" ];
+        title = "vermaden";
       }
       {
         url = "https://morss.it/https://fasterthanli.me/index.xml";
@@ -466,7 +470,7 @@
         tags = [ "Blog" ];
       }
       {
-        url = "https://www.jeffgeerling.com/blog.xml";
+        url = "https://morss.it/https://www.jeffgeerling.com/blog.xml";
         tags = [ "Blog" ];
       }
       {
