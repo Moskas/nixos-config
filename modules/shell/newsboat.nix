@@ -12,7 +12,7 @@
       color listnormal_unread  default   default
       color listfocus          black     yellow bold
       color listfocus_unread   black     yellow bold
-      color info               green     black bold
+      color info               green     default bold
       color article            default   default
       highlight article "^Feed:.*"                        cyan  default
       highlight article "^Title:.*"                       yellow default bold
@@ -31,11 +31,17 @@
       highlight article "\\[[0-9]\\+\\]"                  yellow   default bold
       highlight article "\\[[^0-9].*[0-9]\\+\\]"          magenta  default bold
 
+      show-read-articles no
+      show-read-feeds no
+
       macro v set browser "setsid -f mpv --really-quiet --no-terminal" ; open-in-browser ; set browser firefox
       player "mpv"
 
       bind-key RIGHT open
       bind-key LEFT quit
+
+      macro s set show-read-articles yes; set show-read-feeds yes; reload
+      macro h set show-read-articles no; set show-read-feeds no; reload
 
       bind-key l open
       bind-key j down
@@ -53,23 +59,6 @@
       {
         url = "http://localhost:8000/feed";
       }
-      #{
-      #  tags = [ "Linux" ];
-      #  url = "https://www.phoronix.com/rss.php";
-      #}
-      {
-        tags = [ "Games" ];
-        url = "https://terrysfreegameoftheweek.com/feed/";
-      }
-      {
-        tags = [ "Linux" "Tech" ];
-        url = "https://myme.no/feed.xml";
-      }
-      #Jobs
-      #{
-      #  url = "https://justjoin.it/feed.atom";
-      #  tags = [ "Jobs" ];
-      #}
       #Videos
       ##Youtube
       {
@@ -237,25 +226,25 @@
       {
         url =
           "https://www.youtube.com/feeds/videos.xml?channel_id=UC7yZ6keOGsvERMp2HaEbbXQ";
-        tags = [ "Youtube" ];
+        tags = [ "Youtube" "Programming" ];
         title = "devaslife";
       }
       {
         url =
           "https://www.youtube.com/feeds/videos.xml?channel_id=UC0lE_IPPXhb_J9sZnMyIEwA";
-        tags = [ "Youtube" ];
+        tags = [ "Youtube" "Programming" ];
         title = "llll colonq";
       }
       {
         url =
           "https://www.youtube.com/feeds/videos.xml?channel_id=UCUMwY9iS8oMyWDYIe6_RmoA";
-        tags = [ "Youtube" ];
+        tags = [ "Youtube" "Programming" ];
         title = "No Boilerplate";
       }
       {
         url =
           "https://www.youtube.com/feeds/videos.xml?channel_id=UCnCmb1vpv90EeSX5g7K4UYQ";
-        tags = [ "Youtube" ];
+        tags = [ "Youtube" "Games" ];
         title = "The Librarian";
       }
       {
@@ -370,6 +359,14 @@
       }
       #Blog
       {
+        url = "https://terrysfreegameoftheweek.com/feed/";
+        tags = [ "Games" ];
+      }
+      {
+        url = "https://myme.no/feed.xml";
+        tags = [ "Linux" "Tech" "Blog" ];
+      }
+      {
         url = "https://emacsredux.com/atom.xml";
         tags = [ "Tech" "Emacs" "Blog" ];
       }
@@ -403,31 +400,23 @@
       }
       {
         url = "https://thewagner.net/feeds/all.atom.xml";
-        tags = [ "Nix" "Clojure" "Homelab" ];
+        tags = [ "Nix" "Programming" "Homelab" ];
       }
-      #      {
-      #        url = "https://morss.it/https://www.phoronix.com/rss.php";
-      #        tags = [ "Blog" ];
-      #      }
-      #      {
-      #        url = "https://hackaday.com/feed/";
-      #        tags = [ "Blog" ];
-      #      }
       {
         url = "https://itsfoss.com/rss/";
-        tags = [ "Blog" ];
+        tags = [ "Blog" "Linux" ];
       }
       {
         url = "https://blog.rust-lang.org/feed.xml";
-        tags = [ "Blog" ];
+        tags = [ "Blog" "Programming" ];
       }
       {
         url = "https://thelinuxexp.com/feed.xml";
-        tags = [ "Blog" ];
+        tags = [ "Blog" "Linux" ];
       }
       {
         url = "https://thelinuxcast.org/feed/feed.xml";
-        tags = [ "Blog" ];
+        tags = [ "Blog" "Linux" ];
       }
       {
         url = "https://morss.it/https://michal.sapka.me/index.xml";
@@ -437,41 +426,34 @@
         url = "https://morss.it/https://panoptykon.org/rss.xml";
         tags = [ "Blog" "Politics" ];
       }
-      #{
-      #url = "https://dev.to/feed"; tags = [ "Blog"  "Programming" ];
-      #}
       {
         url = "https://zettelkasten.de/feed.atom";
         tags = [ "Blog" "Notes" ];
       }
       {
-        url = "https://morss.it/https://cult.honeypot.io/rss.xml";
-        tags = [ "Blog" "Programming" ];
-      }
-      {
         url = "https://blog.phundrak.com/index.xml";
-        tags = [ "Blog" "Tech" ];
+        tags = [ "Blog" "Tech" "Emacs" ];
       }
       {
         url = "https://vermaden.wordpress.com/feed";
-        tags = [ "Blog" "Tech" ];
+        tags = [ "Blog" "Tech" "BSD"];
         title = "vermaden";
       }
       {
         url = "https://morss.it/https://fasterthanli.me/index.xml";
-        tags = [ "Blog" "Tech" ];
+        tags = [ "Blog" "Tech" "Programming" ];
       }
       {
         url = "https://morss.it/https://aliabdaal.com/feed/";
-        tags = [ "Blog" ];
+        tags = [ "Blog" "Lifestyle" ];
       }
       {
         url = "https://programmershideaway.xyz/atom.xml";
-        tags = [ "Blog" ];
+        tags = [ "Blog" "Programming" ];
       }
       {
         url = "https://morss.it/https://www.jeffgeerling.com/blog.xml";
-        tags = [ "Blog" ];
+        tags = [ "Blog" "Tech" ];
       }
       {
         url = "https://ploum.net/atom_en.xml";
