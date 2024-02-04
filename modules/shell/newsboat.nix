@@ -28,6 +28,7 @@
       highlight article "^Date:.*"                        green  default
       highlight article "\\*\ "                           magenta  default bold
       highlight article "\\[0-9]\\.\ "                    magenta  default bold
+      highlight article "\\[[0-9][0-9]\\]:.*"             yellow   default bold
       highlight article "\\[[0-9]\\+\\]"                  yellow   default bold
       highlight article "\\[[^0-9].*[0-9]\\+\\]"          magenta  default bold
 

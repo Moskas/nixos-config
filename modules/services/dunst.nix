@@ -15,7 +15,7 @@
         transparency = 10;
         max_icon_size = 90;
         min_icon_size = 32;
-        frame_color = "#${config.colorScheme.colors.base07}";
+        frame_color = "#${config.colorScheme.palette.base07}";
         font = "JetBrainsMono Nerd Font 10";
         format = ''
           <b>%s</b>
@@ -24,8 +24,8 @@
       };
 
       urgency_normal = {
-        background = "#${config.colorScheme.colors.base00}";
-        foreground = "#${config.colorScheme.colors.base07}";
+        background = "#${config.colorScheme.palette.base00}";
+        foreground = "#${config.colorScheme.palette.base07}";
         timeout = 10;
       };
 

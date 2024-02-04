@@ -58,116 +58,116 @@
       colors = {
         statusbar = {
           normal = {
-            bg = "#${config.colorScheme.colors.base00}";
-            fg = "#${config.colorScheme.colors.base07}";
+            bg = "#${config.colorScheme.palette.base00}";
+            fg = "#${config.colorScheme.palette.base07}";
           };
           command = {
-            bg = "#${config.colorScheme.colors.base00}";
-            fg = "#${config.colorScheme.colors.base07}";
+            bg = "#${config.colorScheme.palette.base00}";
+            fg = "#${config.colorScheme.palette.base07}";
           };
           insert = {
-            bg = "#${config.colorScheme.colors.base00}";
-            fg = "#${config.colorScheme.colors.base0B}";
+            bg = "#${config.colorScheme.palette.base00}";
+            fg = "#${config.colorScheme.palette.base0B}";
           };
           url = {
-            success.http.fg = "#${config.colorScheme.colors.base0B}";
-            success.https.fg = "#${config.colorScheme.colors.base0B}";
-            fg = "#${config.colorScheme.colors.base07}";
-            error.fg = "#${config.colorScheme.colors.base08}";
-            warn.fg = "#${config.colorScheme.colors.base08}";
-            hover.fg = "#${config.colorScheme.colors.base0D}";
+            success.http.fg = "#${config.colorScheme.palette.base0B}";
+            success.https.fg = "#${config.colorScheme.palette.base0B}";
+            fg = "#${config.colorScheme.palette.base07}";
+            error.fg = "#${config.colorScheme.palette.base08}";
+            warn.fg = "#${config.colorScheme.palette.base08}";
+            hover.fg = "#${config.colorScheme.palette.base0D}";
           };
         };
         messages = {
           error = {
-            bg = "#${config.colorScheme.colors.base08}";
-            fg = "#${config.colorScheme.colors.base07}";
-            border = "#${config.colorScheme.colors.base07}";
+            bg = "#${config.colorScheme.palette.base08}";
+            fg = "#${config.colorScheme.palette.base07}";
+            border = "#${config.colorScheme.palette.base07}";
           };
           warning = {
-            bg = "#${config.colorScheme.colors.base08}";
-            fg = "#${config.colorScheme.colors.base07}";
-            border = "#${config.colorScheme.colors.base07}";
+            bg = "#${config.colorScheme.palette.base08}";
+            fg = "#${config.colorScheme.palette.base07}";
+            border = "#${config.colorScheme.palette.base07}";
           };
           info = {
-            fg = "#${config.colorScheme.colors.base07}";
-            bg = "#${config.colorScheme.colors.base0D}";
+            fg = "#${config.colorScheme.palette.base07}";
+            bg = "#${config.colorScheme.palette.base0D}";
           };
         };
         tabs = {
-          indicator.stop = "#${config.colorScheme.colors.base0D}";
+          indicator.stop = "#${config.colorScheme.palette.base0D}";
           odd = {
-            fg = "#${config.colorScheme.colors.base07}";
-            bg = "#${config.colorScheme.colors.base00}";
+            fg = "#${config.colorScheme.palette.base07}";
+            bg = "#${config.colorScheme.palette.base00}";
           };
           even = {
-            fg = "#${config.colorScheme.colors.base07}";
-            bg = "#${config.colorScheme.colors.base01}";
+            fg = "#${config.colorScheme.palette.base07}";
+            bg = "#${config.colorScheme.palette.base01}";
           };
           selected = {
             odd = {
-              fg = "#${config.colorScheme.colors.base00}";
-              bg = "#${config.colorScheme.colors.base0D}";
+              fg = "#${config.colorScheme.palette.base00}";
+              bg = "#${config.colorScheme.palette.base0D}";
             };
             even = {
-              fg = "#${config.colorScheme.colors.base00}";
-              bg = "#${config.colorScheme.colors.base0D}";
+              fg = "#${config.colorScheme.palette.base00}";
+              bg = "#${config.colorScheme.palette.base0D}";
             };
           };
         };
         hints = {
-          bg = "#${config.colorScheme.colors.base00}";
-          fg = "#${config.colorScheme.colors.base07}";
-          match.fg = "#${config.colorScheme.colors.base0B}";
+          bg = "#${config.colorScheme.palette.base00}";
+          fg = "#${config.colorScheme.palette.base07}";
+          match.fg = "#${config.colorScheme.palette.base0B}";
         };
         completion = {
-          fg = "#${config.colorScheme.colors.base07}";
-          odd.bg = "#${config.colorScheme.colors.base00}";
-          even.bg = "#${config.colorScheme.colors.base01}";
+          fg = "#${config.colorScheme.palette.base07}";
+          odd.bg = "#${config.colorScheme.palette.base00}";
+          even.bg = "#${config.colorScheme.palette.base01}";
           category = {
-            bg = "#${config.colorScheme.colors.base00}";
-            fg = "#${config.colorScheme.colors.base07}";
+            bg = "#${config.colorScheme.palette.base00}";
+            fg = "#${config.colorScheme.palette.base07}";
           };
           item.selected = {
-            bg = "#${config.colorScheme.colors.base00}";
-            fg = "#${config.colorScheme.colors.base07}";
-            match.fg = "#${config.colorScheme.colors.base0B}";
+            bg = "#${config.colorScheme.palette.base00}";
+            fg = "#${config.colorScheme.palette.base07}";
+            match.fg = "#${config.colorScheme.palette.base0B}";
           };
-          match = { fg = "#${config.colorScheme.colors.base07}"; };
+          match = { fg = "#${config.colorScheme.palette.base07}"; };
           scrollbar = {
-            fg = "#${config.colorScheme.colors.base01}";
-            bg = "#${config.colorScheme.colors.base00}";
+            fg = "#${config.colorScheme.palette.base01}";
+            bg = "#${config.colorScheme.palette.base00}";
           };
         };
         webpage = {
-          bg = "#${config.colorScheme.colors.base00}";
+          bg = "#${config.colorScheme.palette.base00}";
           preferred_color_scheme = "dark";
           darkmode.enabled = false;
           darkmode.policy.images = "never";
         };
         downloads = {
-          bar.bg = "#${config.colorScheme.colors.base00}";
+          bar.bg = "#${config.colorScheme.palette.base00}";
           error = {
-            fg = "#${config.colorScheme.colors.base07}";
-            bg = "#${config.colorScheme.colors.base08}";
+            fg = "#${config.colorScheme.palette.base07}";
+            bg = "#${config.colorScheme.palette.base08}";
           };
           start = {
-            fg = "#${config.colorScheme.colors.base07}";
-            bg = "#${config.colorScheme.colors.base09}";
+            fg = "#${config.colorScheme.palette.base07}";
+            bg = "#${config.colorScheme.palette.base09}";
           };
           stop = {
-            fg = "#${config.colorScheme.colors.base07}";
-            bg = "#${config.colorScheme.colors.base0B}";
+            fg = "#${config.colorScheme.palette.base07}";
+            bg = "#${config.colorScheme.palette.base0B}";
           };
         };
         prompts = {
-          fg = "#${config.colorScheme.colors.base07}";
-          bg = "#${config.colorScheme.colors.base00}";
+          fg = "#${config.colorScheme.palette.base07}";
+          bg = "#${config.colorScheme.palette.base00}";
         };
         keyhint = {
-          fg = "#${config.colorScheme.colors.base07}";
-          bg = "#${config.colorScheme.colors.base00}";
-          suffix.fg = "#${config.colorScheme.colors.base0B}";
+          fg = "#${config.colorScheme.palette.base07}";
+          bg = "#${config.colorScheme.palette.base00}";
+          suffix.fg = "#${config.colorScheme.palette.base0B}";
         };
       };
     };

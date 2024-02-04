@@ -11,7 +11,7 @@
         saveAfterCopy = true;
         savePath = "/home/${username}/Pictures/Screenshots";
         savePathFixed = true;
-        uiColor = "#${config.colorScheme.colors.base07}";
+        uiColor = "#${config.colorScheme.palette.base07}";
         useJpgForClipboard = false;
         disabledTrayIcon = true;
         showStartupLaunchMessage = false;

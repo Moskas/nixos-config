@@ -158,13 +158,13 @@
       userChrome = ''
         /* userChrome.css from: https://github.com/Dook97/firefox-qutebrowser-userchrome*/
           :root {
-          	--tab-active-bg-color: #${config.colorScheme.colors.base02};
-          	--tab-inactive-bg-color: #${config.colorScheme.colors.base00};
-          	--tab-active-fg-fallback-color: #${config.colorScheme.colors.base06};
-          	--tab-inactive-fg-fallback-color: #${config.colorScheme.colors.base03};
-          	--urlbar-focused-bg-color: #${config.colorScheme.colors.base00};
-          	--urlbar-not-focused-bg-color: #${config.colorScheme.colors.base00};
-          	--toolbar-bgcolor: #${config.colorScheme.colors.base00} !important;
+          	--tab-active-bg-color: #${config.colorScheme.palette.base02};
+          	--tab-inactive-bg-color: #${config.colorScheme.palette.base00};
+          	--tab-active-fg-fallback-color: #${config.colorScheme.palette.base06};
+          	--tab-inactive-fg-fallback-color: #${config.colorScheme.palette.base03};
+          	--urlbar-focused-bg-color: #${config.colorScheme.palette.base00};
+          	--urlbar-not-focused-bg-color: #${config.colorScheme.palette.base00};
+          	--toolbar-bgcolor: #${config.colorScheme.palette.base00} !important;
           	--tab-font: 'JetbrainsMono Nerd Font';
           	--urlbar-font: 'JetbrainsMono Nerd Font';
 
@@ -181,9 +181,9 @@
           	--toolbar-field-background-color: var(--urlbar-not-focused-bg-color) !important;
           	--toolbar-field-focus-border-color: transparent !important;
 
-                --newtab-background-color-secondary: #${config.colorScheme.colors.base02};
-                --newtab-background-color: #${config.colorScheme.colors.base00};
-                --newtab-wordmark-color: #${config.colorScheme.colors.base06};
+                --newtab-background-color-secondary: #${config.colorScheme.palette.base02};
+                --newtab-background-color: #${config.colorScheme.palette.base00};
+                --newtab-wordmark-color: #${config.colorScheme.palette.base06};
           }
 
           /* --- GENERAL DEBLOAT ---------------------------------- */

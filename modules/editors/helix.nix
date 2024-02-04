@@ -25,17 +25,17 @@
     themes = {
       base16 = let
         transparent = "none";
-        gray = "#${config.colorScheme.colors.base03}";
-        dark-gray = "#${config.colorScheme.colors.base01}";
-        white = "#${config.colorScheme.colors.base07}";
-        black = "#${config.colorScheme.colors.base00}";
-        red = "#${config.colorScheme.colors.base08}";
-        green = "#${config.colorScheme.colors.base0B}";
-        yellow = "#${config.colorScheme.colors.base0A}";
-        orange = "#${config.colorScheme.colors.base09}";
-        blue = "#${config.colorScheme.colors.base0D}";
-        magenta = "#${config.colorScheme.colors.base0E}";
-        cyan = "#${config.colorScheme.colors.base0C}";
+        gray = "#${config.colorScheme.palette.base03}";
+        dark-gray = "#${config.colorScheme.palette.base01}";
+        white = "#${config.colorScheme.palette.base07}";
+        black = "#${config.colorScheme.palette.base00}";
+        red = "#${config.colorScheme.palette.base08}";
+        green = "#${config.colorScheme.palette.base0B}";
+        yellow = "#${config.colorScheme.palette.base0A}";
+        orange = "#${config.colorScheme.palette.base09}";
+        blue = "#${config.colorScheme.palette.base0D}";
+        magenta = "#${config.colorScheme.palette.base0E}";
+        cyan = "#${config.colorScheme.palette.base0C}";
       in {
         "ui.menu" = transparent;
         "ui.menu.selected" = { modifiers = [ "reversed" ]; };
