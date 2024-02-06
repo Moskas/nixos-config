@@ -1,4 +1,4 @@
-{ config, pkgs, lib, username, nix-colors, ... }:
+{ config, pkgs, username, nix-colors, ... }:
 let
   #random-character = import ../../modules/scripts/random-character.nix { inherit pkgs; };
   random-wallpaper =
@@ -69,7 +69,7 @@ in {
     easyeffects
     xclip
     pkg-config
-    (callPackage ../../pkgs/osu-bin.nix {})
+    (callPackage ../../pkgs/osu-bin.nix { })
     openrgb-with-all-plugins
     distrobox
     nicotine-plus

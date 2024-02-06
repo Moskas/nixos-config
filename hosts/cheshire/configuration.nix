@@ -143,22 +143,28 @@
 
   services.xserver = {
     enable = true;
-    layout = "pl";
+    xkb.layout = "pl";
     displayManager.gdm.enable = true;
-    desktopManager.gnome.enable = false;
     windowManager.qtile = {
       enable = true;
       package = pkgs.qtile;
     };
     windowManager.awesome = {
-      enable = true;
+      enable = false;
       luaModules = with pkgs.luaPackages; [ luarocks ];
     };
+    windowManager.stumpwm.enable = true;
+    # Commands to run while launching the display manager
+    displayManager.setupCommands = ''
+      xrandr --output DP-0 --mode 1920x1080 
+      xrandr -p '143.98'
+      xrandr --dpi 100
+    '';
+
   };
 
   programs.hyprland = {
     enable = true;
-    # enableNvidiaPatches = true;
     xwayland.enable = true;
   };
 
@@ -241,7 +247,6 @@
     direnv
 
     timeshift
-    #openssl_1_1 # For Etterna sigh
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -262,18 +267,18 @@
     motherboard = "amd";
   };
 
-  systemd.user.services.mpdas = {
-    #Unit = {
-    description = "Audioscrobbler client for MPD";
-    wantedBy = [ "multi-user.target" ];
-    after = [ "default.target" ];
-    #};
-    serviceConfig = {
-      ExecStart = "${pkgs.mpdas}/bin/mpdas";
-      Restart = "on-failure";
-      RestartSec = 5;
-    };
-  };
+  #systemd.user.services.mpdas = {
+  #  #Unit = {
+  #  description = "Audioscrobbler client for MPD";
+  #  wantedBy = [ "multi-user.target" ];
+  #  after = [ "default.target" ];
+  #  #};
+  #  serviceConfig = {
+  #    ExecStart = "${pkgs.mpdas}/bin/mpdas";
+  #    Restart = "on-failure";
+  #    RestartSec = 5;
+  #  };
+  #};
 
   virtualisation = {
     libvirtd = { enable = true; };

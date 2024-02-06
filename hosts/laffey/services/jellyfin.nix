@@ -1,8 +1,8 @@
-{ config, lib, pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
-    services.jellyfin = {
-        enable = true;
-        openFirewall = true;
-    };
+  services.jellyfin = {
+    enable = true;
+    openFirewall = true;
+  };
 }

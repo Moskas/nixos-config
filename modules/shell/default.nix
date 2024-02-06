@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   imports = [
@@ -20,7 +20,7 @@
     (pkgs.neofetch.overrideAttrs (o: {
       patches = (o.patches or [ ]) ++ [ ./neofetch-nixos-small.patch ];
     }))
-    (callPackage ../../pkgs/whdl.nix {})
+    (callPackage ../../pkgs/whdl.nix { })
     onefetch
     ranger
     zip

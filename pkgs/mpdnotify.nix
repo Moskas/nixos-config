@@ -1,5 +1,4 @@
-{ lib, stdenv, fetchFromGitHub, rustPlatform, zlib, libiconv
- }:
+{ lib, stdenv, fetchFromGitHub, rustPlatform, zlib, libiconv }:
 
 rustPlatform.buildRustPackage rec {
   pname = "mpd-notify-rs";
@@ -20,7 +19,7 @@ rustPlatform.buildRustPackage rec {
   meta = with lib; {
     description = "MPD notification daemon";
     longDescription = ''
-    MPD notification daemon written in Rust.
+      MPD notification daemon written in Rust.
     '';
     homepage = "https://github.com/Moskas/mpd-notify-rs";
     license = licenses.mit;

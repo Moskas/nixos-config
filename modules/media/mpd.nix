@@ -1,8 +1,8 @@
-{ config, lib, pkgs, username, ... }:
+{ config, pkgs, username, ... }:
 
 {
   home.packages = with pkgs; [
-    (callPackage ../../pkgs/mpdnotify.nix {})
+    (callPackage ../../pkgs/mpdnotify.nix { })
     mpc-cli
   ];
 

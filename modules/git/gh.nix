@@ -1,4 +1,4 @@
-{ config, lib, pkgs, e-mail, ... }:
+{ config, pkgs, e-mail, ... }:
 
 {
   programs.gh = {

@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   programs.mpv = {
@@ -10,6 +10,11 @@
       keepaspect = false;
       osc = false;
     };
-    scripts = with pkgs.mpvScripts; [ sponsorblock quality-menu mpris thumbnail ];
+    scripts = with pkgs.mpvScripts; [
+      sponsorblock
+      quality-menu
+      mpris
+      thumbnail
+    ];
   };
 }

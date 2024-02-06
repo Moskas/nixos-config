@@ -1,4 +1,4 @@
-{ config, pkgs, lib, username, e-mail, nix-colors, ... }:
+{ config, pkgs, username, e-mail, nix-colors, ... }:
 
 {
   imports = [

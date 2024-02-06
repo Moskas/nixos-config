@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   programs.newsboat = {
@@ -54,9 +54,7 @@
       { url = ''"query:Odysee:tags # \"Odysee\""''; }
       { url = ''"query:Piped:tags # \"Piped\""''; }
       { url = ''"query:Blog:tags # \"Blog\""''; }
-      {
-        url = ''"query:Wrocław:tags # \"Wrocław\""'';
-      }
+      { url = ''"query:Wrocław:tags # \"Wrocław\""''; }
       {
         url = "http://localhost:8000/feed";
       }
@@ -396,6 +394,10 @@
         tags = [ "Tech" "Nix" "Blog" ];
       }
       {
+        url = "https://xn--gckvb8fzb.com/index.xml";
+        tags = [ "Tech" "Linux" "Privacy" "Blog" ];
+      }
+      {
         url = "https://determinate.systems/rss.xml";
         tags = [ "Nix" ];
       }
@@ -437,7 +439,7 @@
       }
       {
         url = "https://vermaden.wordpress.com/feed";
-        tags = [ "Blog" "Tech" "BSD"];
+        tags = [ "Blog" "Tech" "BSD" ];
         title = "vermaden";
       }
       {

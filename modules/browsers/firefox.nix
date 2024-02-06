@@ -1,4 +1,4 @@
-{ config, lib, pkgs, username, ... }:
+{ config, pkgs, username, ... }:
 
 {
   programs.firefox = {
