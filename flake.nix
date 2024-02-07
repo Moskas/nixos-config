@@ -20,15 +20,20 @@
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    emacs-overlay = {
+      url = "github:nix-community/emacs-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs = { self, nixpkgs, home-manager, nur, wsl, nix-colors, sops-nix
-    , nixvim, ... }@inputs:
+    , nixvim, emacs-overlay, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system} { config.allowUnfree = true; };
       username = "moskas";
       e-mail = "minemoskas@gmail.com";
       lib = nixpkgs.lib;
+      default-overlays = { nixpkgs.overlays = [ emacs-overlay.overlay ]; };
     in {
       nixosConfigurations = {
         shimakaze = lib.nixosSystem {
@@ -36,6 +41,7 @@
           specialArgs = { inherit inputs username; };
           modules = [
             ./hosts/shimakaze/configuration.nix
+            default-overlays
             wsl.nixosModules.wsl
             home-manager.nixosModules.home-manager
             {
@@ -55,6 +61,7 @@
           modules = [
             ./hosts/roon
             ./hosts/roon/configuration.nix
+            default-overlays
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
@@ -74,6 +81,7 @@
             sops-nix.nixosModules.sops
             ./hosts/cheshire
             ./hosts/cheshire/configuration.nix
+            default-overlays
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
