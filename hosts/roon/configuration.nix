@@ -138,8 +138,10 @@
   #programs.ssh.askPassword = pkgs.lib.mkForce "${pkgs.ksshaskpass.out}/bin/ksshaskpass"; # For plasma desktop
   # Configure keymap in X11
   services.xserver = {
-    layout = "pl";
-    xkbVariant = "";
+    xkb = {
+      variant = "";
+      layout = "pl";
+    };
   };
 
   # Configure console keymap
