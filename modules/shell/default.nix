@@ -10,6 +10,7 @@
     ./newsboat.nix
     ./eza.nix
     ./tmux.nix
+    ./yazi.nix
     #./xresources.nix
   ];
 

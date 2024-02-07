@@ -4,7 +4,8 @@
   imports = [
     "${modulesPath}/profiles/minimal.nix"
     ../../modules/scripts/diff.nix
-    ../../modules/nix/nix.nix
+    ../../modules/nix
+    ../../modules/overlays
   ];
 
   wsl = {

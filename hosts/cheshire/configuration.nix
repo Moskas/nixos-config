@@ -8,11 +8,12 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    ../../modules/nix/nix.nix
+    ../../modules/nix
     ../../modules/fonts
     ../../modules/scripts/diff.nix
     ../../modules/services/tailscale.nix
     ../../modules/services/fwupd.nix
+    ../../modules/overlays
   ];
 
   services.udev = {
