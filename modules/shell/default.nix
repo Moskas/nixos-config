@@ -22,6 +22,7 @@
       patches = (o.patches or [ ]) ++ [ ./neofetch-nixos-small.patch ];
     }))
     (callPackage ../../pkgs/whdl.nix { })
+    (callPackage ../../pkgs/epy.nix { })
     onefetch
     ranger
     zip
