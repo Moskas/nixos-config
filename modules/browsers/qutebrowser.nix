@@ -141,7 +141,7 @@
         };
         webpage = {
           bg = "#${config.colorScheme.palette.base00}";
-          preferred_color_scheme = "dark";
+          preferred_color_scheme = "${config.colorScheme.variant}";
           darkmode.enabled = false;
           darkmode.policy.images = "never";
         };

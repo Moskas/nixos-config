@@ -11,13 +11,15 @@
     ./eza.nix
     ./tmux.nix
     ./yazi.nix
-    #./xresources.nix
+    ./xresources.nix
   ];
 
   home.packages = with pkgs; [
     jq
     du-dust
     duf
+    direnv
+    nix-direnv
     (pkgs.neofetch.overrideAttrs (o: {
       patches = (o.patches or [ ]) ++ [ ./neofetch-nixos-small.patch ];
     }))
