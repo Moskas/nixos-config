@@ -37,7 +37,7 @@
 
   };
 
-  environment.variables = {
+  environment.sessionVariables = {
     NIX_SSHOPS = "-tt";
     FLAKE = "/home/moskas/Projects/nixos-config";
   };

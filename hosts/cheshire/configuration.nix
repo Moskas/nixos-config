@@ -18,7 +18,7 @@
 
   services.udev = {
     enable = true;
-    packages = [ "/home/moskas/.config/60-openrgb.rules" ];
+    packages = [ "${pkgs.openrgb-with-all-plugins}/lib/udev/rules.d/60-openrgb.rules" ];
   };
 
   # Use the systemd-boot EFI boot loader.
@@ -108,10 +108,10 @@
   services.xserver = {
     videoDrivers = [ "nvidia" ];
     dpi = 100;
-    resolutions = [{
-      x = 1920;
-      y = 1080;
-    }];
+    #resolutions = [{
+    #  x = 1920;
+    #  y = 1080;
+    #}];
     libinput = {
       enable = true;
       mouse = { accelProfile = "flat"; };
@@ -158,7 +158,7 @@
     # Commands to run while launching the display manager
     displayManager.setupCommands = ''
       xrandr --output DP-0 --mode 1920x1080 
-      xrandr -p '143.98'
+      xrandr -p 143.98
       xrandr --dpi 100
     '';
 

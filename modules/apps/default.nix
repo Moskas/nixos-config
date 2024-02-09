@@ -1,5 +1,5 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ ./zathura.nix ./kitty.nix ];
+  imports = [ ./zathura.nix ./kitty.nix ./rofi.nix ];
 }
