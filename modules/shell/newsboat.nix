@@ -399,11 +399,15 @@
       }
       {
         url = "https://determinate.systems/rss.xml";
-        tags = [ "Nix" ];
+        tags = [ "Nix" "Blog" ];
       }
       {
         url = "https://thewagner.net/feeds/all.atom.xml";
-        tags = [ "Nix" "Programming" "Homelab" ];
+        tags = [ "Nix" "Programming" "Homelab" "Blog" ];
+      }
+      {
+        url = "https://nixcademy.com/feed";
+        tags = [ "Nix" "Blog" ];
       }
       {
         url = "https://itsfoss.com/rss/";

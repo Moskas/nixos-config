@@ -12,6 +12,7 @@
     ./tmux.nix
     ./yazi.nix
     ./xresources.nix
+    ./neofetch.nix
   ];
 
   home.packages = with pkgs; [
@@ -20,9 +21,6 @@
     duf
     direnv
     nix-direnv
-    (pkgs.neofetch.overrideAttrs (o: {
-      patches = (o.patches or [ ]) ++ [ ./neofetch-nixos-small.patch ];
-    }))
     (callPackage ../../pkgs/whdl.nix { })
     (callPackage ../../pkgs/epy.nix { })
     onefetch

@@ -89,7 +89,7 @@ in {
     winetricks
     feh
     lutgen
-    virt-manager
+    gradience
 
     gimp
 

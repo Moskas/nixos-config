@@ -19,8 +19,8 @@
         highlight = "bold italic";
         scrollbar = true;
 
-        dark-bg0-hard = mkLiteral "#${config.colorScheme.palette.base01}";
         dark-bg0 = mkLiteral "#${config.colorScheme.palette.base00}";
+        dark-bg1 = mkLiteral "#${config.colorScheme.palette.base01}";
         dark-bg2 = mkLiteral "#${config.colorScheme.palette.base02}";
         dark-fg0 = mkLiteral "#${config.colorScheme.palette.base05}";
         dark-fg1 = mkLiteral "#${config.colorScheme.palette.base06}";
@@ -28,13 +28,13 @@
         dark-red-light = mkLiteral "#${config.colorScheme.palette.base08}";
         dark-yellow-dark = mkLiteral "#${config.colorScheme.palette.base0A}";
         dark-yellow-light = mkLiteral "#${config.colorScheme.palette.base0A}";
-        dark-gray = mkLiteral "#${config.colorScheme.palette.base07}";
+        dark-gray = mkLiteral "#${config.colorScheme.palette.base04}";
 
         # Theme colors
-        background = mkLiteral "@dark-bg0-hard";
+        background = mkLiteral "@dark-bg1";
         background-color = mkLiteral "@background";
         foreground = mkLiteral "@dark-fg1";
-        border-color = mkLiteral "@dark-gray";
+        border-color = mkLiteral "@dark-bg2";
         separatorcolor = mkLiteral "@border-color";
         scrollbar-handle = mkLiteral "@border-color";
 

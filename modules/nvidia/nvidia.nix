@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   hardware.nvidia = {
@@ -6,6 +6,7 @@
     powerManagement.enable = true;
     package = config.boot.kernelPackages.nvidiaPackages.beta;
   };
+
   boot.extraModprobeConfig = "options nvidia " + lib.concatStringsSep " " [
     # nvidia assume that by default your CPU does not support PAT,
     # but this is effectively never the case in 2023
@@ -46,5 +47,8 @@
     # Required for firefox 98+, see:
     # https://github.com/elFarto/nvidia-vaapi-driver#firefox
     EGL_PLATFORM = "wayland";
+
+    # For Electron apps
+    NIXOS_OZONE_WL = "1";
   };
 }

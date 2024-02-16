@@ -158,32 +158,39 @@
       userChrome = ''
         /* userChrome.css from: https://github.com/Dook97/firefox-qutebrowser-userchrome*/
           :root {
-          	--tab-active-bg-color: #${config.colorScheme.palette.base02};
-          	--tab-inactive-bg-color: #${config.colorScheme.palette.base00};
-          	--tab-active-fg-fallback-color: #${config.colorScheme.palette.base06};
-          	--tab-inactive-fg-fallback-color: #${config.colorScheme.palette.base03};
-          	--urlbar-focused-bg-color: #${config.colorScheme.palette.base00};
-          	--urlbar-not-focused-bg-color: #${config.colorScheme.palette.base00};
-          	--toolbar-bgcolor: #${config.colorScheme.palette.base00} !important;
-          	--tab-font: 'JetbrainsMono Nerd Font';
-          	--urlbar-font: 'JetbrainsMono Nerd Font';
+            --tab-active-bg-color: #${config.colorScheme.palette.base02};
+            --tab-inactive-bg-color: #${config.colorScheme.palette.base00};
+            --tab-active-fg-fallback-color: #${config.colorScheme.palette.base06};
+            --tab-inactive-fg-fallback-color: #${config.colorScheme.palette.base04};
+            --urlbar-focused-bg-color: #${config.colorScheme.palette.base00};
+            --urlbar-not-focused-bg-color: #${config.colorScheme.palette.base00};
+            --toolbar-bgcolor: #${config.colorScheme.palette.base00} !important;
+            --tab-font: 'JetbrainsMono Nerd Font';
+            --urlbar-font: 'JetbrainsMono Nerd Font';
 
-          	--urlbar-height-setting: 32px;
-          	--tab-min-height: 24px !important;
+            --urlbar-height-setting: 32px;
+            --tab-min-height: 24px !important;
 
-          	/* I don't recommend you touch this unless you know what you're doing */
-          	--arrowpanel-menuitem-padding: 2px !important;
-          	--arrowpanel-border-radius: 0px !important;
-          	--arrowpanel-menuitem-border-radius: 0px !important;
-          	--toolbarbutton-border-radius: 0px !important;
-          	--toolbarbutton-inner-padding: 0px 2px !important;
-          	--toolbar-field-focus-background-color: var(--urlbar-focused-bg-color) !important;
-          	--toolbar-field-background-color: var(--urlbar-not-focused-bg-color) !important;
-          	--toolbar-field-focus-border-color: transparent !important;
+            /* I don't recommend you touch this unless you know what you're doing */
+            --arrowpanel-menuitem-padding: 2px !important;
+            --arrowpanel-border-radius: 0px !important;
+            --arrowpanel-menuitem-border-radius: 0px !important;
+            --toolbarbutton-border-radius: 0px !important;
+            --toolbarbutton-inner-padding: 0px 2px !important;
+            --toolbar-field-focus-background-color: var(--urlbar-focused-bg-color) !important;
+            --toolbar-field-background-color: var(--urlbar-not-focused-bg-color) !important;
+            --toolbar-field-focus-border-color: transparent !important;
 
+            --newtab-background-color: #${config.colorScheme.palette.base00};
+            --newtab-wordmark-color: #${config.colorScheme.palette.base06};
+          }
+
+          :root[lwt-newtab-brighttext] {
                 --newtab-background-color-secondary: #${config.colorScheme.palette.base02};
-                --newtab-background-color: #${config.colorScheme.palette.base00};
-                --newtab-wordmark-color: #${config.colorScheme.palette.base06};
+          }
+
+          .search-wrapper .search-handoff-button, .search-wrapper input {
+            background: #${config.colorScheme.palette.base02} !important;
           }
 
           /* --- GENERAL DEBLOAT ---------------------------------- */
@@ -193,7 +200,7 @@
 
           /* Hide dropdown that appears when you type in search bar */
           .autocomplete-history-popup, panel[type=autocomplete-richlistbox], panel[type=autocomplete] {
-          	display: none !important;
+            display: none !important;
           }
 
           /* remove radius from right-click popup */
@@ -223,33 +230,33 @@
 
           /* add padding to the right of the last button so that it doesn't touch the edge of the window */
           #PanelUI-menu-button {
-          	padding: 0px 4px 0px 0px !important;
+            padding: 0px 4px 0px 0px !important;
           }
 
           #urlbar-container {
-          	--urlbar-container-height: var(--urlbar-height-setting) !important;
-          	margin-left: 0 !important;
-          	margin-right: 0 !important;
-          	padding-top: 0 !important;
-          	padding-bottom: 0 !important;
-          	font-family: var(--urlbar-font, 'monospace');
-          	font-size: 11px;
+            --urlbar-container-height: var(--urlbar-height-setting) !important;
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+            padding-top: 0 !important;
+            padding-bottom: 0 !important;
+            font-family: var(--urlbar-font, 'monospace');
+            font-size: 11px;
           }
 
           #urlbar {
-          	--urlbar-height: var(--urlbar-height-setting) !important;
-          	--urlbar-toolbar-height: var(--urlbar-height-setting) !important;
-          	min-height: var(--urlbar-height-setting) !important;
-          	border-color: var(--lwt-toolbar-field-border-color, hsla(240,5%,5%,.25)) !important;
+            --urlbar-height: var(--urlbar-height-setting) !important;
+            --urlbar-toolbar-height: var(--urlbar-height-setting) !important;
+            min-height: var(--urlbar-height-setting) !important;
+            border-color: var(--lwt-toolbar-field-border-color, hsla(240,5%,5%,.25)) !important;
           }
 
           #urlbar-input {
-          	margin-left: 0.8em !important;
-          	margin-right: 0.4em !important;
+            margin-left: 0.8em !important;
+            margin-right: 0.4em !important;
           }
 
           #navigator-toolbox {
-          	border: none !important;
+            border: none !important;
           }
 
           /* keep pop-up menus from overlapping with navbar */
@@ -262,7 +269,7 @@
 
           /* make extension icons smaller */
           #unified-extensions-view {
-          	--uei-icon-size: 16px;
+            --uei-icon-size: 16px;
           }
 
           /* hide bloat */
@@ -270,25 +277,25 @@
           #unified-extensions-view > .panel-header,
           #unified-extensions-view > toolbarseparator,
           #unified-extensions-manage-extensions {
-          	display: none !important;
+            display: none !important;
           }
 
           /* add 3px padding on the top and the bottom of the box */
           .panel-subview-body {
-          	padding: 3px 0px !important;
+            padding: 3px 0px !important;
           }
 
           #unified-extensions-view .unified-extensions-item-menu-button {
-          	margin-inline-end: 0 !important;
+            margin-inline-end: 0 !important;
           }
 
           #unified-extensions-view .toolbarbutton-icon {
-          	padding: 0 !important;
+            padding: 0 !important;
           }
 
           .unified-extensions-item-contents {
-          	line-height: 1 !important;
-          	white-space: nowrap !important;
+            line-height: 1 !important;
+            white-space: nowrap !important;
           }
 
           /* --- DEBLOAT URLBAR ----------------------------------- */
@@ -311,31 +318,31 @@
           /* --- STYLE TAB TOOLBAR -------------------------------- */
 
           #titlebar {
-          	--proton-tab-block-margin: 0px !important;
-          	--tab-block-margin: 0px !important;
+            --proton-tab-block-margin: 0px !important;
+            --tab-block-margin: 0px !important;
           }
 
           #TabsToolbar, .tabbrowser-tab {
-          	max-height: var(--tab-min-height) !important;
-          	font-size: 11px !important;
+            max-height: var(--tab-min-height) !important;
+            font-size: 11px !important;
           }
 
           /* Change color of normal tabs */
           tab:not([selected="true"]) {
-          	background-color: var(--tab-inactive-bg-color) !important;
-          	color: var(--identity-icon-color, var(--tab-inactive-fg-fallback-color)) !important;
+            background-color: var(--tab-inactive-bg-color) !important;
+            color: var(--identity-icon-color, var(--tab-inactive-fg-fallback-color)) !important;
           }
 
           tab {
-          	font-family: var(--tab-font, monospace);
-          	font-weight: bold;
-          	border: none !important;
+            font-family: var(--tab-font, monospace);
+            font-weight: bold;
+            border: none !important;
           }
 
           /* safari style tab width */
           .tabbrowser-tab[fadein] {
-          	max-width: 100vw !important;
-          	border: none
+            max-width: 100vw !important;
+            border: none
           }
 
           /* Hide close button on tabs */
@@ -345,23 +352,23 @@
           /* .tab-icon-stack:not([pinned]) { display: none !important; } */
 
           .tabbrowser-tab {
-          	/* remove border between tabs */
-          	padding-inline: 0px !important;
-          	/* reduce fade effect of tab text */
-          	--tab-label-mask-size: 1em !important;
-          	/* fix pinned tab behaviour on overflow */
-          	overflow-clip-margin: 0px !important;
+            /* remove border between tabs */
+            padding-inline: 0px !important;
+            /* reduce fade effect of tab text */
+            --tab-label-mask-size: 1em !important;
+            /* fix pinned tab behaviour on overflow */
+            overflow-clip-margin: 0px !important;
           }
 
           /* Tab: selected colors */
           #tabbrowser-tabs .tabbrowser-tab[selected] .tab-content {
-          	background: var(--tab-active-bg-color) !important;
-          	color: var(--identity-icon-color, var(--tab-active-fg-fallback-color)) !important;
+            background: var(--tab-active-bg-color) !important;
+            color: var(--identity-icon-color, var(--tab-active-fg-fallback-color)) !important;
           }
 
           /* Tab: hovered colors */
           #tabbrowser-tabs .tabbrowser-tab:hover:not([selected]) .tab-content {
-          	background: var(--tab-active-bg-color) !important;
+            background: var(--tab-active-bg-color) !important;
           }
 
           /* hide window controls */
@@ -387,7 +394,7 @@
 
           /* fix displaying of pinned tabs on overflow */
           #tabbrowser-tabs:not([secondarytext-unsupported]) .tab-label-container {
-          	height: var(--tab-min-height) !important;
+            height: var(--tab-min-height) !important;
           }
 
           /* remove overflow scroll buttons */
@@ -395,12 +402,12 @@
 
           /* remove new tab button */
           #tabs-newtab-button {
-          	display: none !important;
+            display: none !important;
           }
 
           /* hide private browsing indicator */
           #private-browsing-indicator-with-label {
-          	display: none;
+            display: none;
           }
 
           /* --- AUTOHIDE NAVBAR ---------------------------------- */

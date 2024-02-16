@@ -3,7 +3,7 @@
 {
   imports = [ # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    ./services
+    ../../modules/nix
   ];
 
   services.xserver.videoDrivers = [ "nvidia" ];
@@ -24,14 +24,15 @@
   };
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
+  boot.loader.grub.enable = true;
+  boot.loader.grub.device = "/dev/sda";
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
   powerManagement = {
     enable = true;
     powertop.enable = true;
-    cpuFreqGovernor = "ondemand";
+    cpuFreqGovernor = "powersave";
   };
 
   networking = {
@@ -113,49 +114,6 @@
     enable = true;
     allowedTCPPorts = [ 22 ];
     allowedUDPPorts = [ ];
-  };
-
-  # nginx
-  services.nginx = {
-    enable = true;
-    recommendedGzipSettings = true;
-    recommendedOptimisation = true;
-    recommendedProxySettings = true;
-    recommendedTlsSettings = true;
-    virtualHosts."laffey.home" = {
-      locations."/git" = {
-        proxyPass = "http://localhost:3000/"; # Proxy Gitea
-      };
-    };
-  };
-
-  # Jellyfin
-  services.jellyfin.enable = true;
-
-  # Gitea
-  services.gitea = {
-    enable = true;
-    package = pkgs.forgejo;
-    appName = "My awesome Gitea server"; # Give the site a name
-    settings = {
-      database = { type = "postgres"; };
-      server = {
-        DOMAIN = "laffey.home";
-        ROOT_URL = "laffey.home";
-        HTTP_PORT = 3000;
-      };
-    };
-  };
-
-  services.postgresql = {
-    enable = true; # Ensure postgresql is enabled
-    authentication = ''
-      local gitea all ident map=gitea-users
-    '';
-    identMap = # Map the gitea user to postgresql
-      ''
-        gitea-users gitea gitea
-      '';
   };
 
   # This value determines the NixOS release from which the default

@@ -77,6 +77,8 @@
     enable = true;
     coreOffset = -50;
   };
+  # Better CPU scheduler
+  services.system76-scheduler.settings.cfsProfiles.enable = true;
   networking.hostName = "roon";
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 

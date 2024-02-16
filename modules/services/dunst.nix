@@ -15,7 +15,7 @@
         transparency = 10;
         max_icon_size = 90;
         min_icon_size = 32;
-        frame_color = "#${config.colorScheme.palette.base07}";
+        frame_color = "#${config.colorScheme.palette.base02}";
         font = "JetBrainsMono Nerd Font 10";
         format = ''
           <b>%s</b>

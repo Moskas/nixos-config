@@ -2,7 +2,7 @@
 
 {
   xresources = {
-    properties = { 
+    properties = {
       "*foreground" = "#${config.colorScheme.palette.base06}";
       "*background" = "#${config.colorScheme.palette.base00}";
       "*color0" = "#${config.colorScheme.palette.base00}";
@@ -21,6 +21,12 @@
       "*color13" = "#${config.colorScheme.palette.base0D}";
       "*color14" = "#${config.colorScheme.palette.base0E}";
       "*color15" = "#${config.colorScheme.palette.base0F}";
+      "xterm*font" = "JetBrainsMono Nerd Font 10";
+      "xterm*faceName" = "JetBrainsMono Nerd Font";
+      "xterm*faceSize" = "12";
+      "Xcursor.theme" = "phinger-cursors-light";
+      "Xcursor.size" = "16";
+      "Xft.dpi" = "100";
     };
   };
 }

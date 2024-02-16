@@ -24,9 +24,13 @@
       url = "github:nix-community/emacs-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs = { self, nixpkgs, home-manager, nur, wsl, nix-colors, sops-nix
-    , nixvim, emacs-overlay, ... }@inputs:
+    , nixvim, emacs-overlay, disko, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system} { config.allowUnfree = true; };
@@ -92,6 +96,16 @@
               home-manager.users.${username}.imports =
                 [ (import ./hosts/cheshire/home.nix) ];
             }
+          ];
+        };
+        laffey = lib.nixosSystem {
+          inherit system;
+          specialArgs = { inherit inputs username nix-colors; };
+          modules = [
+            disko.nixosModules.default
+            ./hosts/laffey
+            ./hosts/laffey/configuration.nix
+            default-overlays
           ];
         };
         glasgow = lib.nixosSystem {
