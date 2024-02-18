@@ -27,20 +27,19 @@
     '';
   };
 
-  #services.mpdscribble = {
-  #  enable = true;
-  #  port = 6600;
-  #
-  #};
-
   programs.ncmpcpp = {
     enable = true;
+    package = pkgs.ncmpcpp.override {
+      visualizerSupport = true;
+      taglibSupport = true;
+      outputsSupport = true;
+    };
     mpdMusicDir = "~/Music";
     settings = {
       visualizer_data_source = "/tmp/mpd.fifo";
       visualizer_output_name = "my_fifo";
       visualizer_in_stereo = "yes";
-      #visualizer_type = "spectrum";
+      visualizer_type = "spectrum";
       visualizer_look = "+";
       song_library_format = "{{%a - %t}|{%f}}{$R%l}";
       song_status_format = "{{%a{ - %t}}|{ - %f}{ - %b{ (%y)}}}";

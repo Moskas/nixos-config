@@ -1,10 +1,11 @@
 { config, pkgs, ... }:
 
 {
-  windowManager.qtile = {
+
+  services.xserver.windowManager.qtile = {
     enable = true;
     backend = "x11";
-    extraPackages = [ ];
+    extraPackages = python3Packages: with python3Packages; [ aria2p mpd2 ];
   };
 
 }

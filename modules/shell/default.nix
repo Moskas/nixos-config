@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   imports = [
     ./starship.nix
     ./zsh.nix
@@ -21,8 +23,8 @@
     duf
     direnv
     nix-direnv
-    (callPackage ../../pkgs/whdl.nix { })
-    (callPackage ../../pkgs/epy.nix { })
+    (callPackage ../../pkgs/whdl.nix {})
+    (callPackage ../../pkgs/epy.nix {})
     onefetch
     ranger
     zip
@@ -31,5 +33,7 @@
     p7zip
     wget
     nurl
+    rates
+    tickrs
   ];
 }

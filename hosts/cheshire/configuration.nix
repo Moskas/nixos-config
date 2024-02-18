@@ -15,6 +15,7 @@
     ../../modules/services/fwupd.nix
     ../../modules/overlays
     ../../modules/nvidia/nvidia.nix
+    ../../modules/desktops/qtile.nix
   ];
 
   services.udev = {
@@ -125,10 +126,10 @@
     enable = true;
     xkb.layout = "pl";
     displayManager.gdm.enable = true;
-    windowManager.qtile = {
-      enable = true;
-      package = pkgs.qtile;
-    };
+    #windowManager.qtile = {
+    #  enable = true;
+    #  package = pkgs.qtile;
+    #}; Moved to modules/desktops``
     windowManager.awesome = {
       enable = false;
       luaModules = with pkgs.luaPackages; [ luarocks ];

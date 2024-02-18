@@ -9,6 +9,7 @@ in {
     ./wallpapers.nix
     ../../modules/browsers
     ../../modules/apps
+    ../../modules/apps/gaming
     ../../modules/git
     ../../modules/media
     ../../modules/editors
@@ -41,25 +42,10 @@ in {
     nvtop
     manga-cli
     ani-cli
-    python311Packages.aria2p # aria2c
-    python311Packages.mpd2
     ffmpeg
     cava
     cargo
-    rnix-lsp
-    nixfmt
     betterdiscordctl
-    protonup-ng
-    #heroic
-    steam-run
-    protontricks
-    bottles
-    mangohud
-    goverlay
-    prismlauncher
-    yuzu
-    jre8
-    ferium
     nsxiv
     i2c-tools
     betterlockscreen
@@ -92,11 +78,6 @@ in {
     gradience
 
     gimp
-
-    rates
-    tickrs
-    monero-gui
-
     # wayland testing
     waybar
     wl-gammactl
