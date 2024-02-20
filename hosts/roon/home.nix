@@ -1,6 +1,8 @@
 { config, pkgs, lib, e-mail, username, nix-colors, ... }:
-
-{
+let
+  random-wallpaper =
+    import ../../modules/scripts/random-wallpaper.nix { inherit pkgs config; };
+in {
   imports = [
     nix-colors.homeManagerModules.default
     ./wallpapers.nix
@@ -73,6 +75,7 @@
     epr
     direnv
     lutgen
+    random-wallpaper
   ];
 
   xresources = {

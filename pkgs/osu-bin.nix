@@ -2,7 +2,7 @@
 
 let
   pname = "osu-lazer-bin-custom";
-  version = "2024.130.2";
+  version = "2024.219.0";
 
   src = {
     aarch64-darwin = fetchzip {
@@ -19,8 +19,8 @@ let
     };
     x86_64-linux = fetchurl {
       url =
-        "https://github.com/ppy/osu/releases/download/2024.130.2/osu.AppImage";
-      hash = "sha256-4NG/3lHqQVfNa6zME/HD9m/bEkV79Vu64+aMDgCKqw0=";
+        "https://github.com/ppy/osu/releases/download/2024.219.0/osu.AppImage";
+      hash = "sha256-EqQJolzai0LrVpYE6yjbEUURNiUgi9Lw+otdmKIyoXo="; # As I'm using only x86_64-linux I'm ignoring other versions
     };
   }.${stdenv.system} or (throw
     "${pname}-${version}: ${stdenv.system} is unsupported.");

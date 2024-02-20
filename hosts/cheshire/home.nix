@@ -1,8 +1,7 @@
 { config, pkgs, username, nix-colors, ... }:
 let
-  #random-character = import ../../modules/scripts/random-character.nix { inherit pkgs; };
   random-wallpaper =
-    import ../../modules/scripts/random-wallpaper.nix { inherit pkgs; };
+    import ../../modules/scripts/random-wallpaper.nix { inherit pkgs config; };
 in {
   imports = [
     nix-colors.homeManagerModules.default
@@ -59,14 +58,6 @@ in {
     openrgb-with-all-plugins
     distrobox
     nicotine-plus
-    (makeDesktopItem {
-      name = "brave-private";
-      desktopName = "Brave Web Browser";
-      genericName = "Open a private Brave window";
-      icon = "brave";
-      exec = "${brave}/bin/brave --incognito";
-      categories = [ "Network" ];
-    })
     random-wallpaper
     obs-studio
     discord
