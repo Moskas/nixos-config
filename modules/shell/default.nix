@@ -32,5 +32,6 @@
     nurl
     rates
     tickrs
+    ripgrep
   ];
 }

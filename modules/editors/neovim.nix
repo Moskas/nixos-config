@@ -1,10 +1,18 @@
-{ config, pkgs, nixvim, ... }:
-
 {
-  imports = [ nixvim.homeManagerModules.nixvim ];
+  config,
+  pkgs,
+  nixvim,
+  nixvim-config,
+  ...
+}: {
+  imports = [nixvim.homeManagerModules.nixvim];
+
+  home.packages = with pkgs; [
+    nixvim-config.packages.${system}.default
+  ];
 
   programs.nixvim = {
-    enable = true;
+    enable = false;
     colorschemes.gruvbox.enable = true;
     plugins = {
       lualine = {
@@ -216,14 +224,16 @@
           enable_autosnippets = true;
           store_selection_keys = "<Tab>";
         };
-        fromVscode = [{
-          lazyLoad = true;
-          paths = "${pkgs.vimPlugins.friendly-snippets}";
-        }];
+        fromVscode = [
+          {
+            lazyLoad = true;
+            paths = "${pkgs.vimPlugins.friendly-snippets}";
+          }
+        ];
       };
       telescope = {
         enable = true;
-        extensions = { fzf-native.enable = true; };
+        extensions = {fzf-native.enable = true;};
         keymaps = {
           "<leader><space>" = {
             action = "find_files, {}";
@@ -321,7 +331,7 @@
       };
       gitblame.enable = true;
       nix.enable = true;
-      lsp-format = { enable = true; };
+      lsp-format = {enable = true;};
       lsp = {
         enable = true;
         servers = {
@@ -334,18 +344,18 @@
             enable = true;
             settings.telemetry.enable = false;
           };
-          vuels = { enable = true; };
-          nixd = { enable = true; };
+          vuels = {enable = true;};
+          nixd = {enable = true;};
         };
       };
       nvim-cmp = {
         enable = true;
         autoEnableSources = true;
         sources = [
-          { name = "nvim_lsp"; }
-          { name = "path"; }
-          { name = "buffer"; }
-          { name = "luasnip"; }
+          {name = "nvim_lsp";}
+          {name = "path";}
+          {name = "buffer";}
+          {name = "luasnip";}
         ];
 
         mapping = {
@@ -366,17 +376,19 @@
                 end
               end
             '';
-            modes = [ "i" "s" ];
+            modes = ["i" "s"];
           };
         };
       };
     };
-    options = { number = true; };
+    options = {number = true;};
     globals.mapleader = " ";
-    keymaps = [{
-      key = "<esc>";
-      action = ":noh<return><esc>";
-    }];
-    extraPlugins = with pkgs.vimPlugins; [ formatter-nvim ];
+    keymaps = [
+      {
+        key = "<esc>";
+        action = ":noh<return><esc>";
+      }
+    ];
+    extraPlugins = with pkgs.vimPlugins; [formatter-nvim];
   };
 }
