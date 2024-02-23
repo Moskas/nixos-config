@@ -1,5 +1,6 @@
 { config, pkgs, ... }: {
   imports = [
+    ./direnv.nix
     ./starship.nix
     ./zsh.nix
     ./zoxide.nix
@@ -17,8 +18,7 @@
     jq
     du-dust
     duf
-    direnv
-    nix-direnv
+    amfora
     (callPackage ../../pkgs/whdl.nix { })
     (callPackage ../../pkgs/epy.nix { })
     (callPackage ../../pkgs/donkeytype.nix { })

@@ -568,11 +568,11 @@
         "nixvim": "nixvim_2"
       },
       "locked": {
-        "lastModified": 1708558554,
-        "narHash": "sha256-ftzzbeZewqynBkk9St5xOmFOiAkCtzELq90+wcvQxzs=",
+        "lastModified": 1708717040,
+        "narHash": "sha256-QSM4XZ+WRLfrw7KZjq9I1Dy5Md90/BOF3ReutpQZfI4=",
         "owner": "Moskas",
         "repo": "nixvim-config",
-        "rev": "cf89de03c7bfebaaca524f2aa4f252dfb5769577",
+        "rev": "25cab3962544aad25aad330a9000ea6ebdd0a55c",
         "type": "github"
       },
       "original": {
@@ -606,16 +606,17 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1708469069,
-        "narHash": "sha256-h0ZqDHGuRIv+GZeZkQh9RwyAO5F01fQCCKPeRUQwNtc=",
+        "lastModified": 1708713911,
+        "narHash": "sha256-Xll/ymLUt+ikR0B/k3IMMqOk8Pt9Mnc2//vGHpdlMhc=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "e7e77ef5ce40a07feebc646ccb1a5e209e14691f",
+        "rev": "ed0ac081d4a5f97dd31a01810593ba483433b020",
         "type": "github"
       },
       "original": {
-        "id": "nur",
-        "type": "indirect"
+        "owner": "nix-community",
+        "repo": "NUR",
+        "type": "github"
       }
     },
     "pre-commit-hooks": {

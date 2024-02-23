@@ -214,16 +214,12 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
 
-  #nixpkgs.config.permittedInsecurePackages = [ "openssl-1.1.1w" ];
-
   environment.systemPackages = with pkgs; [
     i2c-tools
     openrgb-with-all-plugins
     mpd
     mpdas
     dbus
-    direnv
-    nix-direnv
 
     timeshift
     scrcpy

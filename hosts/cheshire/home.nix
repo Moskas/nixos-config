@@ -1,10 +1,11 @@
-{ config, pkgs, username, nix-colors, ... }:
+{ config, pkgs, username, nix-colors, nur, ... }:
 let
   random-wallpaper =
     import ../../modules/scripts/random-wallpaper.nix { inherit pkgs config; };
 in {
   imports = [
     nix-colors.homeManagerModules.default
+    nur.nixosModules.nur
     ./wallpapers.nix
     ../../modules/browsers
     ../../modules/apps

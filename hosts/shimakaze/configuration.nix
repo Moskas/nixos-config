@@ -1,4 +1,4 @@
-{ pkgs, config, modulesPath, ... }:
+{ pkgs, modulesPath, ... }:
 
 {
   imports = [
@@ -47,19 +47,20 @@
     experimental-features = nix-command flakes
   '';
 
-  environment.systemPackages = with pkgs; [
-    wget
-    git
-    ripgrep
-    nixfmt
-    direnv
-    cmake
-    pkg-config
-  ];
+  environment = {
+    systemPackages = with pkgs; [
+      wget
+      git
+      ripgrep
+      nixfmt
+      direnv
+      cmake
+      pkg-config
+    ];
 
-  environment.noXlibs = false;
-
-  environment.variables = { EDITOR = "nvim"; };
+    noXlibs = false;
+    variables = { EDITOR = "nvim"; };
+  };
 
   system.stateVersion = "22.05";
 }

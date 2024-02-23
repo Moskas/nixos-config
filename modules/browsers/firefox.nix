@@ -1,4 +1,4 @@
-{ config, pkgs, username, ... }:
+{ config, pkgs, username, nur, ... }:
 
 {
   programs.firefox = {
@@ -437,15 +437,15 @@
 
       '';
       userContent = "";
-      #extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-      #  darkreader
-      #  stylus
-      #  vimium
-      #  bitwarden
-      #  betterttv
-      #  sponsorblock
-      #  return-youtube-dislikes
-      #];
+      extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+        darkreader
+        stylus
+        vimium
+        bitwarden
+        betterttv
+        sponsorblock
+        return-youtube-dislikes
+      ];
       bookmarks = [
         #  {
         #    name = "Wikipedia";
