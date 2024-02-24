@@ -119,6 +119,18 @@
             ./hosts/laffey
             ./hosts/laffey/configuration.nix
             default-overlays
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                extraSpecialArgs = {
+                  inherit username e-mail nix-colors nixvim nixvim-config nur;
+                };
+              };
+              home-manager.users.${username}.imports =
+                [ (import ./hosts/laffey/home.nix) ];
+            }
           ];
         };
         glasgow = lib.nixosSystem {

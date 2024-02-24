@@ -1,9 +1,10 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    ./services
     ../../modules/nix
   ];
 
@@ -25,10 +26,17 @@
   };
 
   # Bootloader.
-  boot.loader.grub.enable = true;
-  boot.loader.grub.device = "/dev/sda";
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.efi.efiSysMountPoint = "/boot/efi";
+  boot.loader = {
+    grub = {
+      enable = true;
+      device = "nodev";
+    };
+    efi = {
+      canTouchEfiVariables = true;
+      efiSysMountPoint = "/boot/efi";
+    };
+    systemd-boot.enable = false;
+  };
 
   powerManagement = {
     enable = true;
@@ -89,7 +97,13 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [ neovim wget curl git btop ];
+  environment.systemPackages = with pkgs; [
+    wget
+    curl
+    git
+    btop
+    rnix-lsp
+  ];
 
   programs.nano.enable = false;
 
@@ -115,7 +129,7 @@
   #networking.firewall.enable = false;
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [ 22 ];
+    allowedTCPPorts = [ 22 3000 8096 ];
     allowedUDPPorts = [ ];
   };
 

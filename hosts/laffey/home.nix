@@ -1,11 +1,21 @@
-{ config, pkgs, ... }:
+{ config, pkgs, nix-colors, ... }:
 
 {
-  imports = [ ../../modules/shell ../../modules/git ../../modules/editors ];
+  imports = [
+    nix-colors.homeManagerModules.default
+    ../../modules/shell
+    ../../modules/git
+    ../../modules/editors
+    ../../modules/apps/kitty.nix
+  ];
 
-  home.username = "moskas";
-  home.homeDirectory = "/home/moskas";
-  home.stateVersion = "22.11";
+  colorScheme = nix-colors.colorSchemes.gruvbox-dark-medium;
+
+  home = {
+    username = "moskas";
+    homeDirectory = "/home/moskas";
+    stateVersion = "22.11";
+  };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

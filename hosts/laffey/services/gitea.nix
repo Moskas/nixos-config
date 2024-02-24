@@ -1,9 +1,8 @@
 { config, pkgs, ... }:
 
 {
-  services.gitea = {
+  services.forgejo = {
     enable = true;
-    package = pkgs.forgejo;
   };
 }
 

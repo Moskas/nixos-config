@@ -4,26 +4,56 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 {
-  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
+  imports =
+    [ (modulesPath + "/installer/scan/not-detected.nix")
+    ];
 
-  boot.initrd.availableKernelModules =
-    [ "xhci_pci" "ehci_pci" "ata_piix" "usbhid" "usb_storage" "sd_mod" ];
+  boot.initrd.availableKernelModules = [ "xhci_pci" "ehci_pci" "ahci" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
-  fileSystems."/" = {
-    device = "/dev/disk/by-uuid/934b9eea-b88e-4aa7-9630-d25dbd4c8339";
-    fsType = "ext4";
-  };
+  fileSystems."/" =
+    { device = "/dev/disk/by-uuid/f35a570f-1792-41fd-993f-941fabd5c16c";
+      fsType = "btrfs";
+      options = [ "subvol=rootfs" ];
+    };
 
-  fileSystems."/boot/efi" = {
-    device = "/dev/disk/by-uuid/1B2E-E768";
-    fsType = "vfat";
-  };
+  fileSystems."/.swapvol" =
+    { device = "/dev/disk/by-uuid/f35a570f-1792-41fd-993f-941fabd5c16c";
+      fsType = "btrfs";
+      options = [ "subvol=swap" ];
+    };
 
-  swapDevices =
-    [{ device = "/dev/disk/by-uuid/d59938a8-823a-44f6-82eb-ca23aeaec258"; }];
+  fileSystems."/boot" =
+    { device = "/dev/disk/by-uuid/8CD4-811B";
+      fsType = "vfat";
+    };
+
+  fileSystems."/home" =
+    { device = "/dev/disk/by-uuid/f35a570f-1792-41fd-993f-941fabd5c16c";
+      fsType = "btrfs";
+      options = [ "subvol=home" ];
+    };
+
+  fileSystems."/media" =
+    { device = "/dev/disk/by-uuid/f35a570f-1792-41fd-993f-941fabd5c16c";
+      fsType = "btrfs";
+      options = [ "subvol=media" ];
+    };
+
+  fileSystems."/nix" =
+    { device = "/dev/disk/by-uuid/f35a570f-1792-41fd-993f-941fabd5c16c";
+      fsType = "btrfs";
+      options = [ "subvol=nix" ];
+    };
+
+  fileSystems."/partition-root" =
+    { device = "/dev/disk/by-uuid/f35a570f-1792-41fd-993f-941fabd5c16c";
+      fsType = "btrfs";
+    };
+
+  swapDevices = [ ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
@@ -33,6 +63,5 @@
   # networking.interfaces.enp3s0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  hardware.cpu.intel.updateMicrocode =
-    lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
