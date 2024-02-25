@@ -140,7 +140,7 @@
           modules = [ ./hosts/glasgow/configuration.nix ];
         };
       };
-      devShell.${system} = pkgs.mkShell {
+      devShells.${system}.default = pkgs.mkShell {
         packages = with pkgs; [ alejandra git ];
 
         formatter = pkgs.alejandra;
