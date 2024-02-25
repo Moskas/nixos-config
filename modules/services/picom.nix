@@ -1,5 +1,3 @@
-{ config, pkgs, ... }:
-
 {
   services.picom = {
     enable = true;
@@ -17,7 +15,10 @@
       "98:class_g = 'discord' && focused"
     ];
     settings = {
-      blur = { method = "dual_kawase"; };
+      blur = {
+        method = "dual_kawase";
+        strength = 5;
+      };
       unredir-if-possible = true;
     };
   };

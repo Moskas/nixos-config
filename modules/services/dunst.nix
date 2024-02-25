@@ -25,7 +25,7 @@
 
       urgency_normal = {
         background = "#${config.colorScheme.palette.base00}";
-        foreground = "#${config.colorScheme.palette.base07}";
+        foreground = "#${config.colorScheme.palette.base06}";
         timeout = 10;
       };
 

@@ -33,12 +33,13 @@
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-gaming = { url = "github:fufexan/nix-gaming"; };
   };
   outputs = { self, nixpkgs, home-manager, nur, wsl, nix-colors, sops-nix
     , nixvim, nixvim-config, emacs-overlay, disko, ... }@inputs:
     let
       system = "x86_64-linux";
-      #pkgs = nixpkgs.legacyPackages.${system} { config.allowUnfree = true; };
+      pkgs = nixpkgs.legacyPackages.${system}; # { config.allowUnfree = true; };
       username = "moskas";
       e-mail = "minemoskas@gmail.com";
       lib = nixpkgs.lib;
@@ -138,6 +139,11 @@
           specialArgs = { inherit self nixpkgs home-manager; };
           modules = [ ./hosts/glasgow/configuration.nix ];
         };
+      };
+      devShell.${system} = pkgs.mkShell {
+        packages = with pkgs; [ alejandra git ];
+
+        formatter = pkgs.alejandra;
       };
     };
 }

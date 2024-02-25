@@ -1,5 +1,3 @@
-{ config, pkgs, ... }:
-
 {
   programs.newsboat = {
     enable = true;
@@ -465,6 +463,14 @@
       {
         url = "https://ploum.net/atom_en.xml";
         tags = [ "Blog" ];
+      }
+      {
+        url = "https://haseebmajid.dev/posts/index.xml";
+        tags = [ "Blog" "Nix" ];
+      }
+      {
+        url = "http://dorotac.eu/atom.xml";
+        tags = [ "Blog" "Tech" ];
       }
       #Twitch?
       {

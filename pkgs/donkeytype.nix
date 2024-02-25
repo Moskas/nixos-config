@@ -1,6 +1,6 @@
-{ lib, stdenv, fetchFromGitHub, rustPlatform }:
+{ lib, fetchFromGitHub, rustPlatform }:
 
-rustPlatform.buildRustPackage rec {
+rustPlatform.buildRustPackage {
   pname = "donkeytype";
   version = "0.12.0";
 

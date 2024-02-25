@@ -47,7 +47,7 @@
       color1                  #${config.colorScheme.palette.base08}
       color9                  #${config.colorScheme.palette.base08}
 
-      #: green
+      # green
       color2                  #${config.colorScheme.palette.base0B}
       color10                 #${config.colorScheme.palette.base0B}
 

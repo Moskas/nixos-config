@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running `nixos-help`).
 
-{ config, pkgs, username, ... }:
+{ pkgs, username, ... }:
 
 {
   imports = [
@@ -51,6 +51,14 @@
 
   # Enabling latest linux kernel
   boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
+
+  #system.userActivationScripts = {
+  #  randomWallpaper = {
+  #    text = ''
+  #      random-wallpaper
+  #    '';
+  #  };
+  #};
 
   # Power management
   powerManagement = {
@@ -131,10 +139,9 @@
     #  package = pkgs.qtile;
     #}; Moved to modules/desktops``
     windowManager.awesome = {
-      enable = false;
+      enable = true;
       luaModules = with pkgs.luaPackages; [ luarocks ];
     };
-    windowManager.stumpwm.enable = true;
     # Commands to run while launching the display manager
     displayManager.setupCommands = ''
       xrandr --output DP-0 --mode 1920x1080 --rate 143.98
