@@ -1,11 +1,7 @@
-{ config, pkgs, ... }:
-
-{
-
+{ config, pkgs, ... }: {
   environment.systemPackages = with pkgs; [ nh rnix-lsp nixfmt ];
 
   nix = {
-
     gc = {
       automatic = true;
       dates = "weekly";
@@ -22,17 +18,20 @@
       auto-optimise-store = true;
       builders-use-substitutes = true;
       trusted-users = [ "root" "moskas" "@wheel" "nix-ssh" ];
-      substituters =
-        [ "https://nix-community.cachix.org" "https://cache.nixos.org/" ];
+      substituters = [
+        "https://nix-community.cachix.org"
+        "https://cache.nixos.org/"
+        "https://nix-gaming.cachix.org"
+      ];
       trusted-public-keys = [
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+        "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="
       ];
     };
 
     extraOptions = ''
       warn-dirty = false
     '';
-
   };
 
   environment.sessionVariables = {

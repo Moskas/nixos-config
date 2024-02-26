@@ -110,6 +110,7 @@
                   [ (import ./hosts/cheshire/home.nix) ];
               };
             }
+            inputs.nix-gaming.nixosModules.pipewireLowLatency
           ];
         };
         laffey = lib.nixosSystem {
@@ -142,7 +143,8 @@
       };
       devShells.${system}.default = pkgs.mkShell {
         packages = with pkgs; [ alejandra git ];
-
+        name = "dotfiles";
+        DIRENV_LOG_FORMAT = "";
         formatter = pkgs.alejandra;
       };
     };
