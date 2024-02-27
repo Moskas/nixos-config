@@ -1,10 +1,8 @@
-{ config, pkgs, ... }:
-
-{
-
+{ config, pkgs, ... }: {
   programs.zathura = {
     enable = true;
     options = {
+      noguioptions = true;
       notification-error-bg = "#${config.colorScheme.palette.base00}"; # bg
       notification-error-fg =
         "#${config.colorScheme.palette.base08}"; # bright:red
@@ -51,5 +49,4 @@
       recolor-keephue = false; # keep original color
     };
   };
-
 }

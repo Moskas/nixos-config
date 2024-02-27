@@ -12,10 +12,13 @@
       font_size 12
       disable_ligatures never
 
-      tab_bar_edge bottom
-      tab_bar_style powerline
-      tab_powerline_style slanted
-      active_tab_font_style   bold-italic
+      tab_bar_min_tabs        0
+      tab_bar_edge            bottom
+      tab_bar_style           separator
+      tab_separator           ""
+      tab_powerline_style     slanted
+      tab_title_template      " {index}: {title} "
+      active_tab_font_style   bold
       inactive_tab_font_style normal
       confirm_os_window_close 0
       cursor                  #${config.colorScheme.palette.base03}
@@ -38,6 +41,7 @@
       active_tab_background   #${config.colorScheme.palette.base03}
       inactive_tab_foreground #${config.colorScheme.palette.base04}
       inactive_tab_background #${config.colorScheme.palette.base02}
+      tab_bar_background #${config.colorScheme.palette.base02}
 
       # black  (bg3/bg4)
       color0                  #${config.colorScheme.palette.base03}

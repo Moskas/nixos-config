@@ -11,7 +11,7 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" "i2c-dev" "i2c-piix4" ];
   boot.extraModulePackages = [ ];
-  #services.udev.extraRules =  builtins.readFile openrgb-rules;
+  boot.extraModprobeConfig = "options kvm_amd nested=1";
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/d6f3d80f-10c7-411c-a1b1-dc6643d7c1e4";

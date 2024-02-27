@@ -46,6 +46,9 @@
     fileSystems = [ "/" ];
   };
 
+  # Trimming the ssds
+  services.fstrim.enable = true;
+
   # Enabling latest linux kernel
   boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
 
@@ -176,7 +179,10 @@
     jack.enable = true;
 
     # nix-gaming
-    lowLatency = { enable = true; };
+    lowLatency = {
+      enable = true;
+      quantum = 80;
+    };
   };
 
   security.rtkit.enable = true;
@@ -261,7 +267,21 @@
   #};
 
   virtualisation = {
-    libvirtd = { enable = true; };
+    libvirtd = {
+      enable = true;
+      qemu = {
+        swtpm.enable = true;
+        ovmf = {
+          enable = true;
+          packages = [
+            (pkgs.OVMF.override {
+              secureBoot = true;
+              tpmSupport = true;
+            }).fd
+          ];
+        };
+      };
+    };
     docker = {
       enable = true;
       enableNvidia = true;

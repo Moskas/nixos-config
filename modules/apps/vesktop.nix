@@ -10,33 +10,33 @@
         text = ''
 
           .theme-dark {
-             --background-primary: #${config.colorScheme.colors.base00};
+             --background-primary: #${config.colorScheme.palette.base00};
              /* background of background of chat window */
-             --background-secondary: #${config.colorScheme.colors.base01};
+             --background-secondary: #${config.colorScheme.palette.base02};
              /* background of channel bar */
-             --background-secondary-alt: #${config.colorScheme.colors.base02};
+             --background-secondary-alt: #${config.colorScheme.palette.base03};
              /* background of profile */
-             --channeltextarea-background: ${config.colorScheme.colors.base01};
+             --channeltextarea-background: #${config.colorScheme.palette.base01};
              /* background of textarea */
-             --background-tertiary: #${config.colorScheme.colors.base03};
+             --background-tertiary: #${config.colorScheme.palette.base03};
              /* background of channel bar */
-             --background-accent: #${config.colorScheme.colors.base02};
-             --text-normal: #${config.colorScheme.colors.base06};
-             --text-spotify: #${config.colorScheme.colors.base02};
-             --text-muted: #${config.colorScheme.colors.base07};
-             --text-link: #${config.colorScheme.colors.base04};
-             --background-floating: #${config.colorScheme.colors.base03};
-             --header-primary: #${config.colorScheme.colors.base06};
-             --header-secondary: #${config.colorScheme.colors.base06};
-             --header-spotify: #${config.colorScheme.colors.base02};
-             --interactive-normal: #${config.colorScheme.colors.base06};
-             --interactive-hover: #${config.colorScheme.colors.base07};
-             --interactive-active: #${config.colorScheme.colors.base06};
-             --ping: #${config.colorScheme.colors.base03};
-             --background-modifier-selected: #26233ab4;
-             --scrollbar-thin-thumb: #242931;
+             --background-accent: #${config.colorScheme.palette.base02};
+             --text-normal: #${config.colorScheme.palette.base06};
+             --text-spotify: #${config.colorScheme.palette.base02};
+             --text-muted: #${config.colorScheme.palette.base07};
+             --text-link: #${config.colorScheme.palette.base04};
+             --background-floating: #${config.colorScheme.palette.base03};
+             --header-primary: #${config.colorScheme.palette.base06};
+             --header-secondary: #${config.colorScheme.palette.base06};
+             --header-spotify: #${config.colorScheme.palette.base02};
+             --interactive-normal: #${config.colorScheme.palette.base06};
+             --interactive-hover: #${config.colorScheme.palette.base07};
+             --interactive-active: #${config.colorScheme.palette.base06};
+             --ping: #${config.colorScheme.palette.base03};
+             --background-modifier-selected: #${config.colorScheme.palette.base02};
+             --scrollbar-thin-thumb: #${config.colorScheme.palette.base03};
              --scrollbar-thin-track: transparent;
-             --scrollbar-auto-thumb: #242931;
+             --scrollbar-auto-thumb: #${config.colorScheme.palette.base03};
              --scrollbar-auto-track: transparent;
           }
 
@@ -141,7 +141,7 @@
           }
 
           .scrollableContainer__33e06.themedBackground__6b1b6.webkit__8d35a {
-            background-color: #${config.colorScheme.colors.base02};
+            background-color: #${config.colorScheme.palette.base02};
           }
 
         '';
