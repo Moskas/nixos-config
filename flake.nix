@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -34,9 +35,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-gaming = { url = "github:fufexan/nix-gaming"; };
+    nix-on-droid = {
+      url = "github:nix-community/nix-on-droid/testing";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
   };
-  outputs = { self, nixpkgs, home-manager, nur, wsl, nix-colors, sops-nix
-    , nixvim, nixvim-config, emacs-overlay, disko, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-stable, home-manager, nur, wsl, nix-colors
+    , sops-nix, nixvim, nixvim-config, emacs-overlay, disko, nix-on-droid, ...
+    }@inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system}; # { config.allowUnfree = true; };
@@ -142,7 +149,9 @@
         };
       };
       devShells.${system}.default = pkgs.mkShell {
-        packages = with pkgs; [ alejandra git ];
+        NIX_CONFIG =
+          "extra-experimental-features = nix-command flakes repl-flake";
+        packages = with pkgs; [ alejandra git sops ];
         name = "dotfiles";
         DIRENV_LOG_FORMAT = "";
         formatter = pkgs.alejandra;

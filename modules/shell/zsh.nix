@@ -13,13 +13,11 @@
     autocd = false;
     defaultKeymap = "emacs";
     plugins = [ ];
+    shellAliases = { cat = "bat --decorations=never --paging=never"; };
     initExtra = ''
       export PATH=~/.config/emacs/bin:$PATH
       export PATH=~/.local/share/applications/:$PATH
       export PATH=~/.cargo/bin/:$PATH
-      eval "$(direnv hook zsh)"
-
-      alias cat='bat --decorations=never --paging=never'
     '';
   };
 }
