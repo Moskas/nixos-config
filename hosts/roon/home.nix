@@ -1,4 +1,4 @@
-{ config, pkgs, lib, e-mail, username, nix-colors, nur, ... }:
+{ config, pkgs, lib, username, nix-colors, nur, ... }:
 let
   random-wallpaper =
     import ../../modules/scripts/random-wallpaper.nix { inherit pkgs config; };

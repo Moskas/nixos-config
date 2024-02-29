@@ -1,1 +1,1 @@
-{ config, pkgs, e-mail, ... }: { programs.lazygit = { enable = true; }; }
+{ ... }: { programs.lazygit = { enable = true; }; }

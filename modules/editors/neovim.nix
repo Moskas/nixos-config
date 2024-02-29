@@ -1,5 +1,4 @@
 {
-  config,
   pkgs,
   nixvim,
   nixvim-config,

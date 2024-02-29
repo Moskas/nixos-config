@@ -1,4 +1,4 @@
-{ config, pkgs, username, ... }:
+{ config, username, ... }:
 
 {
   services.flameshot = {

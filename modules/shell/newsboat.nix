@@ -428,6 +428,10 @@
         tags = [ "Blog" "BSD" ];
       }
       {
+        url = "https://morss.it/https://fabiensanglard.net/rss.xml";
+        tags = [ "Blog" "Linux" "Tech" ];
+      }
+      {
         url = "https://morss.it/https://panoptykon.org/rss.xml";
         tags = [ "Blog" "Politics" ];
       }
@@ -471,6 +475,10 @@
       {
         url = "http://dorotac.eu/atom.xml";
         tags = [ "Blog" "Tech" ];
+      }
+      {
+        url = "https://morss.it/https://signal.org/blog/rss.xml";
+        tags = [ "Blog" "Privacy" ];
       }
       #Twitch?
       {

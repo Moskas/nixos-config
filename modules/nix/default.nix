@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ pkgs, ... }: {
   environment.systemPackages = with pkgs; [ nh rnix-lsp nixfmt ];
 
   nix = {
@@ -17,7 +17,9 @@
       experimental-features = [ "nix-command" "flakes" ];
       auto-optimise-store = true;
       builders-use-substitutes = true;
+      use-xdg-base-directories = true;
       trusted-users = [ "root" "moskas" "@wheel" "nix-ssh" ];
+      warn-dirty = false;
       substituters = [
         "https://nix-community.cachix.org"
         "https://cache.nixos.org/"
@@ -29,9 +31,9 @@
       ];
     };
 
-    extraOptions = ''
-      warn-dirty = false
-    '';
+    #extraOptions = ''
+    #  warn-dirty = false
+    #'';
   };
 
   environment.sessionVariables = {

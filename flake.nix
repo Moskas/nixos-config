@@ -41,8 +41,8 @@
       inputs.home-manager.follows = "home-manager";
     };
   };
-  outputs = { self, nixpkgs, nixpkgs-stable, home-manager, nur, wsl, nix-colors
-    , sops-nix, nixvim, nixvim-config, emacs-overlay, disko, nix-on-droid, ...
+  outputs = { self, nixpkgs, home-manager, nur, wsl, nix-colors
+    , sops-nix, nixvim, nixvim-config, emacs-overlay, disko, ...
     }@inputs:
     let
       system = "x86_64-linux";
@@ -151,7 +151,7 @@
       devShells.${system}.default = pkgs.mkShell {
         NIX_CONFIG =
           "extra-experimental-features = nix-command flakes repl-flake";
-        packages = with pkgs; [ alejandra git sops ];
+        packages = with pkgs; [ alejandra git sops deadnix ];
         name = "dotfiles";
         DIRENV_LOG_FORMAT = "";
         formatter = pkgs.alejandra;

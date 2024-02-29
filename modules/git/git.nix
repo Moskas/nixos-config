@@ -1,4 +1,4 @@
-{ config, pkgs, e-mail, ... }:
+{ e-mail, ... }:
 
 {
   programs.git = {

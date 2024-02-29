@@ -1,4 +1,4 @@
-{ config, pkgs, nix-colors, ... }:
+{ pkgs, nix-colors, ... }:
 
 {
   imports = [

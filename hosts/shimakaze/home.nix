@@ -1,11 +1,10 @@
-{ pkgs, username, nix-colors, ... }:
-
-{
+{ pkgs, username, nix-colors, ... }: {
   imports = [
     nix-colors.homeManagerModules.default
     ../../modules/git
     ../../modules/shell
     ../../modules/shell/tmux.nix
+    ../../modules/browsers/qutebrowser.nix
     ../../modules/editors/emacs.nix
     ../../modules/editors/neovim.nix
   ];
