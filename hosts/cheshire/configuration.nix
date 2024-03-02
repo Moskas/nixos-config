@@ -10,16 +10,12 @@
     ../../modules/scripts/diff.nix
     ../../modules/services/tailscale.nix
     ../../modules/services/fwupd.nix
+    ../../modules/services/udev.nix
+    ../../modules/services/btrfs.nix
     ../../modules/overlays
     ../../modules/nvidia/nvidia.nix
     ../../modules/desktops/qtile.nix
   ];
-
-  services.udev = {
-    enable = true;
-    packages =
-      [ "${pkgs.openrgb-with-all-plugins}/lib/udev/rules.d/60-openrgb.rules" ];
-  };
 
   # Use the systemd-boot EFI boot loader.
   boot = {
@@ -38,12 +34,6 @@
     };
     # Add support for Windows partitions
     supportedFilesystems = [ "ntfs" ];
-  };
-
-  services.btrfs.autoScrub = {
-    enable = true;
-    interval = "weekly";
-    fileSystems = [ "/" ];
   };
 
   # Trimming the ssds
@@ -130,6 +120,7 @@
   # Set your time zone.
   time.timeZone = "Europe/Warsaw";
 
+  #services.xserver.desktopManager.plasma6.enable = true;
   services.xserver = {
     enable = true;
     xkb.layout = "pl";
@@ -180,7 +171,7 @@
 
     # nix-gaming
     lowLatency = {
-      enable = true;
+      enable = false;
       quantum = 80;
     };
   };

@@ -8,12 +8,9 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    sops-nix = {
-      url = "github:Mic92/sops-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     nix-colors.url = "github:misterio77/nix-colors";
     nur.url = "github:nix-community/NUR";
+    flake-parts.url = "github:hercules-ci/flake-parts";
     wsl = {
       url = "github:nix-community/NixOS-WSL";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -24,7 +21,11 @@
     };
     nixvim-config = {
       url = "github:Moskas/nixvim-config";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        nixvim.follows = "nixvim";
+        flake-parts.follows = "flake-parts";
+      };
     }; # Add a catchy name later
     emacs-overlay = {
       url = "github:nix-community/emacs-overlay";
@@ -34,22 +35,25 @@
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nix-gaming = { url = "github:fufexan/nix-gaming"; };
+    nix-gaming = {
+      url = "github:fufexan/nix-gaming";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nix-on-droid = {
       url = "github:nix-community/nix-on-droid/testing";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
   };
-  outputs = { self, nixpkgs, home-manager, nur, wsl, nix-colors
-    , sops-nix, nixvim, nixvim-config, emacs-overlay, disko, ...
-    }@inputs:
+  outputs = { self, nixpkgs, home-manager, nur, wsl, nix-colors, nixvim
+    , nixvim-config, emacs-overlay, disko, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system}; # { config.allowUnfree = true; };
       username = "moskas";
       e-mail = "minemoskas@gmail.com";
-      lib = nixpkgs.lib;
+      #lib = nixpkgs.lib;
+      inherit (nixpkgs) lib;
       default-overlays = {
         nixpkgs.overlays = [ emacs-overlay.overlay nur.overlay ];
       };
@@ -101,7 +105,6 @@
           inherit system;
           specialArgs = { inherit inputs username e-mail nix-colors; };
           modules = [
-            sops-nix.nixosModules.sops
             ./hosts/cheshire
             ./hosts/cheshire/configuration.nix
             default-overlays
@@ -151,7 +154,7 @@
       devShells.${system}.default = pkgs.mkShell {
         NIX_CONFIG =
           "extra-experimental-features = nix-command flakes repl-flake";
-        packages = with pkgs; [ alejandra git sops deadnix ];
+        packages = with pkgs; [ alejandra git sops age deadnix ];
         name = "dotfiles";
         DIRENV_LOG_FORMAT = "";
         formatter = pkgs.alejandra;

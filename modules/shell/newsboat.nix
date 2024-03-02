@@ -404,7 +404,7 @@
         tags = [ "Nix" "Programming" "Homelab" "Blog" ];
       }
       {
-        url = "https://nixcademy.com/feed";
+        url = "https://morss.it/https://nixcademy.com/feed";
         tags = [ "Nix" "Blog" ];
       }
       {

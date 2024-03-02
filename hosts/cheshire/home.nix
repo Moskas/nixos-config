@@ -1,4 +1,4 @@
-{ config, pkgs, username, nix-colors, nur, ... }:
+{ config, pkgs, username, nix-colors, nur, inputs, ... }:
 let
   random-wallpaper =
     import ../../modules/scripts/random-wallpaper.nix { inherit pkgs config; };
@@ -145,7 +145,7 @@ in {
   };
 
   qt = {
-    enable = true;
+    enable = false;
     platformTheme = "gtk";
     style = {
       name = "adwaita-dark";
