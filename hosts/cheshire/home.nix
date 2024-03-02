@@ -89,14 +89,7 @@ in {
     };
   };
 
-  #home.file = {
-  #  ".config/qtile".source = pkgs.fetchFromGitHub {
-  #    owner = "${Username}";
-  #    repo = "qtile-config";
-  #    rev = "3e5fa15950985fdb508fe2056f498c83927dc7dc";
-  #    sha256 = "sha256-9wEoLw3/ma1mvt2Jj2xPc6LejP2HIpBzqxQ+h7E50t8=";
-  #  };
-  #};
+  home.file = { ".config/test".source = inputs.qtile-config; };
 
   home.pointerCursor = {
     size = 16;

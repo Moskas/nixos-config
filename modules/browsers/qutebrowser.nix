@@ -1,9 +1,9 @@
 { config, pkgs, ... }:
-
-{
+let font = "JetBrainsMono Nerd Font";
+in {
   programs.qutebrowser = {
     enable = true;
-    package = pkgs.qutebrowser;
+    #package = pkgs.qutebrowser;
     searchEngines = {
       w = "https://en.wikipedia.org/wiki/Special:Search?search={}&go=Go&ns0=1";
       aw = "https://wiki.archlinux.org/?search={}";
@@ -16,6 +16,7 @@
       e = "https://ecosia.org/search?&q={}";
       d = "https://docs.rs/releases/search?query={}";
       a = "https://annas-archive.org/search?q={}";
+      yt = "https://www.youtube.com/results?search_query={}";
     };
     settings = {
       statusbar.show = "in-mode";
@@ -29,27 +30,27 @@
       };
       scrolling.smooth = true;
       fonts = {
-        prompts = "12pt JetBrainsMono Nerd Font";
-        hints = "12pt JetBrainsMono Nerd Font";
-        statusbar = "10pt JetBrainsMono Nerd Font";
-        contextmenu = "10pt JetBrainsMono Nerd Font";
+        prompts = "12pt ${font}";
+        hints = "12pt ${font}";
+        statusbar = "10pt ${font}";
+        contextmenu = "10pt ${font}";
         completion = {
-          entry = "12pt JetBrainsMono Nerd Font";
-          category = "12pt JetBrainsMono Nerd Font";
+          entry = "12pt ${font}";
+          category = "12pt ${font}";
         };
         web = {
           size.default = 16;
           family = {
-            standard = "JetBrainsMono Nerd Font";
-            sans_serif = "JetBrainsMono Nerd Font";
-            fixed = "JetBrainsMono Nerd Font";
-            cursive = "JetBrainsMono Nerd Font";
-            fantasy = "JetBrainsMono Nerd Font";
+            standard = "${font}";
+            sans_serif = "${font}";
+            fixed = "${font}";
+            cursive = "${font}";
+            fantasy = "${font}";
           };
         };
         tabs = {
-          selected = "10pt JetBrainsMono Nerd Font";
-          unselected = "10pt JetBrainsMono Nerd Font";
+          selected = "10pt ${font}";
+          unselected = "10pt ${font}";
         };
       };
       url = { start_pages = "https://www.google.com"; };

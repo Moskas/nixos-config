@@ -51,7 +51,10 @@ After that you need to copy ``hardware-config.nix`` from your current install to
 Then it's the matter of one ``sudo nixos-rebuild switch --flake .#<hostname from flake.nix>`` in the cloned repo directory.  
 Although it's the best to just look and copy the desired nix code as it's tailored for me so not everything will work for everyone.
 
+
+
 > [!IMPORTANT]
+> **I'll be adding the qtile config in the near future as I'm quite happy with it for a while.**  
 > My qtile config isn't managed by the flake; it requires manual cloning from my [qtile-config repo](https://github.com/Moskas/qtile-config).
 > I'm doing that because I'm constantly tweaking the qtile config, and since having it managed by the flake makes it read-only by default, it's a major inconvenience right now.
 
@@ -73,14 +76,12 @@ You can also use config placed in the flake directory and source the configurati
 xdg.confileFile.qtile.source = ./qtile;
 ```
 
+## More screenshots
+![qtile setup on cheshire](./.assets/preview.png)
+<p align="center"> <i>cheshire's qtile destkop with gruvbox-dark colorscheme as of 02.03.2024</i></p>
+
 ## Why NixOS?
 Since I have multiple devices and I'm using some more frequent than others, I've had more than one occurrence of, for example, my laptop being out of date compared to the desktop and just simply missing some of my configs that I have changed in the meantime.  
 It was annoying and tedious to keep everything up-to-date on every device, especially when I did install some additional applications on one host, removed some on the other, etc.  
 So when I learned about NixOS, I knew that it is something that will help me with that.  
 I tested it on my laptop for about half a year, then I decided to fully switch to it on all my devices and jump from ``configuration.nix`` to ``flake.nix`` for even easier device management.  
-
-## TODO List
-- Add [disko](https://github.com/nix-community/disko)
-- Add [agenix](https://github.com/ryantm/agenix)
-- Re-add [nix-on-droid](https://github.com/nix-community/nix-on-droid) config *again*
-- Add even more application configs.

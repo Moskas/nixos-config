@@ -44,6 +44,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
+
+    # qtile setup
+    qtile-config = {
+      url = "github:Moskas/qtile-config";
+      flake = false;
+    };
   };
   outputs = { self, nixpkgs, home-manager, nur, wsl, nix-colors, nixvim
     , nixvim-config, emacs-overlay, disko, ... }@inputs:
@@ -114,7 +120,8 @@
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 extraSpecialArgs = {
-                  inherit username e-mail nix-colors nixvim nixvim-config nur;
+                  inherit username e-mail nix-colors nixvim nixvim-config nur
+                    inputs;
                 };
                 users.${username}.imports =
                   [ (import ./hosts/cheshire/home.nix) ];

@@ -150,6 +150,13 @@
               "https://annas-archive.org/favicon-32x32.png?hash=989ac03e6b8daade6d2d";
             definedAliases = [ "a" ];
           };
+          "YouTube" = {
+            urls = [{
+              template =
+                "https://www.youtube.com/results?search_query={searchTerms}";
+            }];
+            definedAliases = [ "yt" ];
+          };
           "Bing".metaData.hidden = true;
           "Google".metaData.alias =
             "@g"; # builtin engines only support specifying one additional alias

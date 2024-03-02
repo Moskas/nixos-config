@@ -652,6 +652,22 @@
         "type": "github"
       }
     },
+    "qtile-config": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1702858208,
+        "narHash": "sha256-yGaJX+Tq6Oi5wTr3IvxxuP/CvRVScHDlmfYjGlDl3Tw=",
+        "owner": "Moskas",
+        "repo": "qtile-config",
+        "rev": "fdcbe45c5bcff1cdacf729494044d4c52ed481a6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Moskas",
+        "repo": "qtile-config",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "disko": "disko",
@@ -666,6 +682,7 @@
         "nixvim": "nixvim",
         "nixvim-config": "nixvim-config",
         "nur": "nur",
+        "qtile-config": "qtile-config",
         "wsl": "wsl"
       }
     },
