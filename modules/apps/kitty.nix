@@ -1,6 +1,4 @@
-{ config, ... }:
-
-{
+{ config, ... }: {
   programs.kitty = {
     enable = true;
     extraConfig = ''
@@ -12,7 +10,7 @@
       font_size 12
       disable_ligatures never
 
-      tab_bar_min_tabs        0
+      tab_bar_min_tabs        2
       tab_bar_edge            bottom
       tab_bar_style           separator
       tab_separator           ""
@@ -77,5 +75,4 @@
       selection_foreground    #${config.colorScheme.palette.base07}
     '';
   };
-
 }

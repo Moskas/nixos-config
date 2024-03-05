@@ -157,6 +157,19 @@
             }];
             definedAliases = [ "yt" ];
           };
+          "Github Users" = {
+            urls = [{
+              template = "https://github.com/search?q={searchTerms}&type=users";
+            }];
+            definedAliases = [ "gu" ];
+          };
+          "Github Repos" = {
+            urls = [{
+              template =
+                "https://github.com/search?q={searchTerms}&type=repositories";
+            }];
+            definedAliases = [ "gr" ];
+          };
           "Bing".metaData.hidden = true;
           "Google".metaData.alias =
             "@g"; # builtin engines only support specifying one additional alias

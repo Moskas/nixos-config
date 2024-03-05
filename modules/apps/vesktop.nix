@@ -1,6 +1,4 @@
-{ config, pkgs, ... }:
-
-{
+{ config, pkgs, ... }: {
   # Vesktop
   home = { packages = with pkgs; [ vesktop ]; };
 
@@ -8,24 +6,23 @@
     configFile = {
       "vesktop/themes/nix-colors-theme.css" = {
         text = ''
-
           .theme-dark {
-             --background-primary: #${config.colorScheme.palette.base00};
+             --background-primary: #${config.colorScheme.palette.base01};
              /* background of background of chat window */
-             --background-secondary: #${config.colorScheme.palette.base02};
+             --background-secondary: #${config.colorScheme.palette.base00};
              /* background of channel bar */
-             --background-secondary-alt: #${config.colorScheme.palette.base03};
+             --background-secondary-alt: #${config.colorScheme.palette.base00};
              /* background of profile */
-             --channeltextarea-background: #${config.colorScheme.palette.base01};
+             --channel-textarea-background: #${config.colorScheme.palette.base00};
              /* background of textarea */
-             --background-tertiary: #${config.colorScheme.palette.base03};
+             --background-tertiary: #${config.colorScheme.palette.base01};
              /* background of channel bar */
-             --background-accent: #${config.colorScheme.palette.base02};
+             --background-accent: #${config.colorScheme.palette.base01};
              --text-normal: #${config.colorScheme.palette.base06};
              --text-spotify: #${config.colorScheme.palette.base02};
              --text-muted: #${config.colorScheme.palette.base07};
              --text-link: #${config.colorScheme.palette.base04};
-             --background-floating: #${config.colorScheme.palette.base03};
+             --background-floating: #${config.colorScheme.palette.base01};
              --header-primary: #${config.colorScheme.palette.base06};
              --header-secondary: #${config.colorScheme.palette.base06};
              --header-spotify: #${config.colorScheme.palette.base02};
@@ -33,11 +30,12 @@
              --interactive-hover: #${config.colorScheme.palette.base07};
              --interactive-active: #${config.colorScheme.palette.base06};
              --ping: #${config.colorScheme.palette.base03};
-             --background-modifier-selected: #${config.colorScheme.palette.base02};
+             --background-modifier-selected: #${config.colorScheme.palette.base01};
              --scrollbar-thin-thumb: #${config.colorScheme.palette.base03};
              --scrollbar-thin-track: transparent;
              --scrollbar-auto-thumb: #${config.colorScheme.palette.base03};
              --scrollbar-auto-track: transparent;
+             --channels-default: #${config.colorScheme.palette.base05};
           }
 
           body {
@@ -93,6 +91,10 @@
             background-color: var(--background-tertiary);
           }
 
+          [class*=textArea] {
+            color: var(--text-muted);
+          }
+
           .numberBadge-2s8kKX,
           .base-PmTxvP,
           .baseShapeRound-1Mm1YW,
@@ -141,12 +143,27 @@
           }
 
           .scrollableContainer__33e06.themedBackground__6b1b6.webkit__8d35a {
-            background-color: #${config.colorScheme.palette.base02};
+            background-color: var(--background-secondary);
           }
 
+          .wrapper_d281dd:hover .childWrapper__01b9c,
+          .wrapper_d281dd.selected_f5ec8e .childWrapper__01b9c {
+            background-color: #${config.colorScheme.palette.base06};
+          }
+
+          .container_b181b6 {
+            background-color: var(--background-secondary);
+          }
+
+          .theme-dark .themed_b152d4 {
+            background-color: var(--background-secondary);
+          }
+
+          [class*=slateTextArea] {
+            color: var(--text-muted);
+          }
         '';
       };
     };
   };
 }
-

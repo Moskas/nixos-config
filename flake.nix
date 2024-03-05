@@ -50,6 +50,12 @@
       url = "github:Moskas/qtile-config";
       flake = false;
     };
+
+    # wallpapers
+    wallpapers = {
+      url = "github:Moskas/wallpapers";
+      flake = false;
+    };
   };
   outputs = { self, nixpkgs, home-manager, nur, wsl, nix-colors, nixvim
     , nixvim-config, emacs-overlay, disko, ... }@inputs:

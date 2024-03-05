@@ -1,7 +1,7 @@
 { lib, stdenv, fetchurl, fetchzip, appimageTools, }:
 let
   pname = "osu-lazer-bin-custom";
-  version = "2024.302.0";
+  version = "2024.302.1";
 
   src = {
     aarch64-darwin = fetchzip {
@@ -20,7 +20,7 @@ let
       url =
         "https://github.com/ppy/osu/releases/download/${version}/osu.AppImage";
       hash =
-        "sha256-XzrrtzoxLJ/uKNDi8IuCg3JRRHDq/jFo344ngII/x9g="; # As I'm using only x86_64-linux I'm ignoring other versions
+        "sha256-vYG3viY9GBtgaY8ThCSWss+zzjAyVa4fmrWrQdYcUow="; # As I'm using only x86_64-linux I'm ignoring other versions
     };
   }.${stdenv.system} or (throw
     "${pname}-${version}: ${stdenv.system} is unsupported.");

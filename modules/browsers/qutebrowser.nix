@@ -17,6 +17,8 @@ in {
       d = "https://docs.rs/releases/search?query={}";
       a = "https://annas-archive.org/search?q={}";
       yt = "https://www.youtube.com/results?search_query={}";
+      gu = "https://github.com/search?q={}&type=users";
+      gr = "https://github.com/search?q={}&type=repos";
     };
     settings = {
       statusbar.show = "in-mode";

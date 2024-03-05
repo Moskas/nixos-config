@@ -683,6 +683,7 @@
         "nixvim-config": "nixvim-config",
         "nur": "nur",
         "qtile-config": "qtile-config",
+        "wallpapers": "wallpapers",
         "wsl": "wsl"
       }
     },
@@ -744,6 +745,22 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "wallpapers": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1709509319,
+        "narHash": "sha256-3yXImwpIdGpvgXbCcbl3cLsSzdVP4cKoDbvkD31VRPU=",
+        "owner": "Moskas",
+        "repo": "wallpapers",
+        "rev": "4077e57ec424fef13dc8160b1be87f20dbc48964",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Moskas",
+        "repo": "wallpapers",
         "type": "github"
       }
     },
