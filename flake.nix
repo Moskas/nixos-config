@@ -163,6 +163,15 @@
           specialArgs = { inherit self nixpkgs home-manager; };
           modules = [ ./hosts/glasgow/configuration.nix ];
         };
+        iso = lib.nixosSystem {
+          inherit system;
+          modules = [
+            "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
+            "${nixpkgs}/nixos/modules/installer/cd-dvd/channel.nix"
+            ./hosts/iso/configuration.nix
+          ];
+          specialArgs = { inherit self inputs username nixpkgs home-manager; };
+        };
       };
       devShells.${system}.default = pkgs.mkShell {
         NIX_CONFIG =
