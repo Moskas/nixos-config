@@ -169,6 +169,16 @@
             "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
             "${nixpkgs}/nixos/modules/installer/cd-dvd/channel.nix"
             ./hosts/iso/configuration.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                extraSpecialArgs = { inherit nix-colors e-mail; };
+              };
+              home-manager.users.${username}.imports =
+                [ (import ./hosts/iso/home.nix) ];
+            }
           ];
           specialArgs = { inherit self inputs username nixpkgs home-manager; };
         };

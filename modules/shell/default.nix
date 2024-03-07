@@ -1,17 +1,18 @@
 { pkgs, ... }: {
   imports = [
+    ./bat.nix
+    ./btop.nix
     ./direnv.nix
+    ./eza.nix
+    ./fzf.nix
+    ./newsboat.nix
+    ./neofetch.nix
     ./starship.nix
+    ./tmux.nix
+    ./xresources.nix
+    ./yazi.nix
     ./zsh.nix
     ./zoxide.nix
-    ./btop.nix
-    ./bat.nix
-    ./newsboat.nix
-    ./eza.nix
-    ./tmux.nix
-    ./yazi.nix
-    ./xresources.nix
-    ./neofetch.nix
   ];
 
   home.packages = with pkgs; [

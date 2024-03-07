@@ -18,4 +18,6 @@
 
   environment.systemPackages = with pkgs;
     [ inputs.nixvim-config.packages.${system}.default ];
+
+  programs.nano.enable = false;
 }
