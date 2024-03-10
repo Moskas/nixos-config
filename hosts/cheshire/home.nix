@@ -114,6 +114,11 @@ in {
 
   gtk = {
     enable = true;
+    font = {
+      name = "JetBrainsMono Nerd Font";
+      size = 10;
+    };
+
     theme = {
       name = "Gruvbox-Dark-BL";
       package = pkgs.gruvbox-gtk-theme;

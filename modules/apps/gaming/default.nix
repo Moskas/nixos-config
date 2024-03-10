@@ -1,6 +1,4 @@
-{ pkgs, ...}:
-
-{
+{ pkgs, ... }: {
   home.packages = with pkgs; [
     protonup-ng
     #heroic
@@ -10,7 +8,7 @@
     mangohud
     goverlay
     prismlauncher
-    yuzu
+    # yuzu # F
     jre8
     ferium
   ];
