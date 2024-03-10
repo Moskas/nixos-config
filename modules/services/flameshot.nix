@@ -15,6 +15,7 @@
         useJpgForClipboard = false;
         disabledTrayIcon = true;
         showStartupLaunchMessage = false;
+        showDesktopNotification = false;
       };
     };
   };

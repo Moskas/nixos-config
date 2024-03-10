@@ -2,6 +2,8 @@
 let
   random-wallpaper =
     import ../../modules/scripts/random-wallpaper.nix { inherit pkgs config; };
+  cropshot = import ../../modules/scripts/cropshot.nix { inherit pkgs config; };
+  fullshot = import ../../modules/scripts/fullshot.nix { inherit pkgs config; };
 in {
   imports = [
     nix-colors.homeManagerModules.default
@@ -60,6 +62,8 @@ in {
     distrobox
     nicotine-plus
     random-wallpaper
+    cropshot
+    fullshot
     obs-studio
     discord
     discord-screenaudio
@@ -80,6 +84,9 @@ in {
     grimblast
     swww
     mako
+
+    # TODO Delete
+    warp-terminal
   ];
 
   dconf.settings = {
