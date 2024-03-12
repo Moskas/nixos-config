@@ -9,6 +9,7 @@
         vterm-toggle # Added as doom-emacs vterm won't compile due to read only directory
         elcord # Discord status
         mastodon
+        mu4e
       ];
   };
 
