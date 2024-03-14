@@ -17,7 +17,10 @@
   };
 
   environment.systemPackages = with pkgs;
-    [ inputs.nixvim-config.packages.${system}.default ];
+    [
+      # FIXME after fixing nixvim
+      #inputs.nixvim-config.packages.${system}.default
+    ];
 
   programs.nano.enable = false;
 }

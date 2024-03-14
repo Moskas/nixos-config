@@ -45,7 +45,6 @@ in {
     mpc-cli
     tickrs
     cava
-    rnix-lsp
     nixfmt
     betterdiscordctl
     discord
@@ -117,7 +116,6 @@ in {
   services.gpg-agent = {
     enable = true;
     enableZshIntegration = true;
-    pinentryFlavor = "tty";
   };
 
   #programs.zsh = {
@@ -172,15 +170,6 @@ in {
   #      package = pkgs.numix-solarized-gtk-theme;
   #    };
   #  };
-
-  programs.rbw = {
-    enable = true;
-    settings = {
-      email = "marcin.j.moskal@gmail.com";
-      lock_timeout = 300;
-      pinentry = "tty";
-    };
-  };
 
   programs.emacs = {
     enable = true;

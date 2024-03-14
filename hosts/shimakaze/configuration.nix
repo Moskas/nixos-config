@@ -1,6 +1,4 @@
-{ pkgs, modulesPath, ... }:
-
-{
+{ pkgs, modulesPath, ... }: {
   imports = [
     "${modulesPath}/profiles/minimal.nix"
     ../../modules/scripts/diff.nix

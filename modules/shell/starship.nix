@@ -1,6 +1,4 @@
-{ config, lib, pkgs, ... }:
-
-{
+{ config, lib, pkgs, ... }: {
   programs.starship = {
     enable = true;
     enableZshIntegration = true;
@@ -21,7 +19,7 @@
         disabled = false;
         format = "[ 󰅐 $time ]($style)";
         time_format = "%T";
-        style = "fg:magenta  bg:dark-gray";
+        style = "fg:bg  bg:magenta";
       };
       username = {
         disabled = false;

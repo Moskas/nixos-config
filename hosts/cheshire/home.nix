@@ -111,7 +111,6 @@ in {
   services.gpg-agent = {
     enable = true;
     enableZshIntegration = true;
-    pinentryFlavor = "tty";
   };
 
   home.sessionVariables = {
@@ -165,7 +164,6 @@ in {
     settings = {
       email = "marcin.j.moskal@gmail.com";
       lock_timeout = 300;
-      pinentry = "gnome3";
     };
   };
 

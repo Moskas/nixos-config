@@ -424,7 +424,7 @@
         tags = [ "Blog" "Linux" ];
       }
       {
-        url = "https://morss.it/https://michal.sapka.me/index.xml";
+        url = "https://michal.sapka.me/index.xml";
         tags = [ "Blog" "BSD" ];
       }
       {

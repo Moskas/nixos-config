@@ -1,5 +1,5 @@
 { ... }:
 
 {
-  imports = [ ./emacs.nix ./neovim.nix ./vscode.nix ];
+  imports = [ ./emacs.nix ./vscode.nix ];
 }

@@ -6,7 +6,7 @@
     ../../modules/shell/tmux.nix
     ../../modules/browsers/qutebrowser.nix
     ../../modules/editors/emacs.nix
-    ../../modules/editors/neovim.nix
+    #../../modules/editors/neovim.nix
   ];
 
   colorScheme = nix-colors.colorSchemes.gruvbox-dark-medium;
@@ -16,7 +16,7 @@
   home = {
     username = "${username}";
     homeDirectory = "/home/${username}";
-    packages = with pkgs; [ rnix-lsp nmap w3m ];
+    packages = with pkgs; [ nmap w3m ];
   };
 
   # This value determines the Home Manager release that your

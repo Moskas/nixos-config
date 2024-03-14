@@ -1,5 +1,5 @@
 { pkgs, ... }: {
-  environment.systemPackages = with pkgs; [ nh rnix-lsp nixfmt ];
+  environment.systemPackages = with pkgs; [ nh nixfmt ];
 
   nix = {
     gc = {
