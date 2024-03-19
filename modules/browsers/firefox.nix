@@ -1,6 +1,4 @@
-{ config, pkgs, username, nur, ... }:
-
-{
+{ config, pkgs, username, ... }: {
   programs.firefox = {
     enable = true;
     profiles.${username} = {
@@ -104,10 +102,10 @@
           "Home Manager Options" = {
             urls = [{
               template =
-                "https://mipmip.github.io/home-manager-option-search/?query={searchTerms}";
+                "https://home-manager-options.extranix.com/?query={searchTerms}";
             }];
             iconUpdateURL =
-              "https://mipmip.github.io/home-manager-option-search/images/favicon.png";
+              "https://home-manager-options.extranix.com/images/favicon.png";
             # updateInterval = 24 * 60 * 60 * 1000; # every day
             definedAliases = [ "hm" ];
           };
@@ -117,14 +115,14 @@
             }];
             iconUpdateURL =
               "https://upload.wikimedia.org/wikipedia/commons/1/1e/Osu%21_Logo_2016.svg";
-            definedAliases = [ "@ob" ];
+            definedAliases = [ "ob" ];
           };
           "StartPage" = {
             urls =
               [{ template = "https://startpage.com/search?q={searchTerms}"; }];
             iconUpdateURL =
               "https://www.startpage.com/sp/cdn/images/startpage-logo-dark-new.svg";
-            definedAliases = [ "@s" ];
+            definedAliases = [ "s" ];
           };
           "Brave" = {
             urls = [{
@@ -132,7 +130,7 @@
             }];
             iconUpdateURL =
               "https://brave.com/static-assets/images/brave-logo-dark.svg";
-            definedAliases = [ "@b" ];
+            definedAliases = [ "b" ];
           };
           "Docs.rs" = {
             urls = [{

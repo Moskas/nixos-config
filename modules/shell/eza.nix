@@ -3,7 +3,8 @@
 {
   programs.eza = {
     enable = true;
-    enableAliases = true;
+    enableZshIntegration = true;
+    enableBashIntegration = true;
     icons = true;
     git = true;
   };

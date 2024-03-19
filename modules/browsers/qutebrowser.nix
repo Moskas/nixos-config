@@ -9,7 +9,7 @@ in {
       aw = "https://wiki.archlinux.org/?search={}";
       np = "https://search.nixos.org/packages?&query={}";
       nw = "https://nixos.wiki/index.php?search={}";
-      hm = "https://mipmip.github.io/home-manager-option-search/?query={}";
+      hm = "https://home-manager-options.extranix.com/?query={}";
       g = "https://www.google.com/search?hl=en&q={}";
       b = "https://search.brave.com/search?q={}";
       s = "https://startpage.com/search?q={}";
@@ -197,5 +197,4 @@ in {
       c.fileselect.multiple_files.command = ['kitty', '--class', 'ranger,ranger', '-e', 'ranger', '--choosefile', '{}']
     '';
   };
-
 }

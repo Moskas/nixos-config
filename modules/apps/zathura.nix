@@ -3,6 +3,7 @@
     enable = true;
     options = {
       noguioptions = true;
+      adjust-open = "best-fit";
       notification-error-bg = "#${config.colorScheme.palette.base00}"; # bg
       notification-error-fg =
         "#${config.colorScheme.palette.base08}"; # bright:red
