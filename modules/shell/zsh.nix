@@ -8,7 +8,7 @@
       size = 10000;
       path = "${config.xdg.dataHome}/zsh/history";
     };
-    enableAutosuggestions = true;
+    autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
     autocd = false;
     defaultKeymap = "emacs";

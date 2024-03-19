@@ -473,6 +473,10 @@
         tags = [ "Blog" "Nix" ];
       }
       {
+        url = "https://heywoodlh.io/feed.xml";
+        tags = [ "Blog" "Nix" ];
+      }
+      {
         url = "http://dorotac.eu/atom.xml";
         tags = [ "Blog" "Tech" ];
       }

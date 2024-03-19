@@ -6,7 +6,8 @@
     configFile = {
       "vesktop/themes/nix-colors-theme.css" = {
         text = ''
-          .theme-dark {
+          .theme-dark,
+          .theme-light {
              --background-primary: #${config.colorScheme.palette.base01};
              /* background of background of chat window */
              --background-secondary: #${config.colorScheme.palette.base00};
@@ -20,13 +21,14 @@
              --background-accent: #${config.colorScheme.palette.base01};
              --text-normal: #${config.colorScheme.palette.base06};
              --text-spotify: #${config.colorScheme.palette.base02};
-             --text-muted: #${config.colorScheme.palette.base07};
+             --text-muted: #${config.colorScheme.palette.base03};
              --text-link: #${config.colorScheme.palette.base04};
              --background-floating: #${config.colorScheme.palette.base01};
              --header-primary: #${config.colorScheme.palette.base06};
              --header-secondary: #${config.colorScheme.palette.base06};
              --header-spotify: #${config.colorScheme.palette.base02};
              --interactive-normal: #${config.colorScheme.palette.base06};
+             --interactive-muted: #${config.colorScheme.palette.base03};
              --interactive-hover: #${config.colorScheme.palette.base07};
              --interactive-active: #${config.colorScheme.palette.base06};
              --ping: #${config.colorScheme.palette.base03};
@@ -36,16 +38,33 @@
              --scrollbar-auto-thumb: #${config.colorScheme.palette.base03};
              --scrollbar-auto-track: transparent;
              --channels-default: #${config.colorScheme.palette.base05};
+             --channel-icon: #${config.colorScheme.palette.base06};
+             --brand-experiment: #${config.colorScheme.palette.base02};
+
+             --status-positive-background: #${config.colorScheme.palette.base0C};
+             --status-positive-text: var(--text-normal);
+             --status-danger: #${config.colorScheme.palette.base0E};
+
+             --button-secondary-background: var(--background-tertiary);
+
+             --white-500: var(--text-primary) !important;
+
+             --input-background: var(--background-tertiary);
+          }
+
+          :root {
+             --white-500: var(--text-primary) !important;
+             --font-primary: 'JetBrainsMono Nerd Font';
+          }
+
+          select, textarea, input, ::placeholder {
+             color: var(--text-muted);
           }
 
           body {
-             --font-display:  JetBrainsMono Nerd Font;
-             font-size: 17px;
           }
 
           * {
-            font-family: JetBrainsMono Nerd Font !important;
-            font-size: 17px;
           }
 
           .body-2wLx-E,
@@ -67,6 +86,10 @@
           .username-h_Y3Us {
             font-family: var(--font-display);
             font-size: 12px;
+          }
+
+          .icon_eff5d4 {
+            color: var(--text-muted);
           }
 
           .peopleColumn-1wMU14,
@@ -92,7 +115,8 @@
           }
 
           [class*=textArea] {
-            color: var(--text-muted);
+            color: var(--text-normal);
+            background: var(--background-secondary);
           }
 
           .numberBadge-2s8kKX,
@@ -148,7 +172,8 @@
 
           .wrapper_d281dd:hover .childWrapper__01b9c,
           .wrapper_d281dd.selected_f5ec8e .childWrapper__01b9c {
-            background-color: #${config.colorScheme.palette.base06};
+            background-color: #${config.colorScheme.palette.base02};
+            color: #${config.colorScheme.palette.base06};
           }
 
           .container_b181b6 {
@@ -160,7 +185,7 @@
           }
 
           [class*=slateTextArea] {
-            color: var(--text-muted);
+            color: var(--text-normal);
           }
         '';
       };

@@ -4,5 +4,9 @@
     enable = true;
     #configFile = lib.mkPath "~/.config/mbsync/mbsyncrc";
   };
-  home.packages = with pkgs; [ isync ];
+  services.imapnotify = {
+    enable = true;
+    package = pkgs.goimapnotify;
+  };
+  home.packages = with pkgs; [ isync goimapnotify msmtp ];
 }

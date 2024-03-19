@@ -19,7 +19,7 @@
         disabled = false;
         format = "[ 󰅐 $time ]($style)";
         time_format = "%T";
-        style = "fg:bg  bg:magenta";
+        style = "fg:bg  bg:cyan bold";
       };
       username = {
         disabled = false;

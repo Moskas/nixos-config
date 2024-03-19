@@ -186,7 +186,7 @@
       devShells.${system}.default = pkgs.mkShell {
         NIX_CONFIG =
           "extra-experimental-features = nix-command flakes repl-flake";
-        packages = with pkgs; [ alejandra git sops age deadnix ];
+        packages = with pkgs; [ alejandra git sops age deadnix nil ];
         name = "dotfiles";
         DIRENV_LOG_FORMAT = "";
         formatter = pkgs.alejandra;
