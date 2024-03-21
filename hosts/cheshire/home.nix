@@ -75,7 +75,7 @@ in {
 
     gimp
     # wayland testing
-    waybar
+    # waybar # issues with building the system 19.03.2024
     wl-gammactl
     wlsunset
     grim
@@ -84,9 +84,6 @@ in {
     grimblast
     swww
     mako
-
-    # TODO Delete
-    warp-terminal
   ];
 
   dconf.settings = {
@@ -97,7 +94,6 @@ in {
   };
 
   home.file = { ".config/test".source = inputs.qtile-config; };
-
   home.pointerCursor = {
     size = 16;
     package = pkgs.phinger-cursors;

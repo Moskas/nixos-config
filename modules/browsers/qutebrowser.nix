@@ -3,11 +3,11 @@ let font = "JetBrainsMono Nerd Font";
 in {
   programs.qutebrowser = {
     enable = true;
-    #package = pkgs.qutebrowser;
     searchEngines = {
       w = "https://en.wikipedia.org/wiki/Special:Search?search={}&go=Go&ns0=1";
       aw = "https://wiki.archlinux.org/?search={}";
       np = "https://search.nixos.org/packages?&query={}";
+      no = "https://search.nixos.org/options?&query={}";
       nw = "https://nixos.wiki/index.php?search={}";
       hm = "https://home-manager-options.extranix.com/?query={}";
       g = "https://www.google.com/search?hl=en&q={}";

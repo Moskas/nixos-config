@@ -8,6 +8,7 @@
     ./newsboat.nix
     ./neofetch.nix
     ./starship.nix
+    ./tickrs.nix
     ./tmux.nix
     ./xresources.nix
     ./yazi.nix
@@ -32,7 +33,6 @@
     wget
     nurl
     rates
-    tickrs
     ripgrep
   ];
 }
