@@ -15,6 +15,7 @@
 
     settings = {
       experimental-features = [ "nix-command" "flakes" ];
+      system-features = [ "big-parallel" "gccarch-x86-64-v3" ];
       auto-optimise-store = true;
       builders-use-substitutes = true;
       use-xdg-base-directories = true;

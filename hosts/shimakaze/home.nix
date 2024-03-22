@@ -6,7 +6,7 @@
     ../../modules/shell/tmux.nix
     ../../modules/browsers/qutebrowser.nix
     ../../modules/editors/emacs.nix
-    #../../modules/editors/neovim.nix
+    ../../modules/editors/neovim.nix
   ];
 
   colorScheme = nix-colors.colorSchemes.gruvbox-dark-medium;

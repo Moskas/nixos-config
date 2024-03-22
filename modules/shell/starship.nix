@@ -49,13 +49,26 @@
         truncation_symbol = "…/";
         truncate_to_repo = true;
       };
+      directory.substitutions = {
+        "Documents" = "󰈙 ";
+        "Downloads" = " ";
+        "Music" = "󰝚 ";
+        "Pictures" = " ";
+        "Org" = "";
+        "Repos" = "";
+        "Projects" = "";
+        "Mail" = "";
+      };
       rust = {
         symbol = "🦀";
         format = "[ $symbol $version ](bg:yellow fg:bg )";
       };
-      python = { format = "[ $symbol $version ](bg:yellow fg:bg )"; };
+      python = {
+        symbol = "";
+        format = "[ $symbol $version ](bg:yellow fg:bg )";
+      };
       c = {
-        symbol = " ";
+        symbol = "";
         detect_extensions = ''["c", "h", "cpp"]'';
       };
       lua = {
@@ -68,8 +81,8 @@
         symbols = {
           Arch = "[  ](fg:bg $style)";
           NixOS = "[  ](fg:bg $style)";
-          Macos = "[  ](fg:red $style)";
-          Linux = "[  ](fg:fg $style)";
+          Macos = "[  ](fg:bg $style)";
+          Linux = "[  ](fg:bg $style)";
         };
       };
       nix_shell = {
@@ -92,7 +105,7 @@
         untracked = " 󱙓";
         deleted = " 󱙑";
         renamed = " 󱙓";
-        staged = " +($count)";
+        staged = " 󰎜";
       };
       palettes.solarized = {
         fg = "#93a1a1";
