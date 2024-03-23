@@ -1,1 +1,1 @@
-{ imports = [ ./zathura.nix ./kitty.nix ./rofi.nix ./vesktop.nix ]; }
+{ imports = [ ./zathura.nix ./kitty.nix ./rofi.nix ./vesktop.nix ./xdg.nix ]; }

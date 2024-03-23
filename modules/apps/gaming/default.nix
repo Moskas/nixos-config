@@ -4,12 +4,15 @@
     #heroic
     steam-run
     protontricks
+    wineWowPackages.stable
+    winetricks
     bottles
     mangohud
     goverlay
     prismlauncher
     # yuzu # F
-    jre8
+    (callPackage ../../../pkgs/osu-bin.nix { })
+    jre8 # for old Minecraft versions
     ferium
   ];
 }

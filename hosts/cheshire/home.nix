@@ -45,7 +45,6 @@ in {
     manga-cli
     ani-cli
     ffmpeg
-    cava
     cargo
     betterdiscordctl
     nsxiv
@@ -57,7 +56,6 @@ in {
     easyeffects
     xclip
     pkg-config
-    (callPackage ../../pkgs/osu-bin.nix { })
     openrgb-with-all-plugins
     distrobox
     nicotine-plus
@@ -67,11 +65,8 @@ in {
     obs-studio
     discord
     discord-screenaudio
-    wineWowPackages.stable
-    winetricks
     feh
     lutgen
-    gradience
 
     gimp
     # wayland testing
