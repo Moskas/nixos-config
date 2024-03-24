@@ -13,5 +13,15 @@
         ratio = [ 0 5 5 ];
       };
     };
+    theme = {
+      status = {
+        separator_open = "";
+        separator_close = "";
+        separator_style = {
+          fg = "white";
+          bg = "blue";
+        };
+      };
+    };
   };
 }

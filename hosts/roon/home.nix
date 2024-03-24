@@ -14,7 +14,7 @@ in {
     ../../modules/apps
     ../../modules/git
     ../../modules/services
-    ../../modules/editors/vscode.nix
+    ../../modules/editors
   ];
 
   colorScheme = nix-colors.colorSchemes.solarized-dark;
@@ -78,33 +78,8 @@ in {
     random-wallpaper
   ];
 
-  xresources = {
-    path = "$HOME/.Xresources";
-    extraConfig = ''
-      builtins.readFile
-        (
-          pkgs.fetchFromGitHub
-            {
-              owner = "solarized";
-              repo = "xresources";
-              rev = "025ceddbddf55f2eb4ab40b05889148aab9699fc";
-              sha256 = "0lxv37gmh38y9d3l8nbnsm1mskcv10g3i83j0kac0a2qmypv1k9f";
-            } + "/Xresources.dark"
-        )'';
-  };
-
-  #home.file = {
-  #  ".config/qtile".source = pkgs.fetchFromGitea {
-  #    domain = "codeberg.org";
-  #    owner = "Moskas";
-  #    repo = "qtile-org";
-  #    rev = "d293ab37d6";
-  #    sha256 = "sha256-9wEoLw3/ma1mvt2Jj2xPc6LejP2HIpBzqxQ+h7E50t8=";
-  #  };
-  #};
-
   home.pointerCursor = {
-    size = 64;
+    size = 16;
     package = pkgs.phinger-cursors;
     name = "phinger-cursors-light";
   };
@@ -118,40 +93,6 @@ in {
     enableZshIntegration = true;
   };
 
-  #programs.zsh = {
-  #  enable = true;
-  #  shellAliases = {
-  #    ls = "exa --grid --color always --icons --sort=type";
-  #    ll = "exa --long --color always --icons --sort=type";
-  #    la = "exa --grid --all --color auto --icons --sort=type";
-  #    lla = "exa --long --all --color auto --icons --sort=type";
-  #    e = "$EDITOR";
-  #    en = "sudoedit /etc/nixos/configuration.nix";
-  #    ehn = "$EDITOR ~/.config/nixpkgs/home.nix";
-  #    update = "sudo nixos-rebuild switch";
-  #  };
-  #  history = {
-  #    size = 10000;
-  #    path = "${config.xdg.dataHome}/zsh/history";
-  #  };
-  #  enableAutosuggestions = true;
-  #  syntaxHighlighting.enable = true;
-  #  autocd = false;
-  #  defaultKeymap = "emacs";
-  #  plugins = [ ];
-  #  initExtra =
-  #    "\n    export PATH=~/.config/emacs/bin:$PATH\n export PATH=~/.local/share/applications/:$PATH\n eval \"$(direnv hook zsh)\"   ";
-  #};
-  programs.starship = {
-    #enable = true;
-    #enableZshIntegration = true;
-    #package = pkgs.starship;
-    settings = {
-      #add_newline = false;
-      palette = lib.mkForce "solarized";
-    };
-  };
-
   services.mpd-discord-rpc = {
     enable = true;
     settings = {
@@ -161,42 +102,6 @@ in {
         state = "On $album by $artist";
       };
     };
-  };
-
-  #  gtk = {
-  #    enable = true;
-  #    theme = {
-  #      name = "Numix";
-  #      package = pkgs.numix-solarized-gtk-theme;
-  #    };
-  #  };
-
-  programs.emacs = {
-    enable = true;
-    package = pkgs.emacs29;
-    extraPackages = epkgs:
-      with epkgs; [
-        vterm-toggle # Added as doom-emacs vterm won't compile due to read only directory
-        elcord # Discord status
-        transient
-        mastodon
-      ];
-  };
-
-  programs.neovim = {
-    enable = true;
-    coc = { enable = true; };
-    vimAlias = true;
-    plugins = with pkgs.vimPlugins; [
-      NeoSolarized
-      vim-nix
-      vim-airline
-      vim-airline-themes
-    ];
-    extraConfig = ''
-      colorscheme NeoSolarized
-      nnoremap <esc> :noh<return><esc>
-    '';
   };
 
   programs.btop = {
@@ -223,12 +128,5 @@ in {
     };
   };
 
-  programs.bat = {
-    enable = true;
-    config = {
-      theme = lib.mkForce "Solarized (dark)";
-      color = "always";
-      pager = "less -FR";
-    };
-  };
+  programs.bat = { config = { theme = lib.mkForce "Solarized (dark)"; }; };
 }

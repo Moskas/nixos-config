@@ -55,7 +55,10 @@ in {
           unselected = "10pt ${font}";
         };
       };
-      url = { start_pages = "https://www.google.com"; };
+      url = {
+        start_pages = "https://www.startpage.com";
+        default_page = "https://www.startpage.com";
+      };
       content.blocking.whitelist =
         [ "*://xeiaso.net/*" "*://ethicalads.io/*" "*://*.ethicalads.io/*" ];
       colors = {

@@ -43,7 +43,7 @@
 
              --status-positive-background: #${config.colorScheme.palette.base0C};
              --status-positive-text: var(--text-normal);
-             --status-danger: #${config.colorScheme.palette.base0E};
+             --status-danger: #${config.colorScheme.palette.base08};
 
              --button-secondary-background: var(--background-tertiary);
 
