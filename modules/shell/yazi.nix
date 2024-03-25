@@ -18,8 +18,20 @@
         separator_open = "";
         separator_close = "";
         separator_style = {
-          fg = "white";
+          fg = "black";
           bg = "blue";
+        };
+        mode_normal = {
+          fg = "black";
+          bg = "blue";
+        };
+        mode_select = {
+          fg = "black";
+          bg = "red";
+        };
+        select = {
+          fg = "black";
+          bg = "red";
         };
       };
     };

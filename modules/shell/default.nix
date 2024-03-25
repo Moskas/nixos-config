@@ -8,6 +8,7 @@
     ./fzf.nix
     ./newsboat.nix
     ./neofetch.nix
+    ./ranger.nix
     ./starship.nix
     ./tickrs.nix
     ./tmux.nix
@@ -26,7 +27,6 @@
     (callPackage ../../pkgs/epy.nix { })
     (callPackage ../../pkgs/donkeytype.nix { })
     onefetch
-    ranger
     zip
     unzip
     unrar
