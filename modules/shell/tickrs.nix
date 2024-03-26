@@ -5,7 +5,16 @@
 
   xdg.configFile."tickrs/config.yml".source =
     (pkgs.formats.yaml { }).generate "config" {
-      symbols = [ "XMR-USD" "BTC-USD" "ETH-USD" "AMD" "NVDA" "INTC" ];
+      symbols = [
+        "XMR-USD"
+        "BTC-USD"
+        "ETH-USD"
+        "ADA-USD"
+        "DOGE-USD"
+        "AMD"
+        "NVDA"
+        "INTC"
+      ];
       time_frame = "1W";
       show_volumes = true;
       summary = true;

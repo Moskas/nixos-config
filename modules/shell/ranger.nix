@@ -3,13 +3,30 @@
 {
   programs.ranger = {
     enable = true;
+    aliases = { e = "edit"; };
     settings = {
       preview_images = true;
+      preview_images_method = "kitty";
       vcs_aware = true;
       draw_borders = "both";
       mouse_enabled = true;
       update_title = true;
+      padding_right = false;
     };
+    rifle = [
+      {
+        condition = "mime ^image";
+        command = ''${pkgs.nsxiv}/bin/nsxiv -- "$@"'';
+      }
+      {
+        condition = "mime ^text";
+        command = ''emacs -nw -- "$@"'';
+      }
+      {
+        condition = "ext pdf|djvu|epub";
+        command = ''zathura -- "$@"'';
+      }
+    ];
     extraConfig = "default_linemode devicons";
     plugins = [
       {
