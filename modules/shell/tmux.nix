@@ -1,4 +1,7 @@
 { pkgs, ... }: {
+
+  home.packages = with pkgs; [ (callPackage ../scripts/battery.nix { }) ];
+
   programs.tmux = {
     enable = true;
     mouse = true;
@@ -20,7 +23,7 @@
       set-option -g pane-active-border-style fg=green
 
       set -g status-left ' #[fg=blue,bg=default]  '
-      set -g status-right '#[fg=blue]#{b:pane_current_path} #[fg=magenta,bg=default]%d %a %H:%M:%S#[default] #[fg=cyan]#(echo $(cat /sys/class/power_supply/BAT1/capacity)% 󰁹) '
+      set -g status-right '#[fg=blue]#{b:pane_current_path} #[fg=magenta,bg=default]%d %a %H:%M:%S#[default] #[fg=cyan]#(echo $(bat-stat))'
       set -g status-style bg=default,fg=default
 
       set-window-option -g window-status-format "#I:#W"
