@@ -19,6 +19,15 @@
     packages = with pkgs; [ nmap w3m ];
   };
 
+  programs.starship = {
+    settings = {
+      format = pkgs.lib.mkForce (pkgs.lib.concatStrings [
+        "$os$hostname$rust$python$node$lua$git_branch$git_status$git_state$nix_shell$line_break$directory$sudo$character"
+      ]);
+      hostname.style = pkgs.lib.mkForce "fg:bg bg:blue bold";
+    };
+  };
+
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
   # when a new Home Manager release introduces backwards

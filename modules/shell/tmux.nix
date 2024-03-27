@@ -20,17 +20,20 @@
       set-option -g pane-active-border-style fg=green
 
       set -g status-left ' #[fg=blue,bg=default]  '
-      set -g status-right '#[fg=magenta,bg=default]%a %H:%M:%S#[default]'
+      set -g status-right '#[fg=blue]#{b:pane_current_path} #[fg=magenta,bg=default]%d %a %H:%M:%S#[default] #[fg=cyan]#(echo $(cat /sys/class/power_supply/BAT1/capacity)% 󰁹) '
       set -g status-style bg=default,fg=default
+
+      set-window-option -g window-status-format "#I:#W"
 
       set-option -g pane-border-style fg=brightblack
       set-option -g pane-active-border-style fg=green
 
-      set-option -s status-interval 1 # Update status every second
+      set status-interval 1 # Update status every second
 
       set -g message-style bg=default,fg=white
 
-
+      set-window-option -g allow-rename on
+      set-option -g set-titles off
       set-option -sa terminal-overrides ',xterm*:Tc'
       set-option -g renumber-windows on
       set -s escape-time 0
@@ -38,6 +41,8 @@
       bind _ select-layout even-vertical
       bind V split-window -h -c '#{pane_current_path}'
       bind S split-window -v -c '#{pane_current_path}'
+      bind r source-file ~/.config/tmux/tmux.conf\;\
+        display 'Config reloaded'
       unbind '%'
       unbind '"'
     '';
@@ -54,6 +59,7 @@
       tmuxPlugins.tilish
       tmuxPlugins.tmux-fzf
       tmuxPlugins.yank
+      tmuxPlugins.extrakto
       tmuxPlugins.vim-tmux-navigator
     ];
   };
