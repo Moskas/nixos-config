@@ -1,6 +1,9 @@
 { pkgs, ... }: {
 
-  home.packages = with pkgs; [ (callPackage ../scripts/battery.nix { }) ];
+  home.packages = with pkgs; [
+    (callPackage ../scripts/battery.nix { })
+    (callPackage ../scripts/check-ssh.nix { })
+  ];
 
   programs.tmux = {
     enable = true;
@@ -22,8 +25,8 @@
       set-option -g pane-border-style fg=black
       set-option -g pane-active-border-style fg=green
 
-      set -g status-left ' #[fg=blue,bg=default]  '
-      set -g status-right '#[fg=blue]#{b:pane_current_path} #[fg=magenta,bg=default]%d %a %H:%M:%S#[default] #[fg=cyan]#(echo $(bat-stat))'
+      set -g status-left ' #[fg=blue,bg=default]  #[fg=blue]#(check-ssh)'
+      set -g status-right '#[fg=blue]#{b:pane_current_path} #[fg=magenta,bg=default]%d.%a %H:%M:%S#[default] #[fg=cyan]#(echo $(bat-stat))#[fg=cyan][#S]'
       set -g status-style bg=default,fg=default
 
       set-window-option -g window-status-format "#I:#W"
@@ -31,7 +34,7 @@
       set-option -g pane-border-style fg=brightblack
       set-option -g pane-active-border-style fg=green
 
-      set status-interval 1 # Update status every second
+      set -g status-interval 1 # Update status every second
 
       set -g message-style bg=default,fg=white
 
