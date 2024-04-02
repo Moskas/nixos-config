@@ -1,14 +1,13 @@
-{ config, lib, pkgs, ... }: {
+{ config, ... }: {
   programs.starship = {
     enable = true;
     enableZshIntegration = true;
-    package = pkgs.starship;
     settings = {
       add_newline = false;
       palette = "dynamic";
-      format = lib.concatStrings [
+      format = ''
         "$os$username$hostname$rust$python$node$lua$git_branch$git_status$git_state$fill$nix_shell$time$line_break$directory$sudo$character"
-      ];
+      '';
       scan_timeout = 10;
       character = {
         success_symbol = "[ ](blue)";

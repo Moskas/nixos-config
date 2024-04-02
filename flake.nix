@@ -4,6 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
+    nixpkgs-staging-next.url = "github:nixos/nixpkgs/staging-next";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -57,8 +58,8 @@
       flake = false;
     };
   };
-  outputs = { self, nixpkgs, home-manager, nur, wsl, nix-colors, nixvim
-    , nixvim-config, emacs-overlay, disko, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-staging-next, home-manager, nur, wsl
+    , nix-colors, nixvim, nixvim-config, emacs-overlay, disko, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system}; # { config.allowUnfree = true; };
@@ -68,6 +69,10 @@
       inherit (nixpkgs) lib;
       default-overlays = {
         nixpkgs.overlays = [ emacs-overlay.overlay nur.overlay ];
+        system.replaceRuntimeDependencies = [{
+          original = pkgs.xz;
+          replacement = nixpkgs-staging-next.legacyPackages.${system}.xz;
+        }];
       };
     in {
       nixosConfigurations = {

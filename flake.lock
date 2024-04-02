@@ -561,6 +561,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-staging-next": {
+      "locked": {
+        "lastModified": 1712059341,
+        "narHash": "sha256-I/xinxexiKuaIsGBaHstfm8Y51lmKdTAvDwzB2CmACc=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "f0eb531440b59c93262bbf619186e13d554774dd",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "staging-next",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixvim": {
       "inputs": {
         "devshell": "devshell",
@@ -737,6 +753,7 @@
         "nix-on-droid": "nix-on-droid",
         "nixpkgs": "nixpkgs",
         "nixpkgs-stable": "nixpkgs-stable_2",
+        "nixpkgs-staging-next": "nixpkgs-staging-next",
         "nixvim": "nixvim",
         "nixvim-config": "nixvim-config",
         "nur": "nur",
