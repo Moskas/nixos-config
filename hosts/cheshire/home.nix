@@ -1,10 +1,18 @@
-{ config, pkgs, username, nix-colors, nur, inputs, ... }:
+{
+  config,
+  pkgs,
+  username,
+  nix-colors,
+  nur,
+  inputs,
+  ...
+}:
 let
-  random-wallpaper =
-    import ../../modules/scripts/random-wallpaper.nix { inherit pkgs config; };
+  random-wallpaper = import ../../modules/scripts/random-wallpaper.nix { inherit pkgs config; };
   cropshot = import ../../modules/scripts/cropshot.nix { inherit pkgs config; };
   fullshot = import ../../modules/scripts/fullshot.nix { inherit pkgs config; };
-in {
+in
+{
   imports = [
     nix-colors.homeManagerModules.default
     nur.nixosModules.nur
@@ -19,6 +27,7 @@ in {
     ../../modules/email
     ../../modules/services
     ../../modules/desktops/qtilestyle.nix
+    ../../modules/desktops/stumpwmStyle.nix
   ];
 
   colorScheme = nix-colors.colorSchemes.gruvbox-dark-medium;
@@ -87,16 +96,22 @@ in {
     };
   };
 
-  home.file = { ".config/test".source = inputs.qtile-config; };
+  home.file = {
+    ".config/test".source = inputs.qtile-config;
+  };
   home.pointerCursor = {
     size = 16;
     package = pkgs.phinger-cursors;
     name = "phinger-cursors-light";
   };
 
-  programs.pandoc = { enable = true; };
+  programs.pandoc = {
+    enable = true;
+  };
 
-  programs.gpg = { enable = true; };
+  programs.gpg = {
+    enable = true;
+  };
 
   services.gpg-agent = {
     enable = true;
