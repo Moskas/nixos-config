@@ -1,7 +1,8 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running `nixos-help`).
-{ pkgs, username, ... }: {
+{ pkgs, username, ... }:
+{
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -15,6 +16,7 @@
     ../../modules/overlays
     ../../modules/nvidia/nvidia.nix
     ../../modules/desktops/qtile.nix
+    ../../modules/desktops/stumpwm.nix
   ];
 
   # Use the systemd-boot EFI boot loader.
@@ -24,7 +26,9 @@
         enable = true;
         configurationLimit = 20;
       };
-      efi = { canTouchEfiVariables = true; };
+      efi = {
+        canTouchEfiVariables = true;
+      };
       grub = {
         enable = false;
         devices = [ "/dev/disk/nvme0n1" ];
@@ -68,10 +72,15 @@
     opengl = {
       enable = true;
       driSupport32Bit = true;
-      extraPackages = with pkgs; [ mangohud nvidia-vaapi-driver ];
+      extraPackages = with pkgs; [
+        mangohud
+        nvidia-vaapi-driver
+      ];
       extraPackages32 = with pkgs; [ mangohud ];
     };
-    bluetooth = { enable = true; };
+    bluetooth = {
+      enable = true;
+    };
     steam-hardware.enable = true;
   };
 
@@ -82,10 +91,14 @@
 
   programs.gamescope = {
     enable = true;
-    env = { __GLX_VENDOR_LIBRARY_NAME = "nvidia"; };
+    env = {
+      __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+    };
   };
 
-  programs.nix-ld = { enable = true; };
+  programs.nix-ld = {
+    enable = true;
+  };
 
   services.xserver = {
     videoDrivers = [ "nvidia" ];
@@ -99,7 +112,9 @@
     '';
     libinput = {
       enable = true;
-      mouse = { accelProfile = "flat"; };
+      mouse = {
+        accelProfile = "flat";
+      };
       touchpad = { };
     };
   };
@@ -111,8 +126,15 @@
       wifi.macAddress = "random";
     };
     firewall = {
-      allowedTCPPorts = [ 22 6600 24070 ];
-      allowedUDPPorts = [ 22 24070 ];
+      allowedTCPPorts = [
+        22
+        6600
+        24070
+      ];
+      allowedUDPPorts = [
+        22
+        24070
+      ];
       enable = true;
     };
   };
@@ -199,8 +221,14 @@
     isNormalUser = true;
     initialPassword = "nix";
     shell = pkgs.zsh;
-    extraGroups =
-      [ "wheel" "storage" "networkmanager" "libvirtd" "i2c" "docker" ];
+    extraGroups = [
+      "wheel"
+      "storage"
+      "networkmanager"
+      "libvirtd"
+      "i2c"
+      "docker"
+    ];
     packages = with pkgs; [ ];
   };
 
@@ -234,7 +262,9 @@
     enableSSHSupport = true;
   };
 
-  programs.dconf = { enable = true; };
+  programs.dconf = {
+    enable = true;
+  };
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;

@@ -41,12 +41,11 @@ in {
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
   home.packages = with pkgs; [
-    nvtop
+    nvtopPackages.nvidia
     manga-cli
     ani-cli
     ffmpeg
     cargo
-    betterdiscordctl
     nsxiv
     i2c-tools
     betterlockscreen
@@ -55,7 +54,7 @@ in {
     bitwarden
     easyeffects
     xclip
-    pkg-config
+    #pkg-config
     openrgb-with-all-plugins
     distrobox
     nicotine-plus
@@ -63,10 +62,10 @@ in {
     cropshot
     fullshot
     obs-studio
-    discord
     discord-screenaudio
     feh
     lutgen
+    (callPackage ../../pkgs/nyaa.nix { })
 
     gimp
     # wayland testing

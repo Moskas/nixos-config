@@ -6,7 +6,7 @@
       add_newline = false;
       palette = "dynamic";
       format = ''
-        "$os$username$hostname$rust$python$node$lua$git_branch$git_status$git_state$fill$nix_shell$time$line_break$directory$sudo$character"
+        $os$username$hostname$rust$python$node$lua$git_branch$git_status$git_state$fill$nix_shell$time$line_break$directory$sudo$character
       '';
       scan_timeout = 10;
       character = {

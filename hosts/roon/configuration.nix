@@ -2,7 +2,12 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, username, ... }:
+{
+  config,
+  pkgs,
+  username,
+  ...
+}:
 
 {
   imports = [
@@ -28,7 +33,9 @@
   # Enabling latest xanmod linux kernel
   boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
 
-  programs.nix-ld = { enable = true; };
+  programs.nix-ld = {
+    enable = true;
+  };
 
   # Virtualisation and virt-manager
   virtualisation.libvirtd.enable = true;
@@ -38,7 +45,9 @@
     dpi = 100;
     libinput = {
       enable = true;
-      mouse = { accelProfile = "flat"; };
+      mouse = {
+        accelProfile = "flat";
+      };
       touchpad = { };
     };
   };
@@ -47,7 +56,10 @@
     opengl = {
       enable = true;
       driSupport32Bit = true;
-      extraPackages = with pkgs; [ mangohud nvidia-vaapi-driver ];
+      extraPackages = with pkgs; [
+        mangohud
+        nvidia-vaapi-driver
+      ];
       extraPackages32 = with pkgs; [ mangohud ];
     };
     #fancontrol = { enable = true; };
@@ -58,10 +70,11 @@
       powerManagement.enable = true;
       modesetting.enable = true;
       nvidiaSettings = true;
-      package =
-        config.boot.kernelPackages.nvidiaPackages.production; # Changed to stable due to issues with brightness control on beta
+      package = config.boot.kernelPackages.nvidiaPackages.production; # Changed to stable due to issues with brightness control on beta
     };
-    bluetooth = { enable = true; };
+    bluetooth = {
+      enable = true;
+    };
   };
   # For steam streaming
   hardware.steam-hardware.enable = true;
@@ -118,7 +131,11 @@
   # Graphical environment
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = false;
-  environment.gnome.excludePackages = (with pkgs; [ gnome-photos gnome-tour ])
+  environment.gnome.excludePackages =
+    (with pkgs; [
+      gnome-photos
+      gnome-tour
+    ])
     ++ (with pkgs.gnome; [
       cheese # webcam tool
       gnome-music
@@ -199,7 +216,12 @@
     isNormalUser = true;
     description = "Moskas";
     initialPassword = "nix";
-    extraGroups = [ "networkmanager" "wheel" "libvirtd" "i2c" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "libvirtd"
+      "i2c"
+    ];
     shell = pkgs.zsh;
     packages = with pkgs; [ firefox ];
   };
@@ -259,8 +281,12 @@
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
-  programs.gnupg.agent = { enable = true; };
-  programs.hyprland = { enable = false; };
+  programs.gnupg.agent = {
+    enable = true;
+  };
+  programs.hyprland = {
+    enable = false;
+  };
   programs.dconf.enable = true;
 
   # Enable the OpenSSH daemon.
@@ -281,5 +307,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "22.11"; # Did you read the comment?
-
 }

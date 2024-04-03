@@ -1,5 +1,10 @@
-{ pkgs, ... }: {
-  environment.systemPackages = with pkgs; [ nh nixfmt nil ];
+{ pkgs, ... }:
+{
+  environment.systemPackages = with pkgs; [
+    nh
+    nixfmt-rfc-style
+    nil
+  ];
 
   nix = {
     gc = {
@@ -14,12 +19,23 @@
     };
 
     settings = {
-      experimental-features = [ "nix-command" "flakes" ];
-      system-features = [ "big-parallel" "gccarch-x86-64-v3" ];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
+      system-features = [
+        "big-parallel"
+        "gccarch-x86-64-v3"
+      ];
       auto-optimise-store = true;
       builders-use-substitutes = true;
       use-xdg-base-directories = true;
-      trusted-users = [ "root" "moskas" "@wheel" "nix-ssh" ];
+      trusted-users = [
+        "root"
+        "moskas"
+        "@wheel"
+        "nix-ssh"
+      ];
       warn-dirty = false;
       substituters = [
         "https://nix-community.cachix.org"
@@ -38,5 +54,9 @@
     FLAKE = "/home/moskas/Projects/nixos-config";
   };
   # Additional config for nixpkgs, mainly unfree due to Discord, Steam etc
-  nixpkgs = { config = { allowUnfree = true; }; };
+  nixpkgs = {
+    config = {
+      allowUnfree = true;
+    };
+  };
 }

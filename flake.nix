@@ -4,7 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
-    nixpkgs-staging-next.url = "github:nixos/nixpkgs/staging-next";
+    #nixpkgs-staging-next.url = "github:nixos/nixpkgs/staging-next";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -58,8 +58,20 @@
       flake = false;
     };
   };
-  outputs = { self, nixpkgs, nixpkgs-staging-next, home-manager, nur, wsl
-    , nix-colors, nixvim, nixvim-config, emacs-overlay, disko, ... }@inputs:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      home-manager,
+      nur,
+      wsl,
+      nix-colors,
+      nixvim,
+      nixvim-config,
+      emacs-overlay,
+      disko,
+      ...
+    }@inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system}; # { config.allowUnfree = true; };
@@ -68,17 +80,23 @@
       #lib = nixpkgs.lib;
       inherit (nixpkgs) lib;
       default-overlays = {
-        nixpkgs.overlays = [ emacs-overlay.overlay nur.overlay ];
-        system.replaceRuntimeDependencies = [{
-          original = pkgs.xz;
-          replacement = nixpkgs-staging-next.legacyPackages.${system}.xz;
-        }];
+        nixpkgs.overlays = [
+          emacs-overlay.overlay
+          nur.overlay
+        ];
+        #system.replaceRuntimeDependencies = [{
+        #  original = pkgs.xz;
+        #  replacement = nixpkgs-staging-next.legacyPackages.${system}.xz;
+        #}];
       };
-    in {
+    in
+    {
       nixosConfigurations = {
         shimakaze = lib.nixosSystem {
           inherit system;
-          specialArgs = { inherit inputs username; };
+          specialArgs = {
+            inherit inputs username;
+          };
           modules = [
             ./hosts/shimakaze/configuration.nix
             default-overlays
@@ -89,17 +107,24 @@
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 extraSpecialArgs = {
-                  inherit username e-mail nix-colors nixvim nixvim-config;
+                  inherit
+                    username
+                    e-mail
+                    nix-colors
+                    nixvim
+                    nixvim-config
+                    ;
                 };
               };
-              home-manager.users.${username}.imports =
-                [ (import ./hosts/shimakaze/home.nix) ];
+              home-manager.users.${username}.imports = [ (import ./hosts/shimakaze/home.nix) ];
             }
           ];
         };
         roon = lib.nixosSystem {
           inherit system;
-          specialArgs = { inherit inputs username nix-colors; };
+          specialArgs = {
+            inherit inputs username nix-colors;
+          };
           modules = [
             ./hosts/roon
             ./hosts/roon/configuration.nix
@@ -110,17 +135,30 @@
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 extraSpecialArgs = {
-                  inherit username e-mail nix-colors nixvim nixvim-config nur;
+                  inherit
+                    username
+                    e-mail
+                    nix-colors
+                    nixvim
+                    nixvim-config
+                    nur
+                    ;
                 };
               };
-              home-manager.users.${username}.imports =
-                [ (import ./hosts/roon/home.nix) ];
+              home-manager.users.${username}.imports = [ (import ./hosts/roon/home.nix) ];
             }
           ];
         };
         cheshire = lib.nixosSystem {
           inherit system;
-          specialArgs = { inherit inputs username e-mail nix-colors; };
+          specialArgs = {
+            inherit
+              inputs
+              username
+              e-mail
+              nix-colors
+              ;
+          };
           modules = [
             ./hosts/cheshire
             ./hosts/cheshire/configuration.nix
@@ -131,11 +169,17 @@
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 extraSpecialArgs = {
-                  inherit username e-mail nix-colors nixvim nixvim-config nur
-                    inputs;
+                  inherit
+                    username
+                    e-mail
+                    nix-colors
+                    nixvim
+                    nixvim-config
+                    nur
+                    inputs
+                    ;
                 };
-                users.${username}.imports =
-                  [ (import ./hosts/cheshire/home.nix) ];
+                users.${username}.imports = [ (import ./hosts/cheshire/home.nix) ];
               };
             }
             inputs.nix-gaming.nixosModules.pipewireLowLatency
@@ -143,7 +187,9 @@
         };
         laffey = lib.nixosSystem {
           inherit system;
-          specialArgs = { inherit inputs username nix-colors; };
+          specialArgs = {
+            inherit inputs username nix-colors;
+          };
           modules = [
             disko.nixosModules.default
             ./hosts/laffey
@@ -155,17 +201,25 @@
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 extraSpecialArgs = {
-                  inherit username e-mail nix-colors nixvim nixvim-config nur;
+                  inherit
+                    username
+                    e-mail
+                    nix-colors
+                    nixvim
+                    nixvim-config
+                    nur
+                    ;
                 };
               };
-              home-manager.users.${username}.imports =
-                [ (import ./hosts/laffey/home.nix) ];
+              home-manager.users.${username}.imports = [ (import ./hosts/laffey/home.nix) ];
             }
           ];
         };
         glasgow = lib.nixosSystem {
           system = "i686-linux";
-          specialArgs = { inherit self nixpkgs home-manager; };
+          specialArgs = {
+            inherit self nixpkgs home-manager;
+          };
           modules = [ ./hosts/glasgow/configuration.nix ];
         };
         iso = lib.nixosSystem {
@@ -179,19 +233,34 @@
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
-                extraSpecialArgs = { inherit nix-colors e-mail; };
+                extraSpecialArgs = {
+                  inherit nix-colors e-mail;
+                };
               };
-              home-manager.users.${username}.imports =
-                [ (import ./hosts/iso/home.nix) ];
+              home-manager.users.${username}.imports = [ (import ./hosts/iso/home.nix) ];
             }
           ];
-          specialArgs = { inherit self inputs username nixpkgs home-manager; };
+          specialArgs = {
+            inherit
+              self
+              inputs
+              username
+              nixpkgs
+              home-manager
+              ;
+          };
         };
       };
       devShells.${system}.default = pkgs.mkShell {
-        NIX_CONFIG =
-          "extra-experimental-features = nix-command flakes repl-flake";
-        packages = with pkgs; [ alejandra git sops age deadnix nil ];
+        NIX_CONFIG = "extra-experimental-features = nix-command flakes repl-flake";
+        packages = with pkgs; [
+          alejandra
+          git
+          sops
+          age
+          deadnix
+          nil
+        ];
         name = "dotfiles";
         DIRENV_LOG_FORMAT = "";
         formatter = pkgs.alejandra;
