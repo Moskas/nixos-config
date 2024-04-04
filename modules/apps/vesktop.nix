@@ -1,6 +1,9 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, ... }:
+{
   # Vesktop
-  home = { packages = with pkgs; [ vesktop ]; };
+  home = {
+    packages = with pkgs; [ vesktop ];
+  };
 
   xdg = {
     configFile = {

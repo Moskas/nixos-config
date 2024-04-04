@@ -1,4 +1,5 @@
-{ nix-colors, e-mail, ... }: {
+{ nix-colors, ... }:
+{
   imports = [
     nix-colors.homeManagerModules.default
     ../../modules/shell

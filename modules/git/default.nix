@@ -1,5 +1,9 @@
 { ... }:
 
 {
-  imports = [ ./git.nix ./lazygit.nix ./gh.nix ];
+  imports = [
+    ./git.nix
+    ./lazygit.nix
+    ./gh.nix
+  ];
 }

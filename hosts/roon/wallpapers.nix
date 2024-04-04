@@ -1,4 +1,5 @@
-{ pkgs, fetchFromGitHub, ... }: {
+{ pkgs, fetchFromGitHub, ... }:
+{
   home.file = {
     "./Pictures/Wallpapers/".source = pkgs.fetchFromGitHub {
       owner = "Moskas";

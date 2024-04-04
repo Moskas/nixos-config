@@ -2,5 +2,4 @@
 
 {
   imports = [ ./hardware-configuration.nix ];
-
 }

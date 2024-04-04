@@ -1,4 +1,9 @@
-{ lib, fetchFromGitHub, rustPlatform, libiconv }:
+{
+  lib,
+  fetchFromGitHub,
+  rustPlatform,
+  libiconv,
+}:
 
 rustPlatform.buildRustPackage rec {
   pname = "mpd-notify-rs";

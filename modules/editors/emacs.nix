@@ -4,8 +4,8 @@
   programs.emacs = {
     enable = true;
     package = pkgs.emacs-unstable;
-    extraPackages = epkgs:
-      with epkgs; [
+    extraPackages =
+      epkgs: with epkgs; [
         vterm-toggle # Added as doom-emacs vterm won't compile due to read only directory
         elcord # Discord status
         mastodon
@@ -250,5 +250,4 @@
 
     ;;; doom-homage-white-theme.el ends here
   '';
-
 }

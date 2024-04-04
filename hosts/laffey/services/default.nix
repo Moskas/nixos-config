@@ -1,5 +1,8 @@
 { ... }:
 
 {
-  imports = [ ./gitea.nix ./jellyfin.nix ];
+  imports = [
+    ./gitea.nix
+    ./jellyfin.nix
+  ];
 }

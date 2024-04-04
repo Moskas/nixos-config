@@ -1,12 +1,11 @@
 { pkgs, ... }:
 
 {
-  home.packages = with pkgs;
-    [
-      (pkgs.neofetch.overrideAttrs (o: {
-        patches = (o.patches or [ ]) ++ [ ./neofetch-nixos-small.patch ];
-      }))
-    ];
+  home.packages = with pkgs; [
+    (pkgs.neofetch.overrideAttrs (o: {
+      patches = (o.patches or [ ]) ++ [ ./neofetch-nixos-small.patch ];
+    }))
+  ];
 
   xdg.configFile."neofetch/minimal-nix.conf".text = ''
       # See this wiki page for more info:

@@ -1,6 +1,8 @@
 { config, pkgs, ... }:
-let font = "JetBrainsMono Nerd Font";
-in {
+let
+  font = "JetBrainsMono Nerd Font";
+in
+{
   programs.qutebrowser = {
     enable = true;
     searchEngines = {
@@ -59,8 +61,11 @@ in {
         start_pages = "https://www.startpage.com";
         default_page = "https://www.startpage.com";
       };
-      content.blocking.whitelist =
-        [ "*://xeiaso.net/*" "*://ethicalads.io/*" "*://*.ethicalads.io/*" ];
+      content.blocking.whitelist = [
+        "*://xeiaso.net/*"
+        "*://ethicalads.io/*"
+        "*://*.ethicalads.io/*"
+      ];
       colors = {
         statusbar = {
           normal = {
@@ -139,7 +144,9 @@ in {
             fg = "#${config.colorScheme.palette.base07}";
             match.fg = "#${config.colorScheme.palette.base0B}";
           };
-          match = { fg = "#${config.colorScheme.palette.base07}"; };
+          match = {
+            fg = "#${config.colorScheme.palette.base07}";
+          };
           scrollbar = {
             fg = "#${config.colorScheme.palette.base01}";
             bg = "#${config.colorScheme.palette.base00}";
@@ -182,16 +189,15 @@ in {
         "<Ctrl-v>" = "spawn mpv {url}";
         ",p" = "spawn --userscript qute-bitwarden";
         ",u" = "adblock-update";
-        ",l" =
-          ''config-cycle spellcheck.languages ["en-GB"] ["en-US"] ["pl-PL"]'';
-        "wd" =
-          "hint links spawn kitty -e ${pkgs.yt-dlp}/bin/yt-dlp {hint-url}"; # make it more terminal agnostic
+        ",l" = ''config-cycle spellcheck.languages ["en-GB"] ["en-US"] ["pl-PL"]'';
+        "wd" = "hint links spawn kitty -e ${pkgs.yt-dlp}/bin/yt-dlp {hint-url}"; # make it more terminal agnostic
         "ww" = "hint links spawn --detach mpv {hint-url}";
-        "ws" =
-          "hint links spawn --detach ${pkgs.streamlink}/bin/streamlink {hint-url} best --player mpv";
+        "ws" = "hint links spawn --detach ${pkgs.streamlink}/bin/streamlink {hint-url} best --player mpv";
         "q" = "tab-close";
       };
-      prompt = { "<Ctrl-y>" = "prompt-yes"; };
+      prompt = {
+        "<Ctrl-y>" = "prompt-yes";
+      };
     };
     extraConfig = ''
       config.unbind('d')

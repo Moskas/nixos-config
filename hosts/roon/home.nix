@@ -1,8 +1,16 @@
-{ config, pkgs, lib, username, nix-colors, nur, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  username,
+  nix-colors,
+  nur,
+  ...
+}:
 let
-  random-wallpaper =
-    import ../../modules/scripts/random-wallpaper.nix { inherit pkgs config; };
-in {
+  random-wallpaper = import ../../modules/scripts/random-wallpaper.nix { inherit pkgs config; };
+in
+{
   imports = [
     nix-colors.homeManagerModules.default
     nur.nixosModules.nur
@@ -45,8 +53,6 @@ in {
     mpc-cli
     tickrs
     cava
-    nixfmt
-    betterdiscordctl
     discord
     steam
     protonup-ng
@@ -84,9 +90,13 @@ in {
     name = "phinger-cursors-light";
   };
 
-  programs.pandoc = { enable = true; };
+  programs.pandoc = {
+    enable = true;
+  };
 
-  programs.gpg = { enable = true; };
+  programs.gpg = {
+    enable = true;
+  };
 
   services.gpg-agent = {
     enable = true;
@@ -128,5 +138,9 @@ in {
     };
   };
 
-  programs.bat = { config = { theme = lib.mkForce "Solarized (dark)"; }; };
+  programs.bat = {
+    config = {
+      theme = lib.mkForce "Solarized (dark)";
+    };
+  };
 }

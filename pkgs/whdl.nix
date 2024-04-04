@@ -1,4 +1,11 @@
-{ lib, fetchFromGitHub, rustPlatform, cmake, pkg-config, openssl }:
+{
+  lib,
+  fetchFromGitHub,
+  rustPlatform,
+  cmake,
+  pkg-config,
+  openssl,
+}:
 
 rustPlatform.buildRustPackage rec {
   pname = "whdl";
@@ -13,7 +20,11 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-K/buXR7JjMC+XHV5K9ikMz8H8RhK6OQ/hF8iNI8BhMI=";
 
-  nativeBuildInputs = [ cmake pkg-config openssl ];
+  nativeBuildInputs = [
+    cmake
+    pkg-config
+    openssl
+  ];
   buildInputs = [ openssl ];
 
   meta = with lib; {

@@ -22,7 +22,10 @@
       automatic = true;
       dates = [ "weekly" ];
     };
-    settings.experimental-features = [ "nix-command" "flakes" ];
+    settings.experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
   };
 
   # Bootloader.
@@ -84,7 +87,11 @@
     isNormalUser = true;
     description = "Moskas";
     initialPassword = "nix";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "docker"
+    ];
     packages = with pkgs; [ ];
   };
 
@@ -97,7 +104,12 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [ wget curl git btop ];
+  environment.systemPackages = with pkgs; [
+    wget
+    curl
+    git
+    btop
+  ];
 
   programs.nano.enable = false;
 
@@ -123,7 +135,11 @@
   #networking.firewall.enable = false;
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [ 22 3000 8096 ];
+    allowedTCPPorts = [
+      22
+      3000
+      8096
+    ];
     allowedUDPPorts = [ ];
   };
 
@@ -134,5 +150,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "22.11"; # Did you read the comment?
-
 }

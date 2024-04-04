@@ -1,5 +1,8 @@
 { ... }:
 
 {
-  imports = [ ./mpv.nix ./mpd.nix ];
+  imports = [
+    ./mpv.nix
+    ./mpd.nix
+  ];
 }

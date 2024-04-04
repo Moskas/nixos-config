@@ -1,9 +1,16 @@
-{ inputs, lib, config, pkgs, username, ... }:
+{
+  lib,
+  pkgs,
+  username,
+  ...
+}:
 
 {
   imports = [ ../../modules/nix ];
 
-  nixpkgs = { hostPlatform = lib.mkDefault "x86_64-linux"; };
+  nixpkgs = {
+    hostPlatform = lib.mkDefault "x86_64-linux";
+  };
 
   networking.hostName = "iso";
 
@@ -12,15 +19,18 @@
     isNormalUser = true;
     initialPassword = "nix";
     shell = pkgs.zsh;
-    extraGroups = [ "wheel" "storage" "networkmanager" ];
+    extraGroups = [
+      "wheel"
+      "storage"
+      "networkmanager"
+    ];
     packages = with pkgs; [ ];
   };
 
-  environment.systemPackages = with pkgs;
-    [
-      # FIXME after fixing nixvim
-      #inputs.nixvim-config.packages.${system}.default
-    ];
+  environment.systemPackages = with pkgs; [
+    # FIXME after fixing nixvim
+    #inputs.nixvim-config.packages.${system}.default
+  ];
 
   programs.nano.enable = false;
 }

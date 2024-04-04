@@ -1,5 +1,8 @@
-{ pkgs, ... }: {
-  programs.mu = { enable = true; };
+{ pkgs, ... }:
+{
+  programs.mu = {
+    enable = true;
+  };
   services.mbsync = {
     enable = true;
     #configFile = lib.mkPath "~/.config/mbsync/mbsyncrc";
@@ -8,5 +11,9 @@
     enable = true;
     package = pkgs.goimapnotify;
   };
-  home.packages = with pkgs; [ isync goimapnotify msmtp ];
+  home.packages = with pkgs; [
+    isync
+    goimapnotify
+    msmtp
+  ];
 }

@@ -1,4 +1,11 @@
-{ lib, fetchFromGitHub, rustPlatform, cmake, pkg-config, openssl }:
+{
+  lib,
+  fetchFromGitHub,
+  rustPlatform,
+  cmake,
+  pkg-config,
+  openssl,
+}:
 
 rustPlatform.buildRustPackage {
   pname = "nyaa";
@@ -13,7 +20,11 @@ rustPlatform.buildRustPackage {
 
   cargoHash = "sha256-2BSXjMIhgmaooEuckQ/3ud8pea+00fHspUGUeCZcaKk=";
 
-  nativeBuildInputs = [ cmake pkg-config openssl ];
+  nativeBuildInputs = [
+    cmake
+    pkg-config
+    openssl
+  ];
   buildInputs = [ openssl ];
 
   meta = with lib; {

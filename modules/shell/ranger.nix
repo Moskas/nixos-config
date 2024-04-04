@@ -3,7 +3,9 @@
 {
   programs.ranger = {
     enable = true;
-    aliases = { e = "edit"; };
+    aliases = {
+      e = "edit";
+    };
     settings = {
       preview_images = true;
       preview_images_method = "kitty";

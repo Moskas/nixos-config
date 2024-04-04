@@ -53,201 +53,182 @@
       { url = ''"query:Piped:tags # \"Piped\""''; }
       { url = ''"query:Blog:tags # \"Blog\""''; }
       { url = ''"query:Wrocław:tags # \"Wrocław\""''; }
-      {
-        url = "http://localhost:8000/feed";
-      }
+      { url = "http://localhost:8000/feed"; }
       #Videos
       ##Youtube
       {
-        url =
-          "https://www.youtube.com/feeds/videos.xml?channel_id=UCMiyV_Ib77XLpzHPQH_q0qQ";
+        url = "https://www.youtube.com/feeds/videos.xml?channel_id=UCMiyV_Ib77XLpzHPQH_q0qQ";
         tags = [ "Youtube" ];
         title = "Veronica Explains";
       }
       {
-        url =
-          "https://www.youtube.com/feeds/videos.xml?channel_id=UCsnGwSIHyoYN0kiINAGUKxg";
+        url = "https://www.youtube.com/feeds/videos.xml?channel_id=UCsnGwSIHyoYN0kiINAGUKxg";
         tags = [ "Youtube" ];
         title = "Wolfgang";
       }
       {
-        url =
-          "https://www.youtube.com/feeds/videos.xml?channel_id=UC5UAwBUum7CPN5buc-_N1Fw";
+        url = "https://www.youtube.com/feeds/videos.xml?channel_id=UC5UAwBUum7CPN5buc-_N1Fw";
         tags = [ "Youtube" ];
         title = "TheLinuxExperiment";
       }
       {
-        url =
-          "https://www.youtube.com/feeds/videos.xml?channel_id=UCR-DXc1voovS8nhAvccRZhg";
+        url = "https://www.youtube.com/feeds/videos.xml?channel_id=UCR-DXc1voovS8nhAvccRZhg";
         tags = [ "Youtube" ];
         title = "Jeff Geerling";
       }
       {
-        url =
-          "https://www.youtube.com/feeds/videos.xml?channel_id=UC9x0AN7BWHpCDHSm9NiJFJQ";
+        url = "https://www.youtube.com/feeds/videos.xml?channel_id=UC9x0AN7BWHpCDHSm9NiJFJQ";
         tags = [ "Youtube" ];
         title = "Network Chuck";
       }
       {
-        url =
-          "https://www.youtube.com/feeds/videos.xml?channel_id=UCruD32HAzsb9UN4KpOcSxZg";
+        url = "https://www.youtube.com/feeds/videos.xml?channel_id=UCruD32HAzsb9UN4KpOcSxZg";
         tags = [ "Youtube" ];
         title = "London Eats";
       }
       {
-        url =
-          "https://www.youtube.com/feeds/videos.xml?channel_id=UCC_NjLEb2Sley94py4vSYTA";
+        url = "https://www.youtube.com/feeds/videos.xml?channel_id=UCC_NjLEb2Sley94py4vSYTA";
         tags = [ "Youtube" ];
         title = "Andres Vidoza";
       }
       {
-        url =
-          "https://www.youtube.com/feeds/videos.xml?channel_id=UCeOouRs24EmbFPdgEghtRZQ";
+        url = "https://www.youtube.com/feeds/videos.xml?channel_id=UCeOouRs24EmbFPdgEghtRZQ";
         tags = [ "Youtube" ];
         title = "Jon Imperial";
       }
       {
-        url =
-          "https://www.youtube.com/feeds/videos.xml?channel_id=UCEfopmnijwEA9sCOD_hfRtA";
+        url = "https://www.youtube.com/feeds/videos.xml?channel_id=UCEfopmnijwEA9sCOD_hfRtA";
         tags = [ "Youtube" ];
         title = "Michael Soledad";
       }
       {
-        url =
-          "https://www.youtube.com/feeds/videos.xml?channel_id=UC6vOAOQUX2v1dlDj5YLoJ5g";
+        url = "https://www.youtube.com/feeds/videos.xml?channel_id=UC6vOAOQUX2v1dlDj5YLoJ5g";
         tags = [ "Youtube" ];
         title = "Aivars Meijers";
       }
       {
-        url =
-          "https://www.youtube.com/feeds/videos.xml?channel_id=UCCQ6SXMc7MoJ88jjpn6j-8Q";
+        url = "https://www.youtube.com/feeds/videos.xml?channel_id=UCCQ6SXMc7MoJ88jjpn6j-8Q";
         tags = [ "Youtube" ];
         title = "Marko";
       }
       {
-        url =
-          "https://www.youtube.com/feeds/videos.xml?channel_id=UCnn3N0i3TVGbQ9bMb4ln2OQ";
+        url = "https://www.youtube.com/feeds/videos.xml?channel_id=UCnn3N0i3TVGbQ9bMb4ln2OQ";
         tags = [ "Youtube" ];
         title = "Kyle Erickson";
       }
       {
-        url =
-          "https://www.youtube.com/feeds/videos.xml?channel_id=UCoOae5nYA7VqaXzerajD0lg";
+        url = "https://www.youtube.com/feeds/videos.xml?channel_id=UCoOae5nYA7VqaXzerajD0lg";
         tags = [ "Youtube" ];
         title = "Ali Abdaal";
       }
       {
-        url =
-          "https://www.youtube.com/feeds/videos.xml?channel_id=UCAiiOTio8Yu69c3XnR7nQBQ";
+        url = "https://www.youtube.com/feeds/videos.xml?channel_id=UCAiiOTio8Yu69c3XnR7nQBQ";
         tags = [ "Youtube" ];
         title = "System Crafters";
       }
       {
-        url =
-          "https://www.youtube.com/feeds/videos.xml?channel_id=UCgDqL4yzXb4BflimZaxL4Vg";
+        url = "https://www.youtube.com/feeds/videos.xml?channel_id=UCgDqL4yzXb4BflimZaxL4Vg";
         tags = [ "Youtube" ];
         title = "Andrew E.Zeng";
       }
       {
-        url =
-          "https://www.youtube.com/feeds/videos.xml?channel_id=UC2hi12ngz1aiGv_vditVHGw";
+        url = "https://www.youtube.com/feeds/videos.xml?channel_id=UC2hi12ngz1aiGv_vditVHGw";
         tags = [ "Youtube" ];
         title = "Brandon Boswell";
       }
       {
-        url =
-          "https://www.youtube.com/feeds/videos.xml?channel_id=UCvfUcuSDNOoFsAPsiGdaGPg";
+        url = "https://www.youtube.com/feeds/videos.xml?channel_id=UCvfUcuSDNOoFsAPsiGdaGPg";
         tags = [ "Youtube" ];
         title = "Notebook Check";
       }
       {
-        url =
-          "https://www.youtube.com/feeds/videos.xml?channel_id=UCxQKHvKbmSzGMvUrVtJYnUA";
+        url = "https://www.youtube.com/feeds/videos.xml?channel_id=UCxQKHvKbmSzGMvUrVtJYnUA";
         tags = [ "Youtube" ];
         title = "Learn Linux TV";
       }
       {
-        url =
-          "https://www.youtube.com/feeds/videos.xml?channel_id=UCLuJuI0M95qWsVw_KQOkTgQ";
+        url = "https://www.youtube.com/feeds/videos.xml?channel_id=UCLuJuI0M95qWsVw_KQOkTgQ";
         tags = [ "Youtube" ];
         title = "Pinsplash";
       }
       {
-        url =
-          "https://www.youtube.com/feeds/videos.xml?channel_id=UCJ6KZTTnkE-s2XFJJmoTAkw";
+        url = "https://www.youtube.com/feeds/videos.xml?channel_id=UCJ6KZTTnkE-s2XFJJmoTAkw";
         tags = [ "Youtube" ];
         title = "Accursed Farms";
       }
       {
-        url =
-          "https://www.youtube.com/feeds/videos.xml?channel_id=UCXuqSBlHAE6Xw-yeJA0Tunw";
+        url = "https://www.youtube.com/feeds/videos.xml?channel_id=UCXuqSBlHAE6Xw-yeJA0Tunw";
         tags = [ "Youtube" ];
         title = "LinusTechTips";
       }
       {
-        url =
-          "https://www.youtube.com/feeds/videos.xml?channel_id=UCjREVt2ZJU8ql-NC9Gu-TJw";
+        url = "https://www.youtube.com/feeds/videos.xml?channel_id=UCjREVt2ZJU8ql-NC9Gu-TJw";
         tags = [ "Youtube" ];
         title = "Code to the Moon";
       }
       {
-        url =
-          "https://www.youtube.com/feeds/videos.xml?channel_id=UCNhWSOlt_UoCzS2YSMhHYmA";
+        url = "https://www.youtube.com/feeds/videos.xml?channel_id=UCNhWSOlt_UoCzS2YSMhHYmA";
         tags = [ "Youtube" ];
         title = "Kai Notebook";
       }
       {
-        url =
-          "https://www.youtube.com/feeds/videos.xml?channel_id=UCLx053rWZxCiYWsBETgdKrQ";
+        url = "https://www.youtube.com/feeds/videos.xml?channel_id=UCLx053rWZxCiYWsBETgdKrQ";
         tags = [ "Youtube" ];
         title = "LGR";
       }
       {
-        url =
-          "https://www.youtube.com/feeds/videos.xml?channel_id=UC8uT9cgJorJPWu7ITLGo9Ww";
+        url = "https://www.youtube.com/feeds/videos.xml?channel_id=UC8uT9cgJorJPWu7ITLGo9Ww";
         tags = [ "Youtube" ];
         title = "The 8-Bit Guy";
       }
       {
-        url =
-          "https://www.youtube.com/feeds/videos.xml?channel_id=UCerEIdrEW-IqwvlH8lTQUJQ";
+        url = "https://www.youtube.com/feeds/videos.xml?channel_id=UCerEIdrEW-IqwvlH8lTQUJQ";
         tags = [ "Youtube" ];
         title = "Tech Tangents";
       }
       {
-        url =
-          "https://www.youtube.com/feeds/videos.xml?channel_id=UCoL8olX-259lS1N6QPyP4IQ";
+        url = "https://www.youtube.com/feeds/videos.xml?channel_id=UCoL8olX-259lS1N6QPyP4IQ";
         tags = [ "Youtube" ];
         title = "Action Retro";
       }
       {
-        url =
-          "https://www.youtube.com/feeds/videos.xml?channel_id=UC7yZ6keOGsvERMp2HaEbbXQ";
-        tags = [ "Youtube" "Programming" ];
+        url = "https://www.youtube.com/feeds/videos.xml?channel_id=UC7yZ6keOGsvERMp2HaEbbXQ";
+        tags = [
+          "Youtube"
+          "Programming"
+        ];
         title = "devaslife";
       }
       {
-        url =
-          "https://www.youtube.com/feeds/videos.xml?channel_id=UC0lE_IPPXhb_J9sZnMyIEwA";
-        tags = [ "Youtube" "Programming" ];
+        url = "https://www.youtube.com/feeds/videos.xml?channel_id=UC0lE_IPPXhb_J9sZnMyIEwA";
+        tags = [
+          "Youtube"
+          "Programming"
+        ];
         title = "llll colonq";
       }
       {
-        url =
-          "https://www.youtube.com/feeds/videos.xml?channel_id=UCUMwY9iS8oMyWDYIe6_RmoA";
-        tags = [ "Youtube" "Programming" ];
+        url = "https://www.youtube.com/feeds/videos.xml?channel_id=UCUMwY9iS8oMyWDYIe6_RmoA";
+        tags = [
+          "Youtube"
+          "Programming"
+        ];
         title = "No Boilerplate";
       }
       {
-        url =
-          "https://www.youtube.com/feeds/videos.xml?channel_id=UCnCmb1vpv90EeSX5g7K4UYQ";
-        tags = [ "Youtube" "Games" ];
+        url = "https://www.youtube.com/feeds/videos.xml?channel_id=UCnCmb1vpv90EeSX5g7K4UYQ";
+        tags = [
+          "Youtube"
+          "Games"
+        ];
         title = "The Librarian";
       }
       {
-        url =
-          "https://www.youtube.com/feeds/videos.xml?channel_id=UC_zBdZ0_H_jn41FDRG7q4Tw";
-        tags = [ "Youtube" "Nix" ];
+        url = "https://www.youtube.com/feeds/videos.xml?channel_id=UC_zBdZ0_H_jn41FDRG7q4Tw";
+        tags = [
+          "Youtube"
+          "Nix"
+        ];
         title = "Vimjoyer";
       }
       #{
@@ -350,8 +331,7 @@
         title = "Gavin Freeborn";
       } # #Piped
       {
-        url =
-          "https://pipedapi.kavin.rocks/feed/rss?authToken=5f754893-4492-46a1-8d5a-bfbeb8def939";
+        url = "https://pipedapi.kavin.rocks/feed/rss?authToken=5f754893-4492-46a1-8d5a-bfbeb8def939";
         tags = [ "Piped" ];
       }
       #Blog
@@ -361,108 +341,202 @@
       }
       {
         url = "https://myme.no/feed.xml";
-        tags = [ "Linux" "Tech" "Blog" ];
+        tags = [
+          "Linux"
+          "Tech"
+          "Blog"
+        ];
       }
       {
         url = "https://emacsredux.com/atom.xml";
-        tags = [ "Tech" "Emacs" "Blog" ];
+        tags = [
+          "Tech"
+          "Emacs"
+          "Blog"
+        ];
       }
       {
         url = "https://emacstil.com/feed.xml";
-        tags = [ "Tech" "Emacs" "Blog" ];
+        tags = [
+          "Tech"
+          "Emacs"
+          "Blog"
+        ];
       }
       {
         url = "https://irreal.org/blog/?feed=rss2";
-        tags = [ "Tech" "Emacs" "Blog" ];
+        tags = [
+          "Tech"
+          "Emacs"
+          "Blog"
+        ];
       }
       {
         url = "https://mbork.pl/?action=rss;days=30;all=0;showedit=0;full=1";
-        tags = [ "Tech" "Emacs" "Blog" ];
+        tags = [
+          "Tech"
+          "Emacs"
+          "Blog"
+        ];
       }
       {
         url = "https://morss.it/https://planet.emacslife.com/atom.xml";
-        tags = [ "Tech" "Emacs" "Blog" ];
+        tags = [
+          "Tech"
+          "Emacs"
+          "Blog"
+        ];
       }
       {
         url = "https://planet.clojure.in/atom.xml";
-        tags = [ "Tech" "Programming" "Blog" ];
+        tags = [
+          "Tech"
+          "Programming"
+          "Blog"
+        ];
       }
       {
         url = "https://xeiaso.net/blog.rss";
-        tags = [ "Tech" "Nix" "Blog" ];
+        tags = [
+          "Tech"
+          "Nix"
+          "Blog"
+        ];
       }
       {
         url = "https://xn--gckvb8fzb.com/index.xml";
-        tags = [ "Tech" "Linux" "Privacy" "Blog" ];
+        tags = [
+          "Tech"
+          "Linux"
+          "Privacy"
+          "Blog"
+        ];
       }
       {
         url = "https://determinate.systems/rss.xml";
-        tags = [ "Nix" "Blog" ];
+        tags = [
+          "Nix"
+          "Blog"
+        ];
       }
       {
         url = "https://thewagner.net/feeds/all.atom.xml";
-        tags = [ "Nix" "Programming" "Homelab" "Blog" ];
+        tags = [
+          "Nix"
+          "Programming"
+          "Homelab"
+          "Blog"
+        ];
       }
       {
         url = "https://morss.it/https://nixcademy.com/feed";
-        tags = [ "Nix" "Blog" ];
+        tags = [
+          "Nix"
+          "Blog"
+        ];
       }
       {
         url = "https://itsfoss.com/rss/";
-        tags = [ "Blog" "Linux" ];
+        tags = [
+          "Blog"
+          "Linux"
+        ];
       }
       {
         url = "https://blog.rust-lang.org/feed.xml";
-        tags = [ "Blog" "Programming" ];
+        tags = [
+          "Blog"
+          "Programming"
+        ];
       }
       {
         url = "https://thelinuxexp.com/feed.xml";
-        tags = [ "Blog" "Linux" ];
+        tags = [
+          "Blog"
+          "Linux"
+        ];
       }
       {
         url = "https://thelinuxcast.org/feed/feed.xml";
-        tags = [ "Blog" "Linux" ];
+        tags = [
+          "Blog"
+          "Linux"
+        ];
       }
       {
         url = "https://michal.sapka.me/index.xml";
-        tags = [ "Blog" "BSD" ];
+        tags = [
+          "Blog"
+          "BSD"
+        ];
       }
       {
         url = "https://morss.it/https://fabiensanglard.net/rss.xml";
-        tags = [ "Blog" "Linux" "Tech" ];
+        tags = [
+          "Blog"
+          "Linux"
+          "Tech"
+        ];
       }
       {
         url = "https://morss.it/https://panoptykon.org/rss.xml";
-        tags = [ "Blog" "Politics" ];
+        tags = [
+          "Blog"
+          "Politics"
+        ];
       }
       {
         url = "https://zettelkasten.de/feed.atom";
-        tags = [ "Blog" "Notes" ];
+        tags = [
+          "Blog"
+          "Notes"
+        ];
       }
       {
         url = "https://blog.phundrak.com/index.xml";
-        tags = [ "Blog" "Tech" "Emacs" ];
+        tags = [
+          "Blog"
+          "Tech"
+          "Emacs"
+        ];
       }
       {
         url = "https://vermaden.wordpress.com/feed";
-        tags = [ "Blog" "Tech" "BSD" ];
+        tags = [
+          "Blog"
+          "Tech"
+          "BSD"
+        ];
         title = "vermaden";
       }
       {
         url = "https://morss.it/https://fasterthanli.me/index.xml";
-        tags = [ "Blog" "Tech" "Programming" ];
+        tags = [
+          "Blog"
+          "Tech"
+          "Programming"
+        ];
       }
       {
         url = "https://morss.it/https://aliabdaal.com/feed/";
-        tags = [ "Blog" "Lifestyle" ];
+        tags = [
+          "Blog"
+          "Lifestyle"
+        ];
       }
       {
         url = "https://programmershideaway.xyz/atom.xml";
-        tags = [ "Blog" "Programming" ];
+        tags = [
+          "Blog"
+          "Programming"
+        ];
       }
       {
         url = "https://morss.it/https://www.jeffgeerling.com/blog.xml";
-        tags = [ "Blog" "Tech" ];
+        tags = [
+          "Blog"
+          "Tech"
+        ];
       }
       {
         url = "https://ploum.net/atom_en.xml";
@@ -470,19 +544,31 @@
       }
       {
         url = "https://haseebmajid.dev/posts/index.xml";
-        tags = [ "Blog" "Nix" ];
+        tags = [
+          "Blog"
+          "Nix"
+        ];
       }
       {
         url = "https://heywoodlh.io/feed.xml";
-        tags = [ "Blog" "Nix" ];
+        tags = [
+          "Blog"
+          "Nix"
+        ];
       }
       {
         url = "http://dorotac.eu/atom.xml";
-        tags = [ "Blog" "Tech" ];
+        tags = [
+          "Blog"
+          "Tech"
+        ];
       }
       {
         url = "https://morss.it/https://signal.org/blog/rss.xml";
-        tags = [ "Blog" "Privacy" ];
+        tags = [
+          "Blog"
+          "Privacy"
+        ];
       }
       #Twitch?
       {
@@ -525,8 +611,7 @@
       }
       #News
       {
-        url =
-          "https://morss.it/https://gazetawroclawska.pl/rss/gazetawroclawska.xml";
+        url = "https://morss.it/https://gazetawroclawska.pl/rss/gazetawroclawska.xml";
         tags = [ "Wrocław" ];
       }
       {
@@ -535,7 +620,10 @@
       }
       {
         url = "https://morss.it/https://www.wroclaw.pl/kultura/rss/";
-        tags = [ "Wrocław" "Culture" ];
+        tags = [
+          "Wrocław"
+          "Culture"
+        ];
       }
       {
         url = "https://morss.it/https://www.wroclaw.pl/komunikacja/rss/";
@@ -543,7 +631,10 @@
       }
       {
         url = "https://dcf.wroclaw.pl/feed/";
-        tags = [ "Wrocław" "Culture" ];
+        tags = [
+          "Wrocław"
+          "Culture"
+        ];
       }
       {
         url = "https://konwenty-poludniowe.pl/?format=feed&type=atom";

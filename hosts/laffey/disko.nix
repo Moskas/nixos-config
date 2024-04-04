@@ -22,18 +22,25 @@
                 type = "btrfs";
                 extraArgs = [ "-f" ];
                 subvolumes = {
-                  "/rootfs" = { mountpoint = "/"; };
+                  "/rootfs" = {
+                    mountpoint = "/";
+                  };
                   "/home" = {
                     mountOptions = [ "compress=zstd" ];
                     mountpoint = "/home";
                   };
                   "/nix" = {
-                    mountOptions = [ "compress=zstd" "noatime" ];
+                    mountOptions = [
+                      "compress=zstd"
+                      "noatime"
+                    ];
                     mountpoint = "/nix";
                   };
                   "/swap" = {
                     mountpoint = "/.swapvol";
-                    swap = { swapfile.size = "8G"; };
+                    swap = {
+                      swapfile.size = "8G";
+                    };
                   };
                   "/media" = {
                     mountpoint = "/media";
@@ -42,7 +49,11 @@
                 };
 
                 mountpoint = "/partition-root";
-                swap = { swapfile = { size = "8G"; }; };
+                swap = {
+                  swapfile = {
+                    size = "8G";
+                  };
+                };
               };
             };
           };

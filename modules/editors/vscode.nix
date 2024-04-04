@@ -1,7 +1,5 @@
+{ pkgs, ... }:
 {
-  pkgs,
-  ...
-}: {
   programs.vscode = {
     enable = true;
     package = pkgs.vscode-fhs; # For rust-analyzer etc

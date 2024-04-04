@@ -5,7 +5,8 @@ let
   webBrowser = "firefox.desktop";
   docOpener = "org.pwmt.zathura-pdf-mupdf.desktop";
   textEditor = "emacsclient.desktop";
-in {
+in
+{
   xdg = {
     mimeApps = {
       enable = true;

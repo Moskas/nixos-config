@@ -14,5 +14,7 @@
     };
   };
 
-  programs.gh-dash = { enable = true; };
+  programs.gh-dash = {
+    enable = true;
+  };
 }

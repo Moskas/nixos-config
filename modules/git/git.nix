@@ -5,7 +5,9 @@
     enable = true;
     userName = "Moskas";
     userEmail = "${e-mail}";
-    extraConfig = { init.defaultBranch = "master"; };
+    extraConfig = {
+      init.defaultBranch = "master";
+    };
     aliases = {
       c = "clone";
       ci = "commit";

@@ -1,4 +1,5 @@
-{ config, ... }: {
+{ config, ... }:
+{
   programs.starship = {
     enable = true;
     enableZshIntegration = true;
@@ -13,7 +14,9 @@
         success_symbol = "[ ](blue)";
         error_symbol = "[ ](red)";
       };
-      fill = { symbol = " "; };
+      fill = {
+        symbol = " ";
+      };
       time = {
         disabled = false;
         format = "[ 󰅐 $time ]($style)";

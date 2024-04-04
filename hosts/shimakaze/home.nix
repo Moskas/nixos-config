@@ -1,4 +1,10 @@
-{ pkgs, username, nix-colors, ... }: {
+{
+  pkgs,
+  username,
+  nix-colors,
+  ...
+}:
+{
   imports = [
     nix-colors.homeManagerModules.default
     ../../modules/git
@@ -16,14 +22,19 @@
   home = {
     username = "${username}";
     homeDirectory = "/home/${username}";
-    packages = with pkgs; [ nmap w3m ];
+    packages = with pkgs; [
+      nmap
+      w3m
+    ];
   };
 
   programs.starship = {
     settings = {
-      format = pkgs.lib.mkForce (pkgs.lib.concatStrings [
-        "$os$hostname$rust$python$node$lua$git_branch$git_status$git_state$nix_shell$line_break$directory$sudo$character"
-      ]);
+      format = pkgs.lib.mkForce (
+        pkgs.lib.concatStrings [
+          "$os$hostname$rust$python$node$lua$git_branch$git_status$git_state$nix_shell$line_break$directory$sudo$character"
+        ]
+      );
       hostname.style = pkgs.lib.mkForce "fg:bg bg:blue bold";
     };
   };

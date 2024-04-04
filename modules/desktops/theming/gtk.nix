@@ -1,6 +1,13 @@
-{ config, pkgs, nix-colors, ... }:
-let inherit (nix-colors.lib-contrib { inherit pkgs; }) gtkThemeFromScheme;
-in {
+{
+  config,
+  pkgs,
+  nix-colors,
+  ...
+}:
+let
+  inherit (nix-colors.lib-contrib { inherit pkgs; }) gtkThemeFromScheme;
+in
+{
   gtk = {
     enable = true;
     theme = {

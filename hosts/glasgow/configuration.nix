@@ -10,10 +10,17 @@
   nixpkgs.hostPlatform.system = "i686-linux";
 
   nix.settings = {
-    experimental-features = [ "nix-command" "flakes" ];
+    experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
     # auto-optimise-store = true;
     builders-use-substitutes = true;
-    trusted-users = [ "root" "moskas" "@wheel" ];
+    trusted-users = [
+      "root"
+      "moskas"
+      "@wheel"
+    ];
   };
 
   boot.loader.grub.enable = true;
@@ -48,7 +55,6 @@
   environment.systemPackages = with pkgs; [
     git
     neovim
-    nixfmt
     neofetch
     btop
     du-dust

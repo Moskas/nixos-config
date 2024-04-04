@@ -3,7 +3,9 @@
 {
   programs.zsh = {
     enable = true;
-    shellAliases = { e = "$EDITOR"; };
+    shellAliases = {
+      e = "$EDITOR";
+    };
     history = {
       size = 10000;
       path = "${config.xdg.dataHome}/zsh/history";
@@ -13,7 +15,9 @@
     autocd = false;
     defaultKeymap = "emacs";
     plugins = [ ];
-    shellAliases = { cat = "bat --decorations=never --paging=never"; };
+    shellAliases = {
+      cat = "bat --decorations=never --paging=never";
+    };
     initExtra = ''
       export PATH=~/.config/emacs/bin:$PATH
       export PATH=~/.local/share/applications/:$PATH

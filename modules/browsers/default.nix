@@ -1,5 +1,9 @@
 { ... }:
 
 {
-  imports = [ ./brave.nix ./firefox.nix ./qutebrowser.nix ];
+  imports = [
+    ./brave.nix
+    ./firefox.nix
+    ./qutebrowser.nix
+  ];
 }

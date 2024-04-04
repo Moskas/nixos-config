@@ -1,5 +1,7 @@
 { ... }:
 
 {
-  windowManager.awesome = { enable = false; };
+  windowManager.awesome = {
+    enable = false;
+  };
 }

@@ -1,4 +1,9 @@
-{ lib, python311Packages, fetchFromGitHub, pkgs }:
+{
+  lib,
+  python311Packages,
+  fetchFromGitHub,
+  pkgs,
+}:
 
 python311Packages.buildPythonApplication rec {
   pname = "epy";
