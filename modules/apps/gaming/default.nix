@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, gamingPkgs, ... }:
 {
   home.packages = with pkgs; [
     protonup-ng
@@ -15,5 +15,6 @@
     (callPackage ../../../pkgs/osu-bin.nix { })
     jre8 # for old Minecraft versions
     ferium
+    gamingPkgs.osu-stable
   ];
 }
