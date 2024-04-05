@@ -13,33 +13,40 @@
 - Cheshire - my main desktop
 - Roon - laptop
 - Shimakaze - [NixOS WSL](https://github.com/nix-community/NixOS-WSL) config
+- Laffey - home server
 
 > *Yes, these are the names of warships.*
 
 ## Flake structure
 
 ``` shell
-  .
- ├──  hosts # All devices with their corresponding configurations
- │  ├──  cheshire
- │  ├──  glasgow
- │  ├──  laffey
- │  ├──  roon
- │  └──  shimakaze
- └──  modules # All modular configurations like shells, apps etc.
-    ├──  apps
-    ├──  browsers
-    ├──  desktops
-    ├──  editors
-    ├──  email
-    ├──  fonts
-    ├──  git
-    ├──  media
-    ├──  nix
-    ├──  nvidia
-    ├──  scripts
-    ├──  services
-    └──  shell
+.
+├── hosts # All devices with their corresponding configurations
+│  ├── cheshire
+│  ├── glasgow
+│  ├── iso
+│  ├── laffey
+│  │  └── services
+│  ├── roon
+│  └── shimakaze
+├── modules # All modular configurations like shells, apps etc.
+│  ├── apps
+│  │  └── gaming
+│  ├── browsers
+│  ├── desktops
+│  │  └── theming
+│  ├── editors
+│  ├── email
+│  ├── fonts
+│  ├── git
+│  ├── media
+│  ├── nix
+│  ├── nvidia
+│  ├── overlays
+│  ├── scripts
+│  ├── services
+│  └── shell
+└── pkgs # Custom packages
 ```
 
 ## Installation
@@ -73,7 +80,7 @@ Example:
 ```
 You can also use config placed in the flake directory and source the configuration directory like so:
 ```nix
-xdg.confileFile.qtile.source = ./qtile;
+xdg.configFile.qtile.source = ./qtile;
 ```
 
 ## More screenshots
