@@ -6,6 +6,7 @@ in
   programs.qutebrowser = {
     enable = true;
     searchEngines = {
+      DEFAULT = "https://startpage.com/search?q={}";
       w = "https://en.wikipedia.org/wiki/Special:Search?search={}&go=Go&ns0=1";
       aw = "https://wiki.archlinux.org/?search={}";
       np = "https://search.nixos.org/packages?&query={}";
@@ -153,7 +154,7 @@ in
           };
         };
         webpage = {
-          bg = "#${config.colorScheme.palette.base00}";
+          # bg = "#${config.colorScheme.palette.base00}"; # Doesn't work that well if we manually set the background as the text will be dark on dark on some pages
           preferred_color_scheme = "${config.colorScheme.variant}";
           darkmode.enabled = false;
           darkmode.policy.images = "never";

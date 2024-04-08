@@ -18,6 +18,7 @@ in
     nur.nixosModules.nur
     ./wallpapers.nix
     ../../modules/browsers
+    ../../modules/browsers/nyxt.nix
     ../../modules/apps
     ../../modules/apps/gaming
     ../../modules/git
@@ -75,10 +76,11 @@ in
     feh
     lutgen
     (callPackage ../../pkgs/nyaa.nix { })
+    (pkgs.ollama.override { acceleration = "cuda"; })
 
     gimp
     # wayland testing
-    # waybar # issues with building the system 19.03.2024
+    waybar # issues with building the system 19.03.2024
     wl-gammactl
     wlsunset
     grim

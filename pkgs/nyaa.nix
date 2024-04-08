@@ -6,19 +6,18 @@
   pkg-config,
   openssl,
 }:
-
 rustPlatform.buildRustPackage {
   pname = "nyaa";
-  version = "0.7.0";
+  version = "0.8.0";
 
   src = fetchFromGitHub {
     owner = "Beastwick18";
     repo = "nyaa";
-    rev = "708779b78383e170ac50eee12416589fc83279a1";
-    hash = "sha256-spQ0Zc1o/omA14CA7IsHrD6U/nRVYrDKQJj2DX6ZdMQ=";
+    rev = "e977a9f8616bef4b507f96107e2a0ec31d314f9b";
+    hash = "sha256-SVL81RSrc3HGVkSghlQUvZzqZctfwWFSENkPWCo6upA=";
   };
 
-  cargoHash = "sha256-2BSXjMIhgmaooEuckQ/3ud8pea+00fHspUGUeCZcaKk=";
+  cargoHash = "sha256-pt+JlefWHnSBwShL8MOGP6LrZkkOUOKVR43bTMyAfaY=";
 
   nativeBuildInputs = [
     cmake

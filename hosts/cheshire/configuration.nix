@@ -82,6 +82,7 @@
       enable = true;
     };
     steam-hardware.enable = true;
+    opentabletdriver.enable = true;
   };
 
   programs.steam = {
@@ -238,6 +239,7 @@
     MANPAGER = "less -FR";
     #PAGER = "bat";
     PULSE_LATENCY_MSEC = "50";
+    WEBKIT_DISABLE_DMABUF_RENDERER = "1"; # I had issues where nyxt would launch with blank window
   };
 
   # List packages installed in system profile. To search, run:

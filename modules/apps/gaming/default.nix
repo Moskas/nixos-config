@@ -15,6 +15,6 @@
     (callPackage ../../../pkgs/osu-bin.nix { })
     jre8 # for old Minecraft versions
     ferium
-    gamingPkgs.osu-stable
+    # gamingPkgs.osu-stable # mime conflicts with osu!lazer
   ];
 }
