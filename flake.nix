@@ -4,7 +4,6 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
-    #nixpkgs-staging-next.url = "github:nixos/nixpkgs/staging-next";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -40,10 +39,14 @@
       url = "github:fufexan/nix-gaming";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nix-on-droid = {
-      url = "github:nix-community/nix-on-droid/testing";
+    #nix-on-droid = {
+    #  url = "github:nix-community/nix-on-droid/testing";
+    #  inputs.nixpkgs.follows = "nixpkgs";
+    #  inputs.home-manager.follows = "home-manager";
+    #};
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v0.3.0";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
     };
 
     # qtile setup
@@ -86,10 +89,6 @@
           emacs-overlay.overlay
           nur.overlay
         ];
-        #system.replaceRuntimeDependencies = [{
-        #  original = pkgs.xz;
-        #  replacement = nixpkgs-staging-next.legacyPackages.${system}.xz;
-        #}];
       };
     in
     {
@@ -264,6 +263,7 @@
           age
           deadnix
           nil
+          statix
         ];
         name = "dotfiles";
         DIRENV_LOG_FORMAT = "";
