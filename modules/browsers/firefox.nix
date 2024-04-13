@@ -71,6 +71,9 @@
         "privacy.partition.serviceWorkers" = true;
         "privacy.partition.always_partition_third_party_non_cookie_storage" = true;
         "privacy.partition.always_partition_third_party_non_cookie_storage.exempt_sessionstorage" = true;
+
+        # Webgl
+        "webgl.force-enabled" = true;
       };
       search = {
         default = "StartPage";

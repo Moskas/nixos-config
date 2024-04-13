@@ -5,6 +5,8 @@
     enable = true;
     shellAliases = {
       e = "$EDITOR";
+      cat = "bat --decorations=never --paging=never";
+      tx = "tmux new -As0";
     };
     history = {
       size = 10000;
@@ -15,9 +17,6 @@
     autocd = false;
     defaultKeymap = "emacs";
     plugins = [ ];
-    shellAliases = {
-      cat = "bat --decorations=never --paging=never";
-    };
     initExtra = ''
       export PATH=~/.config/emacs/bin:$PATH
       export PATH=~/.local/share/applications/:$PATH
