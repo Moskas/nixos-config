@@ -1,5 +1,4 @@
 { pkgs, ... }:
-
 {
   fonts = {
     fontDir.enable = true;
@@ -12,8 +11,9 @@
         ];
       })
       noto-fonts-emoji
-      ipafont
-      kochi-substitute
+      ipafont # Japanese
+      kochi-substitute # Japanese
+      baekmuk-ttf # Korean
     ];
   };
 }

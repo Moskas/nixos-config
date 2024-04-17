@@ -1,5 +1,4 @@
 { config, lib, ... }:
-
 {
   hardware.nvidia = {
     modesetting.enable = true;

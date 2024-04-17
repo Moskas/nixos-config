@@ -6,6 +6,7 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    ../../modules/common
     ../../modules/nix
     ../../modules/fonts
     ../../modules/scripts/diff.nix
@@ -39,9 +40,6 @@
     # Add support for Windows partitions
     supportedFilesystems = [ "ntfs" ];
   };
-
-  # Trimming the ssds
-  services.fstrim.enable = true;
 
   # Enabling latest linux kernel
   boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
@@ -87,11 +85,11 @@
 
   programs.steam = {
     enable = true;
-    gamescopeSession.enable = true;
+    gamescopeSession.enable = false;
   };
 
   programs.gamescope = {
-    enable = true;
+    enable = false;
     env = {
       __GLX_VENDOR_LIBRARY_NAME = "nvidia";
     };
@@ -148,10 +146,6 @@
     enable = true;
     xkb.layout = "pl";
     displayManager.gdm.enable = true;
-    #windowManager.qtile = {
-    #  enable = true;
-    #  package = pkgs.qtile;
-    #}; Moved to modules/desktops``
     windowManager.awesome = {
       enable = true;
       luaModules = with pkgs.luaPackages; [ luarocks ];
@@ -313,9 +307,6 @@
   };
 
   programs.virt-manager.enable = true;
-
-  programs.nano.enable = false; # Be gone
-
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you
   # accidentally delete configuration.nix.
