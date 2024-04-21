@@ -76,7 +76,7 @@ in
     feh
     lutgen
     (callPackage ../../pkgs/nyaa.nix { })
-    (pkgs.ollama.override { acceleration = "cuda"; })
+    #(pkgs.ollama.override { acceleration = "cuda"; })
 
     gimp
     # wayland testing
