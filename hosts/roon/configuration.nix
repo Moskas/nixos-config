@@ -18,6 +18,7 @@
     ../../modules/nix
     ../../modules/services/tailscale.nix
     ../../modules/services/fwupd.nix
+    ../../modules/services/ssh.nix
     ../../modules/overlays
   ];
 
@@ -290,7 +291,6 @@
   programs.dconf.enable = true;
 
   # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
 
   programs.ssh.startAgent = true;
 

@@ -6,6 +6,7 @@
     ./hardware-configuration.nix
     ./services
     ../../modules/nix
+    ../../modules/services/ssh.nix
   ];
 
   services.xserver.videoDrivers = [ "nvidia" ];
@@ -123,16 +124,8 @@
 
   # List services that you want to enable:
 
-  # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
-
   virtualisation.docker.enable = true;
 
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  #networking.firewall.enable = false;
   networking.firewall = {
     enable = true;
     allowedTCPPorts = [

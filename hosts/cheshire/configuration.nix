@@ -14,6 +14,7 @@
     ../../modules/services/fwupd.nix
     ../../modules/services/udev.nix
     ../../modules/services/btrfs.nix
+    ../../modules/services/ssh.nix
     ../../modules/overlays
     ../../modules/nvidia/nvidia.nix
     ../../modules/desktops/qtile.nix
@@ -261,9 +262,6 @@
   programs.dconf = {
     enable = true;
   };
-
-  # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
 
   services.hardware.openrgb = {
     enable = true;
