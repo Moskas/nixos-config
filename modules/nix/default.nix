@@ -1,10 +1,11 @@
-{ pkgs, inputs, ... }:
+{ pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
     nh
     nixfmt-rfc-style
     nil
     nix-inspect
+    nix-output-monitor
   ];
 
   nix = {

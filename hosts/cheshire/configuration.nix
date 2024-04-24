@@ -74,6 +74,7 @@
       extraPackages = with pkgs; [
         mangohud
         nvidia-vaapi-driver
+        vaapiVdpau
       ];
       extraPackages32 = with pkgs; [ mangohud ];
     };
@@ -267,19 +268,6 @@
     enable = true;
     motherboard = "amd";
   };
-
-  #systemd.user.services.mpdas = {
-  #  #Unit = {
-  #  description = "Audioscrobbler client for MPD";
-  #  wantedBy = [ "multi-user.target" ];
-  #  after = [ "default.target" ];
-  #  #};
-  #  serviceConfig = {
-  #    ExecStart = "${pkgs.mpdas}/bin/mpdas";
-  #    Restart = "on-failure";
-  #    RestartSec = 5;
-  #  };
-  #};
 
   virtualisation = {
     libvirtd = {

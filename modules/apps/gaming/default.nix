@@ -1,4 +1,4 @@
-{ pkgs, gamingPkgs, ... }:
+{ pkgs, ... }:
 {
   home.packages = with pkgs; [
     protonup-ng
