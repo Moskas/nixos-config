@@ -1,0 +1,1 @@
+{ imports = [ ./wallpapers.nix ]; }

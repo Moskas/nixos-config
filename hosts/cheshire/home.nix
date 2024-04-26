@@ -16,7 +16,8 @@ in
   imports = [
     nix-colors.homeManagerModules.default
     nur.nixosModules.nur
-    ./wallpapers.nix
+    ../../modules/common/home
+    #../../modules/desktops/theming/gtk.nix # TODO Look for some improvements as GTK4/Libadwaita looks horrible
     ../../modules/browsers
     ../../modules/browsers/nyxt.nix
     ../../modules/apps

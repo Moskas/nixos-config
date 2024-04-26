@@ -14,7 +14,7 @@ in
   imports = [
     nix-colors.homeManagerModules.default
     nur.nixosModules.nur
-    ./wallpapers.nix
+    ../../modules/common/home
     ./gtk.nix
     ../../modules/shell
     ../../modules/browsers

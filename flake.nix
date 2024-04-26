@@ -56,10 +56,10 @@
     };
 
     # wallpapers
-    wallpapers = {
-      url = "github:Moskas/wallpapers";
-      flake = false;
-    };
+    #wallpapers = {
+    #  url = "github:Moskas/wallpapers";
+    #  flake = false;
+    #};
   };
   outputs =
     {
@@ -262,7 +262,8 @@
           sops
           age
           deadnix
-          nil
+          #nil
+          nixd
           statix
         ];
         name = "dotfiles";

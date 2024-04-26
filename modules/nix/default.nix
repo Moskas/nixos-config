@@ -3,7 +3,8 @@
   environment.systemPackages = with pkgs; [
     nh
     nixfmt-rfc-style
-    nil
+    #nil
+    nixd
     nix-inspect
     nix-output-monitor
   ];
