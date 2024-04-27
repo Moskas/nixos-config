@@ -7,6 +7,7 @@
     ./services
     ../../modules/nix
     ../../modules/services/ssh.nix
+    ../../modules/services/fwupd.nix
   ];
 
   services.xserver.videoDrivers = [ "nvidia" ];
@@ -130,8 +131,11 @@
     enable = true;
     allowedTCPPorts = [
       22
+      80
+      443
       3000
       8096
+      8082
     ];
     allowedUDPPorts = [ ];
   };
