@@ -3,7 +3,7 @@
 {
   programs.emacs = {
     enable = true;
-    package = pkgs.emacs-unstable-pgtk;
+    package = pkgs.emacs-unstable;
     extraPackages =
       epkgs: with epkgs; [
         vterm-toggle # Added as doom-emacs vterm won't compile due to read only directory
@@ -16,7 +16,7 @@
   services.emacs = {
     enable = true;
     client.enable = true;
-    package = pkgs.emacs-unstable-pgtk;
+    package = pkgs.emacs-unstable;
     startWithUserSession = "graphical";
   };
 
