@@ -3,7 +3,7 @@
     enable = true;
     browser = "qutebrowser";
     autoReload = true;
-    reloadThreads = 100;
+    reloadThreads = 8;
     extraConfig = ''
       color background         default   default
       color listnormal         color8    default

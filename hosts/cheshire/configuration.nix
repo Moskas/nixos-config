@@ -111,13 +111,13 @@
         Option "RefreshRate" "143.98"
       EndSection
     '';
-    libinput = {
-      enable = true;
-      mouse = {
-        accelProfile = "flat";
-      };
-      touchpad = { };
+  };
+  services.libinput = {
+    enable = true;
+    mouse = {
+      accelProfile = "flat";
     };
+    touchpad = { };
   };
 
   networking = {
@@ -163,7 +163,7 @@
   };
 
   programs.hyprland = {
-    enable = true;
+    enable = false;
     xwayland.enable = true;
   };
 

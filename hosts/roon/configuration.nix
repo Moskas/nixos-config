@@ -44,13 +44,14 @@
   services.xserver = {
     videoDrivers = [ "nvidia" ];
     dpi = 100;
-    libinput = {
-      enable = true;
-      mouse = {
-        accelProfile = "flat";
-      };
-      touchpad = { };
+  };
+
+  services.libinput = {
+    enable = true;
+    mouse = {
+      accelProfile = "flat";
     };
+    touchpad = { };
   };
   hardware = {
     cpu.intel.updateMicrocode = true;

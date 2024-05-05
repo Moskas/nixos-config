@@ -9,8 +9,6 @@
 }:
 let
   random-wallpaper = import ../../modules/scripts/random-wallpaper.nix { inherit pkgs config; };
-  cropshot = import ../../modules/scripts/cropshot.nix { inherit pkgs config; };
-  fullshot = import ../../modules/scripts/fullshot.nix { inherit pkgs config; };
 in
 {
   imports = [
@@ -26,6 +24,7 @@ in
     ../../modules/media
     ../../modules/editors
     ../../modules/shell
+    ../../modules/scripts
     ../../modules/email
     ../../modules/services
     ../../modules/desktops/qtilestyle.nix
@@ -68,28 +67,26 @@ in
     #pkg-config
     openrgb-with-all-plugins
     distrobox
-    nicotine-plus
     random-wallpaper
-    cropshot
-    fullshot
+    nicotine-plus
     obs-studio
     discord-screenaudio
     feh
     lutgen
     (callPackage ../../pkgs/nyaa.nix { })
-    (pkgs.ollama.override { acceleration = "cuda"; })
+    (ollama.override { acceleration = "cuda"; })
 
     gimp
     # wayland testing
-    waybar # issues with building the system 19.03.2024
-    wl-gammactl
-    wlsunset
-    grim
-    slurp
-    wl-clipboard
-    grimblast
-    swww
-    mako
+    # waybar
+    # wl-gammactl
+    # wlsunset
+    # grim
+    # slurp
+    # wl-clipboard
+    # grimblast
+    # swww
+    # mako
   ];
 
   dconf.settings = {
