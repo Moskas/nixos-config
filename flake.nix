@@ -35,10 +35,6 @@
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nix-gaming = {
-      url = "github:fufexan/nix-gaming";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     #nix-on-droid = {
     #  url = "github:nix-community/nix-on-droid/testing";
     #  inputs.nixpkgs.follows = "nixpkgs";
@@ -72,14 +68,12 @@
       nixvim,
       nixvim-config,
       emacs-overlay,
-      nix-gaming,
       disko,
       ...
     }@inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system}; # { config.allowUnfree = true; };
-      gamingPkgs = nix-gaming.packages.${system};
       username = "moskas";
       e-mail = "minemoskas@gmail.com";
       #lib = nixpkgs.lib;
@@ -114,7 +108,6 @@
                     nix-colors
                     nixvim
                     nixvim-config
-                    gamingPkgs
                     ;
                 };
               };
@@ -178,14 +171,12 @@
                     nixvim
                     nixvim-config
                     nur
-                    gamingPkgs
                     inputs
                     ;
                 };
                 users.${username}.imports = [ (import ./hosts/cheshire/home.nix) ];
               };
             }
-            inputs.nix-gaming.nixosModules.pipewireLowLatency
           ];
         };
         laffey = lib.nixosSystem {

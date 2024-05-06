@@ -25,6 +25,7 @@
     packages = with pkgs; [
       nmap
       w3m
+      ollama
     ];
   };
 

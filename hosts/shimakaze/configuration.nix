@@ -2,6 +2,8 @@
 {
   imports = [
     "${modulesPath}/profiles/minimal.nix"
+    ../../modules/fonts # A little redundant on wsl but I couldn't find a way to use windows fonts in nixos-wsl
+    ../../modules/services/ssh.nix
     ../../modules/scripts/diff.nix
     ../../modules/nix
     ../../modules/overlays
@@ -48,6 +50,9 @@
   nix.extraOptions = ''
     experimental-features = nix-command flakes
   '';
+  programs.nix-ld = {
+    enable = true;
+  };
 
   environment = {
     systemPackages = with pkgs; [

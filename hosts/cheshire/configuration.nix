@@ -187,12 +187,6 @@
     wireplumber.enable = true;
     # If you want to use JACK applications, uncomment this
     jack.enable = true;
-
-    # nix-gaming
-    lowLatency = {
-      enable = false;
-      quantum = 80;
-    };
   };
 
   security.rtkit.enable = true;
