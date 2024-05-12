@@ -73,10 +73,9 @@
     }@inputs:
     let
       system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system}; # { config.allowUnfree = true; };
+      pkgs = nixpkgs.legacyPackages.${system};
       username = "moskas";
       e-mail = "minemoskas@gmail.com";
-      #lib = nixpkgs.lib;
       inherit (nixpkgs) lib;
       default-overlays = {
         nixpkgs.overlays = [

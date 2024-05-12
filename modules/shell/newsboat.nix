@@ -472,6 +472,7 @@
           "Blog"
           "BSD"
         ];
+        title = "Michał Sapka";
       }
       {
         url = "https://morss.it/https://fabiensanglard.net/rss.xml";
@@ -485,7 +486,7 @@
         url = "https://morss.it/https://panoptykon.org/rss.xml";
         tags = [
           "Blog"
-          "Politics"
+          "Privacy"
         ];
       }
       {
@@ -645,7 +646,10 @@
       }
       {
         url = "https://www.internet-czas-dzialac.pl/rss";
-        tags = [ "Tech" ];
+        tags = [
+          "Tech"
+          "Privacy"
+        ];
       }
       {
         url = "https://morss.it/https://www.theregister.com/headlines.atom";
