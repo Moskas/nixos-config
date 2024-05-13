@@ -8,6 +8,6 @@
     alexandria
     clx-truetype
     xembed
-    pkgs.lispPackages.quicklisp
+    #pkgs.lispPackages.quicklisp
   ];
 }

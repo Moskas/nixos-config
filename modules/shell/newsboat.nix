@@ -8,8 +8,8 @@
       color background         default   default
       color listnormal         color8    default
       color listnormal_unread  default   default
-      color listfocus          white     yellow bold
-      color listfocus_unread   white   yellow bold
+      color listfocus          yellow    default bold
+      color listfocus_unread   yellow    default bold
       color info               green     default bold
       color article            default   default
       highlight article "^Feed:.*"                        cyan  default
@@ -33,7 +33,8 @@
       show-read-articles no
       show-read-feeds no
 
-      articlelist-format "%?T? %-17T | ?%t"
+      articlelist-format " %D | %?T? %-17T | ?%t"
+      feedlist-format    " %11u | %t"
 
       macro v set browser "setsid -f mpv --really-quiet --no-terminal" ; open-in-browser ; set browser firefox
       player "mpv"
@@ -472,7 +473,6 @@
           "Blog"
           "BSD"
         ];
-        title = "Michał Sapka";
       }
       {
         url = "https://morss.it/https://fabiensanglard.net/rss.xml";

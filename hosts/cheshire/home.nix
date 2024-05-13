@@ -29,6 +29,7 @@ in
     ../../modules/services
     ../../modules/desktops/qtilestyle.nix
     ../../modules/desktops/stumpwmStyle.nix
+    #../../modules/desktops/theming/colorschemes/nostalgia.nix
   ];
 
   colorScheme = nix-colors.colorSchemes.gruvbox-dark-medium;
