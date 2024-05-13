@@ -1,7 +1,11 @@
 { pkgs, ... }:
 
 {
-  home.packages = with pkgs; [ tickrs ];
+  home.packages = with pkgs; [
+    (tickrs.overrideAttrs (o: {
+      patches = (o.patches or [ ]) ++ [ ./tickrs-vim.patch ];
+    }))
+  ];
 
   xdg.configFile."tickrs/config.yml".source = (pkgs.formats.yaml { }).generate "config" {
     symbols = [

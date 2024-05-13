@@ -8,8 +8,8 @@
       color background         default   default
       color listnormal         color8    default
       color listnormal_unread  default   default
-      color listfocus          black     yellow bold
-      color listfocus_unread   black     yellow bold
+      color listfocus          white     yellow bold
+      color listfocus_unread   white   yellow bold
       color info               green     default bold
       color article            default   default
       highlight article "^Feed:.*"                        cyan  default
@@ -32,6 +32,8 @@
 
       show-read-articles no
       show-read-feeds no
+
+      articlelist-format "%?T? %-17T | ?%t"
 
       macro v set browser "setsid -f mpv --really-quiet --no-terminal" ; open-in-browser ; set browser firefox
       player "mpv"
@@ -465,6 +467,7 @@
       }
       {
         url = "https://michal.sapka.me/index.xml";
+        title = "Michal Sapka";
         tags = [
           "Blog"
           "BSD"

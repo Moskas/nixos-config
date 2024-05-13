@@ -1,0 +1,108 @@
+diff --git a/src/event.rs b/src/event.r
+index 4a541b0..08f6148 100644
+--- a/src/event.rs
++++ b/src/event.rs
+@@ -54,24 +54,24 @@ fn handle_keys_display_stock(keycode: KeyCode, modifiers: KeyModifiers, app: &mu
+             app.stocks.swap(app.current_tab, new_idx);
+             app.current_tab = new_idx;
+         }
+-        (KeyCode::BackTab, KeyModifiers::SHIFT) => {
++        (KeyCode::BackTab, KeyModifiers::SHIFT) | (KeyCode::Char('h'), KeyModifiers::NONE) => {
+             if app.current_tab == 0 {
+                 app.current_tab = app.stocks.len() - 1;
+             } else {
+                 app.current_tab -= 1;
+             }
+         }
+-        (KeyCode::Left, KeyModifiers::NONE) => {
++        (KeyCode::Left, KeyModifiers::NONE) | (KeyCode::Char('j'), KeyModifiers::NONE) => {
+             app.stocks[app.current_tab].time_frame_down();
+         }
+-        (KeyCode::Right, KeyModifiers::NONE) => {
++        (KeyCode::Right, KeyModifiers::NONE) | (KeyCode::Char('k'), KeyModifiers::NONE) => {
+             app.stocks[app.current_tab].time_frame_up();
+         }
+         (KeyCode::Char('/'), KeyModifiers::NONE) => {
+             app.previous_mode = app.mode;
+             app.mode = app::Mode::AddStock;
+         }
+-        (KeyCode::Char('k'), KeyModifiers::NONE) => {
++        (KeyCode::Char('d'), KeyModifiers::NONE) => {
+             app.stocks.remove(app.current_tab);
+
+             if app.current_tab != 0 {
+@@ -102,7 +102,7 @@ fn handle_keys_display_stock(keycode: KeyCode, modifiers: KeyModifiers, app: &mu
+                 app.mode = app::Mode::ConfigureChart;
+             }
+         }
+-        (KeyCode::Tab, KeyModifiers::NONE) => {
++        (KeyCode::Tab, KeyModifiers::NONE) | (KeyCode::Char('l'), KeyModifiers::NONE) => {
+             if app.current_tab == app.stocks.len() - 1 {
+                 app.current_tab = 0;
+             } else {
+@@ -115,24 +115,24 @@ fn handle_keys_display_stock(keycode: KeyCode, modifiers: KeyModifiers, app: &mu
+
+ fn handle_keys_display_summary(keycode: KeyCode, app: &mut app::App) {
+     match keycode {
+-        KeyCode::Left => {
++        KeyCode::Left | KeyCode::Char('h') => {
+             app.summary_time_frame = app.summary_time_frame.down();
+
+             for stock in app.stocks.iter_mut() {
+                 stock.set_time_frame(app.summary_time_frame);
+             }
+         }
+-        KeyCode::Right => {
++        KeyCode::Right | KeyCode::Char('l') => {
+             app.summary_time_frame = app.summary_time_frame.up();
+
+             for stock in app.stocks.iter_mut() {
+                 stock.set_time_frame(app.summary_time_frame);
+             }
+         }
+-        KeyCode::Up => {
++        KeyCode::Up | KeyCode::Char('k') => {
+             app.summary_scroll_state.queued_scroll = Some(ScrollDirection::Up);
+         }
+-        KeyCode::Down => {
++        KeyCode::Down | KeyCode::Char('j') => {
+             app.summary_scroll_state.queued_scroll = Some(ScrollDirection::Down);
+         }
+         KeyCode::Char('s') => {
+@@ -159,7 +159,7 @@ fn handle_keys_display_options(keycode: KeyCode, app: &mut app::App) {
+                 .unwrap()
+                 .toggle_option_type();
+         }
+-        KeyCode::Up => {
++        KeyCode::Up | KeyCode::Char('k') => {
+             match app.stocks[app.current_tab]
+                 .options
+                 .as_mut()
+@@ -182,7 +182,7 @@ fn handle_keys_display_options(keycode: KeyCode, app: &mut app::App) {
+                 }
+             }
+         }
+-        KeyCode::Down => {
++        KeyCode::Down | KeyCode::Char('j') => {
+             match app.stocks[app.current_tab]
+                 .options
+                 .as_mut()
+@@ -205,14 +205,14 @@ fn handle_keys_display_options(keycode: KeyCode, app: &mut app::App) {
+                 }
+             }
+         }
+-        KeyCode::Left => {
++        KeyCode::Left | KeyCode::Char('h') => {
+             app.stocks[app.current_tab]
+                 .options
+                 .as_mut()
+                 .unwrap()
+                 .selection_mode_left();
+         }
+-        KeyCode::Right => {
++        KeyCode::Right | KeyCode::Char('l') => {
+             if app.stocks[app.current_tab]
+                 .options
+                 .as_mut()
+EOF
+;;
