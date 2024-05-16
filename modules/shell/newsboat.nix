@@ -234,6 +234,14 @@
         ];
         title = "Vimjoyer";
       }
+      {
+        url = "https://www.youtube.com/feeds/videos.xml?channel_id=UC6jUsIEZ2F875OB2Be84cpA";
+        tags = [
+          "Youtube"
+          "Nix"
+        ];
+        title = "Ampersand";
+      }
       #{
       #url = "https://www.youtube.com/feeds/videos.xml?channel_id="; tags = [ "Youtube" ];
       #title = "";
@@ -428,6 +436,13 @@
           "Nix"
           "Programming"
           "Homelab"
+          "Blog"
+        ];
+      }
+      {
+        url = "https://morss.it/https://jnsgr.uk/posts/index.xml";
+        tags = [
+          "Nix"
           "Blog"
         ];
       }

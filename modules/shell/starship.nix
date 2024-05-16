@@ -7,8 +7,10 @@
       add_newline = false;
       palette = "dynamic";
       format = ''
-        $os$username$hostname$rust$python$node$lua$git_branch$git_status$git_state$fill$nix_shell$time$line_break$directory$sudo$character
+        $directory$character
       '';
+      #$os$username$hostname$rust$python$node$lua$git_branch$git_status$git_state$fill$nix_shell$time$line_break$directory$sudo
+      right_format = ''$nix_shell$rust$python$node$lua$git_status$git_state$git_branch'';
       scan_timeout = 10;
       character = {
         success_symbol = "[ ](blue)";
@@ -63,11 +65,11 @@
       };
       rust = {
         symbol = "🦀";
-        format = "[ $symbol $version ](bg:yellow fg:bg bold)";
+        format = "[ $symbol $version ](fg:yellow bg:bg bold)";
       };
       python = {
         symbol = "";
-        format = "[ $symbol $version ](bg:yellow fg:bg bold)";
+        format = "[ $symbol $version ](fg:yellow bg:bg bold)";
       };
       c = {
         symbol = "";
@@ -75,7 +77,7 @@
       };
       lua = {
         symbol = "";
-        format = "[ $symbol $version ](bg:blue fg:bg bold)";
+        format = "[ $symbol $version ](fg:blue bg:bg bold)";
       };
       os = {
         disabled = false;
@@ -91,24 +93,29 @@
       nix_shell = {
         disabled = false;
         symbol = "";
-        format = "[ $symbol $state ](bg:blue fg:bg bold)";
+        format = "[$state $symbol ](fg:blue bg:bg bold)";
       };
       cmd_duration = {
         min_time = 500;
-        format = "[ $duration ](fg:yellow bg:dark-gray)";
+        format = "[ $duration](bg:bg fg:yellow bold)";
       };
       git_branch = {
-        format = "[ $symbol$branch(:$remote_branch) ](bg:purple fg:bg bold)";
+        format = "[$branch $symbol (:$remote_branch)](fg:purple bg:bg bold)";
         symbol = " ";
       };
       git_status = {
-        format = "([$all_status ](bg:purple fg:bg bold))";
+        format = "([$all_status ](fg:purple bg:bg bold))";
         stashed = " 󰿺";
         modified = " 󱞁";
         untracked = " 󱙓";
         deleted = " 󱙑";
         renamed = " 󱙓";
         staged = " 󰎜";
+      };
+      custom.nix = {
+        command = "nix --version | awk '{ print $3 }'";
+        detect_extensions = [ "nix" ];
+        format = "[  $output ](fg:blue)";
       };
       palettes.solarized = {
         fg = "#93a1a1";

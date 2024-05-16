@@ -29,7 +29,7 @@ in
     ../../modules/services
     ../../modules/desktops/qtilestyle.nix
     ../../modules/desktops/stumpwmStyle.nix
-    #../../modules/desktops/theming/colorschemes/nostalgia.nix
+    #../../modules/desktops/theming/colorschemes/nostalgia-dark.nix
   ];
 
   colorScheme = nix-colors.colorSchemes.gruvbox-dark-medium;
@@ -76,6 +76,9 @@ in
     lutgen
     (callPackage ../../pkgs/nyaa.nix { })
     (ollama.override { acceleration = "cuda"; })
+
+    xdotool
+    xorg.xwininfo
 
     gimp
     # wayland testing
