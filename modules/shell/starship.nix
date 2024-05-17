@@ -7,7 +7,7 @@
       add_newline = false;
       palette = "dynamic";
       format = ''
-        $directory$character
+        $hostname$directory$character
       '';
       #$os$username$hostname$rust$python$node$lua$git_branch$git_status$git_state$fill$nix_shell$time$line_break$directory$sudo
       right_format = ''$nix_shell$rust$python$node$lua$git_status$git_state$git_branch'';
@@ -33,7 +33,7 @@
         show_always = true;
       };
       hostname = {
-        ssh_only = false;
+        ssh_only = true;
         ssh_symbol = "󰣀 ";
         format = "[ $hostname ]($style)";
         style = " fg:bg bg:dark-cyan bold";
@@ -115,7 +115,7 @@
       custom.nix = {
         command = "nix --version | awk '{ print $3 }'";
         detect_extensions = [ "nix" ];
-        format = "[  $output ](fg:blue)";
+        format = "[  $output](fg:blue)";
       };
       palettes.solarized = {
         fg = "#93a1a1";

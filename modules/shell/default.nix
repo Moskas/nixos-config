@@ -1,4 +1,9 @@
-{ pkgs, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 {
   imports = [
     ./bat.nix
@@ -19,22 +24,51 @@
     ./zoxide.nix
   ];
 
-  home.packages = with pkgs; [
-    jq
-    du-dust
-    duf
-    amfora
-    (callPackage ../../pkgs/whdl.nix { })
-    (callPackage ../../pkgs/epy.nix { })
-    (callPackage ../../pkgs/donkeytype.nix { })
-    onefetch
-    zip
-    unzip
-    unrar
-    p7zip
-    wget
-    nurl
-    rates
-    ripgrep
-  ];
+  #home.packages = with pkgs; [
+  #  jq
+  #  du-dust
+  #  duf
+  #  amfora
+  #  (callPackage ../../pkgs/whdl.nix { })
+  #  (callPackage ../../pkgs/epy.nix { })
+  #  (callPackage ../../pkgs/donkeytype.nix { })
+  #  onefetch
+  #  zip
+  #  unzip
+  #  unrar
+  #  p7zip
+  #  wget
+  #  nurl
+  #  rates
+  #  ripgrep
+  #];
+
+  options = {
+    extraShell = lib.mkOption {
+      description = "Additional shell applications";
+      type = lib.types.bool;
+      default = false;
+    };
+  };
+
+  config = lib.mkIf config.extraShell {
+    home.packages = with pkgs; [
+      jq
+      du-dust
+      duf
+      amfora
+      (callPackage ../../pkgs/whdl.nix { })
+      (callPackage ../../pkgs/epy.nix { })
+      (callPackage ../../pkgs/donkeytype.nix { })
+      onefetch
+      zip
+      unzip
+      unrar
+      p7zip
+      wget
+      nurl
+      rates
+      ripgrep
+    ];
+  };
 }

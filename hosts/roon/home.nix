@@ -84,6 +84,8 @@ in
     random-wallpaper
   ];
 
+  extraShell = true;
+
   home.pointerCursor = {
     size = 16;
     package = pkgs.phinger-cursors;
