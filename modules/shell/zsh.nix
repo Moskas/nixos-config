@@ -1,4 +1,4 @@
-{ config, ... }:
+{ pkgs, config, ... }:
 
 {
   programs.zsh = {
@@ -20,13 +20,18 @@
     defaultKeymap = "emacs";
     plugins = [ ];
     initExtra = ''
-      export PATH=~/.config/emacs/bin:$PATH
-      export PATH=~/.local/share/applications/:$PATH
-      export PATH=~/.cargo/bin/:$PATH
+      source ${pkgs.zsh-autopair}/share/zsh/zsh-autopair/autopair.zsh
+      export PATH=~/.config/emacs/bin:$PATH # Doom Emacs helper bin
+      export PATH=~/.local/share/applications/:$PATH # Kinda redundant but eh
+      export PATH=~/.cargo/bin/:$PATH # For rare occasion that I might need a Rust app from cargo
 
+      # Legend
+      # '^' = CTRL, '^[' = ESC
       bindkey '^p' history-search-backward
       bindkey '^n' history-search-forward
       bindkey '^[w' kill-region
+      bindkey '^[\[1;5C' forward-word
+      bindkey '^[\[1;5D' backward-word
     '';
   };
 }

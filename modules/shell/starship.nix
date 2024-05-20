@@ -9,8 +9,9 @@
       format = ''
         $hostname$directory$character
       '';
-      #$os$username$hostname$rust$python$node$lua$git_branch$git_status$git_state$fill$nix_shell$time$line_break$directory$sudo
-      right_format = ''$cmd_duration$nix_shell$rust$python$node$lua$git_status$git_state$git_branch'';
+      right_format = ''
+        $cmd_duration$nix_shell$rust$python$node$lua$git_status$git_state$git_branch
+      '';
       scan_timeout = 10;
       character = {
         success_symbol = "[ ](blue)";
@@ -35,8 +36,8 @@
       hostname = {
         ssh_only = true;
         ssh_symbol = "󰣀 ";
-        format = "[ $hostname ]($style)";
-        style = " fg:bg bg:dark-cyan bold";
+        format = "[ $ssh_symbol $hostname ]($style)";
+        style = " bg:bg fg:dark-cyan bold";
         disabled = false;
       };
       memory_usage = {

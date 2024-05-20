@@ -65,7 +65,7 @@
       unzip
       unrar
       p7zip
-      wget
+      #wget
       nurl
       rates
       ripgrep

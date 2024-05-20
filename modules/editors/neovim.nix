@@ -6,9 +6,9 @@
 }:
 {
   #imports = [ nixvim.homeManagerModules.nixvim ];
-  #home.packages = with pkgs; [ nixvim-config.packages.${system}.default ];
+  home.packages = with pkgs; [ nixvim-config.packages.${system}.default ];
 
-  programs.neovim = {
-    enable = true;
-  };
+  #programs.neovim = {
+  #  enable = true;
+  #};
 }

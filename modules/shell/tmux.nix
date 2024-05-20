@@ -25,7 +25,7 @@
       set-option -g pane-border-style fg=black
       set-option -g pane-active-border-style fg=green
 
-      set -g status-left ' #[fg=blue,bg=default]  #[fg=blue]#(check-ssh)'
+      set -g status-left ' #[fg=blue,bg=default]  #[fg=blue]#(check-ssh) '
       set -g status-right '#[fg=blue]#{b:pane_current_path} #[fg=magenta,bg=default]%d.%a %H:%M:%S#[default] #[fg=cyan]#(echo $(bat-stat))#[fg=cyan][#S]'
       set -g status-style bg=default,fg=default
       set -g status-left-length 40
