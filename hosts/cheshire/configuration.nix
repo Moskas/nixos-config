@@ -18,8 +18,14 @@
     ../../modules/overlays
     ../../modules/nvidia/nvidia.nix
     ../../modules/desktops/qtile.nix
+    ../../modules/desktops/hyprland.nix
     ../../modules/desktops/stumpwm.nix
   ];
+
+  #stylix = {
+  #  image = ../../modules/desktops/wallpapers/desktop-cheshire-dark.png;
+  #  base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-medium.yaml";
+  #};
 
   # Use the systemd-boot EFI boot loader.
   boot = {

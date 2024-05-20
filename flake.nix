@@ -9,6 +9,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-colors.url = "github:misterio77/nix-colors";
+    stylix.url = "github:danth/stylix";
     nur.url = "github:nix-community/NUR";
     flake-parts.url = "github:hercules-ci/flake-parts";
     wsl = {
@@ -158,6 +159,8 @@
             ./hosts/cheshire/configuration.nix
             default-overlays
             home-manager.nixosModules.home-manager
+            disko.nixosModules.default
+            #inputs.stylix.nixosModules.stylix # TODO Configure stylix
             {
               home-manager = {
                 useGlobalPkgs = true;
@@ -256,6 +259,7 @@
           #nil
           nixd
           statix
+          inputs.disko.packages.${system}.disko
         ];
         name = "dotfiles";
         DIRENV_LOG_FORMAT = "";
