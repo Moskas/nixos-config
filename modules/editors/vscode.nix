@@ -6,6 +6,7 @@
     extensions = with pkgs.vscode-extensions; [
       bbenoist.nix
       jnoortheen.nix-ide
+      arrterian.nix-env-selector
       kamadorueda.alejandra
       jdinhlife.gruvbox
       brandonkirbyson.solarized-palenight

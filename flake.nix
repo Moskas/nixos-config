@@ -248,6 +248,7 @@
         NIX_CONFIG = "extra-experimental-features = nix-command flakes repl-flake";
         packages = with pkgs; [
           alejandra
+          nixfmt-rfc-style
           git
           sops
           age
@@ -258,7 +259,7 @@
         ];
         name = "dotfiles";
         DIRENV_LOG_FORMAT = "";
-        formatter = pkgs.alejandra;
+        formatter = pkgs.nixfmt-rfc-style;
       };
     };
 }

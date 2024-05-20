@@ -10,7 +10,7 @@
         $hostname$directory$character
       '';
       #$os$username$hostname$rust$python$node$lua$git_branch$git_status$git_state$fill$nix_shell$time$line_break$directory$sudo
-      right_format = ''$nix_shell$rust$python$node$lua$git_status$git_state$git_branch'';
+      right_format = ''$cmd_duration$nix_shell$rust$python$node$lua$git_status$git_state$git_branch'';
       scan_timeout = 10;
       character = {
         success_symbol = "[ ](blue)";
@@ -47,11 +47,12 @@
         style = " fg:bg bg:green";
       };
       directory = {
-        read_only = " ";
-        home_symbol = " ~";
+        read_only = "";
+        home_symbol = "~";
         truncation_length = 4;
         truncation_symbol = "…/";
         truncate_to_repo = true;
+        format = " [$path]($style)[$read_only]($read_only_style) ";
       };
       directory.substitutions = {
         "Documents" = "󰈙 ";
@@ -93,14 +94,14 @@
       nix_shell = {
         disabled = false;
         symbol = "";
-        format = "[$state $symbol ](fg:blue bg:bg bold)";
+        format = "[$symbol shell ](fg:blue bg:bg bold)";
       };
       cmd_duration = {
         min_time = 500;
-        format = "[ $duration](bg:bg fg:yellow bold)";
+        format = "[ ⏱ $duration ](bg:bg fg:gray bold)";
       };
       git_branch = {
-        format = "[$branch $symbol (:$remote_branch)](fg:purple bg:bg bold)";
+        format = "[$branch $symbol(:$remote_branch)](fg:purple bg:bg bold)";
         symbol = " ";
       };
       git_status = {

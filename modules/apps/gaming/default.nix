@@ -12,8 +12,8 @@
     goverlay
     prismlauncher
     # yuzu # F
-    #(callPackage ../../../pkgs/osu-bin.nix { })
-    osu-lazer-bin
+    (callPackage ../../../pkgs/osu-bin.nix { })
+    #osu-lazer-bin
     jre8 # for old Minecraft versions
     ferium
     # gamingPkgs.osu-stable # mime conflicts with osu!lazer
