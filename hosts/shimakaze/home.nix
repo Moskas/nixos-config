@@ -15,7 +15,7 @@
     ../../modules/editors/neovim.nix
   ];
 
-  colorScheme = nix-colors.colorSchemes.gruvbox-dark-medium;
+  colorScheme = nix-colors.colorSchemes.gruvbox-light-medium;
 
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
@@ -29,16 +29,18 @@
     ];
   };
 
-  programs.starship = {
-    settings = {
-      format = pkgs.lib.mkForce (
-        pkgs.lib.concatStrings [
-          "$os$hostname$rust$python$node$lua$git_branch$git_status$git_state$nix_shell$line_break$directory$sudo$character"
-        ]
-      );
-      hostname.style = pkgs.lib.mkForce "fg:bg bg:blue bold";
-    };
-  };
+  extraShell = true;
+
+  #programs.starship = {
+  #  settings = {
+  #    format = pkgs.lib.mkForce (
+  #      pkgs.lib.concatStrings [
+  #        "$os$hostname$rust$python$node$lua$git_branch$git_status$git_state$nix_shell$line_break$directory$sudo$character"
+  #      ]
+  #    );
+  #    hostname.style = pkgs.lib.mkForce "fg:bg bg:blue bold";
+  #  };
+  #};
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage

@@ -114,6 +114,7 @@
         renamed = " 󱙓";
         staged = " 󰎜";
       };
+      command_timeout = 500;
       custom.nix = {
         command = "nix --version | awk '{ print $3 }'";
         detect_extensions = [ "nix" ];

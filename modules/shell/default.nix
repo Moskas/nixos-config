@@ -60,6 +60,7 @@
       (callPackage ../../pkgs/whdl.nix { })
       (callPackage ../../pkgs/epy.nix { })
       (callPackage ../../pkgs/donkeytype.nix { })
+      (callPackage ../../pkgs/ngrrram.nix { })
       onefetch
       zip
       unzip
