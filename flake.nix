@@ -52,6 +52,10 @@
       flake = false;
     };
 
+    anifetch = {
+      url = "github:Moskas/anifetch";
+    };
+
     # wallpapers
     #wallpapers = {
     #  url = "github:Moskas/wallpapers";
@@ -108,6 +112,7 @@
                     nix-colors
                     nixvim
                     nixvim-config
+                    inputs
                     ;
                 };
               };
@@ -137,6 +142,7 @@
                     nixvim
                     nixvim-config
                     nur
+                    inputs
                     ;
                 };
               };

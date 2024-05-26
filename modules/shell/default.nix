@@ -1,4 +1,5 @@
 {
+  inputs,
   pkgs,
   lib,
   config,
@@ -61,6 +62,7 @@
       (callPackage ../../pkgs/epy.nix { })
       (callPackage ../../pkgs/donkeytype.nix { })
       (callPackage ../../pkgs/ngrrram.nix { })
+      inputs.anifetch.defaultPackage.${system}
       onefetch
       zip
       unzip

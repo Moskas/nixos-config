@@ -5,10 +5,9 @@
   fetchzip,
   appimageTools,
 }:
-
 let
   pname = "osu-lazer-bin";
-  version = "2024.519.1";
+  version = "2024.521.2";
 
   src =
     {
@@ -24,7 +23,7 @@ let
       };
       x86_64-linux = fetchurl {
         url = "https://github.com/ppy/osu/releases/download/${version}/osu.AppImage";
-        hash = "sha256-bqnvErUprvjNJl1kcy4e9r9+tzN582oBSVe38C3dOEs=";
+        hash = "sha256-QVDgY04PmGJ/eOfes/qBAbBKsk9uOaqLjwZSQH+F9ro=";
       };
     }
     .${stdenv.system} or (throw "${pname}-${version}: ${stdenv.system} is unsupported.");

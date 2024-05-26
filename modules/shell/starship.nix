@@ -36,7 +36,7 @@
       hostname = {
         ssh_only = true;
         ssh_symbol = "󰣀 ";
-        format = "[ $ssh_symbol $hostname ]($style)";
+        format = "[ $hostname ]($style)";
         style = " bg:bg fg:dark-cyan bold";
         disabled = false;
       };
