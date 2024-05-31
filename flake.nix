@@ -47,6 +47,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nixpkgs-f2k.url = "github:fortuneteller2k/nixpkgs-f2k";
+
     # qtile setup
     qtile-config = {
       url = "github:Moskas/qtile-config";
@@ -75,6 +77,7 @@
       nixvim-config,
       emacs-overlay,
       disko,
+      nixpkgs-f2k,
       ...
     }@inputs:
     let
@@ -87,6 +90,7 @@
         nixpkgs.overlays = [
           emacs-overlay.overlay
           nur.overlay
+          nixpkgs-f2k.overlays.window-managers
         ];
       };
     in
