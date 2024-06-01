@@ -22,6 +22,7 @@ in
     ../../modules/apps
     ../../modules/git
     ../../modules/services
+    ../../modules/scripts
     ../../modules/editors
   ];
 
@@ -51,7 +52,6 @@ in
     python311Packages.mpd2
     ffmpeg
     mpc-cli
-    tickrs
     cava
     discord
     steam

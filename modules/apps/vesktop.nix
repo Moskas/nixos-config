@@ -64,6 +64,18 @@
              color: var(--text-muted);
           }
 
+          [class*=themedBackground] {
+            background: var(--background-secondary);
+          }
+
+          .container_b92032 {
+            background: var(--background-secondary);
+          }
+
+          .wrapper__8436d:hover .childWrapper_a6ce15, .wrapper__8436d.selected_ae80f7 .childWrapper_a6ce15 {
+            background: var(--brand-experiment);
+          }
+
           body {
           }
 

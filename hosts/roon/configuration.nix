@@ -152,7 +152,10 @@
       atomix # puzzle game
     ]);
   services.xserver.windowManager.qtile.enable = true;
-  services.xserver.windowManager.awesome.enable = false;
+  services.xserver.windowManager.awesome = {
+    enable = true;
+    package = pkgs.awesome-git;
+  };
   services.xserver.desktopManager.plasma5.enable = false;
   #programs.ssh.askPassword = pkgs.lib.mkForce "${pkgs.ksshaskpass.out}/bin/ksshaskpass"; # For plasma desktop
   # Configure keymap in X11
