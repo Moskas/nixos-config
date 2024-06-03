@@ -55,9 +55,8 @@
       flake = false;
     };
 
-    anifetch = {
-      url = "github:Moskas/anifetch";
-    };
+    anifetch.url = "github:Moskas/anifetch";
+    mpdnotify.url = "github:Moskas/mpd-notify-rs";
 
     # wallpapers
     #wallpapers = {

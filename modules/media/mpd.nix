@@ -1,8 +1,14 @@
-{ pkgs, username, ... }:
+{
+  inputs,
+  pkgs,
+  username,
+  ...
+}:
 
 {
   home.packages = with pkgs; [
-    (callPackage ../../pkgs/mpdnotify.nix { })
+    #(callPackage ../../pkgs/mpdnotify.nix { })
+    inputs.mpdnotify.defaultPackage.${system}
     mpc-cli
   ];
 

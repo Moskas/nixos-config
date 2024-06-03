@@ -537,6 +537,16 @@
         ];
       }
       {
+        url = "https://jcs.org/rss";
+        title = "jcs";
+        tags = [
+          "Blog"
+          "BSD"
+          "Retro"
+          "Programming"
+        ];
+      }
+      {
         url = "https://morss.it/https://aliabdaal.com/feed/";
         tags = [
           "Blog"
