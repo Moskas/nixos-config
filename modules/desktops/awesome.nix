@@ -1,7 +1,8 @@
-{ ... }:
-
+{ pkgs, ... }:
 {
   windowManager.awesome = {
-    enable = false;
+    enable = true;
+    package = pkgs.awesome-git;
+    luaModules = with pkgs.luaPackages; [ luarocks ];
   };
 }

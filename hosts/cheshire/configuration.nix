@@ -17,15 +17,11 @@
     ../../modules/services/ssh.nix
     ../../modules/overlays
     ../../modules/nvidia/nvidia.nix
+    #../../modules/desktops/theming/stylix.nix
     ../../modules/desktops/qtile.nix
     ../../modules/desktops/hyprland.nix
-    ../../modules/desktops/stumpwm.nix
+    #../../modules/desktops/stumpwm.nix
   ];
-
-  #stylix = {
-  #  image = ../../modules/desktops/wallpapers/desktop-cheshire-dark.png;
-  #  base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-medium.yaml";
-  #};
 
   # Use the systemd-boot EFI boot loader.
   boot = {
@@ -51,14 +47,6 @@
   # Enabling latest linux kernel
   boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
 
-  #system.userActivationScripts = {
-  #  randomWallpaper = {
-  #    text = ''
-  #      random-wallpaper
-  #    '';
-  #  };
-  #};
-
   # Power management
   powerManagement = {
     enable = true;
@@ -69,11 +57,6 @@
   # Enable nvidia driver
   hardware = {
     cpu.amd.updateMicrocode = true;
-    #nvidia = {
-    #  powerManagement.enable = true;
-    #  modesetting.enable = true;
-    #  package = config.boot.kernelPackages.nvidiaPackages.beta;
-    #};
     opengl = {
       enable = true;
       driSupport32Bit = true;
@@ -156,6 +139,7 @@
     displayManager.gdm.enable = true;
     windowManager.awesome = {
       enable = true;
+      package = pkgs.awesome-git;
       luaModules = with pkgs.luaPackages; [ luarocks ];
     };
     # Commands to run while launching the display manager

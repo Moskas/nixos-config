@@ -17,7 +17,7 @@ in
     ../../modules/common/home
     #../../modules/desktops/theming/gtk.nix # TODO Look for some improvements as GTK4/Libadwaita looks horrible
     ../../modules/browsers
-    ../../modules/browsers/nyxt.nix
+    #../../modules/browsers/nyxt.nix
     ../../modules/apps
     ../../modules/apps/gaming
     ../../modules/git
@@ -28,7 +28,7 @@ in
     ../../modules/email
     ../../modules/services
     ../../modules/desktops/qtilestyle.nix
-    ../../modules/desktops/stumpwmStyle.nix
+    #../../modules/desktops/stumpwmStyle.nix
     #../../modules/desktops/theming/colorschemes/nostalgia-dark.nix
   ];
 
@@ -105,6 +105,7 @@ in
   home.file = {
     ".config/test".source = inputs.qtile-config;
   };
+
   home.pointerCursor = {
     size = 16;
     package = pkgs.phinger-cursors;

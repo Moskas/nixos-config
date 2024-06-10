@@ -58,7 +58,10 @@
         "toolkit.coverage.opt-out" = true;
         "toolkit.coverage.endpoint.base" = "";
         "browser.ping-centre.telemetry" = false;
+        "browser.selfsupport.url" = "";
+        "pocket.enabled" = false;
         "beacon.enabled" = false;
+        "network.captive-portal-service.enabled" = false;
 
         # Fingerprinting
         #"privacy.resistFingerprinting" = true;
