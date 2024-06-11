@@ -1,5 +1,4 @@
 { pkgs, ... }:
-
 {
   home.packages = with pkgs; [
     (tickrs.overrideAttrs (o: {
@@ -12,6 +11,7 @@
       "XMR-USD"
       "BTC-USD"
       "ETH-USD"
+      "RVN-USD"
       "ADA-USD"
       "VRSC-USD"
       "BAT-USD"

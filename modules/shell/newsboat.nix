@@ -599,6 +599,13 @@
           "Privacy"
         ];
       }
+      {
+        url = "https://factorio.com/blog/rss";
+        tags = [
+          "Blog"
+          "Gamedev"
+        ];
+      }
       #Twitch?
       {
         url = "https://twitchrss.appspot.com/vod/kycu";

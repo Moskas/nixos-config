@@ -37,11 +37,11 @@
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    #nix-on-droid = {
-    #  url = "github:nix-community/nix-on-droid/testing";
-    #  inputs.nixpkgs.follows = "nixpkgs";
-    #  inputs.home-manager.follows = "home-manager";
-    #};
+    nix-on-droid = {
+      url = "github:nix-community/nix-on-droid/testing";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v0.3.0";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -77,6 +77,7 @@
       emacs-overlay,
       disko,
       nixpkgs-f2k,
+      nix-on-droid,
       ...
     }@inputs:
     let
@@ -257,6 +258,62 @@
           };
         };
       };
+      nixOnDroidConfigurations = {
+        boise = nix-on-droid.lib.nixOnDroidConfiguration {
+          system = "aarch64-linux";
+          pkgs = import nixpkgs {
+            inherit system;
+            overlays = [ nix-on-droid.overlays.default ];
+          };
+          modules = [
+            ./hosts/boise/configuration.nix
+            {
+              home-manager = {
+                config = ./hosts/boise/home.nix;
+                backupFileExtension = "hm-bak";
+                useGlobalPkgs = true;
+                extraSpecialArgs = {
+                  inherit nix-colors nixvim nixvim-config;
+                };
+              };
+            }
+          ];
+          extraSpecialArgs = {
+            inherit
+              pkgs
+              nixvim
+              nixvim-config
+              nix-colors
+              ;
+          };
+          home-manager-path = home-manager.outPath;
+        };
+        dewey = nix-on-droid.lib.nixOnDroidConfiguration {
+          system = "aarch64-linux";
+          pkgs = import nixpkgs {
+            inherit system;
+            overlays = [ nix-on-droid.overlays.default ];
+          };
+          modules = [
+            ./hosts/dewey/configuration.nix
+            {
+              home-manager = {
+                config = ./hosts/dewey/home.nix;
+                backupFileExtension = "hm-bak";
+                useGlobalPkgs = true;
+                extraSpecialArgs = {
+                  inherit nix-colors nixvim nixvim-config;
+                };
+              };
+            }
+          ];
+          extraSpecialArgs = {
+            inherit nixvim pkgs nix-colors;
+          };
+          home-manager-path = home-manager.outPath;
+        };
+      };
+
       devShells.${system}.default = pkgs.mkShell {
         NIX_CONFIG = "extra-experimental-features = nix-command flakes repl-flake";
         packages = with pkgs; [
@@ -274,6 +331,9 @@
         name = "dotfiles";
         DIRENV_LOG_FORMAT = "";
         formatter = pkgs.nixfmt-rfc-style;
+        shellHook = ''
+          export FLAKE=$(pwd)
+        '';
       };
     };
 }
