@@ -1,10 +1,7 @@
 { pkgs, nix-colors, ... }:
 
 {
-  imports = [
-    ../../modules/services/ssh.nix
-    ../../modules
-  ];
+  imports = [ ../../modules/services/droid-ssh.nix ];
 
   # Simply install just the packages
   environment.packages = with pkgs; [ ];
