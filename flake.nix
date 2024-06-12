@@ -260,9 +260,8 @@
       };
       nixOnDroidConfigurations = {
         boise = nix-on-droid.lib.nixOnDroidConfiguration {
-          system = "aarch64-linux";
           pkgs = import nixpkgs {
-            inherit system;
+            system = "aarch64-linux";
             overlays = [ nix-on-droid.overlays.default ];
           };
           modules = [
@@ -289,9 +288,8 @@
           home-manager-path = home-manager.outPath;
         };
         dewey = nix-on-droid.lib.nixOnDroidConfiguration {
-          system = "aarch64-linux";
           pkgs = import nixpkgs {
-            inherit system;
+            system = "aarch64-linux";
             overlays = [ nix-on-droid.overlays.default ];
           };
           modules = [

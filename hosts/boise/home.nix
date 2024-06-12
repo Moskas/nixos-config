@@ -1,10 +1,9 @@
-{ config, pkgs, nix-colors, nixvim, ... }: {
+{ pkgs, nix-colors, ... }:
+{
   imports = [
     nix-colors.homeManagerModules.default
     ../../modules/shell
     ../../modules/git
-    ../../modules/editors
-    ../../modules/dev
     ../../modules/email/mu4u.nix
     ../../modules/email/neomutt.nix
   ];
@@ -25,4 +24,16 @@
       zsh
     '';
   };
+
+  programs.emacs = {
+    enable = true;
+    package = pkgs.emacs-unstable;
+    extraPackages =
+      epkgs: with epkgs; [
+        vterm-toggle
+        mu4e
+      ];
+  };
+
+  programs.neovim.enable = true;
 }
