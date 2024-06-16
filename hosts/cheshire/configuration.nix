@@ -20,6 +20,7 @@
     #../../modules/desktops/theming/stylix.nix
     ../../modules/desktops/qtile.nix
     ../../modules/desktops/hyprland.nix
+    ../../modules/desktops/niri.nix
     #../../modules/desktops/stumpwm.nix
   ];
 

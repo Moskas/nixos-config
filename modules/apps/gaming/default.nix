@@ -17,5 +17,8 @@
     jre8 # for old Minecraft versions
     ferium
     # gamingPkgs.osu-stable # mime conflicts with osu!lazer
+    (writeShellScriptBin "etterna" ''
+      nix run "github:thiagokokada/nix-alien#nix-alien-ld" -- ~/Games/Etterna/Etterna
+    '') # Just a hack teehee
   ];
 }
