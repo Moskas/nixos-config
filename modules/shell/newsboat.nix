@@ -424,6 +424,19 @@
         ];
       }
       {
+        url = "https://journal.miso.town/atom?url=https://wiki.xxiivv.com/site/now.html";
+        tags = [ "Blog" ];
+        title = "xxiivv";
+      }
+      {
+        url = "https://100r.co/links/rss.xml";
+        tags = [ "Blog" ];
+      }
+      {
+        url = "https://grimgrains.com/links/rss.xml";
+        tags = [ "Cooking" ];
+      }
+      {
         url = "https://determinate.systems/rss.xml";
         tags = [
           "Nix"

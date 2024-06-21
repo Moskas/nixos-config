@@ -1,4 +1,5 @@
 { pkgs, ... }:
+
 pkgs.writeShellScriptBin "bat-stat" ''
   # Find the first battery directory
   battery_dir=$(ls /sys/class/power_supply/ | grep "BAT*" | head -n 1 | awk '{print $1}')
@@ -33,6 +34,6 @@ pkgs.writeShellScriptBin "bat-stat" ''
     esac
 
     # Print battery capacity and status
-    echo "$capacity%  $symbol "
+    echo " $symbol $capacity%"
   fi
 ''

@@ -4,9 +4,10 @@
   programs.zsh = {
     enable = true;
     shellAliases = {
-      e = "$EDITOR";
-      b = "ranger";
-      cat = "bat --decorations=never --paging=never";
+      e = "$EDITOR"; # e = edit
+      b = "ranger"; # b = browse
+      cat = "bat --decorations=never --paging=never --theme=ansi";
+      ccat = "bat --decorations=never --paging=never --colors=never";
       tx = "tmux new -As0";
       lld = "ll --no-permissions --no-user --no-time --no-git --no-filesize --tree -D";
       duf = "duf -theme ansi";

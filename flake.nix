@@ -270,6 +270,9 @@
           inputs.disko.packages.${system}.disko
         ];
         name = "dotfiles";
+        shellHook = ''
+          export FLAKE=$(pwd)
+        '';
         DIRENV_LOG_FORMAT = "";
         formatter = pkgs.nixfmt-rfc-style;
       };
