@@ -27,7 +27,7 @@ in
     ../../modules/scripts
     ../../modules/email
     ../../modules/services
-    ../../modules/desktops/qtilestyle.nix
+    #../../modules/desktops/qtilestyle.nix
     #../../modules/desktops/stumpwmStyle.nix
     #../../modules/desktops/theming/colorschemes/nostalgia-dark.nix
   ];
@@ -76,6 +76,8 @@ in
     lutgen
     (callPackage ../../pkgs/nyaa.nix { })
     (ollama.override { acceleration = "cuda"; })
+
+    uxn
 
     xdotool
     xorg.xwininfo
@@ -138,8 +140,8 @@ in
     };
 
     theme = {
-      name = "Gruvbox-Dark-BL";
-      package = pkgs.gruvbox-gtk-theme;
+      name = "Gruvbox-Dark-BL-LB";
+      package = inputs.stable-nixpkgs.legacyPackages."x86_64-linux".gruvbox-gtk-theme;
     };
 
     iconTheme = {
@@ -148,15 +150,15 @@ in
     };
 
     gtk3.extraConfig = {
-      Settings = ''
-        gtk-application-prefer-dark-theme=1
-      '';
+      #Settings = ''
+      #  gtk-application-prefer-dark-theme=1
+      #'';
     };
 
     gtk4.extraConfig = {
-      Settings = ''
-        gtk-application-prefer-dark-theme=1
-      '';
+      #Settings = ''
+      #  gtk-application-prefer-dark-theme=1
+      #'';
     };
   };
 

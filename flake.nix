@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    stable-nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -164,7 +165,6 @@
           };
           modules = [
             ./hosts/cheshire
-            ./hosts/cheshire/configuration.nix
             default-overlays
             home-manager.nixosModules.home-manager
             disko.nixosModules.default

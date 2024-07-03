@@ -24,7 +24,7 @@
       c = "clone";
       ci = "commit";
       co = "checkout";
-      s = "status";
+      s = "status -bs";
       st = "stash";
       a = "add";
       d = "diff";

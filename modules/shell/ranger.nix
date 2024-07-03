@@ -6,6 +6,9 @@
     aliases = {
       e = "edit";
     };
+    mappings = {
+      W = "set_wallpaper";
+    };
     settings = {
       preview_images = true;
       preview_images_method = "kitty";
