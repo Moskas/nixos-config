@@ -7,10 +7,10 @@
       add_newline = false;
       palette = "dynamic";
       format = ''
-        $hostname$directory$character
+        $directory$character
       '';
       right_format = ''
-        $cmd_duration$nix_shell$rust$python$node$lua$git_status$git_state$git_branch
+        $cmd_duration$nix_shell$rust$python$node$lua$git_status$git_state$git_branch$hostname
       '';
       scan_timeout = 10;
       character = {
@@ -35,8 +35,8 @@
       };
       hostname = {
         ssh_only = true;
-        ssh_symbol = "󰣀 ";
-        format = "[ $hostname ]($style)";
+        ssh_symbol = "󰣀"; # 
+        format = "[ $ssh_symbol $hostname ]($style)";
         style = " bg:bg fg:dark-cyan bold";
         disabled = false;
       };

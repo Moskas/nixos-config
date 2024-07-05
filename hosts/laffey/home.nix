@@ -1,5 +1,4 @@
 { pkgs, nix-colors, ... }:
-
 {
   imports = [
     nix-colors.homeManagerModules.default
@@ -19,5 +18,5 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-  home.packages = with pkgs; [ ];
+  home.packages = with pkgs; [ (ollama.override { acceleration = "cuda"; }) ];
 }
