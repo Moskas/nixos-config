@@ -20,12 +20,27 @@
           };
           "/git/" = {
             proxyPass = "http://127.0.0.1:3000/";
-          };
-          "/jelly/" = {
-            proxyPass = "http://127.0.0.1:8096";
             proxyWebsockets = true;
           };
+          "/jelly/" = {
+            proxyPass = "http://127.0.0.1:8096/";
+            proxyWebsockets = true;
+          };
+          "/deluge/" = {
+            proxyPass = "http://127.0.0.1:8112/";
+            proxyWebsockets = true;
+            extraConfig = ''
+              proxy_set_header X-Deluge-Base "/deluge/";
+              add_header X-Frame-Options SAMEORIGIN;
+            '';
+          };
         };
+        #listen = [
+        #  {
+        #    addr = "0.0.0.0";
+        #    port = 3030;
+        #  }
+        #];
       };
     };
   };

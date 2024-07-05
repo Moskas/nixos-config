@@ -7,5 +7,9 @@
     ./grocy.nix
     ./jellyfin.nix
     ./nginx.nix
+
+    ./grafana.nix
+    ./prometheus.nix
+    ./deluge.nix
   ];
 }

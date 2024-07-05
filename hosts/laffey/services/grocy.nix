@@ -2,7 +2,7 @@
 
 {
   services.grocy = {
-    enable = true;
+    enable = false;
     hostName = "laffey.home";
     nginx.enableSSL = false;
     settings = {
