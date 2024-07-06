@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 {
   services.nginx = {
@@ -34,13 +34,15 @@
               add_header X-Frame-Options SAMEORIGIN;
             '';
           };
+          "/prometheus/" = {
+            proxyPass = "http://127.0.0.1:9090/";
+            proxyWebsockets = true;
+            extraConfig = ''
+              rewrite /prometheus/(.*) /$1  break;
+              proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            '';
+          };
         };
-        #listen = [
-        #  {
-        #    addr = "0.0.0.0";
-        #    port = 3030;
-        #  }
-        #];
       };
     };
   };

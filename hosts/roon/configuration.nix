@@ -17,6 +17,7 @@
     ../../modules/services/tailscale.nix
     ../../modules/services/fwupd.nix
     ../../modules/services/ssh.nix
+    ../../modules/desktops/qtile.nix
     ../../modules/overlays
   ];
 
@@ -53,9 +54,9 @@
   };
   hardware = {
     cpu.intel.updateMicrocode = true;
-    opengl = {
+    graphics = {
       enable = true;
-      driSupport32Bit = true;
+      enable32Bit = true;
       extraPackages = with pkgs; [
         mangohud
         nvidia-vaapi-driver
@@ -151,7 +152,7 @@
       hitori # sudoku game
       atomix # puzzle game
     ]);
-  services.xserver.windowManager.qtile.enable = true;
+  #services.xserver.windowManager.qtile.enable = true;
   services.xserver.windowManager.awesome = {
     enable = true;
     package = pkgs.awesome-git;

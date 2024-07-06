@@ -11,5 +11,6 @@
     ./grafana.nix
     ./prometheus.nix
     ./deluge.nix
+    ./vaultwarden.nix
   ];
 }

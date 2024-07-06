@@ -82,6 +82,7 @@ in
     direnv
     lutgen
     random-wallpaper
+    uxn
   ];
 
   extraShell = true;

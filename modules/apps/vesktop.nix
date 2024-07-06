@@ -53,6 +53,8 @@
              --white-500: var(--text-primary) !important;
 
              --input-background: var(--background-tertiary);
+
+             --autocomplete-bg: var(--background-secondary);
           }
 
           :root {
