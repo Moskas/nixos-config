@@ -57,6 +57,11 @@
     anifetch.url = "github:Moskas/anifetch";
     mpdnotify.url = "github:Moskas/mpd-notify-rs";
 
+    nyaa = {
+      url = "github:Beastwick18/nyaa";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # wallpapers
     #wallpapers = {
     #  url = "github:Moskas/wallpapers";
@@ -184,7 +189,10 @@
                     inputs
                     ;
                 };
-                users.${username}.imports = [ (import ./hosts/cheshire/home.nix) ];
+                users.${username}.imports = [
+                  (import ./hosts/cheshire/home.nix)
+                  inputs.nyaa.homeManagerModule
+                ];
               };
             }
           ];

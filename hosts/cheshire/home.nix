@@ -74,7 +74,7 @@ in
     discord-screenaudio
     feh
     lutgen
-    (callPackage ../../pkgs/nyaa.nix { })
+    #(callPackage ../../pkgs/nyaa.nix { })
     (ollama.override { acceleration = "cuda"; })
 
     uxn
@@ -96,6 +96,8 @@ in
   ];
 
   extraShell = true;
+
+  programs.nyaa.enable = true;
 
   dconf.settings = {
     "org/virt-manager/virt-manager/connections" = {

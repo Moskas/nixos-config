@@ -58,9 +58,9 @@
   # Enable nvidia driver
   hardware = {
     cpu.amd.updateMicrocode = true;
-    opengl = {
+    graphics = {
       enable = true;
-      driSupport32Bit = true;
+      enable32Bit = true;
       extraPackages = with pkgs; [
         mangohud
         nvidia-vaapi-driver
