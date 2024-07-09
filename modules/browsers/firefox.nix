@@ -7,6 +7,21 @@
 {
   programs.firefox = {
     enable = true;
+    package = pkgs.wrapFirefox pkgs.firefox-unwrapped {
+      extraPolicies = {
+        DisableTelemetry = true;
+        DisableFirefoxStudies = true;
+        DontCheckDefaultBrowser = true;
+        EnableTrackingProtection = {
+          Value = true;
+          Locked = true;
+          Fingerprinting = true;
+        };
+        DisablePocket = true;
+        DisableFirefoxAccount = true;
+        DisableAccounts = true;
+      };
+    };
     profiles.${username} = {
       name = "${username}";
       settings = {

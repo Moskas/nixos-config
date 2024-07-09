@@ -46,7 +46,6 @@
   time.timeZone = "Europe/Warsaw";
 
   # Enable nix flakes
-  nix.package = pkgs.nixFlakes;
   nix.extraOptions = ''
     experimental-features = nix-command flakes
   '';
@@ -66,7 +65,7 @@
 
     noXlibs = false;
     variables = {
-      EDITOR = "nvim";
+      EDITOR = "emacs";
     };
   };
 

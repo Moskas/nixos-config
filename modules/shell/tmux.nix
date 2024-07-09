@@ -13,6 +13,7 @@
     baseIndex = 1;
     shortcut = "Space";
     terminal = "screen-256color";
+    historyLimit = 20000;
     shell = "${pkgs.zsh}/bin/zsh";
     extraConfig = ''
       set -g pane-border-style fg=default
@@ -26,7 +27,7 @@
       set-option -g pane-active-border-style fg=green
 
       set -g status-left ' #[fg=blue,bg=default]  #[fg=blue]#(check-ssh) '
-      set -g status-right '#[fg=blue] #[fg=blue]#{b:pane_current_path} #[fg=magenta] #[fg=magenta,bg=default]%d.%a %H:%M:%S#[default] #[fg=cyan]#(echo $(bat-stat))#[fg=cyan] #S'
+      set -g status-right '#[fg=blue] #[fg=blue]#{b:pane_current_path} #[fg=magenta] #[fg=magenta,bg=default]%d.%a %H:%M:%S#[default] #[fg=cyan]#(echo $(bat-stat)) #[fg=cyan] #S'
       set -g status-style bg=default,fg=default
       set -g status-left-length 40
       set -g status-right-length 80
