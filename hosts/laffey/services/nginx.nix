@@ -14,8 +14,8 @@
             root = pkgs.fetchFromGitHub {
               owner = "Moskas";
               repo = "moskas.github.io";
-              rev = "25f2d153fddbebfc2fb4a9ecb9ef9d70efcbe1a3";
-              hash = "sha256-2z9VmFQzFfxYQ6ll5/4Ggb+MWk9H/8CuXwkz5ZUl1I0=";
+              rev = "02c05e4aeefcc93644ad068219862e0c94d87f31";
+              hash = "sha256-xrCfsCa/6yuRZlGf1nIpkha12oKVBf+p5yDfuyf0cBU=";
             };
           };
           "/git/" = {

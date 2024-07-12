@@ -20,14 +20,14 @@
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixvim-config = {
-      url = "github:Moskas/nixvim-config";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        nixvim.follows = "nixvim";
-        flake-parts.follows = "flake-parts";
-      };
-    }; # Add a catchy name later
+    #nixvim-config = {
+    #  url = "github:Moskas/nixvim-config";
+    #  inputs = {
+    #    nixpkgs.follows = "nixpkgs";
+    #    nixvim.follows = "nixvim";
+    #    flake-parts.follows = "flake-parts";
+    #  };
+    #};
     emacs-overlay = {
       url = "github:nix-community/emacs-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -77,7 +77,7 @@
       wsl,
       nix-colors,
       nixvim,
-      nixvim-config,
+      #nixvim-config,
       emacs-overlay,
       disko,
       nixpkgs-f2k,
@@ -119,7 +119,7 @@
                     e-mail
                     nix-colors
                     nixvim
-                    nixvim-config
+                    #nixvim-config
                     inputs
                     ;
                 };
@@ -148,7 +148,7 @@
                     e-mail
                     nix-colors
                     nixvim
-                    nixvim-config
+                    #nixvim-config
                     nur
                     inputs
                     ;
@@ -184,7 +184,7 @@
                     e-mail
                     nix-colors
                     nixvim
-                    nixvim-config
+                    #nixvim-config
                     nur
                     inputs
                     ;
@@ -218,7 +218,7 @@
                     e-mail
                     nix-colors
                     nixvim
-                    nixvim-config
+                    #nixvim-config
                     nur
                     ;
                 };

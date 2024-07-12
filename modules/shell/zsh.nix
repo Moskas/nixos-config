@@ -28,6 +28,11 @@
       export PATH=~/.local/share/applications/:$PATH # Kinda redundant but eh
       export PATH=~/.cargo/bin/:$PATH # For rare occasion that I might need a Rust app from cargo
 
+      # Fix emacs colors for ssh
+      if [ -n $SSH_CLIENT ]; then
+         export COLORTERM="truecolor"
+      fi
+
       # Legend
       # '^' = CTRL, '^[' = ESC
       bindkey '^p' history-search-backward
