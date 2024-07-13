@@ -12,5 +12,6 @@
     ./prometheus.nix
     ./deluge.nix
     ./vaultwarden.nix
+    ./atuin.nix
   ];
 }
