@@ -415,6 +415,14 @@
         ];
       }
       {
+        url = "https://0xda.de/blog/index.xml";
+        tags = [
+          "Nix"
+          "Tech"
+          "Blog"
+        ];
+      }
+      {
         url = "https://xn--gckvb8fzb.com/index.xml";
         tags = [
           "Tech"

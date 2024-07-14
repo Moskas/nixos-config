@@ -54,6 +54,8 @@
         display 'Config reloaded'
       unbind '%'
       unbind '"'
+      bind-key -n C-S-j previous-window
+      bind-key -n C-S-k next-window
     '';
     plugins = with pkgs; [
       {
