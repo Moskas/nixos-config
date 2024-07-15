@@ -227,13 +227,6 @@
             }
           ];
         };
-        glasgow = lib.nixosSystem {
-          system = "i686-linux";
-          specialArgs = {
-            inherit self nixpkgs home-manager;
-          };
-          modules = [ ./hosts/glasgow/configuration.nix ];
-        };
         iso = lib.nixosSystem {
           inherit system;
           modules = [
