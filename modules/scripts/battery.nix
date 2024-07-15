@@ -34,6 +34,6 @@ pkgs.writeShellScriptBin "bat-stat" ''
     esac
 
     # Print battery capacity and status
-    echo " $symbol $capacity% "
+    printf "%s %s%% " "$symbol" "$capacity"
   fi
 ''

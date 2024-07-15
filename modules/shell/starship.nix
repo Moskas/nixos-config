@@ -5,7 +5,7 @@
     enableZshIntegration = true;
     settings = {
       add_newline = false;
-      palette = "dynamic";
+      #palette = "dynamic";
       format = ''
         $directory$character
       '';
@@ -37,7 +37,7 @@
         ssh_only = true;
         ssh_symbol = "󰣀"; # 
         format = "[ $ssh_symbol $hostname ]($style)";
-        style = " bg:bg fg:dark-cyan bold";
+        style = " bg:bg fg:cyan bold";
         disabled = false;
       };
       memory_usage = {
@@ -48,7 +48,7 @@
         style = " fg:bg bg:green";
       };
       directory = {
-        read_only = "";
+        read_only = " ";
         home_symbol = "~";
         truncation_length = 4;
         truncation_symbol = "…/";
@@ -95,18 +95,18 @@
       nix_shell = {
         disabled = false;
         symbol = "";
-        format = "[$symbol shell ](fg:blue bg:bg bold)";
+        format = "[$symbol shell](fg:blue bg:bg bold)";
       };
       cmd_duration = {
         min_time = 500;
         format = "[ ⏱ $duration ](bg:bg fg:gray bold)";
       };
       git_branch = {
-        format = "[$branch $symbol(:$remote_branch)](fg:purple bg:bg bold)";
+        format = "[ $branch $symbol(:$remote_branch)](fg:purple bg:bg bold)";
         symbol = " ";
       };
       git_status = {
-        format = "([$all_status ](fg:purple bg:bg bold))";
+        format = "([$all_status](fg:purple bg:bg bold))";
         stashed = " 󰿺";
         modified = " 󱞁";
         untracked = " 󱙓";
@@ -120,59 +120,17 @@
         detect_extensions = [ "nix" ];
         format = "[  $output](fg:blue)";
       };
-      palettes.solarized = {
-        fg = "#93a1a1";
-        fg2 = "#839496";
-        fg3 = "#657b83";
-        fg4 = "#586e75";
-        bg = "#282828";
-        bg2 = "#073642";
-        red = "#dc322f";
-        green = "#b8bb26";
-        blue = "#268bd2";
-        cyan = "#2aa198";
-        dark-cyan = "#2aa198";
-        yellow = "#b58900";
-        purple = "#6c71c4";
-        magenta = "#d33682";
-        brwhite = "#fbf1c7";
-        white = "#eee8d5";
-      };
-      palettes.dynamic = {
+      palettes.nixcolors = {
         fg = "#${config.colorScheme.palette.base06}";
         bg = "#${config.colorScheme.palette.base00}";
         red = "#${config.colorScheme.palette.base08}";
         yellow = "#${config.colorScheme.palette.base0A}";
-        dark-yellow = "#${config.colorScheme.palette.base0A}";
         green = "#${config.colorScheme.palette.base0B}";
-        dark-green = "#${config.colorScheme.palette.base0B}";
         cyan = "#${config.colorScheme.palette.base0C}";
-        dark-cyan = "#${config.colorScheme.palette.base0C}";
         blue = "#${config.colorScheme.palette.base0D}";
-        dark-blue = "#${config.colorScheme.palette.base0D}";
         magenta = "#${config.colorScheme.palette.base0E}";
-        dark-magenta = "#${config.colorScheme.palette.base0E}";
         orange = "#${config.colorScheme.palette.base09}";
-        gray = "#${config.colorScheme.palette.base03}";
-        dark-gray = "#${config.colorScheme.palette.base02}";
-      };
-      palettes.gruvbox = {
-        fg = "#ebdbb2";
-        bg = "#1d2021";
-        yellow = "#fabd2f";
-        dark-yellow = "#d79921";
-        green = "#b8bb26";
-        dark-green = "#98971a";
-        red = "#fb4932";
-        dark-red = "#cc241d";
-        magenta = "#d3869b";
-        dark-magenta = "#b16286";
-        blue = "#83a598";
-        dark-blue = "#458588";
-        cyan = "#8ec07c";
-        dark-cyan = "#689d6a";
-        gray = "#666666";
-        dark-gray = "#3d3d3d";
+        gray = "#${config.colorScheme.palette.base02}";
       };
     };
   };

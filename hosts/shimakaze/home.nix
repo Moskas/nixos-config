@@ -10,7 +10,6 @@
     ../../modules/git
     ../../modules/shell
     ../../modules/shell/tmux.nix
-    ../../modules/browsers/qutebrowser.nix
     ../../modules/editors/emacs.nix
     ../../modules/editors/neovim.nix
   ];
@@ -26,6 +25,7 @@
       nmap
       w3m
       ollama
+      (callPackage ../../modules/scripts/wsl-mount.nix { })
     ];
   };
 

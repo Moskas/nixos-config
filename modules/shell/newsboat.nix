@@ -347,8 +347,12 @@
       }
       #Blog
       {
+      url = "https://moskas.github.io/feed";
+      tags = [ "Blog" ];
+      }
+      {
         url = "https://terrysfreegameoftheweek.com/feed/";
-        tags = [ "Games" ];
+        tags = [ "Games" "Blog" ];
       }
       {
         url = "https://myme.no/feed.xml";
