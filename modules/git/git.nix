@@ -21,15 +21,15 @@
       "result"
     ];
     aliases = {
-      c = "clone";
-      ci = "commit";
+      cl = "clone";
+      ct = "commit";
       co = "checkout";
-      s = "status -bs";
+      ss = "status -bs";
       st = "stash";
-      a = "add";
-      d = "diff";
-      p = "push";
-      pu = "pull";
+      ad = "add";
+      df = "diff";
+      ps = "push";
+      pl = "pull";
     };
   };
 }
