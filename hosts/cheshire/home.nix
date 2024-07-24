@@ -15,7 +15,7 @@ in
     nix-colors.homeManagerModules.default
     nur.nixosModules.nur
     ../../modules/common/home
-    #../../modules/desktops/theming/gtk.nix # TODO Look for some improvements as GTK4/Libadwaita looks horrible
+    ../../modules/desktops/theming/gtk.nix # TODO Look for some improvements as GTK4/Libadwaita looks horrible
     ../../modules/browsers
     #../../modules/browsers/nyxt.nix
     ../../modules/apps
@@ -27,12 +27,14 @@ in
     ../../modules/scripts
     ../../modules/email
     ../../modules/services
-    #../../modules/desktops/qtilestyle.nix
+    ../../modules/desktops/qtilestyle.nix
     #../../modules/desktops/stumpwmStyle.nix
     #../../modules/desktops/theming/colorschemes/nostalgia-dark.nix
+    #../../modules/desktops/theming/colorschemes/matcha-dark.nix
   ];
 
-  colorScheme = nix-colors.colorSchemes.gruvbox-dark-medium;
+  #colorScheme = nix-colors.colorSchemes.gruvbox-dark-medium;
+  colorScheme = (import ../../modules/desktops/theming/colorschemes/matcha-dark.nix);
 
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
@@ -74,6 +76,7 @@ in
     discord-screenaudio
     feh
     lutgen
+
     #(callPackage ../../pkgs/nyaa.nix { })
     (ollama.override { acceleration = "cuda"; })
 
@@ -141,10 +144,11 @@ in
       size = 10;
     };
 
-    theme = {
-      name = "Gruvbox-Dark-BL-LB";
-      package = inputs.stable-nixpkgs.legacyPackages."x86_64-linux".gruvbox-gtk-theme;
-    };
+    #theme = {
+    #  name = "Gruvbox-Dark-BL-LB";
+    #  #package = inputs.stable-nixpkgs.legacyPackages."x86_64-linux".gruvbox-gtk-theme;
+    #  package = (pkgs.gruvbox-gtk-theme.override { colorVariants = [ "dark" ]; });
+    #};
 
     iconTheme = {
       name = "Gruvbox-Plus-Dark";

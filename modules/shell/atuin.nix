@@ -10,9 +10,6 @@
       search_mode = "prefix";
       style = "compact";
       history_filter = [
-        "^z"
-        "^cd"
-        "ls"
         "^clear"
         "^exit"
         "^atuin"

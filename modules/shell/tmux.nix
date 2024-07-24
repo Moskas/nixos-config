@@ -8,6 +8,7 @@
   programs.tmux = {
     enable = true;
     mouse = true;
+    secureSocket = true;
     clock24 = true;
     keyMode = "emacs";
     baseIndex = 1;

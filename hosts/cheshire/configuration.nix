@@ -159,13 +159,13 @@
   };
 
   # Enable sound.
-  sound = {
-    enable = true;
-    mediaKeys = {
-      enable = true;
-      volumeStep = "5%";
-    };
-  };
+  #sound = {
+  #  enable = true;
+  #  mediaKeys = {
+  #    enable = true;
+  #    volumeStep = "5%";
+  #  };
+  #};
 
   hardware.pulseaudio.enable = false;
   services.pipewire = {
@@ -211,7 +211,7 @@
       "i2c"
       "docker"
     ];
-    packages = with pkgs; [ ];
+    packages = with pkgs; [ libz ];
   };
 
   environment.variables = {
