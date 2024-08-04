@@ -355,7 +355,7 @@
         tags = [ "Games" "Blog" ];
       }
       {
-        url = "https://myme.no/feed.xml";
+        url = "https://myme.no/atom-feed.xml";
         tags = [
           "Linux"
           "Tech"

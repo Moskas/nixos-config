@@ -204,6 +204,34 @@
           [class*=slateTextArea] {
             color: var(--text-normal);
           }
+
+          .theme-dark .hljs-regexp, .theme-dark .hljs-string, .theme-dark .hljs-meta .hljs-string {
+            color: #${config.colorScheme.palette.base0B};
+          }
+
+          .theme-dark .hljs-name, .theme-dark .hljs-quote, .theme-dark .hljs-selector-tag, .theme-dark .hljs-selector-pseudo {
+              color: #${config.colorScheme.palette.base08};
+          }
+
+          .theme-dark .hljs-built_in, .theme-dark .hljs-symbol {
+              color: #${config.colorScheme.palette.base0D};
+          }
+
+          .theme-dark .hljs-title, .theme-dark .hljs-title.class_, .theme-dark .hljs-title.class_.inherited__, .theme-dark .hljs-title.function_ {
+              color: #${config.colorScheme.palette.base0C};
+          }
+
+          .theme-dark .hljs-attr, .theme-dark .hljs-attribute, .theme-dark .hljs-literal, .theme-dark .hljs-meta, .theme-dark .hljs-number, .theme-dark .hljs-operator, .theme-dark .hljs-variable, .theme-dark .hljs-selector-attr, .theme-dark .hljs-selector-class, .theme-dark .hljs-selector-id {
+              color: #${config.colorScheme.palette.base0B};
+          }
+
+          .theme-dark .hljs-doctag, .theme-dark .hljs-keyword, .theme-dark .hljs-meta .hljs-keyword, .theme-dark .hljs-template-tag, .theme-dark .hljs-template-variable, .theme-dark .hljs-type, .theme-dark .hljs-variable.language_ {
+              color: #${config.colorScheme.palette.base08};
+          }
+
+          .theme-dark .hljs-comment, .theme-dark .hljs-code, .theme-dark .hljs-formula {
+              color: #${config.colorScheme.palette.base06};
+          }
         '';
       };
     };

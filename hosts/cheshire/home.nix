@@ -168,14 +168,14 @@ in
     };
   };
 
-  qt = {
-    enable = false;
-    platformTheme = "gtk";
-    style = {
-      name = "adwaita-dark";
-      package = pkgs.adwaita-qt;
-    };
-  };
+  #qt = {
+  #  enable = false;
+  #  platformTheme = "gtk";
+  #  style = {
+  #    name = "adwaita-dark";
+  #    package = pkgs.adwaita-qt;
+  #  };
+  #};
 
   home.sessionVariables.GTK_THEME = "Gruvbox-Plus-Dark";
 

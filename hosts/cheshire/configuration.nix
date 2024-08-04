@@ -17,7 +17,7 @@
     ../../modules/services/ssh.nix
     ../../modules/overlays
     ../../modules/nvidia/nvidia.nix
-    #../../modules/desktops/theming/stylix.nix
+    ../../modules/desktops/theming/stylix.nix
     ../../modules/desktops/qtile.nix
     ../../modules/desktops/hyprland.nix
     ../../modules/desktops/niri.nix

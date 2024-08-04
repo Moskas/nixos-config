@@ -4,6 +4,9 @@
 
   programs.nixvim = {
     enable = true;
+    globals = {
+      mapleader = " ";
+    };
     plugins = {
       lualine = {
         enable = true;
@@ -241,7 +244,7 @@
         };
         keymaps = {
           "<leader><space>" = {
-            action = "find_files, {}";
+            action = "find_files";
             # desc = "Find project files";
           };
           "<leader>ff" = {

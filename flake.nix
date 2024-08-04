@@ -174,7 +174,7 @@
             default-overlays
             home-manager.nixosModules.home-manager
             disko.nixosModules.default
-            #inputs.stylix.nixosModules.stylix # TODO Configure stylix
+            inputs.stylix.nixosModules.stylix # TODO Configure stylix
             {
               home-manager = {
                 useGlobalPkgs = true;
