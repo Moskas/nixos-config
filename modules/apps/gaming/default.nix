@@ -20,8 +20,12 @@
     # gamingPkgs.osu-stable # mime conflicts with osu!lazer
     modrinth-app-unwrapped
     stepmania
+    vintagestory
     (writeShellScriptBin "etterna" ''
       nix run "github:thiagokokada/nix-alien#nix-alien-ld" -- ~/Games/Etterna/Etterna
     '') # Just a hack teehee
+    (writeShellScriptBin "itgmania" ''
+      nix run "github:thiagokokada/nix-alien#nix-alien" -- ~/Games/itgmania/itgmania
+    '')
   ];
 }
