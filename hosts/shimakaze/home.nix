@@ -14,7 +14,8 @@
     ../../modules/editors/neovim.nix
   ];
 
-  colorScheme = nix-colors.colorSchemes.gruvbox-light-medium;
+  #colorScheme = nix-colors.colorSchemes.gruvbox-light-medium;
+  colorScheme = (import ../../modules/desktops/theming/colorschemes/matcha-dark.nix);
 
   # Home Manager needs a bit of information about you and the
   # paths it should manage.

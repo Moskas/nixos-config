@@ -68,6 +68,7 @@
       ];
       extraPackages32 = with pkgs; [ mangohud ];
     };
+    nvidia-container-toolkit.enable = true;
     bluetooth = {
       enable = true;
     };
@@ -272,7 +273,6 @@
     };
     docker = {
       enable = true;
-      enableNvidia = true;
       storageDriver = "btrfs";
     };
   };

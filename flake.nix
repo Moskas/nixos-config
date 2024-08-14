@@ -48,6 +48,8 @@
 
     nixpkgs-f2k.url = "github:fortuneteller2k/nixpkgs-f2k";
 
+    nix-alien.url = "github:thiagokokada/nix-alien";
+
     # qtile setup
     qtile-config = {
       url = "github:Moskas/qtile-config";

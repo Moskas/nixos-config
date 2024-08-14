@@ -61,7 +61,7 @@
       amfora
       (callPackage ../../pkgs/whdl.nix { })
       (callPackage ../../pkgs/epy.nix { })
-      #(callPackage ../../pkgs/donkeytype.nix { })
+      (callPackage ../../pkgs/reader.nix { })
       ngrrram
       inputs.anifetch.defaultPackage.${system}
       onefetch

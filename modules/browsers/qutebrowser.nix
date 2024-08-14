@@ -5,6 +5,12 @@ in
 {
   programs.qutebrowser = {
     enable = true;
+    package = (
+      pkgs.qutebrowser.override {
+        enableVulkan = true;
+        enableWideVine = true;
+      }
+    );
     searchEngines = {
       DEFAULT = "https://startpage.com/search?q={}";
       w = "https://en.wikipedia.org/wiki/Special:Search?search={}&go=Go&ns0=1";

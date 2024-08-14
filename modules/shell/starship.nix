@@ -67,11 +67,11 @@
       };
       rust = {
         symbol = "🦀";
-        format = "[ $symbol $version ](fg:yellow bg:bg bold)";
+        format = "[ $symbol $version](fg:yellow bg:bg bold)";
       };
       python = {
         symbol = "";
-        format = "[ $symbol $version ](fg:yellow bg:bg bold)";
+        format = "[ $symbol $version](fg:yellow bg:bg bold)";
       };
       c = {
         symbol = "";
@@ -79,7 +79,7 @@
       };
       lua = {
         symbol = "";
-        format = "[ $symbol $version ](fg:blue bg:bg bold)";
+        format = "[ $symbol $version](fg:blue bg:bg bold)";
       };
       os = {
         disabled = false;

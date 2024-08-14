@@ -8,6 +8,15 @@
       mapleader = " ";
     };
     plugins = {
+      autoclose.enable = true;
+      crates-nvim.enable = true;
+      lsp-format.enable = true;
+      lsp = {
+      enable = true;
+      servers = {
+      nixd.enable = true;
+      };
+      };
       lualine = {
         enable = true;
         alwaysDivideMiddle = true;
@@ -248,91 +257,91 @@
             # desc = "Find project files";
           };
           "<leader>ff" = {
-            action = "find_files, {}";
+            action = "find_files";
             # desc = "Find project files";
           };
           "<leader>/" = {
-            action = "live_grep, {}";
+            action = "live_grep";
             # desc = "Grep (root dir)";
           };
           "<leader>:" = {
-            action = "command_history, {}";
+            action = "command_history";
             # desc = "Command History";
           };
           "<leader>fr" = {
-            action = "oldfiles, {}";
+            action = "oldfiles";
             # desc = "Recent";
           };
           "<leader>fb" = {
-            action = "buffers, {}";
+            action = "buffers";
             # desc = "Buffers";
           };
           #"<leader>b" = {
-          #  action = "buffers, {}";
+          #  action = "buffers";
           #  # desc = "+buffer";
           #};
           "<C-p>" = {
-            action = "git_files, {}";
+            action = "git_files";
             # desc = "Search git files";
           };
           "<leader>gc" = {
-            action = "git_commits, {}";
+            action = "git_commits";
             # desc = "commits";
           };
           "<leader>gs" = {
-            action = "git_status, {}";
+            action = "git_status";
             # desc = "status";
           };
           "<leader>sa" = {
-            action = "autocommands, {}";
+            action = "autocommands";
             # desc = "Auto Commands";
           };
           "<leader>sb" = {
-            action = "current_buffer_fuzzy_find, {}";
+            action = "current_buffer_fuzzy_find";
             # desc = "Buffer";
           };
           "<leader>sc" = {
-            action = "command_history, {}";
+            action = "command_history";
             # desc = "Command History";
           };
           "<leader>sC" = {
-            action = "commands, {}";
+            action = "commands";
             # desc = "Commands";
           };
           "<leader>sD" = {
-            action = "diagnostics, {}";
+            action = "diagnostics";
             # desc = "Workspace diagnostics";
           };
           "<leader>sh" = {
-            action = "help_tags, {}";
+            action = "help_tags";
             # desc = "Help pages";
           };
           "<leader>sH" = {
-            action = "highlights, {}";
+            action = "highlights";
             # desc = "Search Highlight Groups";
           };
           "<leader>sk" = {
-            action = "keymaps, {}";
+            action = "keymaps";
             # desc = "Key maps";
           };
           "<leader>sM" = {
-            action = "man_pages, {}";
+            action = "man_pages";
             # desc = "Man pages";
           };
           "<leader>sm" = {
-            action = "marks, {}";
+            action = "marks";
             # desc = "Jump to Mark";
           };
           "<leader>so" = {
-            action = "vim_options, {}";
+            action = "vim_options";
             # desc = "Options";
           };
           "<leader>sR" = {
-            action = "resume, {}";
+            action = "resume";
             # desc = "Resume";
           };
           "<leader>uC" = {
-            action = "colorscheme, {}";
+            action = "colorscheme";
             # desc = "Colorscheme preview";
           };
         };

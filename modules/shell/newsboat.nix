@@ -347,12 +347,15 @@
       }
       #Blog
       {
-      url = "https://moskas.github.io/feed";
-      tags = [ "Blog" ];
+        url = "https://moskas.github.io/feed";
+        tags = [ "Blog" ];
       }
       {
         url = "https://terrysfreegameoftheweek.com/feed/";
-        tags = [ "Games" "Blog" ];
+        tags = [
+          "Games"
+          "Blog"
+        ];
       }
       {
         url = "https://myme.no/atom-feed.xml";
@@ -704,6 +707,10 @@
       {
         url = "https://morss.it/https://www.theregister.com/headlines.atom";
         tags = [ "Tech" ];
+      }
+      {
+        url = "https://rachelbythebay.com/w/atom.xml";
+        tags = [ "Blog" ];
       }
     ];
   };

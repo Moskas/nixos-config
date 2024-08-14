@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 {
   home.packages = with pkgs; [
     protonup-ng
@@ -22,10 +22,10 @@
     stepmania
     vintagestory
     (writeShellScriptBin "etterna" ''
-      nix run "github:thiagokokada/nix-alien#nix-alien-ld" -- ~/Games/Etterna/Etterna
+      ${inputs.nix-alien.packages.${system}.nix-alien}/bin/nix-alien-ld" -- ~/Games/Etterna/Etterna
     '') # Just a hack teehee
     (writeShellScriptBin "itgmania" ''
-      nix run "github:thiagokokada/nix-alien#nix-alien" -- ~/Games/itgmania/itgmania
+      ${inputs.nix-alien.packages.${system}.nix-alien}/bin/nix-alien" -- ~/Games/itgmania/itgmania
     '')
   ];
 }
