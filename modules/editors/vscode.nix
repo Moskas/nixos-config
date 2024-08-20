@@ -15,6 +15,7 @@
       ms-python.black-formatter
       asvetliakov.vscode-neovim
       mkhl.direnv
+      fill-labs.dependi
     ];
   };
 }

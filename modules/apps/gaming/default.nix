@@ -22,10 +22,10 @@
     stepmania
     vintagestory
     (writeShellScriptBin "etterna" ''
-      ${inputs.nix-alien.packages.${system}.nix-alien}/bin/nix-alien-ld" -- ~/Games/Etterna/Etterna
+      ${inputs.nix-alien.packages.${system}.nix-alien}/bin/nix-alien-ld -- ~/Games/Etterna/Etterna
     '') # Just a hack teehee
     (writeShellScriptBin "itgmania" ''
-      ${inputs.nix-alien.packages.${system}.nix-alien}/bin/nix-alien" -- ~/Games/itgmania/itgmania
+      ${inputs.nix-alien.packages.${system}.nix-alien}/bin/nix-alien -- ~/Games/itgmania/itgmania
     '')
   ];
 }

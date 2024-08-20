@@ -242,10 +242,10 @@
         ];
         title = "Ampersand";
       }
-      #{
-      #url = "https://www.youtube.com/feeds/videos.xml?channel_id="; tags = [ "Youtube" ];
-      #title = "";
-      #}
+      {
+        url = "https://www.youtube.com/feeds/videos.xml?channel_id=UCbfg3_hFrOxuEtYMRGsp1ig";
+        tags = [ "Youtube" ];
+      }
       #{
       #url = "https://www.youtube.com/feeds/videos.xml?channel_id="; tags = [ "Youtube" ];
       #title = "";

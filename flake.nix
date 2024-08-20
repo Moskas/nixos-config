@@ -20,14 +20,6 @@
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    #nixvim-config = {
-    #  url = "github:Moskas/nixvim-config";
-    #  inputs = {
-    #    nixpkgs.follows = "nixpkgs";
-    #    nixvim.follows = "nixvim";
-    #    flake-parts.follows = "flake-parts";
-    #  };
-    #};
     emacs-overlay = {
       url = "github:nix-community/emacs-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -36,11 +28,6 @@
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    #nix-on-droid = {
-    #  url = "github:nix-community/nix-on-droid/testing";
-    #  inputs.nixpkgs.follows = "nixpkgs";
-    #  inputs.home-manager.follows = "home-manager";
-    #};
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v0.3.0";
       inputs.nixpkgs.follows = "nixpkgs";
