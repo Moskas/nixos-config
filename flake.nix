@@ -35,7 +35,15 @@
 
     nixpkgs-f2k.url = "github:fortuneteller2k/nixpkgs-f2k";
 
-    nix-alien.url = "github:thiagokokada/nix-alien";
+    aagl = {
+      url = "github:ezKEa/aagl-gtk-on-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nix-alien = {
+      url = "github:thiagokokada/nix-alien";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # qtile setup
     qtile-config = {
@@ -164,6 +172,7 @@
             home-manager.nixosModules.home-manager
             disko.nixosModules.default
             inputs.stylix.nixosModules.stylix # TODO Configure stylix
+            inputs.aagl.nixosModules.default
             {
               home-manager = {
                 useGlobalPkgs = true;

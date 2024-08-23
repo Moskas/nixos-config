@@ -518,6 +518,13 @@
         ];
       }
       {
+        url = "https://morss.it/https://izder456.tumblr.com/rss";
+        tags = [
+          "BSD"
+          "Blog"
+        ];
+      }
+      {
         url = "https://morss.it/https://fabiensanglard.net/rss.xml";
         tags = [
           "Blog"

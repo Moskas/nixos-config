@@ -1,7 +1,12 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running `nixos-help`).
-{ pkgs, username, ... }:
+{
+  pkgs,
+  username,
+  inputs,
+  ...
+}:
 {
   imports = [
     # Include the results of the hardware scan.
@@ -276,6 +281,9 @@
       storageDriver = "btrfs";
     };
   };
+
+  nix.settings = inputs.aagl.nixConfig;
+  programs.sleepy-launcher.enable = true;
 
   programs.virt-manager.enable = true;
   # Copy the NixOS configuration file and link it from the resulting system
