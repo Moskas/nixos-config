@@ -235,12 +235,12 @@
   environment.systemPackages = with pkgs; [
     i2c-tools
     openrgb-with-all-plugins
-    mpd
-    mpdas
-    dbus
+    #mpd
+    #mpdas
+    #dbus
 
     timeshift
-    scrcpy
+    #scrcpy
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

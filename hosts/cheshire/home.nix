@@ -29,12 +29,10 @@ in
     ../../modules/services
     ../../modules/desktops/qtilestyle.nix
     #../../modules/desktops/stumpwmStyle.nix
-    #../../modules/desktops/theming/colorschemes/nostalgia-dark.nix
-    #../../modules/desktops/theming/colorschemes/matcha-dark.nix
   ];
 
-  #colorScheme = nix-colors.colorSchemes.gruvbox-dark-medium;
-  colorScheme = (import ../../modules/desktops/theming/colorschemes/matcha-dark.nix);
+  colorScheme = nix-colors.colorSchemes.gruvbox-dark-medium;
+  #colorScheme = (import ../../modules/desktops/theming/colorschemes/matcha-dark.nix);
 
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
@@ -73,7 +71,6 @@ in
     random-wallpaper
     nicotine-plus
     obs-studio
-    discord-screenaudio
     feh
     lutgen
 

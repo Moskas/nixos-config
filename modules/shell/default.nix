@@ -58,11 +58,11 @@
       jq
       du-dust
       duf
-      amfora
+      #amfora
       (callPackage ../../pkgs/whdl.nix { })
-      (callPackage ../../pkgs/epy.nix { })
+      #(callPackage ../../pkgs/epy.nix { })
       (callPackage ../../pkgs/reader.nix { })
-      ngrrram
+      #ngrrram
       inputs.anifetch.defaultPackage.${system}
       onefetch
       zip
