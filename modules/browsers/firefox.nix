@@ -472,36 +472,36 @@
 
       '';
       userContent = ''
-                @-moz-document url("about:home"), url("about:newtab") {
-                  :root[lwt-newtab-brighttext] {
-                      --newtab-background-color-secondary: #${config.colorScheme.palette.base02} !important;
-                      --newtab-background-color: #${config.colorScheme.palette.base01} !important;
-                  }
-                  .search-wrapper .search-handoff-button {
-                      background-color: #${config.colorScheme.palette.base02} !important;
-                      box-shadow: none !important;
-                  }
-                  .personalize-button:hover {
-                      background-color: #${config.colorScheme.palette.base02} !important;
-                  }
-                  .personalize-button {
-                      background: none !important;
-                  }
-                  .search-wrapper .logo-and-wordmark .wordmark {
-                      display: none !important;
-                  }
-                  .search-wrapper .logo-and-wordmark .logo {
-                      #background: image-set(url("https://moskas.github.io/IMG/kitty.png") 2x) no-repeat center !important;
-                      background: none !important;
-                  }
-                  .collapsible-section {
-                      background: #${config.colorScheme.palette.base00}aa !important;
-                      border-radius: 10px;
-                  }
-                  body {
-                       #background-image: url("https://github.com/Moskas/wallpapers/raw/main/gruvbox/dark/gruv-nix-anime.png") !important;
-                  }
-                }
+        @-moz-document url("about:home"), url("about:newtab") {
+          :root[lwt-newtab-brighttext] {
+              --newtab-background-color-secondary: #${config.colorScheme.palette.base02} !important;
+              --newtab-background-color: #${config.colorScheme.palette.base01} !important;
+          }
+          .search-wrapper .search-handoff-button {
+              background-color: #${config.colorScheme.palette.base02} !important;
+              box-shadow: none !important;
+          }
+          .personalize-button:hover {
+              background-color: #${config.colorScheme.palette.base02} !important;
+          }
+          .personalize-button {
+              background: none !important;
+          }
+          .search-wrapper .logo-and-wordmark .wordmark {
+              display: none !important;
+          }
+          .search-wrapper .logo-and-wordmark .logo {
+              #background: image-set(url("https://moskas.github.io/IMG/kitty.png") 2x) no-repeat center !important;
+              background: none !important;
+          }
+          .collapsible-section {
+              background: #${config.colorScheme.palette.base00}aa !important;
+              border-radius: 10px;
+          }
+          body {
+               #background-image: url("https://github.com/Moskas/wallpapers/raw/main/gruvbox/dark/gruv-nix-anime.png") !important;
+          }
+        }
       '';
       extensions = with pkgs.nur.repos.rycee.firefox-addons; [
         darkreader

@@ -12,10 +12,10 @@
       crates-nvim.enable = true;
       lsp-format.enable = true;
       lsp = {
-      enable = true;
-      servers = {
-      nixd.enable = true;
-      };
+        enable = true;
+        servers = {
+          nixd.enable = true;
+        };
       };
       lualine = {
         enable = true;

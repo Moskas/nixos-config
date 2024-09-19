@@ -55,6 +55,7 @@
              --input-background: var(--background-tertiary);
 
              --autocomplete-bg: var(--background-secondary);
+             --brand-500: #${config.colorScheme.palette.base0C};
           }
 
           :root {
