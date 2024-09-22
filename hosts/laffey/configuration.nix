@@ -11,7 +11,10 @@
   ];
 
   services.xserver.videoDrivers = [ "nvidia" ];
-  hardware.graphics.enable = true;
+  hardware = {
+    graphics.enable = true;
+    nvidia.open = false;
+  };
 
   # Nix
   nix = {
