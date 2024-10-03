@@ -63,7 +63,6 @@
       pkg-config
     ];
 
-    noXlibs = false;
     variables = {
       EDITOR = "emacs";
     };
