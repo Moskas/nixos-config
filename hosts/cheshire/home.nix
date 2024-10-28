@@ -65,7 +65,6 @@ in
     bitwarden
     easyeffects
     xclip
-    #pkg-config
     openrgb-with-all-plugins
     distrobox
     random-wallpaper

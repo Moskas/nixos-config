@@ -1,9 +1,8 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
     nh
     nixfmt-rfc-style
-    #nil
     nixd
     nix-inspect
     nix-output-monitor
@@ -11,6 +10,7 @@
 
   nix = {
     package = pkgs.lix;
+    nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
     gc = {
       automatic = true;
       dates = "weekly";

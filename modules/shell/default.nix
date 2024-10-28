@@ -21,7 +21,7 @@
     ./tickrs.nix
     ./tmux.nix
     ./xresources.nix
-    ./yazi.nix
+    #./yazi.nix
     ./zsh.nix
     ./zoxide.nix
   ];

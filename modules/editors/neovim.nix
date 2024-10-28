@@ -8,6 +8,7 @@
       mapleader = " ";
     };
     plugins = {
+      web-devicons.enable = true;
       autoclose.enable = true;
       crates-nvim.enable = true;
       lsp-format.enable = true;
@@ -19,35 +20,36 @@
       };
       lualine = {
         enable = true;
-        alwaysDivideMiddle = true;
-        ignoreFocus = [ "neo-tree" ];
-        extensions = [ "fzf" ];
-        componentSeparators = {
-          left = "|";
-          right = "|";
-        };
-        sectionSeparators = {
-          left = "";
-          right = "";
-        };
-        sections = {
-          lualine_a = [ "mode" ];
-          lualine_b = [
-            "branch"
-            "diff"
-            "diagnostics"
-          ];
-          lualine_c = [ "filename" ];
-          lualine_x = [ "filetype" ];
-          lualine_y = [ "progress" ];
-          lualine_z = [ ''" " .. os.date("%R")'' ];
+        settings = {
+          alwaysDivideMiddle = true;
+          ignoreFocus = [ "neo-tree" ];
+          extensions = [ "fzf" ];
+          componentSeparators = {
+            left = "|";
+            right = "|";
+          };
+          sectionSeparators = {
+            left = "";
+            right = "";
+          };
+          sections = {
+            lualine_a = [ "mode" ];
+            lualine_b = [
+              "branch"
+              "diff"
+              "diagnostics"
+            ];
+            lualine_c = [ "filename" ];
+            lualine_x = [ "filetype" ];
+            lualine_y = [ "progress" ];
+            lualine_z = [ ''" " .. os.date("%R")'' ];
+          };
         };
       };
       persistence.enable = true;
       alpha = {
         enable = true;
         theme = null;
-        iconsEnabled = true;
         layout =
           let
             padding = val: {

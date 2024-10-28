@@ -269,7 +269,6 @@
     libtool
     xorg.xbacklight
     virt-manager
-    alsaLib
     pkg-config
     udev
     vulkan-loader

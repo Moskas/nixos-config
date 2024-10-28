@@ -55,6 +55,8 @@
       { url = ''"query:Odysee:tags # \"Odysee\""''; }
       { url = ''"query:Piped:tags # \"Piped\""''; }
       { url = ''"query:Blog:tags # \"Blog\""''; }
+      { url = ''"query:Nix:tags # \"Nix\""''; }
+      { url = ''"query:Emacs:tags # \"Emacs\""''; }
       { url = ''"query:Wrocław:tags # \"Wrocław\""''; }
       { url = "http://localhost:8000/feed"; }
       #Videos
@@ -406,6 +408,14 @@
         ];
       }
       {
+        url = "https://frostyx.cz/feed";
+        tags = [
+          "Tech"
+          "Emacs"
+          "Blog"
+        ];
+      }
+      {
         url = "https://planet.clojure.in/atom.xml";
         tags = [
           "Tech"
@@ -452,7 +462,7 @@
         tags = [ "Cooking" ];
       }
       {
-        url = "https://determinate.systems/rss.xml";
+        url = "https://morss.it/https://determinate.systems/rss.xml";
         tags = [
           "Nix"
           "Blog"
