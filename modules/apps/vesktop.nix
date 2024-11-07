@@ -27,6 +27,7 @@
              --text-muted: #${config.colorScheme.palette.base03};
              --text-link: #${config.colorScheme.palette.base04};
              --background-floating: #${config.colorScheme.palette.base01};
+             --background-nested-floating: #${config.colorScheme.palette.base02};
              --header-primary: #${config.colorScheme.palette.base06};
              --header-secondary: #${config.colorScheme.palette.base06};
              --header-spotify: #${config.colorScheme.palette.base02};

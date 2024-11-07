@@ -1,0 +1,12 @@
+#+title: Hosts
+Currently my config has the following list of hosts:
+- cheshire
+  My main desktop
+- laffey
+  My server
+- mochizuki
+  My aarch64 testing vm, in the future raspberry pi
+- roon
+  My laptop
+- shimakaze
+  My WSL setup

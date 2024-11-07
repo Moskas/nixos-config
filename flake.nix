@@ -197,6 +197,48 @@
             }
           ];
         };
+
+        noshiro = lib.nixosSystem {
+          inherit system;
+          specialArgs = {
+            inherit
+              inputs
+              username
+              e-mail
+              nix-colors
+              ;
+          };
+          modules = [
+            ./hosts/noshiro
+            default-overlays
+            home-manager.nixosModules.home-manager
+            disko.nixosModules.default
+            inputs.stylix.nixosModules.stylix # TODO Configure stylix
+            inputs.aagl.nixosModules.default
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                backupFileExtension = ".bak";
+                extraSpecialArgs = {
+                  inherit
+                    username
+                    e-mail
+                    nix-colors
+                    nixvim
+                    #nixvim-config
+                    nur
+                    inputs
+                    ;
+                };
+                users.${username}.imports = [
+                  (import ./hosts/noshiro/home.nix)
+                  inputs.nyaa.homeManagerModule
+                ];
+              };
+            }
+          ];
+        };
         laffey = lib.nixosSystem {
           inherit system;
           specialArgs = {

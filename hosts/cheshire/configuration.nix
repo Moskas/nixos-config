@@ -160,11 +160,6 @@
     '';
   };
 
-  programs.hyprland = {
-    enable = false;
-    xwayland.enable = true;
-  };
-
   # Enable sound.
   #sound = {
   #  enable = true;
@@ -203,6 +198,8 @@
       thunar-media-tags-plugin
     ];
   };
+
+  services.gvfs.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.${username} = {

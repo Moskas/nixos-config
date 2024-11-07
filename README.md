@@ -10,10 +10,13 @@
 
 ## Devices
 
-- Cheshire - my main desktop
-- Roon - laptop
-- Shimakaze - [NixOS WSL](https://github.com/nix-community/NixOS-WSL) config
-- Laffey - home server
+| Icon                                         | Hostname  | Device type                                                    |
+|----------------------------------------------|-----------|----------------------------------------------------------------|
+| ![Cheshire](.assets/ship_icons/image-4.png)  | Cheshire  | my main desktop                                                |
+| ![Roon](.assets/ship_icons/image-3.png)      | Roon      | laptop                                                         |
+| ![Shimakaze](.assets/ship_icons/image-2.png) | Shimakaze | [NixOS WSL](https://github.com/nix-community/NixOS-WSL) config |
+| ![Laffey](.assets/ship_icons/image-1.png)    | Laffey    | home server                                                    |
+| ![Noshiro](.assets/ship_icons/image.png)     | Noshiro   | future framework laptop (?)                                    |
 
 > *Yes, these are the names of warships.*
 
@@ -31,7 +34,7 @@
 │  └── shimakaze
 ├── modules # All modular configurations like shells, apps etc.
 │  ├── apps
-│  │  └── gaming
+│  │  └── gaming 
 │  ├── browsers
 │  ├── desktops
 │  │  └── theming

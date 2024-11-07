@@ -6,7 +6,7 @@
     settings = {
       General = {
         autoCloseIdleDaemon = true;
-        checkForUpdates = false;
+        #checkForUpdates = false;
         contrastOpacity = 188;
         saveAfterCopy = true;
         savePath = "/home/${username}/Pictures/Screenshots";

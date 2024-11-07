@@ -1,0 +1,194 @@
+
+configuration {
+ modi: "window,drun,ssh,combi,run";
+ font: "JetBrainsMono Nerd Font 12";
+ combi-modi: "window,drun,ssh";
+ }
+
+* {
+    /* Theme settings */
+    highlight: bold italic;
+    scrollbar: true;
+
+    /* Gruvbox dark colors */
+    bg0:          #282828;
+    bg0-soft:     #32302f;
+    bg3:          #665c54;
+    fg0:          #fbf1c7;
+    fg1:          #ebdbb2;
+    red-dark:     #cc241d;
+    red-light:    #fb4934;
+    yellow-dark:  #d79921;
+    yellow-light: #fabd2f;
+    gray:         #a89984;
+    purple:       #d3869b;
+    dark-purple:  #b16286;
+
+    /* Theme colors */
+    background:                  @bg0;
+    background-color:            @background;
+    foreground:                  @fg1;
+    border-color:                @gray;
+    separatorcolor:              @border-color;
+    scrollbar-handle:            @border-color;
+
+    normal-background:           @background;
+    normal-foreground:           @foreground;
+    alternate-normal-background: @background;
+    alternate-normal-foreground: @foreground;
+    selected-normal-background:  @purple;
+    selected-normal-foreground:  @background;
+
+    active-background:           @yellow-dark;
+    active-foreground:           @background;
+    alternate-active-background: @active-background;
+    alternate-active-foreground: @active-foreground;
+    selected-active-background:  @yellow-light;
+    selected-active-foreground:  @active-foreground;
+
+    urgent-background:           @red-dark;
+    urgent-foreground:           @background;
+    alternate-urgent-background: @urgent-background;
+    alternate-urgent-foreground: @urgent-foreground;
+    selected-urgent-background:  @red-light;
+    selected-urgent-foreground:  @urgent-foreground;
+}
+window {
+    background-color: @background;
+    border:           2px;
+    padding:          5px;
+    width: 40%;
+    height: 40%;
+}
+
+mainbox {
+    border:  0;
+    padding: 0;
+}
+
+message {
+    border:       2px 0 0;
+    border-color: @separatorcolor;
+    padding:      1px;
+}
+
+textbox {
+    highlight:  @highlight;
+    text-color: @foreground;
+}
+
+listview {
+    border:       2px solid 0 0;
+    padding:      2px 0 0;
+    border-color: @separatorcolor;
+    spacing:      2px;
+    scrollbar:    @scrollbar;
+}
+
+element {
+    border:  0;
+    padding: 2px;
+}
+
+element.normal.normal {
+    background-color: @normal-background;
+    text-color:       @normal-foreground;
+}
+
+element.normal.urgent {
+    background-color: @urgent-background;
+    text-color:       @urgent-foreground;
+}
+
+element.normal.active {
+    background-color: @active-background;
+    text-color:       @active-foreground;
+}
+
+element.selected.normal {
+    background-color: @selected-normal-background;
+    text-color:       @selected-normal-foreground;
+}
+
+element.selected.urgent {
+    background-color: @selected-urgent-background;
+    text-color:       @selected-urgent-foreground;
+}
+
+element.selected.active {
+    background-color: @selected-active-background;
+    text-color:       @selected-active-foreground;
+}
+
+element.alternate.normal {
+    background-color: @alternate-normal-background;
+    text-color:       @alternate-normal-foreground;
+}
+
+element.alternate.urgent {
+    background-color: @alternate-urgent-background;
+    text-color:       @alternate-urgent-foreground;
+}
+
+element.alternate.active {
+    background-color: @alternate-active-background;
+    text-color:       @alternate-active-foreground;
+}
+
+scrollbar {
+    width:        0px;
+    border:       0;
+    handle-color: @scrollbar-handle;
+    handle-width: 0px;
+    padding:      0;
+}
+
+mode-switcher {
+    border:       2px 0 0;
+    border-color: @separatorcolor;
+}
+
+inputbar {
+    spacing:    0;
+    text-color: @normal-foreground;
+    padding:    10px;
+    children:   [ prompt, textbox-prompt-sep, entry, case-indicator ];
+}
+
+entry {
+    placeholder-color: @gray;
+    expand: true;
+}
+
+case-indicator,
+entry,
+prompt,
+button {
+    spacing:    0;
+    text-color: @normal-foreground;
+}
+
+button.selected {
+    background-color: @selected-normal-background;
+    text-color:       @selected-normal-foreground;
+}
+
+textbox-prompt-sep {
+    expand:     false;
+    str:        ":";
+    text-color: @normal-foreground;
+    margin:     0 0.3em 0 0;
+}
+
+element-text, element-icon {
+    background-color: inherit;
+    text-color:       inherit;
+    padding: 0 5px;
+}
+
+element {
+  orientation: horizontal;
+  children: [element-icon, element-text ];
+  spacing: 5px;
+  padding: 10px;
+}

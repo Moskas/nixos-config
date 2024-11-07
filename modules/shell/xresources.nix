@@ -24,8 +24,8 @@
       "xterm*font" = "JetBrainsMono Nerd Font 10";
       "xterm*faceName" = "JetBrainsMono Nerd Font";
       "xterm*faceSize" = "12";
-      "Xcursor.theme" = "phinger-cursors-light";
-      "Xcursor.size" = "16";
+      #"Xcursor.theme" = "phinger-cursors-light";
+      #"Xcursor.size" = "16";
       "Xft.dpi" = "100";
     };
   };

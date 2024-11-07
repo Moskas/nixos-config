@@ -16,7 +16,7 @@
       "NVreg_EnablePCIeGen3=1"
       # This is sometimes needed for ddc/ci support, see
       # https://www.ddcutil.com/nvidia/
-      #
+      "NVreg_EnableGpuFirmware=0"
       # Current monitor does not support it, but this is useful for
       # the future
       "NVreg_RegistryDwords=RMUseSwI2c=0x01;RMI2cSpeed=100"

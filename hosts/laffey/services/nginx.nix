@@ -14,9 +14,14 @@
             root = pkgs.fetchFromGitHub {
               owner = "Moskas";
               repo = "moskas.github.io";
-              rev = "02c05e4aeefcc93644ad068219862e0c94d87f31";
-              hash = "sha256-xrCfsCa/6yuRZlGf1nIpkha12oKVBf+p5yDfuyf0cBU=";
+
+              rev = "afee264507fe94fb32055314c1bbd1785e926f9d";
+              hash = "sha256-CK3V7sUjuiPUfo20WmbvSOxJjx8d0L0AO2nx5N8A+0U=";
             };
+          };
+          "/dashboard/" = {
+            proxyPass = "http://127.0.0.1:8082/";
+            proxyWebsockets = true;
           };
           "/git/" = {
             proxyPass = "http://127.0.0.1:3000/";
@@ -44,6 +49,10 @@
           };
           "/atuin/" = {
             proxyPass = "http://127.0.0.1:8888/";
+          };
+          "/blog/" = {
+            proxyPass = "http://127.0.0.1:5173/";
+            proxyWebsockets = true;
           };
         };
       };

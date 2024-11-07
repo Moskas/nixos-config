@@ -1,6 +1,7 @@
 { pkgs, ... }:
 
 {
+  home.packages = with pkgs; [ ispell ];
   programs.emacs = {
     enable = true;
     package = pkgs.emacs-unstable;
@@ -17,6 +18,4 @@
     package = pkgs.emacs-unstable;
     startWithUserSession = "graphical";
   };
-
-  home.packages = with pkgs; [ ispell ];
 }

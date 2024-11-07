@@ -51,7 +51,7 @@
         read_only = " ";
         home_symbol = "~";
         truncation_length = 4;
-        truncation_symbol = "…/";
+        truncation_symbol = "./";
         truncate_to_repo = true;
         format = " [$path]($style)[$read_only]($read_only_style) ";
       };

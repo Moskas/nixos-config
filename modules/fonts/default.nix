@@ -8,6 +8,7 @@
         fonts = [
           "Iosevka"
           "JetBrainsMono"
+          "Terminus"
         ];
       })
       noto-fonts-emoji

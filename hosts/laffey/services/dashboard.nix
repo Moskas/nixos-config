@@ -2,13 +2,28 @@
   services.homepage-dashboard = {
     enable = true;
     settings = { };
+    widgets = [
+      {
+        resources = {
+          cpu = true;
+          disk = "/";
+          memory = true;
+        };
+      }
+      {
+        search = {
+          provider = "duckduckgo";
+          target = "_blank";
+        };
+      }
+    ];
     services = [
       {
         "Media" = [
           {
             "Jellyfin" = {
               description = "Jellyfin server";
-              href = "http://laffey.home:8096/";
+              href = "http://laffey.home/jelly/";
             };
           }
         ];

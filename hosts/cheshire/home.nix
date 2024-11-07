@@ -15,7 +15,7 @@ in
     nix-colors.homeManagerModules.default
     nur.nixosModules.nur
     ../../modules/common/home
-    ../../modules/desktops/theming/gtk.nix # TODO Look for some improvements as GTK4/Libadwaita looks horrible
+    #../../modules/desktops/theming/gtk.nix # TODO Look for some improvements as GTK4/Libadwaita looks horrible
     ../../modules/browsers
     #../../modules/browsers/nyxt.nix
     ../../modules/apps
@@ -32,6 +32,37 @@ in
   ];
 
   colorScheme = nix-colors.colorSchemes.gruvbox-dark-medium;
+  stylix = {
+    enable = true;
+    autoEnable = false;
+    image = ../wallpapers/desktop-cheshire-dark.png;
+    targets = {
+      feh.enable = true;
+      gtk = {
+        enable = true;
+        extraCss = ''
+          // Remove rounded corners
+          window.background { border-radius: 0; }
+        '';
+      };
+    };
+    #base16Scheme = ./colorschemes/matcha-dark.yaml;
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-medium.yaml";
+    cursor = {
+      size = 16;
+      package = pkgs.phinger-cursors;
+      name = "phinger-cursors-light";
+    };
+    fonts = {
+      monospace = {
+        package = pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; };
+        name = "JetBrains Mono Nerd Font";
+      };
+      serif = config.stylix.fonts.monospace;
+      sansSerif = config.stylix.fonts.monospace;
+      emoji = config.stylix.fonts.monospace;
+    };
+  };
   #colorScheme = (import ../../modules/desktops/theming/colorschemes/matcha-dark.nix);
 
   # Home Manager needs a bit of information about you and the
@@ -109,11 +140,11 @@ in
     ".config/test".source = inputs.qtile-config;
   };
 
-  home.pointerCursor = {
-    size = 16;
-    package = pkgs.phinger-cursors;
-    name = "phinger-cursors-light";
-  };
+  #home.pointerCursor = {
+  #  size = 16;
+  #  package = pkgs.phinger-cursors;
+  #  name = "phinger-cursors-light";
+  #};
 
   programs.pandoc = {
     enable = true;
@@ -133,36 +164,36 @@ in
     MANROFFOPT = "-c";
   };
 
-  gtk = {
-    enable = true;
-    font = {
-      name = "JetBrainsMono Nerd Font";
-      size = 10;
-    };
+  #gtk = {
+  #  enable = true;
+  #  font = {
+  #    name = "JetBrainsMono Nerd Font";
+  #    size = 10;
+  #  };
 
-    #theme = {
-    #  name = "Gruvbox-Dark-BL-LB";
-    #  #package = inputs.stable-nixpkgs.legacyPackages."x86_64-linux".gruvbox-gtk-theme;
-    #  package = (pkgs.gruvbox-gtk-theme.override { colorVariants = [ "dark" ]; });
-    #};
+  #  #theme = {
+  #  #  name = "Gruvbox-Dark-BL-LB";
+  #  #  #package = inputs.stable-nixpkgs.legacyPackages."x86_64-linux".gruvbox-gtk-theme;
+  #  #  package = (pkgs.gruvbox-gtk-theme.override { colorVariants = [ "dark" ]; });
+  #  #};
 
-    iconTheme = {
-      name = "Gruvbox-Plus-Dark";
-      package = pkgs.gruvbox-plus-icons;
-    };
+  #  iconTheme = {
+  #    name = "Gruvbox-Plus-Dark";
+  #    package = pkgs.gruvbox-plus-icons;
+  #  };
 
-    gtk3.extraConfig = {
-      #Settings = ''
-      #  gtk-application-prefer-dark-theme=1
-      #'';
-    };
+  #  gtk3.extraConfig = {
+  #    #Settings = ''
+  #    #  gtk-application-prefer-dark-theme=1
+  #    #'';
+  #  };
 
-    gtk4.extraConfig = {
-      #Settings = ''
-      #  gtk-application-prefer-dark-theme=1
-      #'';
-    };
-  };
+  #  gtk4.extraConfig = {
+  #    #Settings = ''
+  #    #  gtk-application-prefer-dark-theme=1
+  #    #'';
+  #  };
+  #};
 
   #qt = {
   #  enable = false;
@@ -173,7 +204,7 @@ in
   #  };
   #};
 
-  home.sessionVariables.GTK_THEME = "Gruvbox-Plus-Dark";
+  #home.sessionVariables.GTK_THEME = "Gruvbox-Plus-Dark";
 
   programs.rbw = {
     enable = true;

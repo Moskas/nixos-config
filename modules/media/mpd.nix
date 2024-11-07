@@ -10,6 +10,7 @@
     #(callPackage ../../pkgs/mpdnotify.nix { })
     inputs.mpdnotify.defaultPackage.${system}
     mpc-cli
+    mpdas
   ];
 
   services.mpd = {
