@@ -38,6 +38,8 @@ in
     image = ../wallpapers/desktop-cheshire-dark.png;
     targets = {
       feh.enable = true;
+      rofi.enable = true;
+      vesktop.enable = true;
       gtk = {
         enable = true;
         extraCss = ''

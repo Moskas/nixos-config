@@ -225,6 +225,7 @@
     #PAGER = "bat";
     PULSE_LATENCY_MSEC = "50";
     WEBKIT_DISABLE_DMABUF_RENDERER = "1"; # I had issues where nyxt would launch with blank window
+    GOPATH = "$HOME/.local/share/go";
   };
 
   # List packages installed in system profile. To search, run:
