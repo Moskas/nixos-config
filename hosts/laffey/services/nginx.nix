@@ -39,6 +39,29 @@
               add_header X-Frame-Options SAMEORIGIN;
             '';
           };
+          "/ollama/" = {
+            proxyPass = "http://127.0.0.1:11111/";
+            proxyWebsockets = true;
+          };
+          "/chatgpt/" = {
+            proxyPass = "http://127.0.0.1:8080/";
+            extraConfig = ''
+              rewrite ^/chatgpt/(.*)$ /$1 break;
+
+              # Proxy the modified request to the backend application
+
+              # Optional: Set headers that might be required by the backend or for compliance with CORS, etc.
+              proxy_set_header Host $host;
+              proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+              proxy_set_header X-Real-IP $remote_addr;
+              proxy_set_header X-Forwarded-Proto $scheme;
+
+              # Handle WebSocket upgrades if your application uses WebSockets
+              proxy_http_version 1.1;
+              proxy_set_header Upgrade $http_upgrade;
+              proxy_set_header Connection "upgrade";
+            '';
+          };
           "/prometheus/" = {
             proxyPass = "http://127.0.0.1:9090/";
             proxyWebsockets = true;

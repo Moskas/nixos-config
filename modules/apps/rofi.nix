@@ -140,6 +140,10 @@
           margin = mkLiteral "2px";
         };
 
+        entry = {
+          padding = mkLiteral "2px";
+        };
+
         textbox-prompt-sep = {
           expand = false;
           str = mkLiteral ''":"'';

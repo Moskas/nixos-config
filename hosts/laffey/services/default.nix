@@ -7,6 +7,7 @@
     ./grocy.nix
     ./jellyfin.nix
     ./nginx.nix
+    ./ollama.nix
 
     ./grafana.nix
     ./prometheus.nix

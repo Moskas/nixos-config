@@ -127,10 +127,12 @@
       allowedTCPPorts = [
         22
         6600
+        11111
         24070
       ];
       allowedUDPPorts = [
         22
+        11111
         24070
       ];
       enable = true;
@@ -160,14 +162,18 @@
     '';
   };
 
-  # Enable sound.
-  #sound = {
-  #  enable = true;
-  #  mediaKeys = {
-  #    enable = true;
-  #    volumeStep = "5%";
-  #  };
-  #};
+  services.ollama = {
+    enable = true;
+    acceleration = "cuda";
+    package = (pkgs.ollama.override { acceleration = "cuda"; });
+  };
+
+  services.open-webui = {
+    enable = true;
+    host = "0.0.0.0";
+    port = 11111;
+    openFirewall = true;
+  };
 
   hardware.pulseaudio.enable = false;
   services.pipewire = {
