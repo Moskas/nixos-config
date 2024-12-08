@@ -20,7 +20,7 @@
     # gamingPkgs.osu-stable # mime conflicts with osu!lazer
     modrinth-app-unwrapped
     stepmania
-    vintagestory
+    (callPackage ../../../pkgs/vintagestory.nix { })
     (writeShellScriptBin "etterna" ''
       ${inputs.nix-alien.packages.${system}.nix-alien}/bin/nix-alien-ld -- ~/Games/Etterna/Etterna
     '') # Just a hack teehee

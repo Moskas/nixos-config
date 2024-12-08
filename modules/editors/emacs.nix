@@ -1,7 +1,9 @@
 { pkgs, ... }:
 
 {
-  home.packages = with pkgs; [ ispell ];
+  home.packages = with pkgs; [
+    ispell
+  ];
   programs.emacs = {
     enable = true;
     package = pkgs.emacs-unstable;
@@ -9,6 +11,7 @@
       epkgs: with epkgs; [
         vterm-toggle
         vterm
+        mu4e
       ];
   };
 
